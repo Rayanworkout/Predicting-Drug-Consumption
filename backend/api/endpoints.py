@@ -31,6 +31,7 @@ def consumption_by_age(
     Example usage:
         /api/consumption_by_age?age_range=18-24&drug=meth
         /api/consumption_by_age?age_range=25-34&drug=alcohol
+        
 
     Parameters:
 
