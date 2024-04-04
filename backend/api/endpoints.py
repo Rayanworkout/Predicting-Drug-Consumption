@@ -31,22 +31,19 @@ def consumption_by_age(
     Example usage:
         /api/consumption_by_age?age_range=18-24&drug=meth
         /api/consumption_by_age?age_range=25-34&drug=alcohol
-        
 
     Parameters:
+        - age_range: str, age range to filter the dataset by. Allowed values: "18-24", "25-34", "35-44", "45-54", "55-64", "65+"
 
-    - age_range: str, age range to filter the dataset by. Allowed values: "18-24", "25-34", "35-44", "45-54", "55-64", "65+"
+        - drug: str, drug to display consumption for.
 
-    - drug: str, drug to display consumption for.
-
-        Allowed values: "Alcohol", "Amphet", "Amyl", "Benzos", "Caff", "Cannabis",
-                        "Choc", "Coke", "Crack", "Ecstasy", "Heroin", "Ketamine",
-                        "Legalh", "LSD", "Meth", "Mushrooms", "Nicotine", "Semer", "VSA"
+            Allowed values: "Alcohol", "Amphet", "Amyl", "Benzos", "Caff", "Cannabis",
+                            "Choc", "Coke", "Crack", "Ecstasy", "Heroin", "Ketamine",
+                            "Legalh", "LSD", "Meth", "Mushrooms", "Nicotine", "Semer", "VSA"
 
 
     Returns:
-
-        A dict ordered by the drug consumption count with the following content
+        - A dict ordered by the drug consumption count with the following content:
         {
             "age_range": "18-24",
             "drug": "cannabis",
