@@ -51,7 +51,6 @@ class Parser:
         """
 
         if os.path.exists("csv_parser/drug_consumption_cleaned.csv"):
-            print("Data already cleaned, using cleaned csv file.")
             return pd.read_csv("csv_parser/drug_consumption_cleaned.csv")
 
         age_col = {
@@ -181,5 +180,3 @@ class Parser:
                 semer=row["Semer"].lower(),
                 vsa=row["VSA"].lower(),
             )
-
-        print("Data successfully saved to the database.")

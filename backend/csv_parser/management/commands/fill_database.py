@@ -31,3 +31,4 @@ class Command(BaseCommand):
             print("Filling the database with the CSV file...")
             parser = csv_parser.Parser()
             parser.csv_to_database()
+            print("Data successfully saved to the database.")
