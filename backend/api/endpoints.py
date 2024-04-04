@@ -2,7 +2,13 @@ from ninja import NinjaAPI, Query
 
 from data_processing import get_drug_consumption_by_age
 
-from .schemas import ConsumptionByAgeResponse, ConsumptionByAgeRequest
+from .schemas import (
+    ConsumptionByAgeResponse,
+    ConsumptionByAgeRequest,
+    ConsumptionByAgeErrorResponse,
+)
+from api.respondent_field_choices import AGE_CHOICES, DRUGS_LIST
+
 
 # Creating an instance of NinjaAPI
 api = NinjaAPI()
@@ -10,7 +16,7 @@ api = NinjaAPI()
 
 @api.get(
     "/consumption_by_age",
-    response=ConsumptionByAgeResponse,
+    response={200: ConsumptionByAgeResponse, 400: ConsumptionByAgeErrorResponse},
     tags=["Consumption By Age"],
 )
 def consumption_by_age(
@@ -49,4 +55,15 @@ def consumption_by_age(
         }
 
     """
+
+    age_choices = [choice[0] for choice in AGE_CHOICES]
+
+    if params.age_range not in age_choices:
+        return 400, {"message": f"age_range must be one of {age_choices}"}
+
+    drug = params.drug.lower()
+
+    if drug not in DRUGS_LIST:
+        return 400, {"message": f"drug must be one of {DRUGS_LIST}"}
+
     return get_drug_consumption_by_age(age_range=params.age_range, drug=params.drug)

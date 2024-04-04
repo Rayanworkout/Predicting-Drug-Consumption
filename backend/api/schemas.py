@@ -27,6 +27,14 @@ class ConsumptionByAgeResponse(Schema):
     }
 
 
+class ConsumptionByAgeErrorResponse(Schema):
+    """
+    Error response schema for consumption_by_age endpoint. In case age_range or drug is not valid.
+    """
+
+    message: str
+
+
 class ConsumptionByAgeRequest(Schema):
     """
     Request schema for consumption_by_age endpoint.
@@ -36,4 +44,4 @@ class ConsumptionByAgeRequest(Schema):
     """
 
     age_range: str = "18-24"
-    drug: str = "Meth"
+    drug: str = "meth"
