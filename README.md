@@ -1,0 +1,1 @@
+# Statistics about drug consumption

@@ -1,0 +1,1 @@
+from data_processing.drug_consumption_by_age import get_drug_consumption_by_age
