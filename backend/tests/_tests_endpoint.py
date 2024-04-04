@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 from csv_parser.csv_parser import Parser
 
 
-class TestEndpoints(TestCase):
+class TestConsumptionByAge(TestCase):
 
     def setUp(self) -> None:
         self.client = Client()
@@ -12,8 +12,6 @@ class TestEndpoints(TestCase):
         # Populating the test database with the CSV data
         parser = Parser()
         parser.csv_to_database()
-
-    ####### CONSUMPTION BY AGE #######
 
     def test_endpoint_is_working(self):
         response = self.client.get(self.BASE_URL + "consumption_by_age")

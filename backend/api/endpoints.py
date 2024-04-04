@@ -1,11 +1,18 @@
 from ninja import NinjaAPI, Query
 
-from data_processing import get_drug_consumption_by_age
+from data_processing import get_drug_consumption_by_age, get_population_repartition
 
 from .schemas import (
+    #############################
+    # Consumption By Age
     ConsumptionByAgeResponse,
     ConsumptionByAgeRequest,
     ConsumptionByAgeErrorResponse,
+    #############################
+    # Population Repartition
+    PopulationRepartitionResponse,
+    PopulationRepartitionRequest,
+    PopulationRepartitionErrorResponse,
 )
 from api.respondent_field_choices import AGE_CHOICES, DRUGS_LIST
 
@@ -71,3 +78,38 @@ def consumption_by_age(
         return 400, {"message": f"drug must be one of {DRUGS_LIST}"}
 
     return get_drug_consumption_by_age(age_range=params.age_range, drug=params.drug)
+
+
+@api.get(
+    "/population_repartition",
+    response={
+        200: PopulationRepartitionResponse,
+        400: PopulationRepartitionErrorResponse,
+    },
+    tags=["Population Repartition"],
+)
+def population_repartition(
+    request,
+    params: Query[PopulationRepartitionRequest],
+):
+    """
+    Endpoint to GET the repartition of a given population in the database.
+
+    Default value is set to "age" for population.
+
+    Example usage:
+        /api/population_repartition?population=age
+        /api/population_repartition?population=country
+
+    Parameters:
+        - population: str, population to display repartition for.
+
+            Allowed values: "age", "country", "education", "ethnicity", "gender"
+    """
+
+    population_choices = ["age", "country", "education", "ethnicity", "gender"]
+
+    if params.population not in population_choices:
+        return 400, {"message": f"population must be one of {population_choices}"}
+
+    return 200, get_population_repartition(population=params.population)
