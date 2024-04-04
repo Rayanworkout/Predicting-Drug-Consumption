@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     ######### MY APPS ############
     "csv_parser.apps.CsvParserConfig",
     "api.apps.ApiConfig",
+    # "data_processing.apps.DataProcessingConfig",
 ]
 
 MIDDLEWARE = [

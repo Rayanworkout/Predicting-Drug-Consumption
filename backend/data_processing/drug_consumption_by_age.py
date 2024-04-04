@@ -19,9 +19,11 @@ def get_drug_consumption_by_age(
     if age_range not in age_choices:
         raise ValueError(f"age_range must be one of {age_choices}")
 
+    drug = drug.lower()
+
     if drug not in DRUGS_LIST:
         raise ValueError(f"drug must be one of {DRUGS_LIST}")
 
-    data = Respondent.objects.filter(age=age_range).values_list(drug, flat=True)
+    data = Respondent.objects.filter(age=age_range).values(drug)
 
     return data
