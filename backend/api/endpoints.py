@@ -26,6 +26,12 @@ def consumption_by_age(
     """
     Endpoint to GET the consumptions statistics of a given drug in a given age range.
 
+    Default values are set to "18-24" for age_range and "meth" for drug.
+
+    Example usage:
+        /api/consumption_by_age?age_range=18-24&drug=meth
+        /api/consumption_by_age?age_range=25-34&drug=alcohol
+
     Parameters:
 
     - age_range: str, age range to filter the dataset by. Allowed values: "18-24", "25-34", "35-44", "45-54", "55-64", "65+"
