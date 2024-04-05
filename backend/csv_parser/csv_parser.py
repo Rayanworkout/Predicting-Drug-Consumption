@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-from api.models import Respondent
+from endpoints.models import Respondent
 
 
 class Parser:

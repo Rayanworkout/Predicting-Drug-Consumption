@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 
-from api.endpoints import api
+from endpoints.api import api
 
 urlpatterns = [
     path("admin/", admin.site.urls),

@@ -2,17 +2,17 @@ from django.db.models import Count
 from endpoints.models import Respondent
 
 
-def get_drug_consumption_by_age(age_range: str, drug: str) -> None:
+def get_drug_consumption_by_gender(gender: str, drug: str) -> None:
     """
     Function to display a bar chart showing the consumption of a given age range of a given drug.
 
     Parameters:
-    - age_range: str, age_range to filter the dataset by
+    - gender: str, gender to filter the dataset by, accepted values are male and female
     - drug: str, drug to display consumption for
     """
 
     data = (
-        Respondent.objects.filter(age=age_range)
+        Respondent.objects.filter(gender=gender)
         .values(drug)
         .annotate(count=Count("id"))
         .order_by("-count")
@@ -21,7 +21,7 @@ def get_drug_consumption_by_age(age_range: str, drug: str) -> None:
     counts = {item[drug]: item["count"] for item in data}
 
     data = {
-        "age_range": age_range,
+        "gender": gender,
         "drug": drug,
         "data": counts,
     }

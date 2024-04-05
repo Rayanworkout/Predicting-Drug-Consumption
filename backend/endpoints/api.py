@@ -1,6 +1,10 @@
 from ninja import NinjaAPI, Query
 
-from data_processing import get_drug_consumption_by_age, get_population_repartition
+from data_processing import (
+    get_drug_consumption_by_age,
+    get_population_repartition,
+    get_drug_consumption_by_gender,
+)
 
 from .schemas import (
     #############################
@@ -14,7 +18,8 @@ from .schemas import (
     PopulationRepartitionRequest,
     PopulationRepartitionErrorResponse,
 )
-from api.respondent_field_choices import AGE_CHOICES, DRUGS_LIST
+
+from endpoints.respondent_field_choices import AGE_CHOICES, DRUGS_LIST
 
 
 # Creating an instance of NinjaAPI
@@ -78,6 +83,7 @@ def consumption_by_age(
         return 400, {"message": f"drug must be one of {DRUGS_LIST}"}
 
     return get_drug_consumption_by_age(age_range=params.age_range, drug=params.drug)
+
 
 
 @api.get(

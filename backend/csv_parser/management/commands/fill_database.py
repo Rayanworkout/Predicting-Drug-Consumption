@@ -19,11 +19,11 @@ class Command(BaseCommand):
     help = "Parse the CSV file and insert its content into the database."
 
     def handle(self, *args, **options):
-        if not table_exists("api_respondent"):
+        if not table_exists("endpoints_respondent"):
             print("The table is not created yet. Please run the migrations first.")
             return
 
-        elif table_is_already_filled("api_respondent"):
+        elif table_is_already_filled("endpoints_respondent"):
             print("The database is already filled with the CSV file.")
             return
 
