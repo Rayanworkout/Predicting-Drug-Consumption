@@ -1,4 +1,4 @@
-from api.models import Respondent
+from endpoints.models import Respondent
 from django.db.models import Count
 
 

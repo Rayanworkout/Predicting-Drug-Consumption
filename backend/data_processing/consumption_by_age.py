@@ -1,14 +1,13 @@
 from django.db.models import Count
-from api.models import Respondent
+from endpoints.models import Respondent
 
 
 def get_drug_consumption_by_age(age_range: str, drug: str) -> None:
     """
-    Function to display a bar chart showing the which age range consumes the most of a given drug.
+    Function to display a bar chart showing the consumption of a given age range of a given drug.
 
     Parameters:
-    - df: pandas DataFrame containing the dataset
-    - age_range: str, age range to filter the dataset by
+    - age_range: str, age_range to filter the dataset by
     - drug: str, drug to display consumption for
     """
 

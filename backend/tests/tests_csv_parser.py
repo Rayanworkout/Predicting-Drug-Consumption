@@ -4,7 +4,7 @@ import pandas as pd
 from django.test import TestCase
 from csv_parser.csv_parser import Parser
 
-from api.models import Respondent
+from endpoints.models import Respondent
 
 
 class TestParser(TestCase):
