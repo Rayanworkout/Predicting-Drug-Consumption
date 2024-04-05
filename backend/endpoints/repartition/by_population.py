@@ -8,11 +8,11 @@ from .schemas import (
     PopulationRepartitionErrorResponse,
 )
 
-by_population_router = Router()
+by_population_router = Router(tags=["Repartition by Population"])
 
 
 @by_population_router.get(
-    "/by_population",
+    "/",
     response={
         200: PopulationRepartitionResponse,
         400: PopulationRepartitionErrorResponse,

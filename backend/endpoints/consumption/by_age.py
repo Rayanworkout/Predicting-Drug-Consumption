@@ -7,14 +7,12 @@ from .schemas import (
     ConsumptionByAgeRequest,
     ConsumptionByAgeErrorResponse,
 )
-
 from endpoints.respondent_field_choices import AGE_CHOICES, DRUGS_LIST
 
-by_age_router = Router()
-
+by_age_router = Router(tags=["Consumption By Age"])
 
 @by_age_router.get(
-    "/by_age",
+    "/",
     response={200: ConsumptionByAgeResponse, 400: ConsumptionByAgeErrorResponse},
     tags=["Consumption By Age"],
 )
