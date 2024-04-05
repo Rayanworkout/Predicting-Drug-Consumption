@@ -5,15 +5,16 @@ from data_processing import get_drug_consumption_by_age
 from .schemas import (
     ConsumptionByAgeResponse,
     ConsumptionByAgeRequest,
-    ConsumptionByAgeErrorResponse,
+    ConsumptionErrorResponse,
 )
 from endpoints.respondent_field_choices import AGE_CHOICES, DRUGS_LIST
 
 by_age_router = Router(tags=["Consumption By Age"])
 
+
 @by_age_router.get(
     "/",
-    response={200: ConsumptionByAgeResponse, 400: ConsumptionByAgeErrorResponse},
+    response={200: ConsumptionByAgeResponse, 400: ConsumptionErrorResponse},
     tags=["Consumption By Age"],
 )
 def consumption_by_age(
@@ -60,11 +61,11 @@ def consumption_by_age(
     age_choices = [choice[0] for choice in AGE_CHOICES]
 
     if params.age_range not in age_choices:
-        return 400, {"message": f"age_range must be one of {age_choices}"}
+        return 400, {"message": "invalid age_range", "allowed values": age_choices}
 
     drug = params.drug.lower()
 
     if drug not in DRUGS_LIST:
-        return 400, {"message": f"drug must be one of {DRUGS_LIST}"}
+        return 400, {"message": "invalid drug name", "allowed values": DRUGS_LIST}
 
     return get_drug_consumption_by_age(age_range=params.age_range, drug=params.drug)
