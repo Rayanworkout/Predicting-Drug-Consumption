@@ -1,2 +1,2 @@
-from data_processing.drug_consumption_by_age import get_drug_consumption_by_age
+from data_processing.consumption_by_age import get_drug_consumption_by_age
 from data_processing.population_repartition import get_population_repartition
