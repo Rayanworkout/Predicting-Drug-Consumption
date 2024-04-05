@@ -10,10 +10,10 @@ from .schemas import (
 
 from endpoints.respondent_field_choices import AGE_CHOICES, DRUGS_LIST
 
-router = Router()
+by_age_router = Router()
 
 
-@router.get(
+@by_age_router.get(
     "/by_age",
     response={200: ConsumptionByAgeResponse, 400: ConsumptionByAgeErrorResponse},
     tags=["Consumption By Age"],

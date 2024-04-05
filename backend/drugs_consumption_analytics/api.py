@@ -3,4 +3,4 @@ from ninja import NinjaAPI
 api = NinjaAPI()
 
 
-api.add_router("/consumption/", "endpoints.consumption.by_age.router")
+api.add_router("/", "endpoints.main_router.main_router")

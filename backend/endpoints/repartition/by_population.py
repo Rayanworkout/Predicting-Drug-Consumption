@@ -2,21 +2,22 @@ from ninja import Query, Router
 
 from data_processing import get_population_repartition
 
-from ...endpoints.schemas import (
+from .schemas import (
     PopulationRepartitionResponse,
     PopulationRepartitionRequest,
     PopulationRepartitionErrorResponse,
 )
 
-router = Router()
+by_population_router = Router()
 
-@router.get(
+
+@by_population_router.get(
     "/by_population",
     response={
         200: PopulationRepartitionResponse,
         400: PopulationRepartitionErrorResponse,
     },
-    tags=["Population Repartition"],
+    tags=["Repartition by Population"],
 )
 def population_repartition(
     request,
