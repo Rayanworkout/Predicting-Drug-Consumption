@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 
-from endpoints.api import api
+from drugs_consumption_analytics.api import api
 
 urlpatterns = [
     path("admin/", admin.site.urls),
