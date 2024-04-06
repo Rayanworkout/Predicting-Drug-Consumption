@@ -7,6 +7,7 @@ class ConsumptionErrorResponse(Schema):
     """
 
     message: str
+    allowed_values: list
 
 ####################################################################################################
 # CONSUMPTION BY AGE

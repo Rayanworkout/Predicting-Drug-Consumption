@@ -27,8 +27,8 @@ def consumption_by_age(
     Default values are set to "18-24" for age_range and "meth" for drug.
 
     Example usage:
-        /api/consumption_by_age?age_range=18-24&drug=meth
-        /api/consumption_by_age?age_range=25-34&drug=alcohol
+        /api/consumption/by_age?age_range=18-24&drug=meth
+        /api/consumptionb/by_age?age_range=25-34&drug=alcohol
 
     Parameters:
         - age_range: str, age range to filter the dataset by. Allowed values: "18-24", "25-34", "35-44", "45-54", "55-64", "65+"
@@ -61,11 +61,11 @@ def consumption_by_age(
     age_choices = [choice[0] for choice in AGE_CHOICES]
 
     if params.age_range not in age_choices:
-        return 400, {"message": "invalid age_range", "allowed values": age_choices}
+        return 400, {"message": "invalid age_range", "allowed_values": age_choices}
 
     drug = params.drug.lower()
 
     if drug not in DRUGS_LIST:
-        return 400, {"message": "invalid drug name", "allowed values": DRUGS_LIST}
+        return 400, {"message": "invalid drug name", "allowed_values": DRUGS_LIST}
 
     return get_drug_consumption_by_age(age_range=params.age_range, drug=params.drug)
