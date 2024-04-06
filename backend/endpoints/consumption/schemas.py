@@ -1,12 +1,22 @@
 from ninja import Schema
 
 
-####################################################################################################
-# CONSUMPTION BY AGE
-####################################################################################################
+class ConsumptionRequest(Schema):
+    """
+    Request schema for consumption endpoint.
+    it defines the fields expected by the endpoint.
+
+    https://django-ninja.dev/guides/request/
+    """
+
+    drug: str
+
+    age_range: str = None
+    gender: str = None
+    ethnicity: str = None
 
 
-class ConsumptionByAgeResponse(Schema):
+class ConsumptionResponse(Schema):
     """
     Response schema for consumption_by_age endpoint.
     it defines the fields returned by the endpoint.
@@ -15,7 +25,10 @@ class ConsumptionByAgeResponse(Schema):
     """
 
     age_range: str = None
-    drug: str = None
+    gender: str = None
+    ethnicity: str = None
+
+    drug: str
     data: dict = {
         "used in last day": 0,
         "used in last week": 0,
@@ -27,21 +40,10 @@ class ConsumptionByAgeResponse(Schema):
     }
 
 
-class ConsumptionByAgeErrorResponse(Schema):
+class ConsumptionErrorResponse(Schema):
     """
-    Error response schema for consumption_by_age endpoint. In case age_range or drug is not valid.
+    Error response schema for consumption endpoints. In case a field is not valid.
     """
 
     message: str
-
-
-class ConsumptionByAgeRequest(Schema):
-    """
-    Request schema for consumption_by_age endpoint.
-    it defines the fields expected by the endpoint.
-
-    https://django-ninja.dev/guides/request/
-    """
-
-    age_range: str = "18-24"
-    drug: str = "meth"
+    allowed_values: list

@@ -1,7 +1,8 @@
 from django.test import TestCase, Client
 from csv_parser.csv_parser import Parser
 
-class TestPopulationRepartition(TestCase):
+
+class TestPopulationRepartitionEndpoint(TestCase):
 
     def setUp(self) -> None:
         self.client = Client()
@@ -21,15 +22,11 @@ class TestPopulationRepartition(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_bad_population(self):
-        response = self.client.get(
-            self.BASE_URL + "?population=bad_population"
-        )
+        response = self.client.get(self.BASE_URL + "?population=bad_population")
         self.assertEqual(response.status_code, 400)
 
     def test_population_repartition_age(self):
-        response = self.client.get(
-            self.BASE_URL + "?population=age"
-        )
+        response = self.client.get(self.BASE_URL + "?population=age")
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
@@ -47,9 +44,7 @@ class TestPopulationRepartition(TestCase):
         )
 
     def test_population_repartition_country(self):
-        response = self.client.get(
-            self.BASE_URL + "?population=country"
-        )
+        response = self.client.get(self.BASE_URL + "?population=country")
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
@@ -68,9 +63,7 @@ class TestPopulationRepartition(TestCase):
         )
 
     def test_population_repartition_education(self):
-        response = self.client.get(
-            self.BASE_URL + "?population=education"
-        )
+        response = self.client.get(self.BASE_URL + "?population=education")
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
@@ -94,9 +87,7 @@ class TestPopulationRepartition(TestCase):
         )
 
     def test_population_repartition_gender(self):
-        response = self.client.get(
-            self.BASE_URL + "?population=gender"
-        )
+        response = self.client.get(self.BASE_URL + "?population=gender")
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
@@ -105,6 +96,25 @@ class TestPopulationRepartition(TestCase):
                 "data": [
                     {"gender": "male", "count": 943},
                     {"gender": "female", "count": 942},
+                ]
+            },
+        )
+
+    def test_population_repartition_ethnicity(self):
+        response = self.client.get(self.BASE_URL + "?population=ethnicity")
+        self.assertEqual(response.status_code, 200)
+
+        self.assertEqual(
+            response.json(),
+            {
+                "data": [
+                    {"ethnicity": "white", "count": 1720},
+                    {"ethnicity": "other", "count": 63},
+                    {"ethnicity": "black", "count": 33},
+                    {"ethnicity": "asian", "count": 26},
+                    {"ethnicity": "mixed-white/black", "count": 20},
+                    {"ethnicity": "mixed-white/asian", "count": 20},
+                    {"ethnicity": "mixed-black/asian", "count": 3},
                 ]
             },
         )

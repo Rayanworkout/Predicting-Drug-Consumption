@@ -6,30 +6,31 @@ from .schemas import (
     ConsumptionRequest,
 )
 
-from endpoints.respondent_field_choices import DRUGS_LIST
+from endpoints.respondent_field_choices import ETHNICITY_CHOICES
 
 
-by_gender_router = Router()
+by_ethnicity_router = Router()
 
 
-@by_gender_router.get(
+@by_ethnicity_router.get(
     "/",
     response={200: ConsumptionResponse, 400: ConsumptionErrorResponse},
-    tags=["Consumption By Gender"],
+    tags=["Consumption By ethnicity"],
 )
-def consumption_by_gender(
+def consumption_by_ethnicity(
     request,
     params: Query[ConsumptionRequest],
 ):
     """
-    Endpoint to GET the consumptions statistics of a given drug for a given gender.
+    Endpoint to GET the consumptions statistics of a given drug for a given ethnicity.
 
     Example usage:
-        /api/consumption/by_gender?agender=male&drug=meth
-        /api/consumption/by_gender?gender=female&drug=alcohol
+        /api/consumption/by_ethnicity?ethnicity=asian&drug=meth
+        /api/consumption/by_ethnicity?ethnicity=other&drug=alcohol
 
     Parameters:
-        - gender: str, gender to filter the dataset by. Allowed values: "male", "female"
+    (note the underscore instead of the "-" on mixed ethnicity)
+        - ethnicity: str, ethnicity to filter the dataset by. Allowed values: "asian", "black", "mixed-black_asian", "mixed-white_asian", "mixed-white_black", "other", "white"
 
         - drug: str, drug to display consumption for.
 
@@ -41,7 +42,7 @@ def consumption_by_gender(
     Returns:
         - A dict ordered by the drug consumption count with the following content:
         {
-            "gender": "male",
+            "ethnicity": "asian",
             "drug": "cannabis",
             "data": {
                 "used in last day": 2346,
@@ -57,14 +58,16 @@ def consumption_by_gender(
 
     """
 
-    if params.drug not in DRUGS_LIST:
-        return 400, {"message": "invalid drug name", "allowed_values": DRUGS_LIST}
+    ethnicity_choices = [choice[0].replace('/', '_') for choice in ETHNICITY_CHOICES]
 
-    if params.gender not in ["male", "female"]:
-        return 400, {"message": "invalid gender", "allowed_values": ["male", "female"]}
+    if params.ethnicity not in ethnicity_choices:
+        return 400, {
+            "message": "invalid ethnicity",
+            "allowed_values": ethnicity_choices,
+        }
 
     return 200, get_drug_consumption_by_category(
-        category="gender",
-        value=params.gender,
+        category="ethnicity",
+        value=params.ethnicity.replace('_', '/'),
         drug=params.drug,
     )
