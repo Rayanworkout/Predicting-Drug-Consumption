@@ -22,8 +22,8 @@ class ConsumptionByAgeRequest(Schema):
     https://django-ninja.dev/guides/request/
     """
 
-    age_range: str = "18-24"
-    drug: str = "meth"
+    age_range: str
+    drug: str
 
 
 class ConsumptionByAgeResponse(Schema):
@@ -34,8 +34,8 @@ class ConsumptionByAgeResponse(Schema):
     https://django-ninja.dev/guides/response/
     """
 
-    age_range: str = None
-    drug: str = None
+    age_range: str
+    drug: str
     data: dict = {
         "used in last day": 0,
         "used in last week": 0,
@@ -61,8 +61,8 @@ class ConsumptionByGenderRequest(Schema):
     https://django-ninja.dev/guides/request/
     """
 
-    gender: str = "male"
-    drug: str = "meth"
+    gender: str
+    drug: str
 
 
 class ConsumptionByGenderResponse(Schema):

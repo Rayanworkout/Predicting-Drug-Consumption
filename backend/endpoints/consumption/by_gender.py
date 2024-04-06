@@ -1,5 +1,5 @@
 from ninja import Router, Query
-from data_processing import get_drug_consumption_by_gender
+from data_processing import get_drug_consumption_by_category
 from .schemas import (
     ConsumptionByGenderResponse,
     ConsumptionErrorResponse,
@@ -23,8 +23,6 @@ def consumption_by_gender(
 ):
     """
     Endpoint to GET the consumptions statistics of a given drug for a given gender.
-
-    Default values are set to "male" for gender and "meth" for drug.
 
     Example usage:
         /api/consumption/by_gender?agender=male&drug=meth
@@ -65,7 +63,8 @@ def consumption_by_gender(
     if params.gender not in ["male", "female"]:
         return 400, {"message": "invalid gender", "allowed_values": ["male", "female"]}
 
-    return 200, get_drug_consumption_by_gender(
-        params.gender,
-        params.drug,
+    return 200, get_drug_consumption_by_category(
+        category="gender",
+        value=params.gender,
+        drug=params.drug,
     )

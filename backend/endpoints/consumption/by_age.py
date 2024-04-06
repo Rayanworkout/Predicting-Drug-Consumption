@@ -1,6 +1,6 @@
 from ninja import Query, Router
 
-from data_processing import get_drug_consumption_by_age
+from data_processing import get_drug_consumption_by_category
 
 from .schemas import (
     ConsumptionByAgeResponse,
@@ -23,8 +23,6 @@ def consumption_by_age(
 ):
     """
     Endpoint to GET the consumptions statistics of a given drug in a given age range.
-
-    Default values are set to "18-24" for age_range and "meth" for drug.
 
     Example usage:
         /api/consumption/by_age?age_range=18-24&drug=meth
@@ -68,4 +66,6 @@ def consumption_by_age(
     if drug not in DRUGS_LIST:
         return 400, {"message": "invalid drug name", "allowed_values": DRUGS_LIST}
 
-    return get_drug_consumption_by_age(age_range=params.age_range, drug=params.drug)
+    return get_drug_consumption_by_category(
+        category="age", value=params.age_range, drug=params.drug
+    )
