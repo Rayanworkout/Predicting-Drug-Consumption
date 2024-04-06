@@ -29,7 +29,8 @@ def consumption_by_ethnicity(
         /api/consumption/by_ethnicity?ethnicity=other&drug=alcohol
 
     Parameters:
-        - ethnicity: str, ethnicity to filter the dataset by. Allowed values: "asian", "black", "mixed-black-asian", "mixed-white-asian", "mixed-white-black", "other", "white"
+    (note the underscore instead of the "-" on mixed ethnicity)
+        - ethnicity: str, ethnicity to filter the dataset by. Allowed values: "asian", "black", "mixed-black_asian", "mixed-white_asian", "mixed-white_black", "other", "white"
 
         - drug: str, drug to display consumption for.
 
@@ -56,7 +57,8 @@ def consumption_by_ethnicity(
 
 
     """
-    ethnicity_choices = [choice[0] for choice in ETHNICITY_CHOICES]
+
+    ethnicity_choices = [choice[0].replace('/', '_') for choice in ETHNICITY_CHOICES]
 
     if params.ethnicity not in ethnicity_choices:
         return 400, {
@@ -66,6 +68,6 @@ def consumption_by_ethnicity(
 
     return 200, get_drug_consumption_by_category(
         category="ethnicity",
-        value=params.ethnicity,
+        value=params.ethnicity.replace('_', '/'),
         drug=params.drug,
     )

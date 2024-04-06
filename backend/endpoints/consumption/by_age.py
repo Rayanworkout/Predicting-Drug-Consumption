@@ -29,7 +29,7 @@ def consumption_by_age(
         /api/consumptionb/by_age?age_range=25-34&drug=alcohol
 
     Parameters:
-        - age_range: str, age range to filter the dataset by. Allowed values: "18-24", "25-34", "35-44", "45-54", "55-64", "65+"
+        - age_range: str, age range to filter the dataset by. Allowed values: "18-24", "25-34", "35-44", "45-54", "55-64", "65"
 
         - drug: str, drug to display consumption for.
 
@@ -57,9 +57,10 @@ def consumption_by_age(
 
     """
 
+    age_range = "65+" if params.age_range == "65" else params.age_range
     age_choices = [choice[0] for choice in AGE_CHOICES]
 
-    if params.age_range not in age_choices:
+    if age_range not in age_choices:
         return 400, {"message": "invalid age_range", "allowed_values": age_choices}
 
     drug = params.drug.lower()
@@ -68,5 +69,5 @@ def consumption_by_age(
         return 400, {"message": "invalid drug name", "allowed_values": DRUGS_LIST}
 
     return get_drug_consumption_by_category(
-        category="age", value=params.age_range, drug=params.drug
+        category="age", value=age_range, drug=params.drug
     )
