@@ -15,14 +15,14 @@ by_age_router = Router(tags=["Consumption By Age"])
 @by_age_router.get(
     "/",
     response={200: ConsumptionResponse, 400: ConsumptionErrorResponse},
-    tags=["Consumption By Age"],
+    tags=["Consumption by age"],
 )
 def consumption_by_age(
     request,
     params: Query[ConsumptionRequest],
 ):
     """
-    Endpoint to GET the consumptions statistics of a given drug in a given age range.
+    Endpoint to GET the consumption statistics of a given drug in a given age range.
 
     Example usage:
         /api/consumption/by_age?age_range=18-24&drug=meth

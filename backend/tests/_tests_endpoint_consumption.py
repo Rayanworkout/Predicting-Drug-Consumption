@@ -39,6 +39,8 @@ class TestConsumptionByAge(TestCase):
                 "age_range": "18-24",
                 "gender": None,
                 "ethnicity": None,
+                "education": None,
+                "country": None,
                 "drug": "alcohol",
                 "data": {
                     "used in last day": 149,

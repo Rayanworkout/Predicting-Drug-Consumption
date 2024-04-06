@@ -15,14 +15,14 @@ by_ethnicity_router = Router()
 @by_ethnicity_router.get(
     "/",
     response={200: ConsumptionResponse, 400: ConsumptionErrorResponse},
-    tags=["Consumption By ethnicity"],
+    tags=["Consumption by ethnicity"],
 )
 def consumption_by_ethnicity(
     request,
     params: Query[ConsumptionRequest],
 ):
     """
-    Endpoint to GET the consumptions statistics of a given drug for a given ethnicity.
+    Endpoint to GET the consumption statistics of a given drug for a given ethnicity.
 
     Example usage:
         /api/consumption/by_ethnicity?ethnicity=asian&drug=meth

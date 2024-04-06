@@ -15,7 +15,7 @@ by_gender_router = Router()
 @by_gender_router.get(
     "/",
     response={200: ConsumptionResponse, 400: ConsumptionErrorResponse},
-    tags=["Consumption By Gender"],
+    tags=["Consumption by gender"],
 )
 def consumption_by_gender(
     request,

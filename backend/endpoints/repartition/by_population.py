@@ -17,7 +17,7 @@ by_population_router = Router(tags=["Repartition by Population"])
         200: PopulationRepartitionResponse,
         400: PopulationRepartitionErrorResponse,
     },
-    tags=["Repartition by Population"],
+    tags=["Repartition by population"],
 )
 def population_repartition(
     request,
