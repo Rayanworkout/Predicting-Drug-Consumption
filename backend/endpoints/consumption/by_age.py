@@ -3,8 +3,8 @@ from ninja import Query, Router
 from data_processing import get_drug_consumption_by_category
 
 from .schemas import (
-    ConsumptionByAgeResponse,
-    ConsumptionByAgeRequest,
+    ConsumptionResponse,
+    ConsumptionRequest,
     ConsumptionErrorResponse,
 )
 from endpoints.respondent_field_choices import AGE_CHOICES, DRUGS_LIST
@@ -14,12 +14,12 @@ by_age_router = Router(tags=["Consumption By Age"])
 
 @by_age_router.get(
     "/",
-    response={200: ConsumptionByAgeResponse, 400: ConsumptionErrorResponse},
+    response={200: ConsumptionResponse, 400: ConsumptionErrorResponse},
     tags=["Consumption By Age"],
 )
 def consumption_by_age(
     request,
-    params: Query[ConsumptionByAgeRequest],
+    params: Query[ConsumptionRequest],
 ):
     """
     Endpoint to GET the consumptions statistics of a given drug in a given age range.
@@ -33,9 +33,10 @@ def consumption_by_age(
 
         - drug: str, drug to display consumption for.
 
-            Allowed values: "Alcohol", "Amphet", "Amyl", "Benzos", "Caff", "Cannabis",
-                            "Choc", "Coke", "Crack", "Ecstasy", "Heroin", "Ketamine",
-                            "Legalh", "LSD", "Meth", "Mushrooms", "Nicotine", "Semer", "VSA"
+            Allowed values: "alcohol", "amphet", "amyl", "benzos", "caff", "cannabis",
+                            "choc", "coke", "crack", "ecstasy", "heroin", "ketamine",
+                            "legalh", "lsd", "meth", "mushrooms", "nicotine", "semer", "vsa"
+
 
 
     Returns:
