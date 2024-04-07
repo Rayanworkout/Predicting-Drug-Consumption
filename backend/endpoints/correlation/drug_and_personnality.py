@@ -1,4 +1,6 @@
-from ninja import Query, Router
+from ninja import Router
+from .schemas import CorrelationResponse
+
 from ..models import CorrelationMatrix
 
 drug_and_personnality_router = Router(
@@ -9,9 +11,11 @@ drug_and_personnality_router = Router(
 @drug_and_personnality_router.get(
     "/",
     tags=["Correlation between drug and personnality"],
+    response=CorrelationResponse,
 )
 def drug_and_personnality_correlation(
     request,
+
 ):
     """
     This endpoint returns the correlation between personality traits and drug usage.
