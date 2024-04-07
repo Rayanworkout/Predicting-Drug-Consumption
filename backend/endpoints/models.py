@@ -37,23 +37,28 @@ class Respondent(models.Model):
     # The values are floats between 0 and 1
     # The higher the value, the more the person has that trait
 
-    # neuroticism
-    nscore = models.FloatField(null=True, blank=True)
+    # nscore
+    neuroticism = models.FloatField(null=True, blank=True)
 
-    # extraversion
-    escore = models.FloatField(null=True, blank=True)
+    # escore
+    extraversion = models.FloatField(null=True, blank=True)
 
-    # openness to experience
-    oscore = models.FloatField(null=True, blank=True)
+    # oscore
+    openness_to_experience = models.FloatField(null=True, blank=True)
 
-    # agreeableness
-    ascore = models.FloatField(null=True, blank=True)
+    # ascore
+    agreeableness = models.FloatField(null=True, blank=True)
 
-    # conscientiousness
-    cscore = models.FloatField(null=True, blank=True)
+    # cscore
+    conscientiousness = models.FloatField(null=True, blank=True)
 
     impulsive = models.FloatField(null=True, blank=True)
-    ss = models.FloatField(null=True, blank=True)
+
+    # ss
+    sensation_seeking = models.FloatField(null=True, blank=True)
+
+
+    # DRUGS
 
     alcohol = models.CharField(
         max_length=100, choices=DRUG_USAGE_CHOICES, null=True, blank=True
