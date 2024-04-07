@@ -1,6 +1,7 @@
 from django.db import connection
 from django.core.management.base import BaseCommand
 from ... import csv_parser
+from data_processing import correlation_matrix
 
 
 def table_exists(table_name):
@@ -19,16 +20,29 @@ class Command(BaseCommand):
     help = "Parse the CSV file and insert its content into the database."
 
     def handle(self, *args, **options):
-        if not table_exists("endpoints_respondent"):
+        if not table_exists("endpoints_respondent") or not table_exists(
+            "endpoints_correlationmatrix"
+        ):
             print("The table is not created yet. Please run the migrations first.")
             return
 
-        elif table_is_already_filled("endpoints_respondent"):
-            print("The database is already filled with the CSV file.")
+        elif table_is_already_filled(
+            "endpoints_respondent"
+        ) and table_is_already_filled("endpoints_correlationmatrix"):
+            print(
+                "The database is already filled and the correlation matrix is already computed."
+            )
             return
 
         else:
-            print("Filling the database with the CSV file...")
-            parser = csv_parser.Parser()
-            parser.csv_to_database()
-            print("Data successfully saved to the database.")
+            
+            if not table_is_already_filled("endpoints_respondent"):
+                print("Filling the database with the CSV file ...")
+                parser = csv_parser.Parser()
+                parser.csv_to_database()
+                print("Success.")
+            
+            if not table_is_already_filled("endpoints_correlationmatrix"):
+                print("Computing the correlation matrix ...")
+                correlation_matrix.save_correlation_matrix()
+                print("Success.")
