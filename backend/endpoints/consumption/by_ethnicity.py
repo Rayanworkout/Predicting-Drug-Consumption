@@ -6,7 +6,7 @@ from .schemas import (
     ConsumptionRequest,
 )
 
-from endpoints.respondent_field_choices import ETHNICITY_CHOICES
+from endpoints.respondent_field_choices import ETHNICITY_CHOICES, DRUGS_LIST
 
 
 by_ethnicity_router = Router()
@@ -58,7 +58,7 @@ def consumption_by_ethnicity(
 
     """
 
-    ethnicity_choices = [choice[0].replace('/', '_') for choice in ETHNICITY_CHOICES]
+    ethnicity_choices = [choice[0].replace("/", "_") for choice in ETHNICITY_CHOICES]
 
     if params.ethnicity not in ethnicity_choices:
         return 400, {
@@ -66,8 +66,14 @@ def consumption_by_ethnicity(
             "allowed_values": ethnicity_choices,
         }
 
+    if params.drug not in DRUGS_LIST:
+        return 400, {
+            "message": "invalid drug",
+            "allowed_values": DRUGS_LIST,
+        }
+
     return 200, get_drug_consumption_by_category(
         category="ethnicity",
-        value=params.ethnicity.replace('_', '/'),
+        value=params.ethnicity.replace("_", "/"),
         drug=params.drug,
     )
