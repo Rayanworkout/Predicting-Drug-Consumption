@@ -129,7 +129,7 @@ class Respondent(models.Model):
 class CorrelationMatrix(models.Model):
     """
     A correlation is a relationship between two variables.
-    See endpoint /correlation/drug_and_personnality/ for more details.
+    See endpoint /correlation/drug_and_personality/ for more details.
 
     """
 

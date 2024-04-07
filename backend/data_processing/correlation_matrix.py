@@ -11,7 +11,7 @@ def get_correlation_matrix():
     Function to get the correlation matrix between personality traits and drug usage. It helps show the relationship between the consumption
     of a given drug and the corresponding personality trait.
 
-    See endpoint /correlation/drug_and_personnality/ for more details.
+    See endpoint /correlation/drug_and_personality/ for more details.
 
     """
     respondents = Respondent.objects.all().values()

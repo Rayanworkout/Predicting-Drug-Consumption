@@ -3,19 +3,16 @@ from .schemas import CorrelationResponse
 
 from ..models import CorrelationMatrix
 
-drug_and_personnality_router = Router(
-    tags=["Correlation between drug and personnality"]
-)
+drug_and_personality_router = Router(tags=["Correlation between drug and personality"])
 
 
-@drug_and_personnality_router.get(
+@drug_and_personality_router.get(
     "/",
-    tags=["Correlation between drug and personnality"],
+    tags=["Correlation between drug and personality"],
     response=CorrelationResponse,
 )
-def drug_and_personnality_correlation(
+def drug_and_personality_correlation(
     request,
-
 ):
     """
     This endpoint returns the correlation between personality traits and drug usage.
@@ -28,7 +25,7 @@ def drug_and_personnality_correlation(
 
       For each personality trait, there is a dictionary with the drug name as the key and the correlation value as the value.
 
-      For example here, we have the correlation between neuroticism personnality and each drug, the biggest being with meth.
+      For example here, we have the correlation between neuroticism personality and each drug, the biggest being with meth.
       A high value means a high correlation between the personality trait and the drug consumption.
 
     {
