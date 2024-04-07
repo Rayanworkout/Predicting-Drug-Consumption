@@ -7,29 +7,33 @@ from .schemas import (
     ConsumptionRequest,
     ConsumptionErrorResponse,
 )
-from endpoints.respondent_field_choices import AGE_CHOICES, DRUGS_LIST
+from endpoints.respondent_field_choices import COUNTRY_CHOICES, DRUGS_LIST
 
-by_age_router = Router(tags=["Consumption By Age"])
+by_country_router = Router(tags=["Consumption by country"])
 
 
-@by_age_router.get(
+@by_country_router.get(
     "/",
     response={200: ConsumptionResponse, 400: ConsumptionErrorResponse},
-    tags=["Consumption by age"],
+    tags=["Consumption by country"],
 )
-def consumption_by_age(
+def consumption_by_country(
     request,
     params: Query[ConsumptionRequest],
 ):
     """
-    Endpoint to GET the consumption statistics of a given drug in a given age range.
+    Endpoint to GET the consumption statistics of a given drug in a given country.
 
+    
     Example usage:
-        /api/consumption/by_age?age_range=18-24&drug=meth
-        /api/consumptionb/by_age?age_range=25-34&drug=alcohol
+            
+            /api/consumption/by_country?country=uk&drug=alcohol
+            /api/consumptionb/by_country?country=canada&drug=meth
+        
+    Parameters:    
+        
+        - country: str, country to filter the dataset by. Allowed values: "australia", "canada", "new_zealand", "other", "republic_of_ireland", "uk", "usa"
 
-    Parameters:
-        - age_range: str, age range to filter the dataset by. Allowed values: "18-24", "25-34", "35-44", "45-54", "55-64", "65"
 
         - drug: str, drug to display consumption for.
 
@@ -40,9 +44,10 @@ def consumption_by_age(
 
 
     Returns:
+        
         - A dict ordered by the drug consumption count with the following content:
         {
-            "age_range": "18-24",
+            "country": "uk",
             "drug": "cannabis",
             "data": {
                 "used in last day": 2346,
@@ -57,11 +62,14 @@ def consumption_by_age(
 
     """
 
-    age_range = "65+" if params.age_range == "65" else params.age_range
-    age_choices = [choice[0] for choice in AGE_CHOICES]
+    country = params.country.replace("_", " ").lower()
+    country_choices = [choice[0].replace("_", " ").lower() for choice in COUNTRY_CHOICES]
 
-    if age_range not in age_choices:
-        return 400, {"message": "invalid age_range", "allowed_values": age_choices}
+    if country not in country_choices:
+        return 400, {
+            "message": "invalid country value",
+            "allowed_values": country_choices,
+        }
 
     drug = params.drug.lower()
 
@@ -69,5 +77,5 @@ def consumption_by_age(
         return 400, {"message": "invalid drug name", "allowed_values": DRUGS_LIST}
 
     return get_drug_consumption_by_category(
-        category="age", value=age_range, drug=params.drug
+        category="country", value=params.country, drug=params.drug
     )

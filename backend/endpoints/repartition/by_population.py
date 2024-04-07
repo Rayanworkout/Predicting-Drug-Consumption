@@ -17,7 +17,7 @@ by_population_router = Router(tags=["Repartition by Population"])
         200: PopulationRepartitionResponse,
         400: PopulationRepartitionErrorResponse,
     },
-    tags=["Repartition by Population"],
+    tags=["Repartition by population"],
 )
 def population_repartition(
     request,
@@ -29,8 +29,8 @@ def population_repartition(
     Default value is set to "age" for population.
 
     Example usage:
-        /api/population_repartition?population=age
-        /api/population_repartition?population=country
+        /api/repartition/by_population/?population=age
+        /api/repartition/by_population/?population=country
 
     Parameters:
         - population: str, population to display repartition for.

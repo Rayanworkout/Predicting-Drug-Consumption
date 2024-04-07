@@ -14,6 +14,8 @@ class ConsumptionRequest(Schema):
     age_range: str = None
     gender: str = None
     ethnicity: str = None
+    education: str = None
+    country: str = None
 
 
 class ConsumptionResponse(Schema):
@@ -27,6 +29,8 @@ class ConsumptionResponse(Schema):
     age_range: str = None
     gender: str = None
     ethnicity: str = None
+    education: str = None
+    country: str = None
 
     drug: str
     data: dict = {
