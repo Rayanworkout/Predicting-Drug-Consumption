@@ -1,3 +1,8 @@
+/**
+ * Get All Data from database
+ * @returns {Promise<any|*[]>}
+ * @constructor
+ */
 export async function GET_ALL(){
     const baseurl = "/api/companies";
 
@@ -15,3 +20,12 @@ export async function GET_ALL(){
         return []
     }
 }
+
+/**
+ * Get random data from a selected graph
+ * @returns {Promise<any|*[]>}
+ * @constructor
+ */
+export async function GET_RANDOM_DATA_BY_GRAPH(){
+}
+

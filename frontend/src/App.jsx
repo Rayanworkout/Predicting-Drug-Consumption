@@ -34,7 +34,7 @@ function App() {
                             md:text-5xl
                             font-bold tracking-tight text-white antialiasing`}
                         >
-                        Companies Stats
+                        Drugs Consumption Stats
                         </h1>
                         <h2 className = {` 
                             text-ml/relaxed
