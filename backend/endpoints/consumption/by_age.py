@@ -25,35 +25,19 @@ def consumption_by_age(
     Endpoint to GET the consumption statistics of a given drug in a given age range.
 
     Example usage:
+        
         /api/consumption/by_age?age_range=18-24&drug=meth
         /api/consumptionb/by_age?age_range=25-34&drug=alcohol
 
     Parameters:
+        
         - age_range: str, age range to filter the dataset by. Allowed values: "18-24", "25-34", "35-44", "45-54", "55-64", "65"
 
         - drug: str, drug to display consumption for.
 
-            Allowed values: "alcohol", "amphet", "amyl", "benzos", "caff", "cannabis",
-                            "choc", "coke", "crack", "ecstasy", "heroin", "ketamine",
-                            "legalh", "lsd", "meth", "mushrooms", "nicotine", "semer", "vsa"
-
-
-
-    Returns:
-        - A dict ordered by the drug consumption count with the following content:
-        {
-            "age_range": "18-24",
-            "drug": "cannabis",
-            "data": {
-                "used in last day": 2346,
-                "used in last week": 1013,
-                "used in last year": 709,
-                "used in last month": 699,
-                "never used": 521,
-                "used in last decade": 413,
-                "used over a decade ago": 27
-                }
-        }
+        Allowed values: "alcohol", "amphet", "amyl", "benzos", "caff", "cannabis",
+                        "choc", "coke", "crack", "ecstasy", "heroin", "ketamine",
+                        "legalh", "lsd", "meth", "mushrooms", "nicotine", "semer", "vsa"
 
     """
 

@@ -3,7 +3,7 @@ from ninja import Schema
 
 class ConsumptionRequest(Schema):
     """
-    Request schema for consumption endpoint.
+    Request schema for consumption endpoints.
     it defines the fields expected by the endpoint.
 
     https://django-ninja.dev/guides/request/
@@ -20,8 +20,11 @@ class ConsumptionRequest(Schema):
 
 class ConsumptionResponse(Schema):
     """
-    Response schema for consumption_by_age endpoint.
-    it defines the fields returned by the endpoint.
+    Response schema for consumption endpoints.
+    it defines the fields returned by the endpoints.
+
+    Each consumption endpoint returns age_range, gender, ethnicity,
+    education and country but only one of them will have a value.
 
     https://django-ninja.dev/guides/response/
     """
