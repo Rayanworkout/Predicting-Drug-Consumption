@@ -39,8 +39,8 @@ def consumption_by_education(
                 - 16: Left School at 16 years
                 - 17: Left School at 17 years
                 - 18: Left School at 18 years
-                - no_certificate: Some College,No Certificate Or Degree
-                - certificate: Professional Certificate/ Diploma
+                - no_certificate: Some College, No Certificate Or Degree
+                - certificate: Professional Certificate / Diploma
                 - university_degree: University Degree
                 - masters_degree: Masters Degree
                 - doctorate_degree: Doctorate Degree
@@ -48,28 +48,9 @@ def consumption_by_education(
 
         - drug: str, drug to display consumption for.
 
-            Allowed values: "alcohol", "amphet", "amyl", "benzos", "caff", "cannabis",
-                            "choc", "coke", "crack", "ecstasy", "heroin", "ketamine",
-                            "legalh", "lsd", "meth", "mushrooms", "nicotine", "semer", "vsa"
-
-
-
-    Returns:
-        
-        - A dict ordered by the drug consumption count with the following content:
-        {
-            "education_": "18",
-            "drug": "cannabis",
-            "data": {
-                "used in last day": 2346,
-                "used in last week": 1013,
-                "used in last year": 709,
-                "used in last month": 699,
-                "never used": 521,
-                "used in last decade": 413,
-                "used over a decade ago": 27
-                }
-        }
+        Allowed values: "alcohol", "amphet", "amyl", "benzos", "caff", "cannabis",
+                        "choc", "coke", "crack", "ecstasy", "heroin", "ketamine",
+                        "legalh", "lsd", "meth", "mushrooms", "nicotine", "semer", "vsa"
 
     """
 

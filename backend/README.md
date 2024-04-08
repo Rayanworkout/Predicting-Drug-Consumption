@@ -6,7 +6,7 @@
 After cloning the repository, you need to install the dependencies and create the database. For that you need to have Python installed on your machine.
 Follow the instructions below to launch the server:
 
-First rename .env.example to .env and fill the variable `DJANGO_SECRET_KEY` with the secret key of your choice.
+First rename `.env.example` to `.env` and fill the variable `DJANGO_SECRET_KEY` with the secret key of your choice.
 
 Then open a terminal and run the following commands:
 
