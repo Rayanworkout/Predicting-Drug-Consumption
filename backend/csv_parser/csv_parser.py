@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-from api.models import Respondent
+from endpoints.models import Respondent
 
 
 class Parser:
@@ -153,13 +153,13 @@ class Parser:
                 education=row["Education"].lower(),
                 country=row["Country"].lower(),
                 ethnicity=row["Ethnicity"].lower(),
-                nscore=row["Nscore"],
-                escore=row["Escore"],
-                oscore=row["Oscore"],
-                ascore=row["Ascore"],
-                cscore=row["Cscore"],
+                neuroticism=row["Nscore"],
+                extraversion=row["Escore"],
+                openness_to_experience=row["Oscore"],
+                agreeableness=row["Ascore"],
+                conscientiousness=row["Cscore"],
                 impulsive=row["Impulsive"],
-                ss=row["SS"],
+                sensation_seeking=row["SS"],
                 alcohol=row["Alcohol"].lower(),
                 amphet=row["Amphet"].lower(),
                 amyl=row["Amyl"].lower(),

@@ -55,13 +55,13 @@ COUNTRY_CHOICES = [
 ]
 
 ETHNICITY_CHOICES = [
-    ("Asian", "Asian"),
-    ("Black", "Black"),
-    ("Mixed-Black/Asian", "Mixed-Black/Asian"),
-    ("Mixed-White/Asian", "Mixed-White/Asian"),
-    ("Mixed-White/Black", "Mixed-White/Black"),
-    ("Other", "Other"),
-    ("White", "White"),
+    ("asian", "asian"),
+    ("black", "black"),
+    ("mixed-black/asian", "mixed-black/asian"),
+    ("mixed-white/asian", "mixed-white/asian"),
+    ("mixed-white/black", "mixed-white/black"),
+    ("other", "other"),
+    ("white", "white"),
 ]
 
 DRUG_USAGE_CHOICES = [
