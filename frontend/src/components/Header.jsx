@@ -1,8 +1,12 @@
-import {Home} from "lucide-react"
+import {BarChartHorizontal, Home} from "lucide-react"
 const Header = () => {
     return (
         <div className = {`flex w-full h-full justify-between align-baseline pt-6 py-3 px-6`}>
-            <Home className = {` text-white `}/>
+            <span className = {` flex gap-3`}>
+                <a href="/"><Home className={` text-white `}/></a>
+                <a href="/statistics"><BarChartHorizontal className={` text-white `}/></a>
+            </span>
+
             <button
                 type="button"
                 data-twe-ripple-init
