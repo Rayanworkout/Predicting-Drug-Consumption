@@ -26,7 +26,16 @@ function App() {
     return (
     <>
         <div className={`w-100 h-100 px-3 pb-3 overflow-hidden`}>
-            <div className={``}>
+
+                <div className = {`flex flex-col items-center gap-y-5 text-white`} alt="Texte de présentation">
+                    <p className = {` text-6xl font-bold`}>
+                        Project Title
+                    </p>
+                    <p>
+                        Description of the project, on va l'aligner a gauche je pense avec une petite anime ou blur effect a droite
+                    </p>
+                </div>
+
                 <span className={` flex pb-3 lg:px-20`}>
                     <span className = {` flex flex-col gap-y-2 mt-20 mb-10 `}>
                         <h1 className={`
@@ -54,7 +63,6 @@ function App() {
                     <Swiper/>
                     <Swiper/>
                 </div>
-            </div>
         </div>
     </>
     )
