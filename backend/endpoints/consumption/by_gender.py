@@ -26,7 +26,7 @@ def consumption_by_gender(
 
     Example usage:
         
-        /api/consumption/by_gender?agender=male&drug=meth
+        /api/consumption/by_gender?gender=male&drug=meth
         /api/consumption/by_gender?gender=female&drug=alcohol
 
     Parameters:
