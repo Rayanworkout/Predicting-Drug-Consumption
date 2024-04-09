@@ -7,6 +7,16 @@ AGE_CHOICES = [
     ("65+", "65+"),
 ]
 
+FREQUENCY_CHOICES = [
+    ("Never Used", "Never Used"),
+    ("Used over a Decade Ago", "Used over a Decade Ago"),
+    ("Used in Last Decade", "Used in Last Decade"),
+    ("Used in Last Year", "Used in Last Year"),
+    ("Used in Last Month", "Used in Last Month"),
+    ("Used in Last Week", "Used in Last Week"),
+    ("Used in Last Day", "Used in Last Day"),
+]
+
 DRUGS_LIST = [
     "alcohol",
     "amphet",

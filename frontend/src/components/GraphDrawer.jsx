@@ -11,11 +11,12 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import BarChartDetails from "@/components/BarChartDetails.jsx";
+import {GET_DATA_BY_DRUG_ORDER_BY_AGE} from "@/api_/api_.js"
 import {useState} from "react";
 export function DrawerDemo({icon}, drug) {
 
     const [childValue, setChildValue] = useState('by_age');
-
+    const age_range_param = {age_range : 0, drug : ""}
     const handleValueChange = (newValue) => {
         setChildValue(newValue);
         console.log(newValue)
@@ -39,7 +40,7 @@ export function DrawerDemo({icon}, drug) {
                         </div>
                     </div>
                     <DrawerFooter>
-                        <Button >Submit</Button>
+                        <Button onClick={GET_DATA_BY_DRUG_ORDER_BY_AGE(18-24,"meth")}>Submit</Button>
                         <DrawerClose asChild>
                             <Button variant="outline">Cancel</Button>
                         </DrawerClose>

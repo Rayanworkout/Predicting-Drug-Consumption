@@ -1,3 +1,7 @@
+
+//url api
+const API_URL = "http://127.0.0.1:8000"
+
 /**
  * Get All Data from database
  * @returns {Promise<any|*[]>}
@@ -34,14 +38,28 @@ export async function GET_RANDOM_DATA_BY_GRAPH(){
  * @returns {Promise<any|*[]>}
  * @constructor
  */
-export function GET_DATA_BY_DRUG_ORDER_BY_AGE(age, drug){
+export function GET_DATA_BY_DRUG_ORDER_BY_AGE(objectParam){
+    const baseurl = '/api/consumption/by_age';
+    const params = new URLSearchParams(objectParam)
+
+    const fullUrl = `${baseurl}?${params.toString()}`
+
+    fetch(API_URL + fullUrl)
+        .then(r  => console.log(r))
+        .catch(error => console.log('There was an error fetching the data:', error))
+}
+
+
+export function GET_DATA_BY_AGE_TEST(objectParam){
     const baseurl = '/api/consumption/by_age';
     const params = new URLSearchParams({
-        age_range: age,
-        drug:drug
+        age_range: "18-24",
+        drug: "meth"
     })
+
     const fullUrl = `${baseurl}?${params.toString()}`
-    fetch(PREFIX_API_URL + fullUrl)
+
+    fetch(API_URL + fullUrl)
         .then(r  => console.log(r))
         .catch(error => console.log('There was an error fetching the data:', error))
 }

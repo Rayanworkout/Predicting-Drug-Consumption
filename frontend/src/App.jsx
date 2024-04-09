@@ -5,6 +5,8 @@ import {useStore} from "@/store/store.js";
 import {GET_ALL} from "@/api_/api_.js";
 import Swiper from "./components/Swiper.jsx";
 import SortButton from "./components/SortButton.jsx";
+import {Button} from "@/components/ui/button.jsx";
+import {GET_DATA_BY_AGE_TEST} from "@/api_/api_.js"
 
 function App() {
     const {initializeData, datas } = useStore((state) => ({
@@ -30,6 +32,7 @@ function App() {
                 <div className = {`flex flex-col items-center gap-y-5 text-white`} alt="Texte de présentation">
                     <p className = {` text-6xl font-bold`}>
                         Project Title
+                        <Button onClick={GET_DATA_BY_AGE_TEST}>API TEST</Button>
                     </p>
                     <p>
                         Description of the project, on va l'aligner a gauche je pense avec une petite anime ou blur effect a droite
