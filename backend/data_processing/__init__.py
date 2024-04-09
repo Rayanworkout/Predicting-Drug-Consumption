@@ -1,2 +1,0 @@
-from data_processing.consumption_by_category import get_drug_consumption_by_category
-from data_processing.population_repartition import get_population_repartition
