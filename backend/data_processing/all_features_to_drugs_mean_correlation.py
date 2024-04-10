@@ -1,13 +1,13 @@
+import statistics
 import pandas as pd
 from endpoints.models import Respondent, MeanCorrelationToFeature
 
 from itertools import groupby
-from statistics import mean
 
 pd.set_option("future.no_silent_downcasting", True)
 
 
-def get_all_features_to_drugs_mean():
+def save_all_features_to_drugs_mean():
     """
     Function to get the correlation matrix bof each feature and each drug. It helps show the relationship between the consumption
     of a given drug and the corresponding feature.
@@ -26,16 +26,16 @@ def get_all_features_to_drugs_mean():
 
     age_col = {
         "18-24": -0.95197,
-        "25 - 34": -0.07854,
-        "35 - 44": 0.49788,
-        "45 - 54": 1.09449,
-        "55 - 64": 1.82213,
+        "25-34": -0.07854,
+        "35-44": 0.49788,
+        "45-54": 1.09449,
+        "55-64": 1.82213,
         "65+": 2.59171,
     }
-    df["Age"] = df["Age"].replace(age_col)
+    df["age"] = df["age"].replace(age_col)
 
-    gender_col = {"Female": 0.48246, "Male": -0.48246}
-    df["Gender"] = df["Gender"].replace(gender_col)
+    gender_col = {"female": 0.48246, "male": -0.48246}
+    df["gender"] = df["gender"].replace(gender_col)
 
     education_col = {
         "Left School Before 16 years": -2.43591,
@@ -49,7 +49,9 @@ def get_all_features_to_drugs_mean():
         "Doctorate Degree": 1.98437,
     }
 
-    df["Education"] = df["Education"].replace(education_col)
+    education_col= {key.lower(): value for key, value in education_col.items()}
+
+    df["education"] = df["education"].replace(education_col)
 
     country_col = {
         "Australia": -0.09765,
@@ -61,7 +63,9 @@ def get_all_features_to_drugs_mean():
         "USA": -0.57009,
     }
 
-    df["Country"] = df["Country"].replace(country_col)
+    country_col = {key.lower(): value for key, value in country_col.items()}
+
+    df["country"] = df["country"].replace(country_col)
 
     ethnicity_col = {
         "Asian": -0.50212,
@@ -73,7 +77,9 @@ def get_all_features_to_drugs_mean():
         "White": -0.31685,
     }
 
-    df["Ethnicity"] = df["Ethnicity"].replace(ethnicity_col)
+    ethnicity_col = {key.lower(): value for key, value in ethnicity_col.items()}
+
+    df["ethnicity"] = df["ethnicity"].replace(ethnicity_col)
 
     usage_col = {
         "Never Used": 0,
@@ -84,6 +90,8 @@ def get_all_features_to_drugs_mean():
         "Used in Last Week": 5,
         "Used in Last Day": 6,
     }
+
+    usage_col = {key.lower(): value for key, value in usage_col.items()}
 
     df[drugs] = df[drugs].replace(usage_col)
 
@@ -101,7 +109,7 @@ def get_all_features_to_drugs_mean():
     # We group data by the second element of the tuple (feature)
     for key, group in groupby(correlations, key=lambda x: x[1]):
         data = list(group)
-        grouped_data[key] = {"mean": mean([x[2] for x in data]), "correlations": data}
+        grouped_data[key] = {"mean": statistics.mean([x[2] for x in data]), "correlations": data}
 
     # Then we sort the entries depending on the mean of each group
     sorted_grouped_data = sorted(
@@ -110,7 +118,7 @@ def get_all_features_to_drugs_mean():
 
     final_data = {feature: data["mean"] for feature, data in sorted_grouped_data}
 
-    for feature, mean in final_data:
+    for feature, mean in final_data.items():
         MeanCorrelationToFeature.objects.create(
             feature=feature, mean_correlation=mean
         )
