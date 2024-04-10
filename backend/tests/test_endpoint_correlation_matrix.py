@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from csv_parser.csv_parser import Parser
-from backend.data_processing.personality_drug_correlation_matrix import save_correlation_matrix
+from data_processing.personality_drug_correlation_matrix import save_correlation_matrix
 
 
 class TestPopulationRepartitionEndpoint(TestCase):
@@ -153,6 +153,27 @@ class TestPopulationRepartitionEndpoint(TestCase):
                     "nicotine": 0.2462987623970625,
                     "semer": 0.01117750201195769,
                     "vsa": 0.18101854067912868,
+                },
+                "sensation_seeking": {
+                    "alcohol": 0.10847229214714468,
+                    "amphet": 0.33110522351156185,
+                    "amyl": 0.19528020529138662,
+                    "benzos": 0.24790332216013655,
+                    "caff": 0.05204936269975353,
+                    "cannabis": 0.45613655450406515,
+                    "choc": -0.039835957511902706,
+                    "coke": 0.3433520664032061,
+                    "crack": 0.1902012003845489,
+                    "ecstasy": 0.3881861965599236,
+                    "heroin": 0.2136844076019245,
+                    "ketamine": 0.24360859994079,
+                    "legalh": 0.40557785525318313,
+                    "lsd": 0.3655357774337742,
+                    "meth": 0.21888392062638684,
+                    "mushrooms": 0.3782853777625291,
+                    "nicotine": 0.30563459119612085,
+                    "semer": 0.04798564099823064,
+                    "vsa": 0.25059942757613063,
                 },
             },
         )
