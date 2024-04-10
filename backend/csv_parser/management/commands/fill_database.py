@@ -1,7 +1,7 @@
 from django.db import connection
 from django.core.management.base import BaseCommand
 from ... import csv_parser
-from data_processing import correlation_matrix
+from backend.data_processing import personality_drug_correlation_matrix
 
 
 def table_exists(table_name):
@@ -44,5 +44,5 @@ class Command(BaseCommand):
             
             if not table_is_already_filled("endpoints_correlationmatrix"):
                 print("Computing the correlation matrix ...")
-                correlation_matrix.save_correlation_matrix()
+                personality_drug_correlation_matrix.save_correlation_matrix()
                 print("Success.")
