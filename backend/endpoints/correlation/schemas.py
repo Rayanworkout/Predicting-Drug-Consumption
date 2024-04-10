@@ -36,3 +36,4 @@ class CorrelationResponse(Schema):
     agreeableness: SubstanceSchema
     conscientiousness: SubstanceSchema
     impulsive: SubstanceSchema
+    sensation_seeking: SubstanceSchema

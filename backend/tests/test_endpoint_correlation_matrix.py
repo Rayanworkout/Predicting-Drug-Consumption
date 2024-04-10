@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from csv_parser.csv_parser import Parser
-from data_processing.correlation_matrix import save_correlation_matrix
+from backend.data_processing.personality_drug_correlation_matrix import save_correlation_matrix
 
 
 class TestPopulationRepartitionEndpoint(TestCase):

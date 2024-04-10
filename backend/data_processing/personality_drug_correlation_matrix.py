@@ -1,17 +1,17 @@
 import pandas as pd
 
 from endpoints.respondent_field_choices import DRUGS_LIST
-from endpoints.models import Respondent, CorrelationMatrix
+from endpoints.models import Respondent, CorrelationToDrug
 
 pd.set_option("future.no_silent_downcasting", True)
 
 
-def get_correlation_matrix():
+def get_personality_to_drug_correlation_matrix():
     """
-    Function to get the correlation matrix between personality traits and drug usage. It helps show the relationship between the consumption
+    Function to get the correlation matrix between personality traits and each drug. It helps show the relationship between the consumption
     of a given drug and the corresponding personality trait.
 
-    See endpoint /correlation/drug_and_personality/ for more details.
+    See endpoint /correlation/drug_and_personality.py for more details.
 
     """
     respondents = Respondent.objects.all().values()
@@ -67,10 +67,10 @@ def save_correlation_matrix():
     Function to save the correlation matrix between personality traits and drug usage in the database.
 
     """
-    correlation_data = get_correlation_matrix()
+    correlation_data = get_personality_to_drug_correlation_matrix()
 
     for personality, traits in correlation_data.items():
         for drug, value in traits.items():
-            CorrelationMatrix.objects.create(
-                personality_trait=personality, drug=drug, correlation=value
+            CorrelationToDrug.objects.create(
+                feature=personality, drug=drug, correlation=value
             )
