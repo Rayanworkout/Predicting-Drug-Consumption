@@ -1,7 +1,7 @@
 from django.db import connection
 from django.core.management.base import BaseCommand
 from ... import csv_parser
-from backend.data_processing import personality_drug_correlation_matrix
+from data_processing import personality_drug_correlation_matrix
 
 
 def table_exists(table_name):
@@ -21,28 +21,35 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if not table_exists("endpoints_respondent") or not table_exists(
-            "endpoints_correlationmatrix"
+            "endpoints_correlationtodrug"
         ):
-            print("The table is not created yet. Please run the migrations first.")
+            missing_table = (
+                "repondent"
+                if not table_exists("endpoints_respondent")
+                else "CorrelationToDrug"
+            )
+            print(
+                f"The table {missing_table} is not created yet. Please run the migrations first."
+            )
             return
 
         elif table_is_already_filled(
             "endpoints_respondent"
-        ) and table_is_already_filled("endpoints_correlationmatrix"):
+        ) and table_is_already_filled("endpoints_correlationtodrug"):
             print(
                 "The database is already filled and the correlation matrix is already computed."
             )
             return
 
         else:
-            
+
             if not table_is_already_filled("endpoints_respondent"):
                 print("Filling the database with the CSV file ...")
                 parser = csv_parser.Parser()
                 parser.csv_to_database()
                 print("Success.")
-            
-            if not table_is_already_filled("endpoints_correlationmatrix"):
+
+            if not table_is_already_filled("endpoints_CorrelationToDrug"):
                 print("Computing the correlation matrix ...")
                 personality_drug_correlation_matrix.save_correlation_matrix()
                 print("Success.")

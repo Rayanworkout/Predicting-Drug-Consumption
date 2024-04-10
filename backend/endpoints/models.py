@@ -126,15 +126,27 @@ class Respondent(models.Model):
     )
 
 
-class CorrelationMatrix(models.Model):
+class CorrelationToDrug(models.Model):
     """
     A correlation is a relationship between two variables.
     See endpoint /correlation/drug_and_personality/ for more details.
 
     """
 
-    personality_trait = models.CharField(max_length=100, null=True, blank=True)
+    feature = models.CharField(max_length=100, null=True, blank=True)
 
     drug = models.CharField(max_length=100, null=True, blank=True, choices=DRUGS_LIST)
 
     correlation = models.FloatField(null=True, blank=True)
+
+
+class MeanCorrelationToFeature(models.Model):
+    """
+    A correlation is a relationship between two variables.
+    See endpoint /correlation/drug_and_personality/ for more details.
+
+    """
+
+    feature = models.CharField(max_length=100, null=True, blank=True)
+
+    mean_correlation = models.FloatField(null=True, blank=True)

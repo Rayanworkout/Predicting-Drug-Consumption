@@ -1,7 +1,7 @@
 from ninja import Router
 from .schemas import CorrelationResponse
 
-from ..models import CorrelationMatrix
+from ..models import CorrelationToDrug
 
 drug_and_personality_router = Router(tags=["Correlation between drug and personality"])
 
@@ -56,13 +56,13 @@ def drug_and_personality_correlation(
         Check notebooks/correlation/drug_usage_and_personality.ipynb for the example chart that must be made with this data.
     """
 
-    raw_data = CorrelationMatrix.objects.all().values()
+    raw_data = CorrelationToDrug.objects.all().values()
 
     cleaned_data = {}
 
     # We construct the data fetched from the database into a more readable API response
     for entry in raw_data:
-        trait = entry["personality_trait"]
+        trait = entry["feature"]
         correlation = entry["correlation"]
         drug = entry["drug"]
 

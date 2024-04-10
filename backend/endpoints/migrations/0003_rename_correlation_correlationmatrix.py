@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('endpoints', '0002_correlation'),
+        ("endpoints", "0002_correlation"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Correlation',
-            new_name='CorrelationMatrix',
+            old_name="Correlation",
+            new_name="CorrelationToDrug",
         ),
     ]
