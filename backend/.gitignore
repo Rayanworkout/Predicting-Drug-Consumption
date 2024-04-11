@@ -3,8 +3,6 @@
 __pycache__/
 *.pyc
 .env
-content-en.ipynb
-content-fr.ipynb
 .coverage
 .coveragerc
 htmlcov/
