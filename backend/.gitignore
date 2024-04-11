@@ -3,3 +3,6 @@
 __pycache__/
 *.pyc
 .env
+content-en.md
+content-fr.md
+.coverage
