@@ -3,7 +3,7 @@ from csv_parser.csv_parser import Parser
 from data_processing.personality_drug_correlation_matrix import save_correlation_matrix
 
 
-class TestPopulationRepartitionEndpoint(TestCase):
+class TestCorrelationDrugAndPersonalityEndpoint(TestCase):
 
     def setUp(self) -> None:
         self.client = Client()
