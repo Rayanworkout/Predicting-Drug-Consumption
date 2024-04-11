@@ -16,7 +16,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DJANGO_DEBUG") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] if DEBUG else ["*"]
 
 
 # Application definition
@@ -116,4 +116,4 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# print("\n-> http://127.0.0.1:8000/api/docs\n")
+print("\n-> http://127.0.0.1:8000/api/docs\n")

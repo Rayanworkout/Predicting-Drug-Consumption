@@ -1,5 +1,6 @@
 from ninja import Schema
 
+
 class SubstanceSchema(Schema):
     alcohol: float
     amphet: float
@@ -21,6 +22,7 @@ class SubstanceSchema(Schema):
     semer: float
     vsa: float
 
+
 class CorrelationResponse(Schema):
     """
     Response schema for correlation endpoint.
@@ -30,6 +32,7 @@ class CorrelationResponse(Schema):
 
     https://django-ninja.dev/guides/response/
     """
+
     neuroticism: SubstanceSchema
     extraversion: SubstanceSchema
     openness_to_experience: SubstanceSchema
@@ -37,3 +40,27 @@ class CorrelationResponse(Schema):
     conscientiousness: SubstanceSchema
     impulsive: SubstanceSchema
     sensation_seeking: SubstanceSchema
+
+
+class MeanCorrelationResponse(Schema):
+    """
+    Response schema for mean correlation endpoint.
+    It defines the fields returned by the endpoint.
+
+    For each feature, we have its correlation value.
+
+    https://django-ninja.dev/guides/response/
+    """
+
+    sensation_seeking: float
+    impulsive: float
+    openness_to_experience: float
+    neuroticism: float
+    ethnicity: float
+    extraversion: float
+    agreeableness: float
+    education: float
+    conscientiousness: float
+    gender: float
+    age: float
+    country: float
