@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactApexChart from 'react-apexcharts';  // Assurez-vous d'importer le composant correctement
+import ReactApexChart from 'react-apexcharts';
 
 export function Graph ({keyData, valueData}) {
     const options = {
