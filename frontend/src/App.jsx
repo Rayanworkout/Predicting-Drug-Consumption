@@ -1,12 +1,11 @@
 import './assets/index.css'
 
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {useStore} from "@/store/store.js";
-import {GET_ALL} from "@/api_/api_.js";
+import {GET_DATA_BY_GENDER_TEST} from "@/api_/api_.js";
 import Swiper from "./components/Swiper.jsx";
 import SortButton from "./components/SortButton.jsx";
 import {Button} from "@/components/ui/button.jsx";
-import {GET_DATA_BY_AGE_TEST} from "@/api_/api_.js"
 
 function App() {
     const {initializeData, datas } = useStore((state) => ({
@@ -16,7 +15,7 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await GET_ALL();
+                const data = await GET_DATA_BY_GENDER_TEST();
                 initializeData(data);
             } catch (error) {
                 console.error("Erreur lors de la récupération des données: ", error);
@@ -27,11 +26,11 @@ function App() {
     return (
     <>
         <div className={`w-100 h-100 px-3 pb-3 overflow-hidden`}>
+            <Button onClick={() => console.log(GET_DATA_BY_GENDER_TEST())}>LOG</Button>
 
                 <div className = {`flex flex-col items-center gap-y-5 text-white`} alt="Texte de présentation">
                     <p className = {` text-6xl font-bold`}>
                         Project Title
-                        <Button onClick={GET_DATA_BY_AGE_TEST}>API TEST</Button>
                     </p>
                     <p>
                         Description of the project, on va l'aligner a gauche je pense avec une petite anime ou blur effect a droite

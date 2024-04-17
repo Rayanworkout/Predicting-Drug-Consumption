@@ -10,14 +10,20 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import BarChartDetail from "@/components/BarChart/BarChartDetail.jsx";
+import React, {useState} from "react";
+import {GET_CONSUMPTION_DATA} from "@/api_/api_.js";
 export function GraphDrawer({icon, chartType}, drug) {
-    const ComponentB = () => <div>Composant B</div>;
+    let [consumptionType, setConsumptionType] = useState('');
+    let [apiParam, setApiParam] = useState({});
+
+    const handleValueApiParam = (newValue) => {setApiParam(newValue);};
+    const handleValueConsumptionType = (newValue) => {setConsumptionType(newValue);};
     function getComponentToRender(){
         switch (chartType){
             case 'consumption':
-                return <BarChartDetail/>
+                return <BarChartDetail apiParam={handleValueApiParam} consumptionType={handleValueConsumptionType}/>
             case 'other':
-                return <ComponentB/>
+                return ""
         }
     }
 
@@ -27,6 +33,7 @@ export function GraphDrawer({icon, chartType}, drug) {
                 <Button variant="outline">{icon}</Button>
             </DrawerTrigger>
             <DrawerContent>
+
                 <div className="mx-auto w-full max-w-sm">
                     <DrawerHeader>
                         <DrawerTitle>Consumption of Nicotine </DrawerTitle>
@@ -40,7 +47,7 @@ export function GraphDrawer({icon, chartType}, drug) {
                     </div>
 
                     <DrawerFooter>
-                        <Button>Submit</Button>
+                        <Button onClick={() => GET_CONSUMPTION_DATA(new URLSearchParams(apiParam), consumptionType)}>Submit</Button>
                         <DrawerClose asChild>
                             <Button variant="outline">Cancel</Button>
                         </DrawerClose>

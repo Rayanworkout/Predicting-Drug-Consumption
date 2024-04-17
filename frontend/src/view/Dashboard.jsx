@@ -20,10 +20,6 @@ const Dashboard = () => {
             </span>
 
             <div className={`flex flex-col md:flex-row lg:px-7`}>
-                <div className={` mb-4 md:min-w-20 md:mr-3`} alt="container de bouton a changer potentiellement">
-                    <Card className = {` fl h-full bg-neutral-400`}>
-                    </Card>
-                </div>
                 <div className = {`w-full h-fit flex flex-col gap-4 items-center`} alt="container de search bar + graph + btn de graph">
                     <SearchBar className = {`mb-4`}/>
 

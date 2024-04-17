@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import BarChartConsumptionType from "@/components/BarChart/BarChartConsumptionType.jsx";
 import ConsumptionGroupCheckbox from "@/components/BarChart/ConsumptionGroupCheckbox.jsx";
-export function BarChartDetail () {
-    let [childValue, setChildValue] = useState('by_age');
-
+export function BarChartDetail ({drug, apiParam, consumptionType}) {
+    let [barChartTypeValue, setBarChartTypeValue] = useState('by_age');
     const handleValueChangeBarChart = (newValue) => {
-        setChildValue(newValue);
+        setBarChartTypeValue(newValue);
     };
-
+    useEffect(() => {
+        consumptionType(barChartTypeValue)
+    }, [barChartTypeValue, consumptionType]);
     return (
-        <div className = {``}>
+        <div className = {`z-0`}>
             <BarChartConsumptionType handleValueChange={handleValueChangeBarChart}/>
-            <ConsumptionGroupCheckbox consumptionBy={childValue}/>
+            <ConsumptionGroupCheckbox consumptionBy={barChartTypeValue} drug={'meth'}
+                                      handleValueApiParam={apiParam}/>
         </div>
     );
 };

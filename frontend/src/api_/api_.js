@@ -1,6 +1,6 @@
 
 //url api
-const API_URL = "http://127.0.0.1:8000"
+const API_URL = "http://127.0.0.1:8000/"
 
 /**
  * Get All Data from database
@@ -34,29 +34,46 @@ export async function GET_RANDOM_DATA_BY_GRAPH(){
 }
 
 
-export function GET_CONSUMPTION_DATA(objectParam){
-    const baseurl = '/api/consumption/by_age';
-    const params = new URLSearchParams(objectParam)
+export function GET_CONSUMPTION_DATA(objectParam, urlParam){
+    const baseurl = '/api/consumption/' + urlParam;
 
-    const fullUrl = `${baseurl}?${params.toString()}`
+    const fullUrl = `${baseurl}?${objectParam.toString()}`
 
-    fetch(API_URL + fullUrl)
-        .then(r  => console.log(r))
-        .catch(error => console.log('There was an error fetching the data:', error))
+    fetch(fullUrl)
+        .then(r => {
+            if (!r.ok) {
+                throw new Error(`HTTP error! Status: ${r.status}`);
+            }
+            return r.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.log('There was an error fetching the data:', error);
+        });
 }
 
-
-export function GET_DATA_BY_AGE_TEST(objectParam){
-    const baseurl = '/api/consumption/by_age';
+export function GET_DATA_BY_GENDER_TEST(objectParam){
+    const baseurl = '/api/consumption/by_gender';
     const params = new URLSearchParams({
-        age_range: "18-24",
-        drug: "meth"
+        gender: "female",
+        drug: "alcohol"
     })
 
     const fullUrl = `${baseurl}?${params.toString()}`
 
-    fetch(API_URL + fullUrl)
-        .then(r  => console.log(r))
-        .catch(error => console.log('There was an error fetching the data:', error))
+    fetch(fullUrl)
+        .then(r => {
+            if (!r.ok) {
+                throw new Error(`HTTP error! Status: ${r.status}`);
+            }
+            return r.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.log('There was an error fetching the data:', error);
+        });
 }
-
