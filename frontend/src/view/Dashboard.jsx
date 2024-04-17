@@ -5,20 +5,14 @@ import {BarChartBig, BarChartHorizontalBig, CandlestickChart, LineChart, PieChar
 import {GraphDrawer} from "@/components/GraphDrawer.jsx";
 import {useEffect, useState} from "react";
 import Graph from "@/components/Graph.jsx";
+import {Button} from "@/components/ui/button.jsx";
+import useStore from "@/store/store.js";
 const Dashboard = () => {
-    let [drugType, setDrugType] = useState('alcohol');
-    const handleDrugType = (newValue) => {
-        setDrugType(newValue)
-    }
-    let [apiData, setApiData] = useState({
-        age_range: "",
-        gender: null,
-        ethnicity: null,
-        education: null,
-        country: null,
-        drug: "",
-        data: {}
-    });
+
+    const { drugType, setDrugType } = useStore();
+    const handleDrugType = (newValue) => {setDrugType(newValue)}
+
+    let [apiData, setApiData] = useState({data: {}});
 
     useEffect(() => {
         console.log(apiData.data)
@@ -36,7 +30,7 @@ const Dashboard = () => {
                            text-4xl 
                            md:text-5xl
                            font-bold tracking-tight text-white antialiasing`}
-                    >Drug : {drugType} by + sort
+                    >Drug : {drugType}
                     </h1>
                 </span>
                 <SortButton/>
@@ -44,7 +38,10 @@ const Dashboard = () => {
 
             <div className={`flex flex-col md:flex-row lg:px-7`}>
                 <div className = {`w-full h-fit flex flex-col gap-4 items-center`} alt="container de search bar + graph + btn de graph">
-                    <SearchBar className = {`mb-4`} handleDrugType={handleDrugType}/>
+                    <div className = {`w-full flex justify-center gap-x-4`}>
+                        <SearchBar className = {`mb-4`} handleDrugType={handleDrugType}/>
+                        <Button variant={'outline'}>Search</Button>
+                    </div>
 
                     <Card className = {`w-full flex-1`}>
                         <CardContent className={`w-full h-72 md:min-h-[400px] bg-neutral-400 items-center justify-center p-0 m-0 rounded`}>
@@ -53,11 +50,11 @@ const Dashboard = () => {
                     </Card>
 
                     <div className={`h-fit w-fit bg-transparent flex flex-wrap gap-3 justify-center`}>
-                        <GraphDrawer icon={<BarChartBig/>} drug={drugType} chartType={"consumption"} handleApiData={handleApiData} horizontal={false}/>
-                        <GraphDrawer icon={<BarChartHorizontalBig/>} drug={drugType} chartType={"consumption"} horizontal={true}/>
-                        <GraphDrawer icon={<LineChart/>} chartType={"other"} />
-                        <GraphDrawer icon={<PieChart/>} chartType={"other"}/>
-                        <GraphDrawer icon={<CandlestickChart/>} chartType={"other"}/>
+                        <GraphDrawer icon={<BarChartBig/>} typeOfChart={"consumption-y"} handleApiData={handleApiData}/>
+                        <GraphDrawer icon={<BarChartHorizontalBig/>} typeOfChart={"consumption-x"} handleApiData={handleApiData}/>
+                        <GraphDrawer icon={<LineChart/>} typeOfChart={"other"} />
+                        <GraphDrawer icon={<PieChart/>} typeOfChart={"other"}/>
+                        <GraphDrawer icon={<CandlestickChart/>} typeOfChart={"other"}/>
                     </div>
                 </div>
 

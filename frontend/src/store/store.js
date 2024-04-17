@@ -1,5 +1,10 @@
 import create from 'zustand';
-export const useStore = create((set) => ({
-    data: [],
-    initializeData: (newData) => set({data: newData})
-}))
+
+const useStore = create((set) => ({
+    chartType: 'consumption-x',
+    setChartType: (chartType) => set({ chartType }),
+    drugType: 'alcohol',
+    setDrugType: (drugType) => set({ drugType }),
+}));
+
+export default useStore;

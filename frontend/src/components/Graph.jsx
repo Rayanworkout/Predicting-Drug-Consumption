@@ -1,35 +1,24 @@
 import React from 'react';
-import ReactApexChart from 'react-apexcharts';
+import BarChartGraph from "@/components/BarChart/BarChartGraph.jsx";
+import useStore from "@/store/store.js";
 
 export function Graph ({keyData, valueData}) {
-    const options = {
-        chart: {
-            type: 'bar'
-        },
-        xaxis: {
-            categories: keyData
-        },
-        plotOptions: {
-            bar: {
-                borderRadius: 4,
-                horizontal: true,
-            }
+    const { chartType} = useStore();
+    function getChartToRender(){
+        switch (chartType){
+            case 'consumption-y':
+                return <BarChartGraph keyData={keyData} valueData={valueData} orientation={false}/>
+            case 'consumption-x':
+                return <BarChartGraph keyData={keyData} valueData={valueData} orientation={true}/>
+            case 'repartition':
+                return 'repartition'
+
+
         }
-    };
-
-    const series = [{
-        name: 'consumption',
-        data: valueData
-    }];
-
+    }
     return (
         <div className={`w-full bg-neutral-100 h-full md:min-h-[400px] p-0 m-0 rounded z-0`}>
-            <ReactApexChart
-                options={options}
-                series={series}
-                type="bar"
-                height={'100%'}
-            />
+            {getChartToRender()}
         </div>
     );
 };

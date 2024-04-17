@@ -1,14 +1,15 @@
 import { Input } from "@/components/ui/input"
 import {useEffect, useState} from "react";
 import {CardContent} from "@/components/ui/card.jsx";
+import useStore from "@/store/store.js";
 export function SearchBar ({handleDrugType}) {
-    const [inputValue, setInputValue] = useState('alcohol');
+    const { drugType, setDrugType } = useStore();
+    const changeDrugType = (event) => {
+        setDrugType(event.target.value);
+    };
     const [isFocused, setIsFocused] = useState(false);
     const data = ["alcohol", "amphet", "amyl", "benzos", "caff", "cannabis", "choc", "coke", "crack", "ecstasy", "heroin", "ketamine", "legalh", "lsd", "meth", "mushrooms", "nicotine", "semer", "vsa"];
 
-    const handleInputChange = (event) => {
-        setInputValue(event.target.value);
-    };
 
     const handleFocus = () => {
         setIsFocused(true);
@@ -17,23 +18,23 @@ export function SearchBar ({handleDrugType}) {
         setTimeout(() => setIsFocused(false), 100);
     };
     useEffect(() => {
-        handleDrugType(inputValue)
-    }, [inputValue]);
+        handleDrugType(drugType)
+    }, [drugType]);
     const handleSelect = (value) => {
-        setInputValue(value);
+        setDrugType(value);
         setIsFocused(false);
     };
 
-    const filteredData = data.filter(item => item.toLowerCase().includes(inputValue.toLowerCase()));
+    const filteredData = data.filter(item => item.toLowerCase().includes(drugType.toLowerCase()));
 
     return (
         <div className = {`w-full md:w-[50%] relative z-50`}>
             <Input
                 type="text"
                 placeholder="Search drug name : alcohol, tabac... "
-                value={inputValue}
+                value={drugType}
                 onFocus={handleFocus}
-                onChange={handleInputChange}
+                onChange={changeDrugType}
                 onBlur={handleBlur}
                 className = {`text-white bg-neutral-700 hover:bg-neutral-500 placeholder:text-neutral-200 placeholder:italic placeholder:hover:text-white ease-out duration-100`}
             />

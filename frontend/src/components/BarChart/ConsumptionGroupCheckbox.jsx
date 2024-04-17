@@ -9,8 +9,11 @@ import {
     country_param
 } from "@/components/BarChart/consumption.js"
 import {Button} from "@/components/ui/button.jsx";
+import useStore from "@/store/store.js";
 
-export function ConsumptionGroupCheckbox({ consumptionBy, drug, handleValueApiParam }) {
+export function ConsumptionGroupCheckbox({ consumptionBy, handleValueApiParam }) {
+    const { drugType} = useStore();
+
     const paramsMapping = {
         by_age: age_range_param,
         by_gender: gender_param,
@@ -39,7 +42,7 @@ export function ConsumptionGroupCheckbox({ consumptionBy, drug, handleValueApiPa
     }, [consumptionObject]);
     //Object for API
     useEffect(() => {
-        const updatedParam = { ...paramsMapping[consumptionBy], drug:drug}
+        const updatedParam = { ...paramsMapping[consumptionBy], drug:drugType}
         switch (consumptionBy){
             case 'by_age':
                 updatedParam.age_range = radioValue;
@@ -58,7 +61,7 @@ export function ConsumptionGroupCheckbox({ consumptionBy, drug, handleValueApiPa
                 break;
         }
         setConsumptionObject(updatedParam);
-    }, [radioValue, consumptionBy, drug]);
+    }, [radioValue, consumptionBy, drugType]);
     useEffect(() => {
         setRadioValue(getComponentToRender(consumptionBy, consumptionValues)[0]);
     },[consumptionBy])
