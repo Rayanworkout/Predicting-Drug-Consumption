@@ -12,7 +12,7 @@ export function BarChartDetail ({drug, apiParam, consumptionType}) {
     return (
         <div className = {`z-0`}>
             <BarChartConsumptionType handleValueChange={handleValueChangeBarChart}/>
-            <ConsumptionGroupCheckbox consumptionBy={barChartTypeValue} drug={'meth'}
+            <ConsumptionGroupCheckbox consumptionBy={barChartTypeValue} drug={drug}
                                       handleValueApiParam={apiParam}/>
         </div>
     );

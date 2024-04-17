@@ -1,33 +1,13 @@
 import './assets/index.css'
 
-import React, {useEffect} from "react";
-import {useStore} from "@/store/store.js";
-import {GET_DATA_BY_GENDER_TEST} from "@/api_/api_.js";
+import React from "react";
 import Swiper from "./components/Swiper.jsx";
 import SortButton from "./components/SortButton.jsx";
-import {Button} from "@/components/ui/button.jsx";
 
 function App() {
-    const {initializeData, datas } = useStore((state) => ({
-        datas: state.data,
-        initializeData: state.initializeData
-    }));
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data = await GET_DATA_BY_GENDER_TEST();
-                initializeData(data);
-            } catch (error) {
-                console.error("Erreur lors de la récupération des données: ", error);
-            }
-        };
-        fetchData().then(r => r);
-    }, [initializeData]);
     return (
     <>
         <div className={`w-100 h-100 px-3 pb-3 overflow-hidden`}>
-            <Button onClick={() => console.log(GET_DATA_BY_GENDER_TEST())}>LOG</Button>
-
                 <div className = {`flex flex-col items-center gap-y-5 text-white`} alt="Texte de présentation">
                     <p className = {` text-6xl font-bold`}>
                         Project Title

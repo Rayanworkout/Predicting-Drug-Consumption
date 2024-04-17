@@ -1,8 +1,8 @@
 import { Input } from "@/components/ui/input"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {CardContent} from "@/components/ui/card.jsx";
-const SearchBar = () => {
-    const [inputValue, setInputValue] = useState('');
+export function SearchBar ({handleDrugType}) {
+    const [inputValue, setInputValue] = useState('alcohol');
     const [isFocused, setIsFocused] = useState(false);
     const data = ["alcohol", "amphet", "amyl", "benzos", "caff", "cannabis", "choc", "coke", "crack", "ecstasy", "heroin", "ketamine", "legalh", "lsd", "meth", "mushrooms", "nicotine", "semer", "vsa"];
 
@@ -16,9 +16,10 @@ const SearchBar = () => {
     const handleBlur = () => {
         setTimeout(() => setIsFocused(false), 100);
     };
-
+    useEffect(() => {
+        handleDrugType(inputValue)
+    }, [inputValue]);
     const handleSelect = (value) => {
-        console.log(value)
         setInputValue(value);
         setIsFocused(false);
     };
@@ -26,7 +27,7 @@ const SearchBar = () => {
     const filteredData = data.filter(item => item.toLowerCase().includes(inputValue.toLowerCase()));
 
     return (
-        <div className = {`w-full md:w-[50%] relative`}>
+        <div className = {`w-full md:w-[50%] relative z-50`}>
             <Input
                 type="text"
                 placeholder="Search drug name : alcohol, tabac... "

@@ -36,44 +36,18 @@ export async function GET_RANDOM_DATA_BY_GRAPH(){
 
 export function GET_CONSUMPTION_DATA(objectParam, urlParam){
     const baseurl = '/api/consumption/' + urlParam;
-
     const fullUrl = `${baseurl}?${objectParam.toString()}`
 
-    fetch(fullUrl)
+    const data = fetch(fullUrl)
         .then(r => {
             if (!r.ok) {
                 throw new Error(`HTTP error! Status: ${r.status}`);
             }
             return r.json();
         })
-        .then(data => {
-            console.log(data);
-        })
         .catch(error => {
-            console.log('There was an error fetching the data:', error);
+            console.error('There was an error fetching the data:', error);
+            throw error;
         });
-}
-
-export function GET_DATA_BY_GENDER_TEST(objectParam){
-    const baseurl = '/api/consumption/by_gender';
-    const params = new URLSearchParams({
-        gender: "female",
-        drug: "alcohol"
-    })
-
-    const fullUrl = `${baseurl}?${params.toString()}`
-
-    fetch(fullUrl)
-        .then(r => {
-            if (!r.ok) {
-                throw new Error(`HTTP error! Status: ${r.status}`);
-            }
-            return r.json();
-        })
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.log('There was an error fetching the data:', error);
-        });
+    return data;
 }
