@@ -1,19 +1,21 @@
 import React from 'react';
 import BarChartGraph from "@/components/BarChart/BarChartGraph.jsx";
 import useStore from "@/store/store.js";
+import RepartitionGraph from "@/components/RepartitionChart/RepartitionGraph.jsx";
 
-export function Graph ({keyData, valueData}) {
+export function Graph () {
     const { chartType} = useStore();
+    const { apiData} = useStore();
+    const { apiRepartitionData} = useStore();
+
     function getChartToRender(){
         switch (chartType){
             case 'consumption-y':
-                return <BarChartGraph keyData={keyData} valueData={valueData} orientation={false}/>
+                return <BarChartGraph apiData={apiData} orientation={false}/>
             case 'consumption-x':
-                return <BarChartGraph keyData={keyData} valueData={valueData} orientation={true}/>
+                return <BarChartGraph apiData={apiData} orientation={true}/>
             case 'repartition':
-                return 'repartition'
-
-
+                return <RepartitionGraph apiData={apiRepartitionData}/>
         }
     }
     return (

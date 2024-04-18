@@ -10,9 +10,9 @@ const Dashboard = () => {
 
     const { drugType, setDrugType } = useStore();
     const { consumptionType} = useStore()
-    const { apiParam} = useStore()
-    const { apiData} = useStore();
+    const { chartType} = useStore()
     const { getFunctionToCall } = useStore();
+
     const handleDrugType = (newValue) => {setDrugType(newValue)}
 
     return (
@@ -30,7 +30,7 @@ const Dashboard = () => {
                            text-2xl 
                            md:text-3xl
                            font-bold tracking-tight text-white antialiasing`}>
-                        Consumption : {consumptionType} + {JSON.stringify(apiParam)}
+                        Consumption : {consumptionType} + {chartType}
                     </p>
                 </span>
                 <SortButton/>
@@ -46,18 +46,14 @@ const Dashboard = () => {
 
                     <Card className = {`w-full flex-1`}>
                         <CardContent className={`w-full h-72 md:min-h-[400px] bg-neutral-400 items-center justify-center p-0 m-0 rounded`}>
-                            {apiData.data && Object.keys(apiData.data).length > 0 ? (
-                                <Graph keyData={Object.keys(apiData.data)} valueData={Object.values(apiData.data)}/>
-                            ) : (
-                                <p>No data available</p>
-                            )}
+                                <Graph/>
                         </CardContent>
                     </Card>
 
                     <div className={`h-fit w-fit bg-transparent flex flex-wrap gap-3 justify-center`}>
                         <GraphDrawer icon={<BarChartBig/>} typeOfChart={"consumption-y"} />
                         <GraphDrawer icon={<BarChartHorizontalBig/>} typeOfChart={"consumption-x"}/>
-                        <GraphDrawer icon={<LineChart/>} typeOfChart={"other"} />
+                        <GraphDrawer icon={<LineChart/>} typeOfChart={"repartition"} />
                         <GraphDrawer icon={<PieChart/>} typeOfChart={"other"}/>
                         <GraphDrawer icon={<CandlestickChart/>} typeOfChart={"other"}/>
                     </div>

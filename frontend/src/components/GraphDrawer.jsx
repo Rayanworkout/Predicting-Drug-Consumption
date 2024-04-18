@@ -13,6 +13,7 @@ import BarChartDetail from "@/components/BarChart/BarChartDetail.jsx";
 import React, {useState} from "react";
 import {GET_CONSUMPTION_DATA} from "@/api_/api_.js";
 import useStore from "@/store/store.js";
+import RepartitionChartDetail from "@/components/RepartitionChart/RepartitionChartDetail.jsx";
 export function GraphDrawer({icon, typeOfChart}) {
     const { drugType} = useStore();
     const { chartType, setChartType } = useStore();
@@ -22,6 +23,8 @@ export function GraphDrawer({icon, typeOfChart}) {
             case 'consumption-x':
             case 'consumption-y':
                 return <BarChartDetail/>
+            case 'repartition':
+                return <RepartitionChartDetail/>
             case 'other':
                 return ""
         }

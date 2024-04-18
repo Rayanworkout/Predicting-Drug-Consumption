@@ -4,12 +4,9 @@ import {CardContent} from "@/components/ui/card.jsx";
 import useStore from "@/store/store.js";
 export function SearchBar () {
     const { drugType, setDrugType } = useStore();
-    const changeDrugType = (event) => {
-        setDrugType(event.target.value);
-    };
-    const [isFocused, setIsFocused] = useState(false);
-    const data = ["alcohol", "amphet", "amyl", "benzos", "caff", "cannabis", "choc", "coke", "crack", "ecstasy", "heroin", "ketamine", "legalh", "lsd", "meth", "mushrooms", "nicotine", "semer", "vsa"];
+    const { drugValues } = useStore();
 
+    const [isFocused, setIsFocused] = useState(false);
 
     const handleFocus = () => {
         setIsFocused(true);
@@ -22,7 +19,7 @@ export function SearchBar () {
         setIsFocused(false);
     };
 
-    const filteredData = data.filter(item => item.toLowerCase().includes(drugType.toLowerCase()));
+    const filteredData = drugValues.filter(item => item.toLowerCase().includes(drugType.toLowerCase()));
 
     return (
         <div className = {`w-full md:w-[50%] relative z-20`}>
@@ -31,7 +28,7 @@ export function SearchBar () {
                 placeholder="Search drug name : alcohol, tabac... "
                 value={drugType}
                 onFocus={handleFocus}
-                onChange={changeDrugType}
+                onChange={(event) => setDrugType(event.target.value)}
                 onBlur={handleBlur}
                 className = {`text-white bg-neutral-700 hover:bg-neutral-500 placeholder:text-neutral-200 placeholder:italic placeholder:hover:text-white ease-out duration-100`}
             />
