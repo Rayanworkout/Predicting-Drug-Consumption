@@ -1,10 +1,12 @@
 import { Label } from "@/components/ui/label.jsx";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group.jsx";
+import useStore from "@/store/store.js";
 
-export function BarChartConsumptionType({handleValueChange}) {
+export function BarChartConsumptionType() {
+    const {setConsumptionType} = useStore()
 
     return (
-        <RadioGroup defaultValue="by_age" onValueChange={handleValueChange}>
+        <RadioGroup defaultValue="by_age" onValueChange={setConsumptionType}>
             <p>Consumption by :</p>
             <div className={`flex flex-wrap gap-2`}>
                 <div className="flex items-center space-x-2">

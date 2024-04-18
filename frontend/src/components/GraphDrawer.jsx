@@ -13,29 +13,24 @@ import BarChartDetail from "@/components/BarChart/BarChartDetail.jsx";
 import React, {useState} from "react";
 import {GET_CONSUMPTION_DATA} from "@/api_/api_.js";
 import useStore from "@/store/store.js";
-export function GraphDrawer({icon, typeOfChart, handleApiData}) {
+export function GraphDrawer({icon, typeOfChart}) {
     const { drugType} = useStore();
-
-    let [consumptionType, setConsumptionType] = useState('');
-    let [apiParam, setApiParam] = useState({});
-
+    const {consumptionType} = useStore();
+    const { apiParam} = useStore();
+    const { setApiData} = useStore();
     const { chartType, setChartType } = useStore();
     const changeChartType = (newType) => {
         setChartType(newType);
     };
 
-    const handleValueApiParam = (newValue) => {setApiParam(newValue);};
-    const handleValueConsumptionType = (newValue) => {setConsumptionType(newValue)};
     function getFunctionToCall() {
         switch (chartType) {
             case 'consumption-x':
             case 'consumption-y':  // Regroupement de cas
                 return () => {
                     GET_CONSUMPTION_DATA(new URLSearchParams(apiParam), consumptionType)
-                        .then(data => handleApiData(data))
-                        .catch(error => {
-                            console.error('Failed to fetch data:', error);
-                        });
+                        .then(data => setApiData(data))
+                        .catch(error => {console.error('Failed to fetch data:', error);});
                 };
             case 'other':
                 return () => console.log("'other' type case");
@@ -47,7 +42,7 @@ export function GraphDrawer({icon, typeOfChart, handleApiData}) {
         switch (chartType){
             case 'consumption-x':
             case 'consumption-y':
-                return <BarChartDetail apiParam={handleValueApiParam} consumptionType={handleValueConsumptionType}/>
+                return <BarChartDetail/>
             case 'other':
                 return ""
         }

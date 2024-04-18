@@ -10,16 +10,11 @@ import useStore from "@/store/store.js";
 const Dashboard = () => {
 
     const { drugType, setDrugType } = useStore();
+    const { consumptionType} = useStore()
+    const { apiParam} = useStore()
+    const { apiData} = useStore();
+
     const handleDrugType = (newValue) => {setDrugType(newValue)}
-
-    let [apiData, setApiData] = useState({data: {}});
-
-    useEffect(() => {
-        console.log(apiData.data)
-    }, [apiData]);
-    const handleApiData = (newValue) => {
-        setApiData(newValue)
-    }
 
     return (
         <div className={`w-100 h-screen px-6 pb-3 overflow-hidden pt-10 overflow-y-hidden`}>
@@ -32,12 +27,19 @@ const Dashboard = () => {
                            font-bold tracking-tight text-white antialiasing`}
                     >Drug : {drugType}
                     </h1>
+                    <p className={`
+                           text-2xl 
+                           md:text-3xl
+                           font-bold tracking-tight text-white antialiasing`}>
+                        Consumption : {consumptionType} + {JSON.stringify(apiParam)}
+                    </p>
                 </span>
                 <SortButton/>
             </span>
 
             <div className={`flex flex-col md:flex-row lg:px-7`}>
-                <div className = {`w-full h-fit flex flex-col gap-4 items-center`} alt="container de search bar + graph + btn de graph">
+                <div className={`w-full h-fit flex flex-col gap-4 items-center`}
+                     alt="container de search bar + graph + btn de graph">
                     <div className = {`w-full flex justify-center gap-x-4`}>
                         <SearchBar className = {`mb-4`} handleDrugType={handleDrugType}/>
                         <Button variant={'outline'}>Search</Button>
@@ -45,13 +47,17 @@ const Dashboard = () => {
 
                     <Card className = {`w-full flex-1`}>
                         <CardContent className={`w-full h-72 md:min-h-[400px] bg-neutral-400 items-center justify-center p-0 m-0 rounded`}>
-                            <Graph keyData={Object.keys(apiData.data)} valueData={Object.values(apiData.data)}/>
+                            {apiData.data && Object.keys(apiData.data).length > 0 ? (
+                                <Graph keyData={Object.keys(apiData.data)} valueData={Object.values(apiData.data)}/>
+                            ) : (
+                                <p>No data available</p>
+                            )}
                         </CardContent>
                     </Card>
 
                     <div className={`h-fit w-fit bg-transparent flex flex-wrap gap-3 justify-center`}>
-                        <GraphDrawer icon={<BarChartBig/>} typeOfChart={"consumption-y"} handleApiData={handleApiData}/>
-                        <GraphDrawer icon={<BarChartHorizontalBig/>} typeOfChart={"consumption-x"} handleApiData={handleApiData}/>
+                        <GraphDrawer icon={<BarChartBig/>} typeOfChart={"consumption-y"} />
+                        <GraphDrawer icon={<BarChartHorizontalBig/>} typeOfChart={"consumption-x"}/>
                         <GraphDrawer icon={<LineChart/>} typeOfChart={"other"} />
                         <GraphDrawer icon={<PieChart/>} typeOfChart={"other"}/>
                         <GraphDrawer icon={<CandlestickChart/>} typeOfChart={"other"}/>

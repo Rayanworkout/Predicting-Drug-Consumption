@@ -8,11 +8,12 @@ import {
     education_param,
     country_param
 } from "@/components/BarChart/consumption.js"
-import {Button} from "@/components/ui/button.jsx";
 import useStore from "@/store/store.js";
 
-export function ConsumptionGroupCheckbox({ consumptionBy, handleValueApiParam }) {
+export function ConsumptionGroupCheckbox({ handleValueApiParam }) {
     const { drugType} = useStore();
+    const { consumptionType } = useStore();
+    const { apiParam, setApiParam} = useStore()
 
     const paramsMapping = {
         by_age: age_range_param,
@@ -33,17 +34,13 @@ export function ConsumptionGroupCheckbox({ consumptionBy, handleValueApiParam })
         return values[`${consumption}`] || [];
     }
 
-    const [radioValue, setRadioValue] = useState(() => {return getComponentToRender(consumptionBy, consumptionValues)[0] || '';});
-    const [consumptionObject, setConsumptionObject] = useState({});
+    const [radioValue, setRadioValue] = useState(() => {return getComponentToRender(consumptionType, consumptionValues)[0] || '';});
     const handleRadioValueChange = (newValue) => {setRadioValue(newValue);}
 
-    useEffect(() => {
-        handleValueApiParam(consumptionObject)
-    }, [consumptionObject]);
     //Object for API
     useEffect(() => {
-        const updatedParam = { ...paramsMapping[consumptionBy], drug:drugType}
-        switch (consumptionBy){
+        const updatedParam = { ...paramsMapping[consumptionType], drug:drugType}
+        switch (consumptionType){
             case 'by_age':
                 updatedParam.age_range = radioValue;
                 break;
@@ -60,16 +57,17 @@ export function ConsumptionGroupCheckbox({ consumptionBy, handleValueApiParam })
                 updatedParam.country = radioValue;
                 break;
         }
-        setConsumptionObject(updatedParam);
-    }, [radioValue, consumptionBy, drugType]);
+        setApiParam(updatedParam)
+        console.log(apiParam)
+    }, [radioValue, consumptionType, drugType]);
     useEffect(() => {
-        setRadioValue(getComponentToRender(consumptionBy, consumptionValues)[0]);
-    },[consumptionBy])
+        setRadioValue(getComponentToRender(consumptionType, consumptionValues)[0]);
+    },[consumptionType])
 
 
     const GroupRadioButtonComponent = () => (
         <div>
-            {getComponentToRender(consumptionBy, consumptionValues).map((item, index) => (
+            {getComponentToRender(consumptionType, consumptionValues).map((item, index) => (
                 <div key={index} className = {`flex flex-row items-center space-x-2`}>
                     <RadioGroupItem value={item} id={`r${index}`}/>
                     <Label htmlFor={`r${index}`}>{item}</Label>

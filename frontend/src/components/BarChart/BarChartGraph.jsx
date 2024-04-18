@@ -4,10 +4,14 @@ import ReactApexChart from "react-apexcharts";
 export function BarChartGraph ({keyData, valueData, orientation}) {
     const options = {
         chart: {
-            type: 'bar'
+            type: 'bar',
+            toolbar: {
+                show: true
+            }
         },
         xaxis: {
-            categories: keyData
+            categories: keyData,
+
         },
         plotOptions: {
             bar: {

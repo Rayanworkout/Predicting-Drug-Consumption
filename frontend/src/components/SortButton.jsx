@@ -10,7 +10,7 @@ export default function SortButton () {
         {"id": 5, "sort": "Assets"}
     ]
     return (
-        <div className = {` ml-auto mt-auto shrink-0  `}>
+        <div className = {` ml-auto mt-auto shrink-0 z-50 `}>
             <Menu as="div" className="relative inline-block">
                 <div>
                     <Menu.Button

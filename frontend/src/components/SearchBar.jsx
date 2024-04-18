@@ -28,7 +28,7 @@ export function SearchBar ({handleDrugType}) {
     const filteredData = data.filter(item => item.toLowerCase().includes(drugType.toLowerCase()));
 
     return (
-        <div className = {`w-full md:w-[50%] relative z-50`}>
+        <div className = {`w-full md:w-[50%] relative z-20`}>
             <Input
                 type="text"
                 placeholder="Search drug name : alcohol, tabac... "
