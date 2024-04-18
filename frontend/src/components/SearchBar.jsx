@@ -2,7 +2,7 @@ import { Input } from "@/components/ui/input"
 import {useEffect, useState} from "react";
 import {CardContent} from "@/components/ui/card.jsx";
 import useStore from "@/store/store.js";
-export function SearchBar ({handleDrugType}) {
+export function SearchBar () {
     const { drugType, setDrugType } = useStore();
     const changeDrugType = (event) => {
         setDrugType(event.target.value);
@@ -17,9 +17,6 @@ export function SearchBar ({handleDrugType}) {
     const handleBlur = () => {
         setTimeout(() => setIsFocused(false), 100);
     };
-    useEffect(() => {
-        handleDrugType(drugType)
-    }, [drugType]);
     const handleSelect = (value) => {
         setDrugType(value);
         setIsFocused(false);

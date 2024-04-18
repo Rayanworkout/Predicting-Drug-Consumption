@@ -15,29 +15,8 @@ import {GET_CONSUMPTION_DATA} from "@/api_/api_.js";
 import useStore from "@/store/store.js";
 export function GraphDrawer({icon, typeOfChart}) {
     const { drugType} = useStore();
-    const {consumptionType} = useStore();
-    const { apiParam} = useStore();
-    const { setApiData} = useStore();
     const { chartType, setChartType } = useStore();
-    const changeChartType = (newType) => {
-        setChartType(newType);
-    };
-
-    function getFunctionToCall() {
-        switch (chartType) {
-            case 'consumption-x':
-            case 'consumption-y':  // Regroupement de cas
-                return () => {
-                    GET_CONSUMPTION_DATA(new URLSearchParams(apiParam), consumptionType)
-                        .then(data => setApiData(data))
-                        .catch(error => {console.error('Failed to fetch data:', error);});
-                };
-            case 'other':
-                return () => console.log("'other' type case");
-            default:
-                return () => console.log("Default case");
-        }
-    };
+    const { getFunctionToCall } = useStore();
     function getComponentToRender(){
         switch (chartType){
             case 'consumption-x':
@@ -50,7 +29,7 @@ export function GraphDrawer({icon, typeOfChart}) {
 
     return (
         <Drawer>
-            <DrawerTrigger asChild onClick={() => changeChartType(typeOfChart)}>
+            <DrawerTrigger asChild onClick={() => setChartType(typeOfChart)}>
                 <Button variant="outline">{icon}</Button>
             </DrawerTrigger>
             <DrawerContent>

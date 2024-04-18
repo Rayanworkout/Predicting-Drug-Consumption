@@ -10,7 +10,7 @@ import {
 } from "@/components/BarChart/consumption.js"
 import useStore from "@/store/store.js";
 
-export function ConsumptionGroupCheckbox({ handleValueApiParam }) {
+export function ConsumptionGroupCheckbox() {
     const { drugType} = useStore();
     const { consumptionType } = useStore();
     const { apiParam, setApiParam} = useStore()

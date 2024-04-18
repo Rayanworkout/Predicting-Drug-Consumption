@@ -3,7 +3,6 @@ import {Card, CardContent} from "@/components/ui/card.jsx";
 import SortButton from "@/components/SortButton.jsx";
 import {BarChartBig, BarChartHorizontalBig, CandlestickChart, LineChart, PieChart} from "lucide-react";
 import {GraphDrawer} from "@/components/GraphDrawer.jsx";
-import {useEffect, useState} from "react";
 import Graph from "@/components/Graph.jsx";
 import {Button} from "@/components/ui/button.jsx";
 import useStore from "@/store/store.js";
@@ -13,7 +12,7 @@ const Dashboard = () => {
     const { consumptionType} = useStore()
     const { apiParam} = useStore()
     const { apiData} = useStore();
-
+    const { getFunctionToCall } = useStore();
     const handleDrugType = (newValue) => {setDrugType(newValue)}
 
     return (
@@ -42,7 +41,7 @@ const Dashboard = () => {
                      alt="container de search bar + graph + btn de graph">
                     <div className = {`w-full flex justify-center gap-x-4`}>
                         <SearchBar className = {`mb-4`} handleDrugType={handleDrugType}/>
-                        <Button variant={'outline'}>Search</Button>
+                        <Button onClick={() => getFunctionToCall()()} variant={'outline'}>Search</Button>
                     </div>
 
                     <Card className = {`w-full flex-1`}>
