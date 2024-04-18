@@ -27,7 +27,7 @@ Tech Stack / Features:
  - Django Ninja API
  - React Frontend
  - Data Plotting
- - CI/CD with GitHub Actions and self made deployment server
+ - CI/CD with GitHub Actions and self made deployment server (see `ci_cd` folder)
 
 
 _Note: Any guidance, suggestions, or collaboration is warmly welcomed and greatly appreciated ♥️_
