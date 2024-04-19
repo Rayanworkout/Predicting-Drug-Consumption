@@ -25,7 +25,7 @@ def population_repartition(
 ):
     """
     Endpoint to GET the repartition of a given population in the database.
-    For instance with the "age" parameter, you can check how many mean and women have taken the survey.
+    For instance with the "age" parameter, you can check how many men and women have taken the survey.
 
     Default value is set to "age" for population.
 
