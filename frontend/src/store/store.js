@@ -1,5 +1,5 @@
 import create from 'zustand';
-import {GET_CONSUMPTION_DATA, GET_REPARTITION_DATA} from "@/api_/api_.js";
+import {GET_REPARTITION_DATA, GET_CONSUMPTION_DATA} from "@/api_/api_.js";
 
 const useStore = create((set, get) => ({
     chartType: 'consumption-x',

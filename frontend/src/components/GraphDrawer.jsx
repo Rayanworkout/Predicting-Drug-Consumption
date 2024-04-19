@@ -10,12 +10,11 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import BarChartDetail from "@/components/BarChart/BarChartDetail.jsx";
-import React, {useState} from "react";
-import {GET_CONSUMPTION_DATA} from "@/api_/api_.js";
+import React from "react";
 import useStore from "@/store/store.js";
 import RepartitionChartDetail from "@/components/RepartitionChart/RepartitionChartDetail.jsx";
 export function GraphDrawer({icon, typeOfChart}) {
-    const { drugType} = useStore();
+    const { drugType, consumptionType} = useStore();
     const { chartType, setChartType } = useStore();
     const { getFunctionToCall } = useStore();
     function getComponentToRender(){
@@ -39,7 +38,8 @@ export function GraphDrawer({icon, typeOfChart}) {
 
                 <div className="mx-auto w-full max-w-sm">
                     <DrawerHeader>
-                        <DrawerTitle>Consumption of {drugType}</DrawerTitle>
+                        <DrawerTitle>{chartType.charAt(0).toUpperCase() + chartType.slice(1)}
+                            { chartType == 'consumption-x' || chartType == 'consumption-y' ? ` of ${drugType}` : ''} {consumptionType.replace('_', ' ')}</DrawerTitle>
                         <DrawerDescription>Add some precision to your chart </DrawerDescription>
                     </DrawerHeader>
                     <div className={`p-4 pb-0`}>

@@ -58,7 +58,6 @@ export function ConsumptionGroupCheckbox() {
                 break;
         }
         setApiParam(updatedParam)
-        console.log(apiParam)
     }, [radioValue, consumptionType, drugType]);
     useEffect(() => {
         setRadioValue(getComponentToRender(consumptionType, consumptionValues)[0]);
@@ -68,9 +67,9 @@ export function ConsumptionGroupCheckbox() {
     const GroupRadioButtonComponent = () => (
         <div>
             {getComponentToRender(consumptionType, consumptionValues).map((item, index) => (
-                <div key={index} className = {`flex flex-row items-center space-x-2`}>
+                <div key={index} className = {`flex items-center space-x-2 space-y-0`}>
                     <RadioGroupItem value={item} id={`r${index}`}/>
-                    <Label htmlFor={`r${index}`}>{item}</Label>
+                    <Label className = {`pb-1`} htmlFor={`r${index}`}>{item}</Label>
                 </div>
             ))}
         </div>
@@ -80,7 +79,7 @@ export function ConsumptionGroupCheckbox() {
         <div className="mt-3 h-fit min-h-[100px]">
             <RadioGroup defaultValue={radioValue} onValueChange={handleRadioValueChange}>
                 <p>Precision :</p>
-                <div className = {`flex flex-wrap gap-2`}>
+                <div className = {`flex flex-wrap gap-2 mb-4`}>
                     {GroupRadioButtonComponent()}
                 </div>
             </RadioGroup>

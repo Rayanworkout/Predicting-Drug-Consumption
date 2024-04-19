@@ -28,7 +28,6 @@ export function GET_CONSUMPTION_DATA(objectParam, urlParam){
 }
 export function GET_REPARTITION_DATA(param){
     const fullUrl = '/api/repartition/by_population/?population='+ param;
-    console.log(fullUrl)
     const data = fetch(fullUrl)
         .then(r => {
             if (!r.ok) {
@@ -40,6 +39,5 @@ export function GET_REPARTITION_DATA(param){
             console.error('There was an error fetching the data:', error);
             throw error;
         });
-    console.log(JSON.stringify(data))
     return data;
 }

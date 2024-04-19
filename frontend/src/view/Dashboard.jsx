@@ -8,10 +8,7 @@ import {Button} from "@/components/ui/button.jsx";
 import useStore from "@/store/store.js";
 const Dashboard = () => {
 
-    const { drugType, setDrugType } = useStore();
-    const { consumptionType} = useStore()
-    const { chartType} = useStore()
-    const { getFunctionToCall } = useStore();
+    const { drugType, setDrugType, consumptionType, chartType, getFunctionToCall } = useStore();
 
     const handleDrugType = (newValue) => {setDrugType(newValue)}
 
@@ -30,7 +27,7 @@ const Dashboard = () => {
                            text-2xl 
                            md:text-3xl
                            font-bold tracking-tight text-white antialiasing`}>
-                        Consumption : {consumptionType} + {chartType}
+                        Consumption : {consumptionType} + {chartType} +
                     </p>
                 </span>
                 <SortButton/>

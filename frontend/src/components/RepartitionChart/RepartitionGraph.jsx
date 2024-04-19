@@ -9,8 +9,8 @@ const RepartitionGraph = ({apiData}) => {
     const getConsumption = getProp(consumptionType.substring(3));
     const getCount = getProp('count');
 
-    const consumptionValue = apiData && apiData.data ? apiData.data.map(getConsumption) : [];
-    const countValue = apiData && apiData.data ? apiData.data.map(getCount) : [];
+    const consumptionValue = apiData && apiData.data ? apiData.data.map(item => getConsumption(item) || "") : [];
+    const countValue = apiData && apiData.data ? apiData.data.map(item => getCount(item) || 0) : [];
 
     const options = {
         chart: {
