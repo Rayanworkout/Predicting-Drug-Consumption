@@ -14,9 +14,7 @@ import React from "react";
 import useStore from "@/store/store.js";
 import RepartitionChartDetail from "@/components/RepartitionChart/RepartitionChartDetail.jsx";
 export function GraphDrawer({icon, typeOfChart}) {
-    const { drugType, consumptionType} = useStore();
-    const { chartType, setChartType } = useStore();
-    const { getFunctionToCall } = useStore();
+    const { drugType, consumptionType, chartType, setChartType, getFunctionToCall} = useStore();
     function getComponentToRender(){
         switch (chartType){
             case 'consumption-x':

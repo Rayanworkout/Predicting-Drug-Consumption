@@ -4,10 +4,7 @@ import useStore from "@/store/store.js";
 import RepartitionGraph from "@/components/RepartitionChart/RepartitionGraph.jsx";
 
 export function Graph () {
-    const { chartType} = useStore();
-    const { apiData} = useStore();
-    const { apiRepartitionData} = useStore();
-
+    const { chartType, apiData, apiRepartitionData} = useStore();
     function getChartToRender(){
         switch (chartType){
             case 'consumption-y':
