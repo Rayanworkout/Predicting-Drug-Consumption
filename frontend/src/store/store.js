@@ -1,5 +1,5 @@
 import create from 'zustand';
-import {GET_REPARTITION_DATA, GET_CONSUMPTION_DATA} from "@/api_/api_.js";
+import {GET_REPARTITION_DATA, GET_CONSUMPTION_DATA, GET_CORRELATION_DATA} from "@/api_/api_.js";
 
 const useStore = create((set, get) => ({
     chartType: 'consumption-x',
@@ -18,6 +18,10 @@ const useStore = create((set, get) => ({
     consumptionType: 'by_age',
     setConsumptionType: (consumptionType) => set({consumptionType}),
 
+    precisionConsumption:'',
+    setPrecisionConsumption: (precisionConsumption) => set({precisionConsumption}),
+
+
     apiParam:{age_range: '18-24', drug: 'alcohol' },
     setApiParam: (apiParam) => set({ apiParam }),
 
@@ -27,8 +31,11 @@ const useStore = create((set, get) => ({
     apiRepartitionData: {data:[]},
     setApiRepartitionData: (apiRepartitionData) => set({apiRepartitionData}),
 
+    apiCorrelationData: {},
+    setApiCorrelationData: (apiCorrelationData) => set({apiCorrelationData}),
+
     getFunctionToCall: () => {
-        const { chartType, apiParam, consumptionType, setApiData, setApiRepartitionData } = get();
+        const { chartType, apiParam, consumptionType, setApiData, setApiRepartitionData, setApiCorrelationData } = get();
         switch (chartType) {
             case 'consumption-x':
             case 'consumption-y':
@@ -42,6 +49,12 @@ const useStore = create((set, get) => ({
                     const consumptionRepartition = consumptionType.substring(3);
                     GET_REPARTITION_DATA(consumptionRepartition)
                         .then(data => setApiRepartitionData(data))
+                        .catch(error => console.error('Failed to fetch data:', error));
+                };
+            case 'correlation':
+                return () => {
+                    GET_CORRELATION_DATA()
+                        .then(data => setApiCorrelationData(data))
                         .catch(error => console.error('Failed to fetch data:', error));
                 };
             case 'other':

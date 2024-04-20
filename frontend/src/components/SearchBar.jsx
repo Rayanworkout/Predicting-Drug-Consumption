@@ -33,7 +33,7 @@ export function SearchBar () {
             />
             {isFocused && (
                 <CardContent
-                    className = {`absolute  bg-white  w-full max-h-56 rounded overflow-y-auto`}>
+                    className = {`absolute bg-white w-full max-h-56 rounded overflow-y-auto`}>
                     {filteredData.length > 0 ? (
                         filteredData.map((item, index) => (
                             <p key={index} onClick={() => handleSelect(item)}

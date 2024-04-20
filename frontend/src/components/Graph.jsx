@@ -2,6 +2,7 @@ import React from 'react';
 import BarChartGraph from "@/components/BarChart/BarChartGraph.jsx";
 import useStore from "@/store/store.js";
 import RepartitionGraph from "@/components/RepartitionChart/RepartitionGraph.jsx";
+import CorrelationChart from "@/components/CorrelationChart/CorrelationChart.jsx";
 
 export function Graph () {
     const { chartType, apiData, apiRepartitionData} = useStore();
@@ -13,6 +14,8 @@ export function Graph () {
                 return <BarChartGraph apiData={apiData} orientation={true}/>
             case 'repartition':
                 return <RepartitionGraph apiData={apiRepartitionData}/>
+            case 'correlation':
+                return <CorrelationChart/>
         }
     }
     return (

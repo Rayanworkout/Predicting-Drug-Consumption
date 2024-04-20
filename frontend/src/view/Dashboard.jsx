@@ -6,10 +6,31 @@ import {GraphDrawer} from "@/components/GraphDrawer.jsx";
 import Graph from "@/components/Graph.jsx";
 import {Button} from "@/components/ui/button.jsx";
 import useStore from "@/store/store.js";
+import React, {useEffect} from "react";
 const Dashboard = () => {
 
-    const { drugType, setDrugType, consumptionType, chartType, getFunctionToCall } = useStore();
+    const { drugType, setDrugType, consumptionType, precisionConsumption, chartType,
+        setChartType, getFunctionToCall, apiData,setApiData, apiCorrelationData } = useStore();
 
+    useEffect(() => {
+        console.log(apiCorrelationData)
+        setApiData({
+            age_range: "18-24",
+            gender: null,
+            ethnicity: null,
+            education: null,
+            country: null,
+            drug: "alcohol",
+            data: {
+                "used in last week": 271,
+                "used in last day": 149,
+                "used in last month": 121,
+                "used in last year": 75,
+                "never used": 14,
+                "used in last decade": 13
+            }
+        })
+    }, []);
     const handleDrugType = (newValue) => {setDrugType(newValue)}
 
     return (
@@ -27,7 +48,7 @@ const Dashboard = () => {
                            text-2xl 
                            md:text-3xl
                            font-bold tracking-tight text-white antialiasing`}>
-                        Consumption : {consumptionType} + {chartType} +
+                        {chartType.charAt(0).toUpperCase() + chartType.slice(1)} {consumptionType.replace("_"," ")} : {precisionConsumption}
                     </p>
                 </span>
                 <SortButton/>
@@ -51,7 +72,7 @@ const Dashboard = () => {
                         <GraphDrawer icon={<BarChartBig/>} typeOfChart={"consumption-y"} />
                         <GraphDrawer icon={<BarChartHorizontalBig/>} typeOfChart={"consumption-x"}/>
                         <GraphDrawer icon={<LineChart/>} typeOfChart={"repartition"} />
-                        <GraphDrawer icon={<PieChart/>} typeOfChart={"other"}/>
+                        <Button onClick={() => (setChartType("correlation"), getFunctionToCall()()) } variant={"outline"}><PieChart/></Button>
                         <GraphDrawer icon={<CandlestickChart/>} typeOfChart={"other"}/>
                     </div>
                 </div>
