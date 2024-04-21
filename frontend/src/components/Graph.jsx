@@ -1,18 +1,29 @@
 import React from 'react';
 import BarChartGraph from "@/components/BarChart/BarChartGraph.jsx";
 import useStore from "@/store/store.js";
+import RepartitionGraph from "@/components/RepartitionChart/RepartitionGraph.jsx";
+import CorrelationChart from "@/components/CorrelationChart/CorrelationChart.jsx";
+import CorrelationChartDetail from "@/components/CorrelationChart/CorrelationChartDetail.jsx";
 
-export function Graph ({keyData, valueData}) {
-    const { chartType} = useStore();
+export function Graph () {
+    const { chartType, consumptionType, apiData, apiRepartitionData, apiCorrelationData} = useStore();
     function getChartToRender(){
         switch (chartType){
             case 'consumption-y':
-                return <BarChartGraph keyData={keyData} valueData={valueData} orientation={false}/>
+                return <BarChartGraph apiData={apiData.data} orientation={false}/>
             case 'consumption-x':
-                return <BarChartGraph keyData={keyData} valueData={valueData} orientation={true}/>
+                return <BarChartGraph apiData={apiData.data} orientation={true}/>
             case 'repartition':
-                return 'repartition'
-
+                return <RepartitionGraph apiData={apiRepartitionData}/>
+            case 'correlation':
+                switch (consumptionType){
+                    case 'drug_and_personality' :
+                        return <CorrelationChart/>
+                    case 'feature_to_drug_mean' :
+                        return <BarChartGraph apiData={apiCorrelationData} orientation={true}/>
+                };
+            case 'regression':
+                return ''
 
         }
     }
