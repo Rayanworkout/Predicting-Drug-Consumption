@@ -8,12 +8,16 @@ function App() {
     return (
     <>
         <div className={`w-100 h-100 px-3 pb-3 overflow-hidden`}>
+
                 <div className = {`flex flex-col items-center gap-y-5 text-white`} alt="Texte de présentation">
                     <p className = {` text-6xl font-bold`}>
                         Project Title
                     </p>
-                    <p>
-                        Description of the project, on va l'aligner a gauche je pense avec une petite anime ou blur effect a droite
+                    <p className = {`text-center`}>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolor doloribus eligendi inventore iste libero minus molestiae non numquam possimus, quisquam quod rerum sit vel veniam veritatis voluptas voluptate voluptatum?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolor doloribus eligendi inventore iste libero minus molestiae non numquam possimus, quisquam quod rerum sit vel veniam veritatis voluptas voluptate voluptatum?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolor doloribus eligendi inventore iste libero minus molestiae non numquam possimus, quisquam quod rerum sit vel veniam veritatis voluptas voluptate voluptatum?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolor doloribus eligendi inventore iste libero minus molestiae non numquam possimus, quisquam quod rerum sit vel veniam veritatis voluptas voluptate voluptatum?
                     </p>
                 </div>
 
@@ -39,10 +43,9 @@ function App() {
                 <div className={` w-full h-0 bg-white text-white`}></div>
 
                 <div className={` flex flex-col w-100 gap-y-8 text-white `}>
-                    <Swiper/>
-                    <Swiper/>
-                    <Swiper/>
-                    <Swiper/>
+                    <Swiper swiperTitle={'Comparaison Chart'}/>
+                    <Swiper swiperTitle={'Repartition Chart'}/>
+                    <Swiper swiperTitle={'Correlation Chart'}/>
                 </div>
         </div>
     </>

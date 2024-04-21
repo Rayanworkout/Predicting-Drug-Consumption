@@ -1,5 +1,10 @@
 import create from 'zustand';
-import {GET_REPARTITION_DATA, GET_CONSUMPTION_DATA, GET_CORRELATION_DATA} from "@/api_/api_.js";
+import {
+    GET_REPARTITION_DATA,
+    GET_CONSUMPTION_DATA,
+    GET_CORRELATION_DATA,
+    GET_CORRELATION_MEANING_DATA
+} from "@/api_/api_.js";
 
 const useStore = create((set, get) => ({
     chartType: 'consumption-x',
@@ -52,11 +57,21 @@ const useStore = create((set, get) => ({
                         .catch(error => console.error('Failed to fetch data:', error));
                 };
             case 'correlation':
-                return () => {
-                    GET_CORRELATION_DATA()
-                        .then(data => setApiCorrelationData(data))
-                        .catch(error => console.error('Failed to fetch data:', error));
-                };
+                switch (consumptionType){
+                    case 'drug_and_personality':
+                        return () => {
+                            GET_CORRELATION_DATA()
+                                .then(data => setApiCorrelationData(data))
+                                .catch(error => console.error('Failed to fetch data:', error));
+                        };
+                    case 'feature_to_drug_mean':
+                        return () => {
+                            GET_CORRELATION_MEANING_DATA()
+                                .then(data => setApiCorrelationData(data))
+                                .catch(error => console.error('Failed to fetch data:', error));
+                        };
+                }
+
             case 'other':
                 return () => console.log("'other' type case");
             default:

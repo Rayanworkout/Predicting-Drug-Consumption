@@ -57,3 +57,19 @@ export function GET_CORRELATION_DATA(){
         });
     return data;
 }
+
+export function GET_CORRELATION_MEANING_DATA(){
+    const fullUrl = '/api/correlation/feature_to_drug_mean';
+    const data = fetch(fullUrl)
+        .then(r => {
+            if (!r.ok) {
+                throw new Error(`HTTP error! Status: ${r.status}`);
+            }
+            return r.json();
+        })
+        .catch(error => {
+            console.error('There was an error fetching the data:', error);
+            throw error;
+        });
+    return data;
+}

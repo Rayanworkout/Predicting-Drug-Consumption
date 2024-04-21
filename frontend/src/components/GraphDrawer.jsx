@@ -13,7 +13,8 @@ import BarChartDetail from "@/components/BarChart/BarChartDetail.jsx";
 import React from "react";
 import useStore from "@/store/store.js";
 import RepartitionChartDetail from "@/components/RepartitionChart/RepartitionChartDetail.jsx";
-export function GraphDrawer({icon, typeOfChart}) {
+import CorrelationChartDetail from "@/components/CorrelationChart/CorrelationChartDetail.jsx";
+export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
     const { drugType, consumptionType, chartType, setChartType, getFunctionToCall} = useStore();
     function getComponentToRender(){
         switch (chartType){
@@ -22,6 +23,8 @@ export function GraphDrawer({icon, typeOfChart}) {
                 return <BarChartDetail/>
             case 'repartition':
                 return <RepartitionChartDetail/>
+            case 'correlation':
+                return <CorrelationChartDetail/>
             case 'other':
                 return ""
         }
@@ -30,14 +33,21 @@ export function GraphDrawer({icon, typeOfChart}) {
     return (
         <Drawer>
             <DrawerTrigger asChild onClick={() => setChartType(typeOfChart)}>
-                <Button variant="outline">{icon}</Button>
+                <Button variant="outline">{icon} {triggerTitle}</Button>
             </DrawerTrigger>
             <DrawerContent>
 
                 <div className="mx-auto w-full max-w-sm">
                     <DrawerHeader>
-                        <DrawerTitle>{chartType.charAt(0).toUpperCase() + chartType.slice(1)}
-                            { chartType == 'consumption-x' || chartType == 'consumption-y' ? ` of ${drugType}` : ''} {consumptionType.replace('_', ' ')}</DrawerTitle>
+                        {
+                            chartType != 'correlation' ?
+                            <DrawerTitle>{chartType.charAt(0).toUpperCase() + chartType.slice(1)}
+                                { chartType == 'consumption-x' || chartType == 'consumption-y' ? ` of ${drugType}` : ''} {consumptionType.replace('_', ' ')}
+                            </DrawerTitle>
+                                :
+                                ''
+                        }
+
                         <DrawerDescription>Add some precision to your chart </DrawerDescription>
                     </DrawerHeader>
                     <div className={`p-4 pb-0`}>

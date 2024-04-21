@@ -3,8 +3,8 @@ import ReactApexChart from "react-apexcharts";
 
 export function BarChartGraph({ apiData, orientation }) {
 
-    const keyData = Object.keys(apiData.data);
-    const valueData = Object.values(apiData.data);
+    const keyData = Object.keys(apiData);
+    const valueData = Object.values(apiData);
 
     const options = {
         chart: {
@@ -17,10 +17,15 @@ export function BarChartGraph({ apiData, orientation }) {
             categories: keyData,
         },
         plotOptions: {
+
             bar: {
+                distributed: true,
                 borderRadius: 4,
                 horizontal: orientation,
-            }
+            },
+            dataLabels: {
+                enabled: true
+            },
         }
     };
 
