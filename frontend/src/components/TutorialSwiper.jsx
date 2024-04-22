@@ -55,11 +55,11 @@ const TutorialSwiper = () => {
 
                 <div className = {`flex flex-col`}>
                     <div className = {`text-white min-h-[80%]`}>
-                        {slides[currentIndex]}
+                        {slides[currentIndex]} {slides.length}
                     </div>
                     <div className = {`flex justify-between items-center flex-grow `}>
-                        <Button variant="outline" onClick={goToPrev}>Prev</Button>
-                        <Button variant="outline" onClick={goToNext}>Next</Button>
+                        <Button disabled={currentIndex == 0 ? true : false} variant="outline" onClick={goToPrev}>Prev</Button>
+                        <Button disabled={currentIndex == slides.length - 1 ? true : false} variant="outline" onClick={goToNext}>Next</Button>
                     </div>
                     <span className = {`flex justify-end items-center flex-grow `}>
                         <Button variant="outline" onClick={() => setIsOpen(false)}>Skip Tutorial</Button>
