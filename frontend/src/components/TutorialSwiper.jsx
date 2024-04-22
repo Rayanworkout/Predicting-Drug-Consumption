@@ -1,7 +1,5 @@
 import {
     AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
     AlertDialogContent,
     AlertDialogDescription,
     AlertDialogFooter,
@@ -11,16 +9,17 @@ import {
 } from "@/components/ui/alert-dialog.jsx"
 import { Button } from "@/components/ui/button.jsx"
 import {useEffect, useState} from "react";
+import {SlideIntroduction, SlideHowToReadChart, SlideSummary, SlideCorrelationIntroduction, SlideCorrelationExplanation, SlideEnding} from "@/components/TutorialPage/SlidesIntroduction.jsx"
 const TutorialSwiper = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const SlideOne = () => <div>Slide 1: Bienvenue!</div>;
-    const SlideTwo = () => <div>Slide 2: Découvrez plus!</div>;
-    const SlideThree = () => <div>Slide 3: Merci de nous visiter!</div>;
 
     const slides = [
-        <SlideOne />,
-        <SlideTwo />,
-        <SlideThree />
+        <SlideIntroduction/>,
+        <SlideHowToReadChart/>,
+        <SlideSummary/>,
+        <SlideCorrelationIntroduction/>,
+        <SlideCorrelationExplanation/>,
+        <SlideEnding/>
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,32 +35,34 @@ const TutorialSwiper = () => {
             prevIndex === 0 ? slides.length - 1 : prevIndex - 1
         );
     };
+    const hasShown = sessionStorage.getItem('alertShown');
 
     useEffect(() => {
-        const hasShown = sessionStorage.getItem('alertShown');
-
+        setCurrentIndex(0)
         if (!hasShown) {
             setIsOpen(true);
             sessionStorage.setItem('alertShown', 'true');
         }
-    }, []);
+    }, [hasShown]);
 
     return (
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
             <AlertDialogTrigger asChild>
                 <Button variant="outline" onClick={() => setIsOpen(true)}>Start Tutorial</Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className = {`h-[90%] w-[90%] bg-transparent backdrop-blur`}>
+            <AlertDialogContent className = {`w-[90vw] h-[90vh] bg-transparent backdrop-blur rounded-2xl`}>
 
-                <div className = {`flex flex-col`}>
-                    <div className = {`text-white min-h-[80%]`}>
-                        {slides[currentIndex]} {slides.length}
+                <div className = {`flex flex-col gap-y-1 h-full`}>
+                    <div className = {`text-white h-[75vh] overflow-y-hidden`}>
+                        <div className = {`overflow-y-auto h-full`}>
+                            {slides[currentIndex]}
+                        </div>
                     </div>
-                    <div className = {`flex justify-between items-center flex-grow `}>
+                    <div className = {`flex justify-between items-center min-h-[5vh] `}>
                         <Button disabled={currentIndex == 0 ? true : false} variant="outline" onClick={goToPrev}>Prev</Button>
                         <Button disabled={currentIndex == slides.length - 1 ? true : false} variant="outline" onClick={goToNext}>Next</Button>
                     </div>
-                    <span className = {`flex justify-end items-center flex-grow `}>
+                    <span className = {`flex justify-end items-center min-h-[5vh]`}>
                         <Button variant="outline" onClick={() => setIsOpen(false)}>Skip Tutorial</Button>
                     </span>
                 </div>
