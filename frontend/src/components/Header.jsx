@@ -2,9 +2,10 @@ import {BarChartHorizontal, Home} from "lucide-react"
 const Header = () => {
     return (
         <div className = {`flex w-full h-full justify-between align-baseline pt-6 py-3 px-6`}>
-            <span className = {` flex gap-3`}>
-                <a href="/"><Home className={` text-white `}/></a>
-                <a href="/statistics"><BarChartHorizontal className={` text-white `}/></a>
+            <span className={` flex gap-3 text-white font-bold outline-1 outline-white`}>
+                <a className = {`hover:bg-neutral-50 hover:text-black ease-in-out duration-300 h-fit p-1 rounded`} href="/">HOME</a>
+                <a className = {`hover:bg-neutral-50 hover:text-black ease-in-out duration-300 h-fit p-1 rounded`} href="/statistics">DASHBOARD</a>
+                <a className = {`hover:bg-neutral-50 hover:text-black ease-in-out duration-300 h-fit p-1 rounded cursor-pointer`}>ABOUT US</a>
             </span>
 
             <button

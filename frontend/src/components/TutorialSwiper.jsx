@@ -48,7 +48,7 @@ const TutorialSwiper = () => {
     return (
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
             <AlertDialogTrigger asChild>
-                <Button variant="outline" onClick={() => setIsOpen(true)}>Start Tutorial</Button>
+                <Button variant="default_blue" className = {``} onClick={() => setIsOpen(true)}>Start Tutorial</Button>
             </AlertDialogTrigger>
             <AlertDialogContent className = {`w-[90vw] h-[90vh] bg-transparent backdrop-blur rounded-2xl`}>
 
@@ -63,7 +63,7 @@ const TutorialSwiper = () => {
                         <Button disabled={currentIndex == slides.length - 1 ? true : false} variant="outline" onClick={goToNext}>Next</Button>
                     </div>
                     <span className = {`flex justify-end items-center min-h-[5vh]`}>
-                        <Button variant="outline" onClick={() => setIsOpen(false)}>Skip Tutorial</Button>
+                        <Button variant="default_blue" onClick={() => setIsOpen(false)}>Skip Tutorial</Button>
                     </span>
                 </div>
 

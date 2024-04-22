@@ -8,8 +8,9 @@ import {
 import {Card, CardContent} from "@/components/ui/card.jsx";
 import BarChartGraph from "@/components/BarChart/BarChartGraph.jsx";
 import React from "react";
+import {Button} from "@/components/ui/button.jsx";
 const Swiper = ({swiperTitle, chartArrayToMap}) => {
-    const object = {
+    const data = {
         age_range: "18-24",
         gender: null,
         ethnicity: null,
@@ -28,15 +29,21 @@ const Swiper = ({swiperTitle, chartArrayToMap}) => {
     return (
         <div className = {`flex justify-center`}>
             <Carousel className="w-full lg:w-11/12">
-                <p className={` text-2xl `}>{swiperTitle}</p>
-                <p className={` text-xl `}>Description Du Chart</p>
+                <div className = {`flex justify-between`}>
+                    <span>
+                        <p className={` text-2xl `}>{swiperTitle}</p>
+                        <p className={` text-xl `}>Description Du Chart</p>
+                    </span>
+                    <Button variant="outline" className = {`text-black`}>Go to Dashboard</Button>
+                </div>
+
                 <CarouselContent className=" ">
                     {Array.from({length: 5}).map((_, index) => (
                         <CarouselItem key={index} className=" md:basis-1/2 lg:basis-1/3 ">
                             <div className="p-1">
                                 <Card>
                                     <CardContent className=" h-60 flex aspect-w-16 aspect-h-9 items-center justify-center p-6">
-                                        <BarChartGraph apiData={object.data} orientation={true} legend={false} toolbar={false}/>
+                                        <BarChartGraph apiData={data.data} orientation={true} toolbar={false} legend={false}/>
                                     </CardContent>
                                 </Card>
                             </div>

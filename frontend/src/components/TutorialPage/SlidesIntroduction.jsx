@@ -86,15 +86,18 @@ export const SlideIntroduction = () => {
                 measures
                 the following 5 personality traits:
             </p>
+            <div className = {`flex px-7 gap-x-10`}>
+                <ul className={styles.listDisc}>
+                    <li>Neuroticism</li>
+                    <li>Extraversion</li>
+                    <li>Openness to Experience</li>
 
-            <ul className={styles.listDisc}>
-                <li>Neuroticism</li>
-                <li>Extraversion</li>
-                <li>Openness to Experience</li>
-                <li>Agreeableness</li>
-                <li>Conscientiousness</li>
-            </ul>
-
+                </ul>
+                <ul className={styles.listDisc}>
+                    <li>Agreeableness</li>
+                    <li>Conscientiousness</li>
+                </ul>
+            </div>
             <p>
                 We also have access to the Impulsiveness and the Sensation Seeking scores of each respondent.
             </p>
