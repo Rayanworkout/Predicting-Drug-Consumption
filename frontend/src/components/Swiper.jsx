@@ -10,9 +10,10 @@ const Swiper = ({swiperTitle, chartArrayToMap}) => {
     return (
         <div className = {`flex justify-center`}>
             <Carousel className="w-full lg:w-11/12">
-                <p className = {` text-2xl `}>{swiperTitle}</p>
+                <p className={` text-2xl `}>{swiperTitle}</p>
+                <p className={` text-xl `}>Description Du Chart</p>
                 <CarouselContent className=" ">
-                    {Array.from({ length: 5 }).map((_, index) => (
+                    {Array.from({length: 5}).map((_, index) => (
                         <CarouselItem key={index} className=" md:basis-1/2 lg:basis-1/3 ">
                             <div className="p-1">
                                 <Card>
