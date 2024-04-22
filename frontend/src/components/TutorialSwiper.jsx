@@ -8,8 +8,8 @@ import {
     AlertDialogHeader,
     AlertDialogTitle,
     AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/alert-dialog.jsx"
+import { Button } from "@/components/ui/button.jsx"
 import {useEffect, useState} from "react";
 const TutorialSwiper = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -51,18 +51,18 @@ const TutorialSwiper = () => {
             <AlertDialogTrigger asChild>
                 <Button variant="outline" onClick={() => setIsOpen(true)}>Start Tutorial</Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className = {`h-[90%] w-[90%] bg-neutral-700 `}>
+            <AlertDialogContent className = {`h-[90%] w-[90%] bg-transparent backdrop-blur`}>
 
-                <div className = {`bg-neutral-400 flex-col`}>
-                    <div className = {`text-white min-h-[80%] bg-red-700`}>
+                <div className = {`flex flex-col`}>
+                    <div className = {`text-white min-h-[80%]`}>
                         {slides[currentIndex]}
                     </div>
-                    <div className = {`flex justify-between`}>
+                    <div className = {`flex justify-between items-center flex-grow `}>
                         <Button variant="outline" onClick={goToPrev}>Prev</Button>
                         <Button variant="outline" onClick={goToNext}>Next</Button>
                     </div>
-                    <span>
-                        <AlertDialogAction onClick={() => setIsOpen(false)}>Skip Tutorial</AlertDialogAction>
+                    <span className = {`flex justify-end items-center flex-grow `}>
+                        <Button variant="outline" onClick={() => setIsOpen(false)}>Skip Tutorial</Button>
                     </span>
                 </div>
 

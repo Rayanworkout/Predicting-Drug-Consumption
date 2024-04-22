@@ -3,7 +3,7 @@ import './assets/index.css'
 import React from "react";
 import Swiper from "./components/Swiper.jsx";
 import SortButton from "./components/SortButton.jsx";
-import TutorialSwiper from "@/view/TutorialSwiper.jsx";
+import TutorialSwiper from "@/components/TutorialSwiper.jsx";
 
 function App() {
     return (
