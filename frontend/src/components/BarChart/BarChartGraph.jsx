@@ -1,23 +1,25 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
-export function BarChartGraph({ apiData, orientation }) {
+export function BarChartGraph({ apiData, orientation, legend = true, toolbar = true }) {
 
     const keyData = Object.keys(apiData);
     const valueData = Object.values(apiData);
 
     const options = {
+        legend: {
+            show: legend
+        },
         chart: {
             type: 'bar',
             toolbar: {
-                show: true
+                show: toolbar
             }
         },
         xaxis: {
             categories: keyData,
         },
         plotOptions: {
-
             bar: {
                 distributed: true,
                 borderRadius: 4,

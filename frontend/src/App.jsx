@@ -37,8 +37,6 @@ function App() {
                             Many stats for you
                         </h2>
                     </span>
-
-                    <SortButton/>
                 </span>
                 <div className={` w-full h-0 bg-white text-white`}></div>
 
