@@ -8,10 +8,10 @@ import TutorialSwiper from "@/components/TutorialSwiper.jsx";
 function App() {
     return (
     <>
-        <div className={`w-100 h-100 px-3 pb-3 overflow-hidden`}>
+        <div className={`w-full h-full px-3 pb-3 overflow-hidden`}>
                 <div className = {`flex flex-col items-center gap-y-5`} alt="Texte de présentation">
                     <p className = {` text-6xl font-bold  text-white`}>
-                        Project Title
+                        Drug Analytics
                     </p>
                     <p className = {`text-center  text-white`}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolor doloribus eligendi inventore iste libero minus molestiae non numquam possimus, quisquam quod rerum sit vel veniam veritatis voluptas voluptate voluptatum?
