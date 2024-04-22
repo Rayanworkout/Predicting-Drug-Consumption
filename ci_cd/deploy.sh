@@ -38,4 +38,21 @@ echo "> Done"
 echo "> Filling database ..."
 python3 manage.py fill_database
 
-python3 manage.py runserver
+# Running backend server in the background
+python3 manage.py runserver &
+
+echo "> Done"
+
+# FRONTEND
+
+echo "> Installing frontend dependencies ..."
+cd ../frontend/
+
+npm install
+
+echo "> Done"
+
+echo "> Building frontend ..."
+npm run build
+
+echo "> Done"
