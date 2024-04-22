@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # journalctl -u flask_listener.service --since today
 # or
 # journalctl -u flask_listener.service --since today -f
@@ -13,20 +15,27 @@ telegram_bot_token="BOT_TOKEN"
 telegram_chat_id="CHAT_ID"
 
 echo "> Pulling changes ..."
-git pull origin main
+# git pull origin main
 echo "> Done"
 
+
+# BACKEND
+
+cd ./backend/
 source .venv/bin/activate
 
 echo "> Installing dependencies ..."
 pip install -r requirements.txt
 echo "> Done"
 
+echo "> Migrating database ..."
+python3 manage.py makemigrations
 
-py manage.py makemigrations
+python3 manage.py migrate
 
-py manage.py migrate
+echo "> Done"
 
-py manage.py fill_database
+echo "> Filling database ..."
+python3 manage.py fill_database
 
-py manage.py runserver
+python3 manage.py runserver
