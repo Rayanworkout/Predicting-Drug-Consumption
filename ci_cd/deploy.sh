@@ -43,12 +43,12 @@ python3 manage.py fill_database
 echo "> Installing frontend dependencies ..."
 cd ../frontend/
 
-npm install
+sudo npm install
 
 echo "> Done"
 
 echo "> Building frontend ..."
-npm run build
+sudo npm run build
 
 echo "> Fixing permissions ..."
 
