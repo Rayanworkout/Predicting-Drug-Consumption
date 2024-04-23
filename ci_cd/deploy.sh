@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# journalctl -u flask_listener.service --since today
+# journalctl -u [service_name]service --since today
 # or
-# journalctl -u flask_listener.service --since today -f
+# journalctl -u [service_name]service --since today -f
 
+# cat /var/log/apache2/backend-error.log
 
 # This file must be in the root directory of the project
 
@@ -40,7 +41,6 @@ python3 manage.py fill_database
 
 echo "> Done"
 
-gunicorn drugs_consumption_analytics.wsgi:application --bind 127.0.0.1:8000
 
 # FRONTEND
 
@@ -53,6 +53,17 @@ echo "> Done"
 
 echo "> Building frontend ..."
 npm run build
+
+echo "> Done"
+
+echo "> Fixing permissions ..."
+
+cd ../..
+
+sudo chown -R www-data:www-data ./Predicting-Drug-Consumption
+sudo chmod -R 755 ./Predicting-Drug-Consumption
+
+echo "> Done"
 
 echo "> Restarting Apache ..."
 
