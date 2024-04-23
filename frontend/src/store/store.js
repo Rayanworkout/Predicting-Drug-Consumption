@@ -26,7 +26,7 @@ const useStore = create((set, get) => ({
     consumptionOrientationChart: false,
     setConsumptionOrientationChart : (consumptionOrientationChart) => set({consumptionOrientationChart}),
 
-    precisionConsumption:'',
+    precisionConsumption: '18-24',
     setPrecisionConsumption: (precisionConsumption) => set({precisionConsumption}),
 
 

@@ -6,7 +6,7 @@ import {age_range_param, gender_param, ethnicity_param, education_param, country
 import useStore from "@/store/store.js";
 
 export function ConsumptionGroupCheckbox() {
-    const { drugType, consumptionType, setApiParam} = useStore();
+    const { drugType, consumptionType, setApiParam, precisionConsumption, setPrecisionConsumption} = useStore();
 
     const paramsMapping = {
         by_age: age_range_param,
@@ -33,6 +33,7 @@ export function ConsumptionGroupCheckbox() {
     //Object for API
     useEffect(() => {
         const updatedParam = { ...paramsMapping[consumptionType], drug:drugType}
+        setPrecisionConsumption(radioValue)
         switch (consumptionType){
             case 'by_age':
                 updatedParam.age_range = radioValue;

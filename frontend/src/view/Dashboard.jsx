@@ -14,7 +14,6 @@ const Dashboard = ({title}) => {
         chartType, getFunctionToCall,setApiData, apiCorrelationData } = useStore();
 
     useEffect(() => {
-        console.log(apiCorrelationData)
         setApiData({
             age_range: "18-24",
             gender: null,
@@ -39,13 +38,13 @@ const Dashboard = ({title}) => {
             <span className={` flex flex-col gap-0 pb-3 lg:px-7`}>
                 <span className={` mb-10 `}>
                     <h1 className={`text-5xl md:text-6xl font-bold pb-3 tracking-tight text-white antialiasing`}>
-                        Drug : {FirstLetterUpperCase(drugType)}
+                        {chartType != 'consumption' ? FirstLetterUpperCase(chartType) +' '+ ReplaceUnderscoreSpace(consumptionType) : 'Drug : '+ FirstLetterUpperCase(drugType)}
                     </h1>
                     <p className={`
                            text-2xl 
                            md:text-3xl
                            font-bold tracking-tight text-white antialiasing`}>
-                        {FirstLetterUpperCase(chartType)} {ReplaceUnderscoreSpace(consumptionType)} : {precisionConsumption}
+                        { chartType == 'consumption' ? FirstLetterUpperCase(chartType) + ' ' + ReplaceUnderscoreSpace(consumptionType) + " : " +  ReplaceUnderscoreSpace(precisionConsumption) : ""}
                     </p>
                 </span>
                 <SortButton/>
@@ -59,8 +58,7 @@ const Dashboard = ({title}) => {
                     </div>
 
                     <Card className={`w-full flex-1`}>
-                        <CardContent
-                            className={`w-full h-72 md:min-h-[400px] bg-neutral-400 items-center justify-center p-0 m-0 rounded`}>
+                        <CardContent className={`w-full h-72 md:min-h-[400px] bg-neutral-400 items-center justify-center p-0 m-0 rounded`}>
                             <Graph/>
                         </CardContent>
                     </Card>
