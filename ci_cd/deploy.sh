@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# journalctl -u [service_name]service --since today
+# journalctl -u drug_app_webhook_listener.service --since today
 # or
-# journalctl -u [service_name]service --since today -f
+# journalctl -u drug_app_webhook_listener.service --since today -f
 
 # cat /var/log/apache2/backend-error.log
 
@@ -67,6 +67,6 @@ echo "> Done"
 
 echo "> Restarting Apache ..."
 
-sudo systemctl restart apache2
+sudo systemctl reload apache2.service
 
 echo "> Done"
