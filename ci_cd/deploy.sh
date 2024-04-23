@@ -1,24 +1,23 @@
 #!/bin/bash
 
-# journalctl -u drug_app_webhook_listener.service --since today
+# sudo journalctl -u drug_app_webhook_listener.service --since today
 # or
-# journalctl -u drug_app_webhook_listener.service --since today -f
+# sudo journalctl -u drug_app_webhook_listener.service --since today -f
 
 # cat /var/log/apache2/backend-error.log
 
-# This file must be in the root directory of the project
+# THIS FILE MUST BE IN THE ROOT DIRECTORY OF THE PROJECT
 
 # Stop if an error occurs
 set -e
 
 # Telegram bot token and chat id
-telegram_bot_token="BOT_TOKEN"
+telegram_bot_token="TOKEN"
 telegram_chat_id="CHAT_ID"
 
 echo "> Pulling changes ..."
-git pull origin main
+sudo git pull origin main
 echo "> Done"
-
 
 # BACKEND
 
@@ -39,9 +38,6 @@ echo "> Done"
 echo "> Filling database ..."
 python3 manage.py fill_database
 
-echo "> Done"
-
-
 # FRONTEND
 
 echo "> Installing frontend dependencies ..."
@@ -53,8 +49,6 @@ echo "> Done"
 
 echo "> Building frontend ..."
 npm run build
-
-echo "> Done"
 
 echo "> Fixing permissions ..."
 
@@ -70,3 +64,8 @@ echo "> Restarting Apache ..."
 sudo systemctl reload apache2.service
 
 echo "> Done"
+
+
+msg=$(jq -rn --arg x "Last build of 'drug consumption project' was successful" '$x|@uri')
+tg_url="https://api.telegram.org/bot$telegram_bot_token/sendMessage?chat_id=$telegram_chat_id&text=$msg"
+resp=$(curl -s "$tg_url")
