@@ -1,10 +1,18 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import ReactApexChart from "react-apexcharts";
 
 export function BarChartGraph({ apiData, orientation, legend = true, toolbar = true }) {
 
-    const keyData = Object.keys(apiData);
-    const valueData = Object.values(apiData);
+    const [valueData, setValueData] = useState({});
+
+    //Stream Api Object for round (2 digit after coma)
+    useEffect(() => {
+        const newValueData = {};
+        Object.entries(Object.values(apiData)).forEach(([key, value]) => {
+            newValueData[key] = Number(value).toFixed(4);
+        });
+        setValueData(newValueData);
+    }, [apiData]);
 
     const options = {
         legend: {
@@ -14,10 +22,16 @@ export function BarChartGraph({ apiData, orientation, legend = true, toolbar = t
             type: 'bar',
             toolbar: {
                 show: toolbar
-            }
+            },
+        },
+        dataLabels: {
+            enabled: true,
+            style: {
+                colors: ['#262626']
+            },
         },
         xaxis: {
-            categories: keyData,
+            categories: Object.keys(valueData),
         },
         plotOptions: {
             bar: {
@@ -25,15 +39,14 @@ export function BarChartGraph({ apiData, orientation, legend = true, toolbar = t
                 borderRadius: 4,
                 horizontal: orientation,
             },
-            dataLabels: {
-                enabled: true
-            },
+
+
         }
     };
 
     const series = [{
         name: 'consumption',
-        data: valueData
+        data: Object.values(valueData)
     }];
 
     return (

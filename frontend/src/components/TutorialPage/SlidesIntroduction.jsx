@@ -1,8 +1,11 @@
 import {styles} from "@/assets/style.js"
 import ShowCodeAlert from "@/components/TutorialPage/ShowCodeAlert.jsx";
 import {Button} from "@/components/ui/button.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import correlationImg from "@/assets/img/correlation_features_meaning.png"
+import RepartitionGraph from "@/components/RepartitionChart/RepartitionGraph.jsx";
+import useStore from "@/store/store.js";
+import BarChartConsumptionType from "@/components/BarChart/BarChartConsumptionType.jsx";
 const codeCorrelation =
     <div>
     <p>
@@ -91,9 +94,6 @@ export const SlideIntroduction = () => {
                     <li>Neuroticism</li>
                     <li>Extraversion</li>
                     <li>Openness to Experience</li>
-
-                </ul>
-                <ul className={styles.listDisc}>
                     <li>Agreeableness</li>
                     <li>Conscientiousness</li>
                 </ul>
@@ -155,6 +155,10 @@ export const SlideIntroduction = () => {
     );
 };
 export const SlideHowToReadChart = () => {
+    const {apiRepartitionData, getFunctionToCall, setChartType} = useStore();
+    useEffect(() => {
+        setChartType('repartition')
+    }, []);
     return (
         <div className={styles.textMainStyle}>
             <p className={styles.mainTitle}>
@@ -168,6 +172,17 @@ export const SlideHowToReadChart = () => {
                 need
                 to take this into account when analyzing the data.
             </p>
+            <div className = {`flex flex-col px-5 w-full items-center`}>
+                <div className={`w-full box-content mb-2 text-black h-[30vh] bg-neutral-50 rounded-md`}>
+                    <RepartitionGraph apiData={apiRepartitionData}/>
+                </div>
+                <div
+                    className={`flex flex-col w-fit p-2 rounded-md text-black bg-neutral-50 items-center space-y-3`}>
+                    <BarChartConsumptionType/>
+                    <Button variant="default_blue" onClick={() => getFunctionToCall()()}>Submit</Button>
+                </div>
+            </div>
+
             <p>
                 For example, we can see that there are 943 male respondents and 942 women. This feature is well
                 balanced,
@@ -312,13 +327,19 @@ export const SlideCorrelationExplanation = () => {
                 highest mean correlation.
             </p>
             <Button onClick={() => setIsOpen(!isOpen)} variant="outline" className = {`text-black w-fit`}>?</Button>
-            { isOpen ?
-                <div>
+                <div
+                    style={{
+                        opacity: isOpen ? 1 : 0,
+                        visibility: isOpen ? 'visible' : 'hidden',
+                        transition: 'opacity 300ms ease-in-out',
+                        height: isOpen ? '0%' : '100%'
+                    }}
+                    className = {`bg-neutral-50 mx-[10%] p-4 w-fit rounded-md text-black`}>
                     <p>How to read this output ?</p>
                     <p>For each feature, we can see the mean correlation for all drugs. The higher the mean, the more the feature is correlated with drug consumption.</p>
                     <p>The mean correlation between the Sensation Seeking score and the drug consumption is 0.25. This is the highest mean correlation.</p>
-                </div> : ''
-            }
+                </div>
+
             <p>
                 Once again, the sensation seeking score is ahead. It appears to be the most correlated feature with the drug
                 consumption of an individual. The Impulsive score is the second most correlated feature. As you can see,

@@ -19,6 +19,20 @@ const RepartitionGraph = ({apiData}) => {
                 show: true
             }
         },
+        tooltip:{
+            theme:'light',
+            style: {
+                fontSize: '12px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                colors: ['#FFF']
+            },
+        },
+        dataLabels: {
+            enabled: true,
+            style: {
+                colors: ['#262626']
+            },
+        },
         xaxis: {
             categories: consumptionValue,
 

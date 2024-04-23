@@ -14,19 +14,17 @@ import React from "react";
 import useStore from "@/store/store.js";
 import RepartitionChartDetail from "@/components/RepartitionChart/RepartitionChartDetail.jsx";
 import CorrelationChartDetail from "@/components/CorrelationChart/CorrelationChartDetail.jsx";
+import {FirstLetterUpperCase} from "@/tool/tool.js";
 export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
-    const { drugType, consumptionType, chartType, setChartType, getFunctionToCall} = useStore();
+    const { drugType, chartType, setChartType, getFunctionToCall} = useStore();
     function getComponentToRender(){
         switch (chartType){
-            case 'consumption-x':
-            case 'consumption-y':
+            case 'consumption':
                 return <BarChartDetail/>
             case 'repartition':
                 return <RepartitionChartDetail/>
             case 'correlation':
                 return <CorrelationChartDetail/>
-            case 'other':
-                return ""
         }
     }
 
@@ -39,14 +37,11 @@ export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
 
                 <div className="mx-auto w-full max-w-sm">
                     <DrawerHeader>
-                        {
-                            chartType != 'correlation' ?
-                            <DrawerTitle>{chartType.charAt(0).toUpperCase() + chartType.slice(1)}
-                                { chartType == 'consumption-x' || chartType == 'consumption-y' ? ` of ${drugType}` : ''} {consumptionType.replace('_', ' ')}
-                            </DrawerTitle>
-                                :
-                                ''
-                        }
+                        <DrawerTitle>{FirstLetterUpperCase(chartType)}
+                            {
+                                 chartType == 'consumption' ? ` of ${FirstLetterUpperCase(drugType)}` : ''
+                            }
+                        </DrawerTitle>
 
                         <DrawerDescription>Add some precision to your chart </DrawerDescription>
                     </DrawerHeader>
@@ -58,11 +53,11 @@ export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
 
                     <DrawerFooter>
                         <DrawerClose asChild>
-                        <Button onClick={() => getFunctionToCall()()}>Submit</Button>
+                        <Button className = {`bg-blue-500 hover:bg-blue-800`} onClick={() => getFunctionToCall()()}>Submit</Button>
                         </DrawerClose>
 
                         <DrawerClose asChild>
-                            <Button variant="outline">Cancel</Button>
+                            <Button className = {`bg-neutral-500 hover:bg-neutral-600`}>Cancel</Button>
                         </DrawerClose>
                     </DrawerFooter>
                 </div>

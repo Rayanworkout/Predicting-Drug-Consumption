@@ -7,7 +7,9 @@ export function BarChartConsumptionType() {
 
     return (
         <RadioGroup defaultValue={consumptionType} onValueChange={setConsumptionType}>
-            <p>Consumption by :</p>
+            <p>
+                {consumptionType == 'consumption' ? 'Consumption ' : 'Repartition '}
+                by :</p>
             <div className={`flex flex-wrap gap-2`}>
                 <div className="flex items-center space-x-2">
                     <RadioGroupItem value="by_age" id="r1"/>

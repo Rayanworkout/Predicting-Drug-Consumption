@@ -1,19 +1,12 @@
 import {Label} from "@/components/ui/label.jsx";
 import {useEffect, useState} from "react";
 import {RadioGroup, RadioGroupItem} from "@/components/ui/radio-group.jsx";
-import {
-    age_range_param,
-    gender_param,
-    ethnicity_param,
-    education_param,
-    country_param
+import {age_range_param, gender_param, ethnicity_param, education_param, country_param
 } from "@/components/BarChart/consumption.js"
 import useStore from "@/store/store.js";
 
 export function ConsumptionGroupCheckbox() {
-    const { drugType} = useStore();
-    const { consumptionType } = useStore();
-    const { apiParam, setApiParam} = useStore()
+    const { drugType, consumptionType, setApiParam} = useStore();
 
     const paramsMapping = {
         by_age: age_range_param,
@@ -65,21 +58,21 @@ export function ConsumptionGroupCheckbox() {
 
 
     const GroupRadioButtonComponent = () => (
-        <div>
+        <>
             {getComponentToRender(consumptionType, consumptionValues).map((item, index) => (
-                <div key={index} className = {`flex items-center space-x-2 space-y-0`}>
-                    <RadioGroupItem value={item} id={`r${index}`}/>
-                    <Label className = {`pb-1`} htmlFor={`r${index}`}>{item}</Label>
+                <div key={index} className={`box-content flex basis-1/7 space-y-2 items-center`}>
+                    <RadioGroupItem className = {`mr-2`} value={item} id={`r${index}`}/>
+                    <Label className = {`pb-2 mr-2`} htmlFor={`r${index}`}>{item}</Label>
                 </div>
             ))}
-        </div>
+        </>
     );
 
     return (
-        <div className="mt-3 h-fit min-h-[100px]">
+        <div className="mt-3">
             <RadioGroup defaultValue={radioValue} onValueChange={handleRadioValueChange}>
                 <p>Precision :</p>
-                <div className = {`flex flex-wrap gap-2 mb-4`}>
+                <div className = {`flex flex-wrap mb-4`}>
                     {GroupRadioButtonComponent()}
                 </div>
             </RadioGroup>

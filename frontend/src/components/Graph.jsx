@@ -3,16 +3,13 @@ import BarChartGraph from "@/components/BarChart/BarChartGraph.jsx";
 import useStore from "@/store/store.js";
 import RepartitionGraph from "@/components/RepartitionChart/RepartitionGraph.jsx";
 import CorrelationChart from "@/components/CorrelationChart/CorrelationChart.jsx";
-import CorrelationChartDetail from "@/components/CorrelationChart/CorrelationChartDetail.jsx";
 
 export function Graph () {
-    const { chartType, consumptionType, apiData, apiRepartitionData, apiCorrelationData} = useStore();
+    const { chartType, consumptionType, consumptionOrientationChart, apiData, apiRepartitionData, apiCorrelationData} = useStore();
     function getChartToRender(){
         switch (chartType){
-            case 'consumption-y':
-                return <BarChartGraph apiData={apiData.data} orientation={false}/>
-            case 'consumption-x':
-                return <BarChartGraph apiData={apiData.data} orientation={true}/>
+            case 'consumption':
+                return <BarChartGraph apiData={apiData.data} orientation={consumptionOrientationChart}/>
             case 'repartition':
                 return <RepartitionGraph apiData={apiRepartitionData}/>
             case 'correlation':
@@ -22,9 +19,6 @@ export function Graph () {
                     case 'feature_to_drug_mean' :
                         return <BarChartGraph apiData={apiCorrelationData} orientation={true}/>
                 };
-            case 'regression':
-                return ''
-
         }
     }
     return (

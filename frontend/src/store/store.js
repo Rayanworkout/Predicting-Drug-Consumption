@@ -7,11 +7,11 @@ import {
 } from "@/api_/api_.js";
 
 const useStore = create((set, get) => ({
-    chartType: 'consumption-x',
+    chartType: 'consumption',
     setChartType: (chartType) => set({ chartType }),
 
     drugValues : ["alcohol", "amphet", "amyl", "benzos", "caff", "cannabis", "choc", "coke", "crack", "ecstasy", "heroin", "ketamine", "legalh", "lsd", "meth", "mushrooms", "nicotine", "semer", "vsa"],
-    drugType: 'alcohol',
+    drugType: 'cannabis',
     setDrugType: (drugType) => {
         const currentApiParam = get().apiParam;
         set({
@@ -22,6 +22,9 @@ const useStore = create((set, get) => ({
 
     consumptionType: 'by_age',
     setConsumptionType: (consumptionType) => set({consumptionType}),
+
+    consumptionOrientationChart: false,
+    setConsumptionOrientationChart : (consumptionOrientationChart) => set({consumptionOrientationChart}),
 
     precisionConsumption:'',
     setPrecisionConsumption: (precisionConsumption) => set({precisionConsumption}),
@@ -42,8 +45,7 @@ const useStore = create((set, get) => ({
     getFunctionToCall: () => {
         const { chartType, apiParam, consumptionType, setApiData, setApiRepartitionData, setApiCorrelationData } = get();
         switch (chartType) {
-            case 'consumption-x':
-            case 'consumption-y':
+            case 'consumption':
                 return () => {
                     GET_CONSUMPTION_DATA(new URLSearchParams(apiParam), consumptionType)
                         .then(data => setApiData(data))

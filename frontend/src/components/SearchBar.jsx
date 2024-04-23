@@ -29,11 +29,11 @@ export function SearchBar () {
                 onFocus={handleFocus}
                 onChange={(event) => setDrugType(event.target.value)}
                 onBlur={handleBlur}
-                className = {`text-white bg-neutral-700 hover:bg-neutral-500 placeholder:text-neutral-200 placeholder:italic placeholder:hover:text-white ease-out duration-100`}
+                className = {`ring-offset-blue-500 `}
             />
             {isFocused && (
                 <CardContent
-                    className = {`absolute bg-white w-full max-h-56 rounded overflow-y-auto`}>
+                    className = {`absolute mt-1 bg-white w-full max-h-56 rounded overflow-y-auto`}>
                     {filteredData.length > 0 ? (
                         filteredData.map((item, index) => (
                             <p key={index} onClick={() => handleSelect(item)}

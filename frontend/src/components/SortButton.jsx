@@ -15,7 +15,7 @@ export default function SortButton () {
                 <div>
                     <Menu.Button
                         className="inline-flex w-full justify-center rounded-md outline-1 border border-slate-200
-                            bg-neutral-700 hover:bg-neutral-500 px-4 py-2 text-sm font-medium text-white
+                            bg-neutral-50 hover:bg-neutral-200 px-4 py-2 text-sm font-medium text-[#00000]
                              focus:outline-1 focus-visible:ring-2 focus-visible:ring-white/75 ease-out duration-100">
                         Sort By
                     </Menu.Button>
@@ -35,7 +35,7 @@ export default function SortButton () {
                             <div key={item.id} className="px-1 py-1 ">
                             <Menu.Item>
                                     <button
-                                        className={'text-gray-900 group flex w-full items-center rounded-md px-2 py-2 text-sm'}
+                                        className={'text-gray-900 hover:bg-neutral-200 group flex w-full items-center rounded-md px-2 py-2 text-sm'}
                                     >
                                         {item.sort}
                                     </button>
