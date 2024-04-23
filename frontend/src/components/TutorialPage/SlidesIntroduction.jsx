@@ -6,6 +6,7 @@ import correlationImg from "@/assets/img/correlation_features_meaning.png"
 import RepartitionGraph from "@/components/RepartitionChart/RepartitionGraph.jsx";
 import useStore from "@/store/store.js";
 import BarChartConsumptionType from "@/components/BarChart/BarChartConsumptionType.jsx";
+import CorrelationChart from "@/components/CorrelationChart/CorrelationChart.jsx";
 const codeCorrelation =
     <div>
     <p>
@@ -223,6 +224,12 @@ export const SlideHowToReadChart = () => {
     );
 };
 export const SlideSummary = () => {
+    const {getFunctionToCall, setChartType,setConsumptionType} = useStore();
+    useEffect(() => {
+        setChartType('correlation')
+        setConsumptionType('drug_and_personality')
+        getFunctionToCall()()
+    }, []);
     return (
         <div className={styles.textMainStyle}>
             <p>
@@ -230,7 +237,11 @@ export const SlideSummary = () => {
                 features may not be as strong as we thought. Let's now analyze the correlation between drug consumption
                 and personality traits. For that, we'll use a correlation matrix.
             </p>
-
+            <div className={`flex flex-col px-5 w-full items-center`}>
+                <div className={`w-full box-content mb-2 text-black h-[30vh] bg-neutral-50 rounded-md`}>
+                    <CorrelationChart/>
+                </div>
+            </div>
             <p>
                 This matrix shows the correlation score of each personality trait with each drug. The higher the score,
                 the more the personality trait is correlated with the drug consumption.
