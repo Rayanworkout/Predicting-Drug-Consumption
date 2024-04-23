@@ -15,7 +15,7 @@ telegram_bot_token="BOT_TOKEN"
 telegram_chat_id="CHAT_ID"
 
 echo "> Pulling changes ..."
-# git pull origin main
+git pull origin main
 echo "> Done"
 
 
@@ -38,10 +38,9 @@ echo "> Done"
 echo "> Filling database ..."
 python3 manage.py fill_database
 
-# Running backend server in the background
-python3 manage.py runserver &
-
 echo "> Done"
+
+gunicorn drugs_consumption_analytics.wsgi:application --bind 127.0.0.1:8000
 
 # FRONTEND
 
@@ -54,5 +53,9 @@ echo "> Done"
 
 echo "> Building frontend ..."
 npm run build
+
+echo "> Restarting Apache ..."
+
+sudo systemctl restart apache2
 
 echo "> Done"
