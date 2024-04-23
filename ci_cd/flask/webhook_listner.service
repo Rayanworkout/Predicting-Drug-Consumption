@@ -1,0 +1,14 @@
+[Unit]
+Description=webhook listener
+After=network.target
+
+[Service]
+WorkingDirectory=/home/rayan/dev/Predicting-Drug-Consumption/ci_cd/flask
+ExecStart=/home/rayan/dev/Predicting-Drug-Consumption/ci_cd/flask/.venv/bin/python /home/rayan/dev/Predicting-Drug-Consumption/ci_cd/flask/main.py
+Restart=on-failure
+RestartSec=500ms
+User=rayan
+Group=sudo
+
+[Install]
+WantedBy=multi-user.target

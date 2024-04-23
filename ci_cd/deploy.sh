@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# journalctl -u flask_listener.service --since today
+# journalctl -u drug_app_webhook_listener.service --since today
 # or
-# journalctl -u flask_listener.service --since today -f
+# journalctl -u drug_app_webhook_listener.service --since today -f
 
+# cat /var/log/apache2/backend-error.log
 
 # This file must be in the root directory of the project
 
@@ -15,7 +16,7 @@ telegram_bot_token="BOT_TOKEN"
 telegram_chat_id="CHAT_ID"
 
 echo "> Pulling changes ..."
-# git pull origin main
+git pull origin main
 echo "> Done"
 
 
@@ -38,10 +39,8 @@ echo "> Done"
 echo "> Filling database ..."
 python3 manage.py fill_database
 
-# Running backend server in the background
-python3 manage.py runserver &
-
 echo "> Done"
+
 
 # FRONTEND
 
@@ -54,5 +53,20 @@ echo "> Done"
 
 echo "> Building frontend ..."
 npm run build
+
+echo "> Done"
+
+echo "> Fixing permissions ..."
+
+cd ../..
+
+sudo chown -R www-data:www-data ./Predicting-Drug-Consumption
+sudo chmod -R 755 ./Predicting-Drug-Consumption
+
+echo "> Done"
+
+echo "> Restarting Apache ..."
+
+sudo systemctl reload apache2.service
 
 echo "> Done"
