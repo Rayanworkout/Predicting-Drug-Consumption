@@ -16,7 +16,16 @@ telegram_bot_token="TOKEN"
 telegram_chat_id="CHAT_ID"
 
 echo "> Pulling changes ..."
-sudo git pull origin main
+
+# Using a variable to capture the error message
+error_message=$(sudo git pull origin main 2>&1)
+
+if [[ $error_message == *"error"* ]]; then
+    msg=$(jq -rn --arg x "An error occurred: $error_message" '$x|@uri')
+    tg_url="https://api.telegram.org/bot$telegram_bot_token/sendMessage?chat_id=$telegram_chat_id&text=$msg"
+    resp=$(curl -s "$tg_url")
+    exit 1
+
 echo "> Done"
 
 # BACKEND
