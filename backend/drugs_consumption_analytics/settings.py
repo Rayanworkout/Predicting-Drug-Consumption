@@ -13,11 +13,13 @@ load_dotenv(BASE_DIR / ".env")
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DJANGO_DEBUG") == "True"
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '194.135.81.27']
 
-ALLOWED_HOSTS = [] if DEBUG else ["*"]
-
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost',
+    'http://127.0.0.1', 
+    'http://194.135.81.27',
+]
 
 # Application definition
 
@@ -38,6 +40,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
