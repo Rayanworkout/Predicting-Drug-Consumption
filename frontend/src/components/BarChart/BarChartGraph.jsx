@@ -31,7 +31,7 @@ export function BarChartGraph({ apiData, orientation, legend = true, toolbar = t
             },
         },
         xaxis: {
-            categories: Object.keys(valueData),
+            categories: Object.keys(apiData),
         },
         plotOptions: {
             bar: {

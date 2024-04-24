@@ -46,7 +46,7 @@ const RepartitionGraph = ({apiData}) => {
     };
 
     const series = [{
-        name: 'consumption',
+        name: 'repartition',
         data: countValue
     }];
 

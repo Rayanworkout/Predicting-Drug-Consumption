@@ -1,7 +1,7 @@
 import SearchBar from "@/components/SearchBar.jsx";
 import {Card, CardContent} from "@/components/ui/card.jsx";
 import SortButton from "@/components/SortButton.jsx";
-import {BarChartBig, BarChartHorizontalBig, LineChart, PieChart} from "lucide-react";
+import {BarChartBig, LineChart, PieChart} from "lucide-react";
 import {GraphDrawer} from "@/components/GraphDrawer.jsx";
 import Graph from "@/components/Graph.jsx";
 import {Button} from "@/components/ui/button.jsx";

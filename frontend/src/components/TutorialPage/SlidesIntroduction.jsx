@@ -4,12 +4,20 @@ import {Button} from "@/components/ui/button.jsx";
 import {useEffect, useState} from "react";
 import correlationImg from "@/assets/img/correlation_features_meaning.png"
 import RepartitionGraph from "@/components/RepartitionChart/RepartitionGraph.jsx";
+import BarChartGraph from "@/components/BarChart/BarChartGraph.jsx";
 import useStore from "@/store/store.js";
 import BarChartConsumptionType from "@/components/BarChart/BarChartConsumptionType.jsx";
+import ConsumptionGroupCheckbox from "@/components/BarChart/ConsumptionGroupCheckbox.jsx"
 import CorrelationChart from "@/components/CorrelationChart/CorrelationChart.jsx";
+import {CircleAlert} from "lucide-react";
+import {GET_CONSUMPTION_DATA} from "@/api_/api_"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group.jsx";
+import { Label } from "@/components/ui/label.jsx";
+
 const codeCorrelation =
     <div>
-    <p>
+        <code>
+<p>
         correlations = []
         for drug in drugs:
         for feature in features:
@@ -21,28 +29,8 @@ const codeCorrelation =
     <p>
         print(*correlations[:30], sep='\n')
     </p>
-    <ul className="list-disc pl-5">
-        <li>('Cannabis', 'SS', 0.45613655450406493)</li>
-        <li>('Cannabis', 'Oscore', 0.41416262189358455)</li>
-        <li>('Legalh', 'SS', 0.4055778552531838)</li>
-        <li>('Ecstasy', 'SS', 0.38818619655992304)</li>
-        <li>('Mushrooms', 'SS', 0.3782853777625287)</li>
-        <li>('LSD', 'Oscore', 0.36975911051910304)</li>
-        <li>('Mushrooms', 'Oscore', 0.36913941481128937)</li>
-        <li>('LSD', 'SS', 0.36553577743377336)</li>
-        <li>('Coke', 'SS', 0.3433520664032049)</li>
-        <li>('Amphet', 'SS', 0.33110522351156163)</li>
-        <li>('Legalh', 'Oscore', 0.31732226610206776)</li>
-        <li>('Cannabis', 'Impulsive', 0.3105287456498304)</li>
-        <li>('Nicotine', 'SS', 0.3056345911961203)</li>
-        <li>('Ecstasy', 'Oscore', 0.2963057088389688)</li>
-        <li>('Amphet', 'Impulsive', 0.2894381837447692)</li>
-        <li>('Benzos', 'Nscore', 0.27222065600294526)</li>
-        <li>('Legalh', 'Impulsive', 0.2675787698375155)</li>
-        <li>('Mushrooms', 'Impulsive', 0.26368389461899877)</li>
-        <li>('Ecstasy', 'Impulsive', 0.2608640467105362)</li>
-        <li>('Coke', 'Impulsive', 0.2600421406491375)</li>
-    </ul>
+        </code>
+    
 </div>
 const codePython=
     <div className={`flex flex-col`}>
@@ -61,28 +49,15 @@ const codePython=
         <p>sorted_grouped_data = sorted(grouped_data.items(), key=lambda x: x[1]['mean'], reverse=True)</p>
         <p>final_data = &#123;feature: data['mean'] for feature, data in sorted_grouped_data&#125;</p>
         <p>for key, value in final_data.items():</p>
-        <p>print(key, "-->", value)</p>
+        <p>print(key, "--{">"}", value)</p>
         <p>After computing the mean correlation of all drugs for each feature, the output is the following:</p>
-        <ul>
-            <li>SS --> 0.24750768760730996</li>
-            <li>Impulsive --> 0.1835408142616583</li>
-            <li>Oscore --> 0.18211357240362108</li>
-            <li>Nscore --> 0.09115772430291505</li>
-            <li>Ethnicity --> 0.07279538563388822</li>
-            <li>Escore --> -0.005960554225981149</li>
-            <li>Ascore --> -0.10339419036206977</li>
-            <li>Education --> -0.11093035147121946</li>
-            <li>Cscore --> -0.1526333011851522</li>
-            <li>Gender --> -0.15812904754418552</li>
-            <li>Age --> -0.1923893011427491</li>
-            <li>Country --> -0.25053952952862485</li>
-        </ul>
+        
     </div>
 export const SlideIntroduction = () => {
     return (
         <div className={styles.textMainStyle}>
             <p className={styles.mainTitle}>
-                What factors influence the most drug consumption of an individual ? A case study
+                Investigating the main factors that influence drug consumption in individuals: A case study.
             </p>
             <p>
                 We have a database of 1885 respondents. For each, 12 attributes and their score is known. These
@@ -100,7 +75,7 @@ export const SlideIntroduction = () => {
                 </ul>
             </div>
             <p>
-                We also have access to the Impulsiveness and the Sensation Seeking scores of each respondent.
+                We also have access to the <b>Impulsiveness</b> and the <b>Sensation Seeking</b> scores of each respondent.
             </p>
 
             <p>
@@ -110,25 +85,63 @@ export const SlideIntroduction = () => {
                 respondent is very neurotic.
             </p>
             <p>
-                additionally to these 7 personality attributes, we also have access to level of education, age, gender,
+                Additionally to these 7 personality attributes, we also have access to level of education, age, gender,
                 country of residence and ethnicity of each respondent.
             </p>
 
-            <p>
-                Note that in certain countries, ethnicity statistics are illegal.
+            <p className={"flex gap-x-2 text-black bg-slate-50 w-fit rounded-sm px-3 py-0.5"}>
+                <CircleAlert className={"text-red-500"}/>Note that in certain countries, ethnicity statistics are illegal.
             </p>
             <p>
-                In addition, participants were questioned about their use of 18 legal and illegal drugs: alcohol,
-                amphetamines, amyl nitrite, benzodiazepine, cannabis, chocolate, cocaine, caffeine, crack, ecstasy,
-                heroin,
-                ketamine, legal highs, LSD, methadone, mushrooms, nicotine and volatile substance abuse and one
+                In addition, participants were questioned about their use of 18 legal and illegal drugs:
+            </p>
+
+            <div className="box-content flex flex-wrap w-full gap-x-5">
+                <ul className={`gap-x-6 `}>
+                    <li className="mr-2">- alcohol</li>
+                    <li className="mr-2">- amphetamines</li>
+                    <li className="mr-2">- amyl nitrite</li>
+                    <li className="mr-2">- benzodiazepine</li>
+                    <li className="mr-2">- cannabis</li>
+                    <li className="mr-2">- chocolate</li>
+                </ul>
+                <ul className={`gap-x-6`}>
+                    <li className="mr-2">- cocaine</li>
+                    <li className="mr-2">- caffeine</li>
+                    <li className="mr-2">- crack</li>
+                    <li className="mr-2">- ecstasy</li>
+                    <li className="mr-2">- heroin</li>
+                    <li className="mr-2">- ketamine</li>
+                </ul>
+                <ul className={`gap-x-6 `}>
+                    <li className="mr-2">- legal highs</li>
+                    <li className="mr-2">- LSD</li>
+                    <li className="mr-2">- methadone</li>
+                    <li className="mr-2">- nicotine</li>
+                </ul>
+            </div>
+            <p>
+                and volatile substance abuse and one
                 fictitious
                 drug (Semeron) which was introduced to identify over-claimers.
             </p>
             <p>
-                For each drug they had to select one of the answers: never used the drug, used it over a decade ago, or
-                in
-                the last decade, year, month, week, or day.
+                For each drug they had to select one of the answers:
+            </p> 
+            <div className="box-content flex flex-wrap w-full">
+                <ul className={` gap-x-6 `}>
+                    <li className="mr-2">- never used the drug</li>
+                    <li className="mr-2">- used it over a decade ago</li>
+                    <li className="mr-2">- in the last decade</li>
+                </ul>
+                <ul className={`gap-x-6 `}>
+                    <li className="mr-2">- year</li>
+                    <li className="mr-2">- month</li>
+                    <li className="mr-2">- week</li>
+                    <li className="mr-2">- day</li>
+                </ul>
+            </div>
+            <p>
             </p>
             <p className={styles.secondTitle}>
                 Things to keep in mind during this analysis:
@@ -156,9 +169,11 @@ export const SlideIntroduction = () => {
     );
 };
 export const SlideHowToReadChart = () => {
-    const {apiRepartitionData, getFunctionToCall, setChartType} = useStore();
+    const {apiRepartitionData, getFunctionToCall, setChartType, setConsumptionType} = useStore();
     useEffect(() => {
-        setChartType('repartition')
+        setChartType('repartition');
+        setConsumptionType('by_gender')
+        getFunctionToCall()()
     }, []);
     return (
         <div className={styles.textMainStyle}>
@@ -201,7 +216,7 @@ export const SlideHowToReadChart = () => {
                 example, we could ask ourselves:
             </p>
             <ul className={styles.listDisc}>
-                <li>Which age range consumes the most drugs Coke ?</li>
+                <li>Which age range consumes the most Cocaine ?</li>
                 <li>Which gender consumes the most Alcohol ?</li>
             </ul>
             <p>
@@ -209,20 +224,47 @@ export const SlideHowToReadChart = () => {
                 educated
                 a person is, the more drugs he/she consumes. We will see if these ideas are confirmed by the data.
             </p>
+        </div>
+    );
+};
+export const ExplanationConsumption = () => {
+    const {apiData, setApiData,setDrugType,precisionConsumption,setPrecisionConsumption, setConsumptionType} = useStore();
+    
+    useEffect(() => {
+        setDrugType('meth')
+        setPrecisionConsumption('16')
+        setConsumptionType('by_education')
+        GET_CONSUMPTION_DATA(new URLSearchParams({education:'16', drug:'meth'}), 'by_education').then(data => setApiData(data))
 
+    }, []);
+    return (
+        <div className={styles.textMainStyle}>
+            <p className={styles.mainTitle}>
+                Correlation between personality and consumption of each drug
+            </p>
+            <div className = {`flex flex-col px-5 w-full h-auto items-center`}>
+                <div className={`w-full box-content mb-2 text-black h-[60vh] md:h-[50vh] bg-neutral-50 rounded-md`}>
+                    <BarChartGraph apiData={apiData.data} orientation={false}/>
+                </div>
+                <div
+                    className={`flex flex-col w-fit p-2 rounded-md text-black bg-neutral-50 items-center space-y-3`}>
+                    <ConsumptionGroupCheckbox/>
+                    <Button variant="default_blue" onClick={() => {GET_CONSUMPTION_DATA(new URLSearchParams({education:precisionConsumption, drug: 'meth'}), 'by_education').then(data => setApiData(data))}}>Submit</Button>
+                </div>
+            </div>
             <p>
                 As we can see, the meth consumption of people who left school at 16 years and those with a professional
                 certificate / diploma are almost the same.
             </p>
 
             <p>
-                When you're done checking drug consumption for each non-personality related feature, you can move on to
+                When you're done checking meth consumption for each non-personality related feature, you can move on to
                 the
                 next step.
             </p>
         </div>
     );
-};
+}
 export const SlideSummary = () => {
     const {getFunctionToCall, setChartType,setConsumptionType} = useStore();
     useEffect(() => {
@@ -232,6 +274,7 @@ export const SlideSummary = () => {
     }, []);
     return (
         <div className={styles.textMainStyle}>
+
             <p>
                 We saw in the previous step that the correlation between drug consumption and non-personality related
                 features may not be as strong as we thought. Let's now analyze the correlation between drug consumption
@@ -255,11 +298,16 @@ export const SlideSummary = () => {
             <p>
                 This helps understand which personality trait is correlated or not to the use of a specific drug.
             </p>
+            <p>
+            When you're done observing correlations, you can carry on to the next step.
+            </p>
         </div>
     );
 };
 
 export const SlideCorrelationIntroduction = () => {
+    const [answer, setAnswer] = useState('')
+    const [selectedValue, setSelectedValue] = useState('');
     return (
         <div className={styles.textMainStyle}>
             <p className={styles.secondTitle}>
@@ -283,8 +331,35 @@ export const SlideCorrelationIntroduction = () => {
             <p className={styles.secondTitle}>
                 We start by observing the highest correlations between each drug and the features
             </p>
+            <p>
+            <div className="flex gap-x-5">
+            <ul className="list-disc pl-5">
+                <li>('Cannabis', 'SS', 0.456)</li>
+                <li>('Cannabis', 'Oscore', 0.414)</li>
+                <li>('Legalh', 'SS', 0.405)</li>
+                <li>('Ecstasy', 'SS', 0.388)</li>
+                <li>('Mushrooms', 'SS', 0.378)</li>
+                <li>('LSD', 'Oscore', 0.369)</li>
+                <li>('Mushrooms', 'Oscore', 0.369)</li>
+                <li>('LSD', 'SS', 0.365)</li>
+                <li>('Coke', 'SS', 0.343)</li>
+                <li>('Amphet', 'SS', 0.331)</li>
+            </ul>
+            <ul className="list-disc pl-5">
+                <li>('Legalh', 'Oscore', 0.317)</li>
+                <li>('Cannabis', 'Impulsive', 0.310)</li>
+                <li>('Nicotine', 'SS', 0.305)</li>
+                <li>('Ecstasy', 'Oscore', 0.296)</li>
+                <li>('Amphet', 'Impulsive', 0.289)</li>
+                <li>('Benzos', 'Nscore', 0.272)</li>
+                <li>('Legalh', 'Impulsive', 0.267)</li>
+                <li>('Mushrooms', 'Impulsive', 0.263)</li>
+                <li>('Ecstasy', 'Impulsive', 0.260)</li>
+                <li>('Coke', 'Impulsive', 0.260)</li>
+            </ul>
+            </div>
+            </p>
             <ShowCodeAlert text={codeCorrelation} textButtonTrigger={'show me the code!'}/>
-
             <p>
                 This code snippet computes the 20 highest correlations between each drug and the known features. For
                 example, the first line of the output shows that the correlation between the Sensation Seeking score and
@@ -294,9 +369,8 @@ export const SlideCorrelationIntroduction = () => {
                 likely to consume Cannabis.
             </p>
 
-            <p>
-                We can witness that the 20 highest correlations are not about age, country or ethnicity, but only about
-                characteristics of the person.
+            <p className={'text-base md:text-xl'}>
+                We can witness that the 20 highest correlations are not about age, country or ethnicity, but only about characteristics of the person.
             </p>
 
             <p>
@@ -316,10 +390,36 @@ export const SlideCorrelationIntroduction = () => {
                 and we don't really care about a particular drug, right ?
             </p>
 
-            <p>
-                How could we find the most correlated feature with the drug consumption in general with this output ?
+            <p className={'text-base md:text-xl underline underline-offset-2'}>
+                How can we determine which feature has the highest correlation with drug consumption using this output ?
             </p>
-            <Button variant="outline" className = {`text-black w-fit`}>Start Qcm</Button>
+            <div className="flex gap-x-4">
+            <div className="rounded-md w-fit bg-slate-50 text-black">
+                <RadioGroup onValueChange={setSelectedValue}>
+                    <div className={`flex flex-col gap-2 p-6`}>
+                        <div className="flex items-center space-x-2">
+                            <RadioGroupItem value='good_answer' id="r1"/>
+                            <Label htmlFor="r1">Sum all the values of the same drug</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <RadioGroupItem value='bad_answer' id="r2"/>
+                            <Label htmlFor="r2">Compute the mean for each personality trait</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <RadioGroupItem value='zebi_answer' id="r3"/>
+                            <Label htmlFor="r3">Look at the highest value for each</Label>
+                        </div>
+                    </div>
+                </RadioGroup>
+                <div className="w-full flex justify-end mb-5 pr-5">
+                    <Button onClick={() => setAnswer(selectedValue)} className="bg-blue-500" >Check answer</Button>
+                </div>
+            </div>
+            <div className="bg-slate-50 p-6 h-auto rounded-md text-black">
+                {answer !== '' ? (answer === 'good_answer' ? <p>Bonne Reponse</p> : <p>Mauvaise réponse</p>) : <p>Select une réponse</p> }
+            </div>
+            </div>
+            
         </div>
     );
 };
@@ -331,6 +431,25 @@ export const SlideCorrelationExplanation = () => {
             <p>
                 One way to achieve that would be to compute for each feature the mean of the correlation with all drugs.
             </p>
+            <div className="flex gap-x-5">
+                <ul className="">
+                    <li>SS --{">"} 0.247</li>
+                    <li>Impulsive --{">"} 0.183</li>
+                    <li>Oscore --{">"} 0.182</li>
+                    <li>Nscore --{">"} 0.091</li>
+                    <li>Ethnicity --{">"} 0.0727</li>
+                    <li>Escore --{">"} -0.005</li>
+
+                </ul>
+                <ul className="">
+                    <li>Ascore --{">"} -0.103</li>
+                    <li>Education --{">"} -0.110</li>
+                    <li>Cscore --{">"} -0.152</li>
+                    <li>Gender --{">"} -0.158</li>
+                    <li>Age --{">"} -0.192</li>
+                    <li>Country --{">"} -0.250</li>
+                </ul>
+            </div>
             <ShowCodeAlert text={codePython} textButtonTrigger={'show me the code!'}/>
 
             <p>
