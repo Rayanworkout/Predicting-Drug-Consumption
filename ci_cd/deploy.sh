@@ -25,6 +25,7 @@ if [[ $error_message == *"error"* ]]; then
     tg_url="https://api.telegram.org/bot$telegram_bot_token/sendMessage?chat_id=$telegram_chat_id&text=$msg"
     resp=$(curl -s "$tg_url")
     exit 1
+fi
 
 echo "> Done"
 
