@@ -11,14 +11,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env")
 
 env_key = os.getenv("DJANGO_SECRET_KEY")
-SECRET_KEY = env_key if env_key is not None else "local_secret_key"
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '194.135.81.27']
+SECRET_KEY = env_key if env_key else "local_secret_key"
+
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "194.135.81.27"]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost',
-    'http://127.0.0.1', 
-    'http://194.135.81.27',
+    "http://localhost",
+    "http://127.0.0.1",
+    "http://194.135.81.27",
 ]
 
 # Application definition
@@ -40,7 +41,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
