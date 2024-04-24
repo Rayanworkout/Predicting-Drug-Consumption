@@ -10,8 +10,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Load environment variables from .env file
 load_dotenv(BASE_DIR / ".env")
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+env_key = os.getenv("DJANGO_SECRET_KEY")
+SECRET_KEY = env_key if env_key is not None else "local_secret_key"
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '194.135.81.27']
 
