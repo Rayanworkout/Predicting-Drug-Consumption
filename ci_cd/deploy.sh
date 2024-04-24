@@ -73,7 +73,7 @@ echo "> Restarting Apache ..."
 
 sudo systemctl reload apache2.service
 
-echo "> Done"
+echo "> Done, check website at http://194.135.81.27/"
 
 
 msg=$(jq -rn --arg x "Last build of 'drug consumption project' was successful" '$x|@uri')
