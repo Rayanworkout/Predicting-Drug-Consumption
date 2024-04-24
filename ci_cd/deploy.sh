@@ -4,7 +4,7 @@
 # or
 # sudo journalctl -u drug_app_webhook_listener.service --since today -f
 
-# cat /var/log/apache2/backend-error.log
+# sudo cat /var/log/apache2/backend-error.log
 
 # THIS FILE MUST BE IN THE ROOT DIRECTORY OF THE PROJECT
 
