@@ -4,12 +4,9 @@
 # or
 # sudo journalctl -u drug_app_webhook_listener.service --since today -f
 
-# sudo cat /var/log/apache2/backend-error.log
+# cat /var/log/apache2/backend-error.log
 
 # THIS FILE MUST BE IN THE ROOT DIRECTORY OF THE PROJECT
-
-# Stop if an error occurs
-set -e
 
 # Telegram bot token and chat id
 telegram_bot_token="TOKEN"
@@ -18,16 +15,22 @@ telegram_chat_id="CHAT_ID"
 echo "> Pulling changes ..."
 
 # Using a variable to capture the error message
-error_message=$(sudo git pull origin main 2>&1)
+output=$(sudo git pull origin main 2>&1)
 
-if [[ $error_message == *"error"* ]]; then
-    msg=$(jq -rn --arg x "An error occurred: $error_message" '$x|@uri')
+if [[ $output == *"Aborting"* ]]; then
+    msg=$(jq -rn --arg x "An error occurred while pulling main branch." '$x|@uri')
     tg_url="https://api.telegram.org/bot$telegram_bot_token/sendMessage?chat_id=$telegram_chat_id&text=$msg"
     resp=$(curl -s "$tg_url")
+    echo "> Error: ${output:0:64}"
     exit 1
 fi
 
+exit 0
+
 echo "> Done"
+
+# Stop if an error occurs
+set -e
 
 # BACKEND
 
