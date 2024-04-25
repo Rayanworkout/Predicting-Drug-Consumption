@@ -12,7 +12,7 @@ const CorrelationChart = () => {
                     name: key,
                     data: Object.entries(values).map(([drug, value]) => ({
                         x: drug,
-                        y: value
+                        y: Number(value).toFixed(4)
                     }))
                 };
             });

@@ -1,5 +1,12 @@
 import {BarChartHorizontal, Home} from "lucide-react"
-const Header = () => {
+import useStore from "@/store/store.js";
+const NavBar = () => {
+    let {language, setLanguage} = useStore();
+    function changeLanguage() {
+        const newLanguage = language === "en" ? "fr" : "en";
+        setLanguage(newLanguage)
+        location.reload();
+    }
     return (
         <div className = {`flex w-full h-full justify-between align-baseline pt-6 py-3 px-6`}>
             <span className={` flex gap-3 text-white font-bold outline-1 outline-white`}>
@@ -7,7 +14,9 @@ const Header = () => {
                 <a className = {`hover:bg-neutral-50 hover:text-black ease-in-out duration-300 h-fit p-1 rounded`} href="/statistics">DASHBOARD</a>
                 <a className = {`hover:bg-neutral-50 hover:text-black ease-in-out duration-300 h-fit p-1 rounded cursor-pointer`}>ABOUT US</a>
             </span>
-
+            <span className={` flex gap-3 text-white font-bold outline-1 outline-white`}>
+                <p className = {`cursor-pointer`} onClick={() => changeLanguage()}>{language.toUpperCase()}</p>
+            </span>
             <button
                 type="button"
                 data-twe-ripple-init
@@ -19,4 +28,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default NavBar;

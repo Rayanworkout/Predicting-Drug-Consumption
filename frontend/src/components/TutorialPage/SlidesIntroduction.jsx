@@ -17,21 +17,20 @@ import { Label } from "@/components/ui/label.jsx";
 const codeCorrelation =
     <div>
         <code>
-<p>
-        correlations = []
-        for drug in drugs:
-        for feature in features:
-        correlations.append((drug, feature, df[drug].corr(df[feature])))
-    </p>
-    <p>
-        correlations = sorted(correlations, key=lambda x: x[2], reverse=True)
-    </p>
-    <p>
-        print(*correlations[:30], sep='\n')
-    </p>
+            <p>
+                correlations = []
+                for drug in drugs:
+                for feature in features:
+                correlations.append((drug, feature, df[drug].corr(df[feature])))
+            </p>
+            <p>
+                correlations = sorted(correlations, key=lambda x: x[2], reverse=True)
+            </p>
+            <p>
+                print(*correlations[:30], sep='\n')
+            </p>
         </code>
-    
-</div>
+    </div>
 const codePython=
     <div className={`flex flex-col`}>
         <p>from itertools import groupby</p>
@@ -51,7 +50,6 @@ const codePython=
         <p>for key, value in final_data.items():</p>
         <p>print(key, "--{">"}", value)</p>
         <p>After computing the mean correlation of all drugs for each feature, the output is the following:</p>
-        
     </div>
 export const SlideIntroduction = () => {
     return (
@@ -331,35 +329,33 @@ export const SlideCorrelationIntroduction = () => {
             <p className={styles.secondTitle}>
                 We start by observing the highest correlations between each drug and the features
             </p>
-            <p>
             <div className="flex gap-x-5">
-            <ul className="list-disc pl-5">
-                <li>('Cannabis', 'SS', 0.456)</li>
-                <li>('Cannabis', 'Oscore', 0.414)</li>
-                <li>('Legalh', 'SS', 0.405)</li>
-                <li>('Ecstasy', 'SS', 0.388)</li>
-                <li>('Mushrooms', 'SS', 0.378)</li>
-                <li>('LSD', 'Oscore', 0.369)</li>
-                <li>('Mushrooms', 'Oscore', 0.369)</li>
-                <li>('LSD', 'SS', 0.365)</li>
-                <li>('Coke', 'SS', 0.343)</li>
-                <li>('Amphet', 'SS', 0.331)</li>
-            </ul>
-            <ul className="list-disc pl-5">
-                <li>('Legalh', 'Oscore', 0.317)</li>
-                <li>('Cannabis', 'Impulsive', 0.310)</li>
-                <li>('Nicotine', 'SS', 0.305)</li>
-                <li>('Ecstasy', 'Oscore', 0.296)</li>
-                <li>('Amphet', 'Impulsive', 0.289)</li>
-                <li>('Benzos', 'Nscore', 0.272)</li>
-                <li>('Legalh', 'Impulsive', 0.267)</li>
-                <li>('Mushrooms', 'Impulsive', 0.263)</li>
-                <li>('Ecstasy', 'Impulsive', 0.260)</li>
-                <li>('Coke', 'Impulsive', 0.260)</li>
-            </ul>
+                <ul className="list-disc pl-5">
+                    <li>('Cannabis', 'SS', 0.456)</li>
+                    <li>('Cannabis', 'Oscore', 0.414)</li>
+                    <li>('Legalh', 'SS', 0.405)</li>
+                    <li>('Ecstasy', 'SS', 0.388)</li>
+                    <li>('Mushrooms', 'SS', 0.378)</li>
+                    <li>('LSD', 'Oscore', 0.369)</li>
+                    <li>('Mushrooms', 'Oscore', 0.369)</li>
+                    <li>('LSD', 'SS', 0.365)</li>
+                    <li>('Coke', 'SS', 0.343)</li>
+                    <li>('Amphet', 'SS', 0.331)</li>
+                </ul>
+                <ul className="list-disc pl-5">
+                    <li>('Legalh', 'Oscore', 0.317)</li>
+                    <li>('Cannabis', 'Impulsive', 0.310)</li>
+                    <li>('Nicotine', 'SS', 0.305)</li>
+                    <li>('Ecstasy', 'Oscore', 0.296)</li>
+                    <li>('Amphet', 'Impulsive', 0.289)</li>
+                    <li>('Benzos', 'Nscore', 0.272)</li>
+                    <li>('Legalh', 'Impulsive', 0.267)</li>
+                    <li>('Mushrooms', 'Impulsive', 0.263)</li>
+                    <li>('Ecstasy', 'Impulsive', 0.260)</li>
+                    <li>('Coke', 'Impulsive', 0.260)</li>
+                </ul>
             </div>
-            </p>
-            <ShowCodeAlert text={codeCorrelation} textButtonTrigger={'show me the code!'}/>
+            <ShowCodeAlert text={codeCorrelation} textButtonTrigger={'Show me the code!'}/>
             <p>
                 This code snippet computes the 20 highest correlations between each drug and the known features. For
                 example, the first line of the output shows that the correlation between the Sensation Seeking score and
@@ -439,7 +435,6 @@ export const SlideCorrelationExplanation = () => {
                     <li>Nscore --{">"} 0.091</li>
                     <li>Ethnicity --{">"} 0.0727</li>
                     <li>Escore --{">"} -0.005</li>
-
                 </ul>
                 <ul className="">
                     <li>Ascore --{">"} -0.103</li>
@@ -457,21 +452,21 @@ export const SlideCorrelationExplanation = () => {
                 highest mean correlation.
             </p>
             <Button onClick={() => setIsOpen(!isOpen)} variant="outline" className = {`text-black w-fit`}>?</Button>
-                <div
-                    style={{
-                        opacity: isOpen ? 1 : 0,
-                        visibility: isOpen ? 'visible' : 'hidden',
-                        transition: 'opacity 300ms ease-in-out',
-                        height: isOpen ? '0%' : '100%'
-                    }}
-                    className = {`bg-neutral-50 mx-[10%] p-4 w-fit rounded-md text-black`}>
+            {
+                isOpen == false ? '' :
+                    <div className={`bg-neutral-50 mx-[10%] p-4 w-fit rounded-md text-black`}>
                     <p>How to read this output ?</p>
-                    <p>For each feature, we can see the mean correlation for all drugs. The higher the mean, the more the feature is correlated with drug consumption.</p>
-                    <p>The mean correlation between the Sensation Seeking score and the drug consumption is 0.25. This is the highest mean correlation.</p>
+                    <p>For each feature, we can see the mean correlation for all drugs. The higher the mean, the more
+                        the feature is correlated with drug consumption.</p>
+                    <p>The mean correlation between the Sensation Seeking score and the drug consumption is 0.25. This
+                        is the highest mean correlation.</p>
                 </div>
+            }
+
 
             <p>
-                Once again, the sensation seeking score is ahead. It appears to be the most correlated feature with the drug
+                Once again, the sensation seeking score is ahead. It appears to be the most correlated feature with the
+                drug
                 consumption of an individual. The Impulsive score is the second most correlated feature. As you can see,
                 features like the age or the country are not very correlated with the drug consumption.
             </p>
@@ -482,10 +477,10 @@ export const SlideCorrelationExplanation = () => {
 export const SlideEnding = () => {
     return (
         <div className={styles.textMainStyle}>
-            <p className = {styles.secondTitle}>
+            <p className={styles.secondTitle}>
                 Let's plot this data, so we can visualize it in a better way !
             </p>
-            <img src={correlationImg} className = {`max-w-3xl mx-auto`}/>
+            <img src={correlationImg} className={` md:max-w-3xl mx-auto`}/>
             <p className = {styles.secondTitle}>
                 That's it for the analysis, remember that these are only observations and suppositions. We do not make any
                 definitive statements about the data.

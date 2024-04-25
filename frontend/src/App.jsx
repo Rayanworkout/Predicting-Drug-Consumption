@@ -2,11 +2,12 @@ import './assets/index.css'
 
 import React, {useEffect, useState} from "react";
 import Swiper from "./components/Swiper.jsx";
-import SortButton from "./components/SortButton.jsx";
 import TutorialSwiper from "@/components/TutorialSwiper.jsx";
 import {Separator} from "@/components/ui/separator.jsx";
+import useStore from "@/store/store.js";
 
 function App() {
+    const {translations} = useStore();
     const [dataArray, setDataArray] = useState([]);
     const fetchData = async () => {
         setDataArray([]);
@@ -26,7 +27,7 @@ function App() {
                 <div className = {`pt-20 flex flex-col items-center gap-y-5`} alt="Texte de présentation">
                     <span className = {`pb-10 px-10 flex flex-col md:flex-row items-center`}>
                         <p className={` text-6xl font-bold text-white md:text-7xl`}>
-                            Drug Analytics
+                            {translations.main.title}
                         </p>
                         <p className={`text-center text-white p-6`}>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolor doloribus eligendi inventore iste libero minus molestiae non numquam possimus, quisquam quod rerum sit vel veniam veritatis voluptas voluptate voluptatum?
