@@ -12,20 +12,24 @@
 telegram_bot_token="TOKEN"
 telegram_chat_id="CHAT_ID"
 
+msg=$(jq -rn --arg x "New commit on main, initiating pipeline ..." '$x|@uri')
+tg_url="https://api.telegram.org/bot$telegram_bot_token/sendMessage?chat_id=$telegram_chat_id&text=$msg"
+resp=$(curl -s "$tg_url")
+
 echo "> Pulling changes ..."
+
+sudo git checkout -- .
 
 # Using a variable to capture the error message
 output=$(sudo git pull origin main 2>&1)
 
 if [[ $output == *"Aborting"* ]]; then
-    msg=$(jq -rn --arg x "An error occurred while pulling main branch." '$x|@uri')
+    msg=$(jq -rn --arg x "An error occurred. $output" '$x|@uri')
     tg_url="https://api.telegram.org/bot$telegram_bot_token/sendMessage?chat_id=$telegram_chat_id&text=$msg"
     resp=$(curl -s "$tg_url")
-    echo "> Error: ${output:0:64}"
+    echo "> Error: $output"
     exit 1
 fi
-
-exit 0
 
 echo "> Done"
 
