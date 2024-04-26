@@ -41,7 +41,7 @@ def build():
         script_path = "../../deploy.sh"
 
         try:
-            subprocess.run([script_path], check=True, shell=True)
+            subprocess.run([script_path, "verbose"], check=True, shell=True)
             print("Bash script executed successfully")
 
         except subprocess.CalledProcessError as e:
