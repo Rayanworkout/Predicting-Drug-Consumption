@@ -8,7 +8,7 @@ import {
 } from "@/api_/api_.js";
 
 const useStore = create((set, get) => ({
-    language: sessionStorage.getItem('language') || 'en',
+    language: 'en',
     translations: translations[sessionStorage.getItem('language')],
     setLanguage: (language) => {
         sessionStorage.setItem('language', language);
