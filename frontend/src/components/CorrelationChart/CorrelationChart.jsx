@@ -1,10 +1,13 @@
 import ReactApexChart from "react-apexcharts";
 import {useEffect, useState} from "react";
 import useStore from "@/store/store.js";
+import correlationImage from "@/assets/img/correlation.png"
+import {ReplaceUnderscoreSpace} from "@/tool/tool.js";
 const CorrelationChart = () => {
 
     const {apiCorrelationData} = useStore();
     const [series, setSeries] = useState([{ name: '', data: [] }]);
+    const [screenSize, setScreenSize] = useState(window.innerWidth);
 
     useEffect(() => {
             const newSeries = Object.entries(apiCorrelationData).map(([key, values]) => {
@@ -24,6 +27,15 @@ const CorrelationChart = () => {
         chart: {
             height: 200,
             type: 'heatmap',
+        },
+        title: {
+            text: `Correlation between drug consumption and personality`,
+            align: 'center',
+            style: {
+                fontSize: '18px',
+                fontWeight: 'bold',
+                color: '#263238'
+            },
         },
         plotOptions: {
             heatmap: {
@@ -87,14 +99,13 @@ const CorrelationChart = () => {
         dataLabels: {
             enabled: false
         },
-        title: {
-            text: 'HeatMap Chart Drug and Personality'
-        },
     };
 
     return (
-        <div className = {`h-full`}>
-            <ReactApexChart options={options} series={series} type="heatmap" height={'100%'}/>
+        <div className = {`h-fit`}>
+            {screenSize < 480 ?
+            <img src={correlationImage} className = {`w-full h-full`}/> : <ReactApexChart options={options} series={series} height={'450'} type="heatmap"/>
+            }
         </div>
     );
 };

@@ -22,7 +22,7 @@ export function Graph () {
         }
     }
     return (
-        <div className={`w-full bg-neutral-100 h-full md:min-h-[400px] p-4 m-0 rounded z-0`}>
+        <div className={`w-full bg-neutral-100 h-full min-h-[400px] p-4 m-0 rounded z-0`}>
             {getChartToRender()}
         </div>
     );

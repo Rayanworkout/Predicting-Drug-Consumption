@@ -3,11 +3,11 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group.jsx";
 import useStore from "@/store/store.js";
 
 export function BarChartConsumptionType() {
-    const {consumptionType,setConsumptionType} = useStore();
+    const {consumptionType, chartType,setConsumptionType} = useStore();
 
     return (
         <RadioGroup defaultValue={consumptionType} onValueChange={setConsumptionType}>
-            <p>{consumptionType == 'consumption' ? 'Consumption ' : 'Repartition '} by :</p>
+            <p>{chartType == 'consumption' ? 'Comparison ' : 'Repartition '} by :</p>
             <div className={`flex flex-wrap gap-2`}>
                 <div className="flex items-center space-x-2">
                     <RadioGroupItem value="by_age" id="r1"/>
