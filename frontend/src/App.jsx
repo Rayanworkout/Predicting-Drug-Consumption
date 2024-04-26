@@ -7,7 +7,9 @@ import {Separator} from "@/components/ui/separator.jsx";
 import useStore from "@/store/store.js";
 
 function App() {
-    const {translations} = useStore();
+    const getTranslations = useStore(state => state.translations);
+    const t = getTranslations();
+
     const [dataArray, setDataArray] = useState([]);
     const fetchData = async () => {
         setDataArray([]);
@@ -30,10 +32,10 @@ function App() {
 
                     <span className={`pb-10 px-10 flex flex-col md:flex-row items-center`}>
                         <p className={`text-6xl md:text-[5rem] font-bold text-white `}>
-                            {translations.main.title}
+                            {t.main?.title}
                         </p>
                         <p className={`text-xlbase md:text-xl text-center text-white font-semibold pt-9 md:p-6`}>
-                            {translations.main.homeContent}
+                            {t.main?.homeContent}
                         </p>
                     </span>
                     <TutorialSwiper/>

@@ -1,6 +1,6 @@
 import useStore from "@/store/store.js";
 const NavBar = () => {
-    let {language, setLanguage} = useStore();
+    let {language, setLanguage, setTranslations} = useStore();
     function changeLanguage() {
         const newLanguage = language === "en" ? "fr" : "en";
         setLanguage(newLanguage)

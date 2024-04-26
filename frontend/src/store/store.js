@@ -9,14 +9,12 @@ import {
 
 const useStore = create((set, get) => ({
     language: 'en',
-    translations: translations[sessionStorage.getItem('language')],
-    setLanguage: (language) => {
-        sessionStorage.setItem('language', language);
-        set({
-            language: language,
-            translations: translations[language]
-        });
-    },
+    translations: () => {
+        const {language} = get();
+        return translations[language]
+    } ,
+    setTranslations: (translations) => set({translations}),
+    setLanguage: (language) => set({language: language,}),
 
     chartType: 'consumption',
     setChartType: (chartType) => set({ chartType }),
