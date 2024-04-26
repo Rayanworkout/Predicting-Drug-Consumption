@@ -1,10 +1,14 @@
 import useStore from "@/store/store.js";
+import { useEffect } from "react";
 const NavBar = () => {
     let {language, setLanguage, setTranslations} = useStore();
+    useEffect(()=> {
+        console.log('Init nav bar :'+language)
+    }, [])
     function changeLanguage() {
         const newLanguage = language === "en" ? "fr" : "en";
+        console.log(newLanguage);
         setLanguage(newLanguage)
-        location.reload();
     }
     return (
         <div className={`flex w-full h-full justify-between align-baseline pt-6 py-3 px-6`}>

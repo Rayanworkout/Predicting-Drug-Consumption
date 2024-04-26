@@ -7,8 +7,7 @@ import {Separator} from "@/components/ui/separator.jsx";
 import useStore from "@/store/store.js";
 
 function App() {
-    const getTranslations = useStore(state => state.translations);
-    const t = getTranslations();
+    const t = useStore(state => state.translations);
 
     const [dataArray, setDataArray] = useState([]);
     const fetchData = async () => {
