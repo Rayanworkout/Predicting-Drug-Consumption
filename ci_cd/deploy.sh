@@ -37,6 +37,13 @@ set -e
 # BACKEND
 
 cd ./backend/
+
+if [ ! -d './.venv' ]; then
+    echo 'venv does not exist, creating ...'
+    python3 -m venv .venv
+fi
+
+
 source .venv/bin/activate
 
 echo "> Installing dependencies ..."
