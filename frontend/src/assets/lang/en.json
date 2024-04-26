@@ -1,14 +1,135 @@
 {
-  "main":{
-    "title": "Drug Analytics"
+  "main": {
+    "title": "Drug Analytics",
+    "homeContent": "Welcome to this small statistical analysis project. The goal is to investigate the main factors that influence drug consumption in individuals. Are certain ethnicities more likely to consume drugs? Do people with specific personality traits have a higher likelihood of drug consumption? We will attempt to answer these questions and more in this analysis.",
+    "analysisInvitation": "Feel free to run the analysis as many time as necessary and then explore the charts by yourself to find some insights !",
+    "footerContent": "This project was made with (COEUR) for educational purposes using this dataset. It is under the MIT license. The whole code is open source and available on GitHub. Any guidance, suggestions, or collaboration is warmly welcomed and greatly appreciated, feel free to get in touch."
   },
-  "ANALYSIS": {
-    "page_1": {},
-    "page_2": {},
-    "page_3": {},
-    "page_4": {},
-    "page_5": {},
-    "page_6": {}
+  "analysis": {
+    "slideIntroduction": {
+      "mainTitle": "Investigating the main factors that influence drug consumption in individuals: A case study.",
+      "databaseIntroduction": "We have a database of 1885 respondents. For each, 12 attributes and their score is known. These attributes, which we'll call features, are based on the NEO-FFI-R personality test. This test measures the following 5 personality traits:",
+      "personalityTraits": [
+        "Neuroticism",
+        "Extraversion",
+        "Openness to Experience",
+        "Agreeableness",
+        "Conscientiousness"
+      ],
+      "additionalScores": "We also have access to the Impulsiveness and the Sensation Seeking scores of each respondent.",
+      "traitScores": "Each personality trait has a decimal value as a score. The higher the score, the more the respondent has the corresponding personality trait. For example, a score of 0.8 for the Neuroticism trait means that the respondent is very neurotic.",
+      "additionalAttributes": "Additionally to these 7 personality attributes, we also have access to level of education, age, gender, country of residence and ethnicity of each respondent.",
+      "ethnicityNote": "Note that in certain countries, ethnicity statistics are illegal.",
+      "drugUseInquiry": "In addition, participants were questioned about their use of 18 legal and illegal drugs:",
+      "drugList1": [
+        "- alcohol",
+        "- amphetamines",
+        "- amyl nitrite",
+        "- benzodiazepine",
+        "- cannabis",
+        "- chocolate"
+      ],
+      "drugList2": [
+        "- cocaine",
+        "- caffeine",
+        "- crack",
+        "- ecstasy",
+        "- heroin",
+        "- ketamine"
+      ],
+      "drugList3": [
+        "- legal highs",
+        "- LSD",
+        "- methadone",
+        "- nicotine",
+        "- volatile substance abuse",
+        "- Semeron (fictious drug to identify over-claimers)"
+      ],
+      "drugUseFrequency": "For each drug they had to select one of the answers:",
+      "frequencyOptions": [
+        "- never used the drug",
+        "- used it over a decade ago",
+        "- in the last decade",
+        "- year",
+        "- month",
+        "- week",
+        "- day"
+      ],
+      "analysisRemindersTitle": "Things to keep in mind during this analysis:",
+      "analysisReminders": [
+        "The database contains ONLY 1885 respondents. This is a very small sample size compared to the world population. Therefore, the results of this analysis are not generalizable to the entire population. We only give some observations and suppositions about the data and the results. We do not make any definitive statements.",
+        "Some features are not well balanced. For example most of the respondents are from the UK. This can lead to biased results.",
+        "Correlation does not imply causation. We can only say that two variables are correlated, not that one causes the other."
+      ]
+    },
+    "slideReadChart": {
+      "analysisStartingPointTitle": "Where to start this analysis ?",
+      "populationObservation": "First, we need to observe the repartition of each population inside the dataset.",
+      "balanceImportance": "Why ? because we need to know if the dataset is balanced or not. If a given feature is not balanced, we need to take this into account when analyzing the data.",
+      "datasetRepartitionTitle": "Dataset Repartition",
+      "repartitionAnalysisNote": "For example, we can see that there are 943 male respondents and 942 women. This feature is well balanced, thus the results we will get from the analysis might be more reliable. However, the survey was made in the UK, and the majority (1044) of the respondents are from the UK. This must be taken into account when observing results about different countries.",
+      "initialAnalysisInterestTitle": "We found it interesting to start by analyzing the drug consumption of the respondents depending on non-personality related features.",
+      "analysisPurpose": "It may help us to understand how drug consumption frequency is distributed among the each feature. For example, we could ask ourselves:",
+      "analysisQuestions": [
+        "Which age range consumes the most Cocaine ?",
+        "Which gender consumes the most Alcohol ?"
+      ],
+      "preconceivedNotions": "Before making this analysis we had some preconditioned ideas. For example, we thought that the less educated a person is, the more drugs he/she consumes. We will see if these ideas are confirmed by the data."
+    },
+    "slideExplanationConsumption": {
+      "correlationTitle": "Correlation between education level and consumption of meth",
+      "observation": "As we can see, the meth consumption of people who left school at 16 years and those with a professional certificate / diploma are almost the same.",
+      "nextSteps": "When you're done checking meth consumption for each non-personality related feature, you can move on to the next step."
+    },
+    "slideExplanationCorrelation": {
+      "personalityDrugConsumptionTitle": "Personality and drug consumption",
+      "correlationIntro": "We saw in the previous step that the correlation between drug consumption and non-personality related features may not be as strong as we thought. Let's now analyze the correlation between drug consumption and personality traits. For that, we'll use a correlation matrix.",
+      "matrixExplanation": "This matrix shows the correlation score of each personality trait with each drug. The higher the score, the more the personality trait is correlated with the drug consumption.",
+      "exampleCorrelation": "For example, the correlation between the respondents who have a high openness score and the consumption of LSD is 0.37, which is quite high. The higher the correlation, the darker the color.",
+      "traitDrugUseCorrelation": "This helps understand which personality trait is correlated or not to the use of a specific drug.",
+      "proceedingInstructions": "When you're done observing correlations, you can carry on to the next step."
+    },
+    "slideAnalysisGoal": {
+      "analysisGoalTitle": "As you can expect, the goal of this whole analysis is to predict which characteristics of a person make him/her more likely to consume drugs with a high frequency. This can be useful for drug prevention programs, for example.",
+      "predictiveQuestionsIntro": "It would help answer questions like:",
+      "predictiveQuestions": [
+        "Does the age of an individual influence his drug consumption ?",
+        "Does the impulsive behavior of an individual influence his drug consumption ?"
+      ],
+      "correlationFocus": "Let's use our data to isolate the strongest correlation between each features and each drug.",
+      "highestCorrelationObservationTitle": "We start by observing the highest correlations between each drug and the features",
+      "correlationComputationDescription": "This code snippet computes the 20 highest correlations between each drug and the known features. For example, the first line of the output shows that the correlation between the Sensation Seeking score and the Cannabis consumption is 0.45. This means that the higher the Sensation Seeking score, the more the person is likely to consume Cannabis.",
+      "notableCorrelationFindings": "We can witness that the 20 highest correlations are not about age, country or ethnicity, but only about characteristics of the person.",
+      "standOutFeature": "One of the feature seems to stand out: the SS, or Sensation Seeking score. It is the most correlated feature with the consumption of Cannabis, Legal highs, Ecstasy, Mushrooms, LSD, Nicotine, Amphetamines, and Coke.",
+      "keyFeatureInsight": "We may have found a key feature that influences the drug consumption of an individual.",
+      "featureCorrelationClarity": "However, it is not clear yet, because this output separates the correlation of each feature and each drug, and we don't really care about a particular drug, right ?",
+      "featureCorrelationDetermination": "How can we determine which feature has the highest correlation with drug consumption using this output ?"
+    },
+    "slideExplanationAnalysis": {
+      "correlationComputationMethod": "One way to achieve that would be to compute for each feature the mean of the correlation with all drugs.",
+      "meanCorrelationHighlight": "The mean correlation between the Sensation Seeking score and the drug consumption is 0.25. This is the highest mean correlation.",
+      "outputExplanation": {
+        "intro": "How to read this output ?",
+        "detail": "For each feature, we can see the mean correlation for all drugs. The higher the mean, the more the feature is correlated with drug consumption.",
+        "repeatHighlight": "The mean correlation between the Sensation Seeking score and the drug consumption is 0.25. This is the highest mean correlation."
+      },
+      "featureComparison": "Once again, the sensation seeking score is ahead. It appears to be the most correlated feature with the drug consumption of an individual. The Impulsive score is the second most correlated feature. As you can see, features like the age or the country are not very correlated with the drug consumption."
+    },
+    "slideConclusion": {
+      "dataVisualizationTitle": "Let's plot this data, so we can visualize it in a better way !",
+      "analysisConclusion": "That's it for the analysis, remember that these are only observations and suppositions. We do not make any definitive statements about the data.",
+      "explorationEncouragement": "Feel free to explore the charts by yourself and check the variety of drugs and features that the dataset offers. You may see some insights that we didn't see !"
+    }
+  },
+  "dashboard": {
+    "chartTypesTitle": "On this dashboard, you can see 3 types of charts :",
+    "chartTypesList": [
+      "Comparison",
+      "Correlation",
+      "Repartition"
+    ],
+    "comparisonChartDescription": "As seen in the analysis, the comparison charts help us see how drug consumption is distributed among the different features for each drug. You can see how many people in the survey answered about their frequency of consumption, and you can filter the respondents by their age, country and more. The comparison charts can be displayed both horizontally and vertically.",
+    "correlationHeatmapDescription": "The correlation heatmaps help us see how the drug consumption is correlated with the different features. As a reminder, features are personality traits or personal information like age, country, ethnicity ... The darker the color between the drug and the feature, the higher the correlation.",
+    "repartitionChartDescription": "The repartition charts help us see how the dataset is balanced among the different features. It is very important because if a feature is not balanced, the results of the analysis may be biased. This information must be taken into account when analyzing the data because our dataset only has 1885 respondents."
   }
-
 }

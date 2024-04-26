@@ -1,15 +1,12 @@
 import React from 'react';
+import useStore from "@/store/store.js";
 
 const Footer = () => {
+    const {translations} = useStore();
     return (
         <div className={`h-fit p-7`}>
-            <p className={`text-white`}>
-                CECI EST UN FOOTER
-            </p>
-            <p className={`text-white`}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus error explicabo fugiat possimus unde?
-                Adipisci aliquid consequatur earum impedit laborum minus porro, quia rem? Eligendi eos facilis officia
-                ut velit.
+            <p className={`text-white text-center`}>
+                {translations.main.footerContent}
             </p>
         </div>
     );

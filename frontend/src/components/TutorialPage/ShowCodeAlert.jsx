@@ -2,7 +2,7 @@ import {AlertDialog, AlertDialogContent, AlertDialogTrigger} from "@/components/
 import {Button} from "@/components/ui/button.jsx";
 import {useState} from "react";
 
-const ShowCodeAlert = ({text, textButtonTrigger}) => {
+const ShowCodeAlert = ({imageSource, textButtonTrigger}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -11,11 +11,9 @@ const ShowCodeAlert = ({text, textButtonTrigger}) => {
                 <AlertDialogTrigger asChild>
                     <Button variant="outline" className = {`text-black w-fit`}>{textButtonTrigger}</Button>
                 </AlertDialogTrigger>
-                <AlertDialogContent className = {`bg-transparent backdrop-blur max-w-sm rounded-2xl`}>
+                <AlertDialogContent className = {`bg-transparent backdrop-blur max-w-2xl rounded-2xl`}>
                     <div className={`flex flex-col gap-y-5`}>
-                        <div className = {`flex flex-col text-white gap-y-2 text-xs md:text-sm`}>
-                            {text}
-                        </div>
+                            <img src={imageSource} className = {`w-full bg-neutral-50`} />
                         <Button variant="outline" onClick={() => setIsOpen(false)}>Close</Button>
                     </div>
                 </AlertDialogContent>

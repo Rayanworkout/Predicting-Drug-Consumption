@@ -3,7 +3,7 @@ import {useState} from "react";
 import {CardContent} from "@/components/ui/card.jsx";
 import useStore from "@/store/store.js";
 export function SearchBar () {
-    const { drugType, setDrugType, drugValues } = useStore();
+    const { drugType, setDrugType, drugValues, chartType } = useStore();
 
     const [isFocused, setIsFocused] = useState(false);
 
@@ -21,11 +21,12 @@ export function SearchBar () {
     const filteredData = drugValues.filter(item => item.toLowerCase().includes(drugType.toLowerCase()));
 
     return (
-        <div className = {`w-full md:w-[50%] relative z-20`}>
+        <div className = {`w-full md:w-[35%] relative z-20`}>
             <Input
                 type="text"
                 placeholder="Search drug name : alcohol, tabac... "
                 value={drugType}
+                disabled={chartType !== 'consumption' ? true : false}
                 onFocus={handleFocus}
                 onChange={(event) => setDrugType(event.target.value)}
                 onBlur={handleBlur}

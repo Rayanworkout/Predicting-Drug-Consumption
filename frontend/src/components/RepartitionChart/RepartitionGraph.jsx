@@ -1,6 +1,7 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import useStore from "@/store/store.js";
+import {ReplaceUnderscoreSpace} from "@/tool/tool.js";
 
 const RepartitionGraph = ({apiData}) => {
     const { consumptionType} = useStore();
@@ -18,6 +19,15 @@ const RepartitionGraph = ({apiData}) => {
             toolbar: {
                 show: true
             }
+        },
+        title: {
+            text: `Drug repartition of 1885 respondents distributed ${ReplaceUnderscoreSpace(consumptionType)}`,
+            align: 'center',
+            style: {
+                fontSize: '18px',
+                fontWeight: 'bold',
+                color: '#263238'
+            },
         },
         tooltip:{
             theme:'light',
@@ -46,7 +56,7 @@ const RepartitionGraph = ({apiData}) => {
     };
 
     const series = [{
-        name: 'repartition',
+        name: 'respondents',
         data: countValue
     }];
 

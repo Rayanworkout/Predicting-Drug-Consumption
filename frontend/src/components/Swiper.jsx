@@ -42,8 +42,8 @@ const Swiper = ({swiperTitle, chartArrayToMap}) => {
                         <CarouselItem key={index} className=" md:basis-1/2 lg:basis-1/3 ">
                             <div className="p-1">
                                 <Card>
-                                    <CardContent className=" h-60 flex aspect-w-16 aspect-h-9 items-center justify-center p-6">
-                                        <BarChartGraph apiData={data.data} orientation={true} toolbar={false} legend={false}/>
+                                    <CardContent className=" h-60 flex items-center justify-center">
+                                        <BarChartGraph apiData={data.data} orientation={true} dashboard={true}/>
                                     </CardContent>
                                 </Card>
                             </div>
