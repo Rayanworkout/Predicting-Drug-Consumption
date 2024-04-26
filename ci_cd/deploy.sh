@@ -25,7 +25,7 @@ echo "> Pulling changes ..."
 
 # We reset first because we want to discard any local changes
 # otherwise the pull will fail
-git reset --hard
+sudo git reset --hard
 
 # Using a variable to capture the error message
 output=$(sudo git pull origin main 2>&1)
@@ -60,7 +60,7 @@ fi
 source .venv/bin/activate
 
 echo "> Installing dependencies ..."
-pip install -r requirements.txt
+pip install -r requirements.txt > /dev/null
 echo "> Done"
 
 echo "> Migrating database ..."
@@ -70,7 +70,6 @@ python3 manage.py migrate
 
 echo "> Done"
 
-echo "> Filling database ..."
 python3 manage.py fill_database
 
 
@@ -84,7 +83,7 @@ sudo npm install
 echo "> Done"
 
 echo "> Building frontend ..."
-sudo npm run build
+sudo npm run build > /dev/null
 
 echo "> Fixing permissions ..."
 
