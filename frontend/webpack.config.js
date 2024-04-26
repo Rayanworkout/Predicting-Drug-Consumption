@@ -6,7 +6,7 @@ module.exports = {
     plugins:[
         new CompressionPlugin({
             algorithm: "gzip",
-            test: /\.(js|css|html|svg|jsx)$/,
+            test: /\.(js|css|html|svg|jsx|json)$/,
             verbose:true,
             threshold: 0,
         }),
