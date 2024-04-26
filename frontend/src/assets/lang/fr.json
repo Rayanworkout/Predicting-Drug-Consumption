@@ -1,0 +1,135 @@
+{
+  "main": {
+    "title": "Drug Analytics",
+    "homeContent": "Bienvenue dans ce projet d'analyse statistique. Le but est d'investiguer les principaux facteurs qui influencent la consommation de drogues chez les individus. Certaines ethnies sont-elles plus susceptibles de consommer des drogues ? Les personnes ayant des traits de personnalité spécifiques ont-elles une probabilité plus élevée de consommer des drogues ? Nous tenterons de répondre à ces questions et plus encore dans cette analyse.",
+    "analysisInvitation": "N'hésitez pas à lancer l'analyse autant de fois que nécessaire, puis explorez les graphiques par vous-même pour trouver des informations pertinentes !",
+    "footerContent": "Ce projet a été réalisé avec (COEUR) à des fins éducatives en utilisant ce jeu de données. Il est sous licence MIT. Tout le code est open source et disponible sur GitHub. Toute orientation, suggestion ou collaboration est chaleureusement accueillie et grandement appréciée, n'hésitez pas à nous contacter."
+  },
+  "analysis": {
+    "slideIntroduction": {
+      "mainTitle": "Observation des principaux facteurs qui influencent la consommation de drogues chez les individus : Une étude de cas.",
+      "databaseIntroduction": "Nous disposons d'une base de données de 1885 personnes ayant participé à une enquête scientifique. Pour chacun d'eux, 12 attributs ainsi que leur score sont connus. Ces attributs, que nous appellerons <b>features</b>, sont basés sur le test de personnalité NEO-FFI-R. Ce test mesure les 5 traits de personnalité suivants:",
+      "personalityTraits": [
+        "Névrosisme",
+        "Extraversion",
+        "Ouverture à l'expérience",
+        "Agréabilité",
+        "Caractère consciencieux"
+      ],
+      "additionalScores": "Nous avons également accès aux scores d'Impulsivité et de Recherche de Sensation de chaque participant.",
+      "traitScores": "Chaque trait de personnalité a une valeur décimale qui constitue un score. Plus le score est élevé, plus ce trait de personnalité est marqué chez le participant. Par exemple, un score de 0,8 pour le trait de Névrosisme signifie que la personne est très névrosée.",
+      "additionalAttributes": "En plus de ces 7 attributs de personnalité, nous avons également accès au niveau d'étude, à l'âge, au sexe, au pays de résidence et à l'ethnie de chacun.",
+      "ethnicityNote": "Notez que dans certains pays dont la France, les statistiques ethniques sont illégales.",
+      "drugUseInquiry": "De plus, les participants ont été interrogés sur leur utilisation de 18 drogues légales et illégales",
+      "drugList1": [
+        "- Alcool",
+        "- Amphétamines",
+        "- Nitrite d'amyle",
+        "- Benzodiazépine",
+        "- Cannabis",
+        "- Chocolat"
+      ],
+      "drugList2": [
+        "- Cocaïne",
+        "- Caféine",
+        "- Crack",
+        "- Ecstasy",
+        "- Héroïne",
+        "- Kétamine"
+      ],
+      "drugList3": [
+        "- Drogues légales",
+        "- LSD",
+        "- Méthadone",
+        "- Champignons",
+        "- Nicotine",
+        "- Abus de substances volatiles",
+        "- Semeron (drogue fictive)"
+      ],
+      "drugUseFrequency": "Pour chaque drogue, ils devaient sélectionner l'une des réponses:",
+      "frequencyOptions": [
+        "jamais utilisée",
+        "utilisée il y a plus d'une décennie",
+        "utilisée au cours de la dernière décennie",
+        "année",
+        "mois",
+        "semaine",
+        "jour"
+      ],
+      "analysisRemindersTitle": "Éléments à garder à l'esprit tout au long de cette analyse:",
+      "analysisReminders": [
+        "La base de données contient SEULEMENT 1885 participants. Il s'agit d'un échantillon très petit. Par conséquent, les résultats de cette analyse ne sont <b>pas</b> généralisables à toute la population.",
+        "Some features are not well balanced. For example most of the respondents are from the UK. This can lead to biased results.",
+        "Correlation does not imply causation. We can only say that two variables are correlated, not that one causes the other."
+      ]
+    },
+    "slideReadChart": {
+      "analysisStartingPointTitle": "De quelle manière commencer cette analyse ?",
+      "populationObservation": "Tout d'abord, nous devons observer la répartition de chaque population au sein de l'ensemble de données.",
+      "balanceImportance": "Pourquoi ? Parce qu'il est nécessaire de savoir si l'ensemble de données est équilibré ou non. Si une caractéristique donnée n'est pas équilibrée, nous devons en tenir compte lors de l'analyse.",
+      "datasetRepartitionTitle": "Distribution du Dataset",
+      "repartitionAnalysisNote": "Par exemple, nous pouvons voir qu'il y a 943 participants masculins et 942 femmes. Cette caractéristique est bien équilibrée, donc les résultats que nous obtiendrons de l'analyse pourraient être plus fiables. Cependant, l'enquête a été réalisée au Royaume-Uni, et la majorité des participants (1044) habite au Royaume-Uni. Cela doit être pris en compte lors de l'observation des résultats concernant différents pays.",
+      "initialAnalysisInterestTitle": "Commençons par analyser la consommation de drogues des participants en fonction des caractéristiques non liées à la personnalité.",
+      "analysisPurpose": "Cela pourrait nous aider à comprendre comment la fréquence de consommation de chaque drogue est distribuée parmi chaque caractéristique. Par exemple, nous pourrions nous poser les questions suivantes :",
+      "analysisQuestions": [
+        "Quelle tranche d'âge consomme le plus de cocaïne ?",
+        "Quel sexe consomme le plus d'alcool ?"
+      ],
+      "preconceivedNotions": "Avant de faire cette analyse, nous avions quelques idées préconçues. Par exemple, nous pensions que la consommation de drogue d'une personne pouvait être fortement liée à la durée de ses études scolaires. Nous verrons si ces idées sont confirmées par les données."
+    },
+    "slideExplanationConsumption": {
+      "correlationTitle": "Corrélation entre le niveau d'étude et la consommation de Meth",
+      "observation": "Comme nous pouvons le voir, la consommation de méthamphétamine des personnes ayant quitté l'école à 16 ans et celles ayant un certificat / diplôme professionnel est quasiment identique.",
+      "nextSteps": "Lorsque vous avez terminé d'explorer la consommation de Meth pour chaque caractéristique non liée à la personnalité, vous pouvez passer à l'étape suivante."
+    },
+    "slideExplanationCorrelation": {
+      "personalityDrugConsumptionTitle": "Traits de personalité et consommation de drogue",
+      "correlationIntro": "Nous avons vu lors de l'étape précédente que la corrélation entre la consommation de drogues et les caractéristiques non liées à la personnalité n'est peut-être pas aussi forte que nous le pensions. Analysons maintenant cette corrélation avec les traits de personnalité. Pour cela, nous utiliserons une matrice de corrélation.",
+      "matrixExplanation": "Cette matrice montre le score de corrélation de chaque trait de personnalité avec chaque drogue. Plus le score est élevé, plus le trait de personnalité est corrélé à la consommation de cette drogue.",
+      "exampleCorrelation": "Par exemple, la corrélation entre les participants ayant un score d'ouverture élevé et la consommation de LSD est de 0,37, ce qui est assez élevé. Plus la corrélation est élevée, plus la couleur est foncée.",
+      "traitDrugUseCorrelation": "Cette matrice aide à comprendre quel trait de personnalité est corrélé ou non à l'utilisation d'une drogue spécifique.",
+      "proceedingInstructions": "Lorsque vous avez terminé d'explorer les différentes corrélations, vous pouvez passer à l'étape suivante."
+    },
+    "slideAnalysisGoal": {
+      "analysisGoalTitle": "Comme l'on peut s'y attendre, l'objectif de toute cette analyse est de prédire quelles caractéristiques propres à une personne la rendent plus susceptible de consommer des drogues avec une haute fréquence. Cela peut par exemple être utile pour les programmes de prévention anti drogues.",
+      "predictiveQuestionsIntro": "Cette analyse aiderait à répondre à des questions telles que :",
+      "predictiveQuestions": [
+        "L'âge ou le comportement impulsif d'un individu influencent-t-il sa consommation de drogues ?"
+      ],
+      "correlationFocus": "Utilisons nos données pour isoler la corrélation la plus forte entre chaque caractéristique et chaque drogue.",
+      "highestCorrelationObservationTitle": "Voyons les corrélations les plus élevées entre les drogues disponibles et chacune des caractéristiques",
+      "correlationComputationDescription": "Ce morceau de code calcule les 20 corrélations les plus élevées entre chaque drogue et les caractéristiques connues. Par exemple, la première ligne montre que la corrélation entre le score de Recherche de Sensation et la consommation de Cannabis est de 0,45. Cela signifie que plus le score de Recherche de Sensation est élevé, plus la personne est susceptible de consommer du Cannabis.",
+      "notableCorrelationFindings": "Nous pouvons constater que les 20 corrélations les plus élevées concernent non pas l'âge, le pays ou l'ethnie, mais uniquement des caractéristiques propres à la personne et son caractère / comportement.",
+      "standOutFeature": "L'une des caractéristiques semble se démarquer : le score de SS, ou Sensation Seeking. Il est la caractéristique la plus corrélée avec la consommation de Cannabis, Legal highs, Ecstasy, Mushrooms, LSD, Nicotine, Amphetamines et Coke.",
+      "keyFeatureInsight": "Nous avons peut-être trouvé une caractéristique clé qui influence la consommation de drogues d'un individu.",
+      "featureCorrelationClarity": "Cependant, ce n'est pas encore clair, car ce résultat sépare la corrélation de chaque caractéristique et de chaque drogue, et nous ne nous intéressons pas vraiment à une drogue particulière.",
+      "featureCorrelationDetermination": "Avec ce résultat, comment pourrions-nous identifier la caractérisque la plus corrélée à la consommation de drogues en général ?"
+    },
+    "slideExplanationAnalysis": {
+      "correlationComputationMethod": "Un moyen d'y parvenir serait de calculer pour chaque caractéristique la moyenne de la corrélation avec toutes les drogues.",
+      "meanCorrelationHighlight": "Un moyen d'y parvenir serait de calculer pour chaque caractéristique la moyenne de la corrélation avec toutes les drogues.",
+      "outputExplanation": {
+        "intro": "Comment lire ce résultat ?",
+        "detail": "Plus le score est élevé, plus la caractéristique est corrélée à une consommation fréquente de drogues. Par exemple, le score de Sensation Seeking est de 0,25, ce qui signifie que cette caractéristique est la plus corrélée à la consommation de drogues.",
+        "repeatHighlight": "Un moyen d'y parvenir serait de calculer pour chaque caractéristique la moyenne de la corrélation avec toutes les drogues."
+      },
+      "featureComparison": "Une fois de plus, le score relatif à la recherche de sensation arrive en première position. Cela pourrait signifier que les personnes ayant un score élevé de recherche de sensation sont plus susceptibles de consommer des drogues. Le score d'Impulsivité arrive en deuxième position, suivi du score d'ouverture à l'expérience. Comme nous pouvons le voir, les features telles que l'âge ou le pays de résidence sont très peu corrélées à la consommation de drogues."
+    },
+    "slideConclusion": {
+      "dataVisualizationTitle": "Représentons ces données sous forme de graphique pour mieux les visualiser !",
+      "analysisConclusion": "C'est tout pour cette analyse, n'oubliez pas que ce ne sont que des observations et des suppositions. Nous ne faisons pas de déclarations définitives sur les données.",
+      "explorationEncouragement": "N'hésitez pas à explorer les graphiques par vous-même et à vérifier la variété de drogues et de caractéristiques que l'ensemble de données offre. Vous pourriez identifier des informations que nous n'avons pas vues !"
+    }
+  },
+  "dashboard": {
+    "chartTypesTitle": "Sur ce dashboard, vous pouvez voir 3 types de graphiques :",
+    "chartTypesList": [
+      "Comparaison",
+      "Corrélation",
+      "Répartition"
+    ],
+    "comparisonChartDescription": "Comme vu dans l'analyse, les graphiques de comparaison nous permettent d'observer comment la consommation de drogues est distribuée parmi les différentes caractéristiques. Vous pouvez voir combien de sondés ont répondu à propos de leur fréquence de consommation, et vous pouvez filtrer les répondants par leur âge, leur pays et plus encore. Les graphiques de comparaison peuvent être affichés horizontalement et verticalement.",
+    "correlationHeatmapDescription": "Les heatmaps de corrélation nous aident à voir comment la consommation de drogue est corrélée à chaque caractéristique. Pour rappel, les caractéristiques sont des traits de personnalité ou des informations personnelles comme l'âge, le pays, l'ethnie... Plus la couleur entre la drogue et la caractéristique est sombre, plus la corrélation est élevée.",
+    "repartitionChartDescription": "Les graphiques de répartition nous aident à apprécier comment le jeu de données est équilibré parmi les différentes caractéristiques. C'est un élément important, car si l'une des caractéristiques n'est pas équilibrée, les résultats de l'analyse peuvent être biaisés. Cette information doit être prise en compte lors de l'analyse des données car notre jeu de données ne compte que 1885 répondants."
+  }
+}
