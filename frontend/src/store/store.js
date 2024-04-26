@@ -1,4 +1,5 @@
 import create from 'zustand';
+import translations from "@/assets/lang/translations.js";
 import {
     GET_REPARTITION_DATA,
     GET_CONSUMPTION_DATA,
@@ -7,6 +8,16 @@ import {
 } from "@/api_/api_.js";
 
 const useStore = create((set, get) => ({
+    language: sessionStorage.getItem('language') || 'en',
+    translations: translations[sessionStorage.getItem('language')],
+    setLanguage: (language) => {
+        sessionStorage.setItem('language', language);
+        set({
+            language: language,
+            translations: translations[language]
+        });
+    },
+
     chartType: 'consumption',
     setChartType: (chartType) => set({ chartType }),
 
