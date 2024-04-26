@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from "react";
 import ReactApexChart from "react-apexcharts";
+import useStore from "@/store/store.js";
+import {ReplaceUnderscoreSpace} from "@/tool/tool.js";
 
-export function BarChartGraph({ apiData, orientation, legend = true, toolbar = true }) {
+export function BarChartGraph({ apiData, orientation, dashboard = false }) {
+    const { consumptionType} = useStore();
 
     const [valueData, setValueData] = useState({});
 
@@ -16,12 +19,21 @@ export function BarChartGraph({ apiData, orientation, legend = true, toolbar = t
 
     const options = {
         legend: {
-            show: legend
+            show: !dashboard
         },
         chart: {
             type: 'bar',
             toolbar: {
-                show: toolbar
+                show: !dashboard
+            },
+        },
+        title: {
+            text: `Drug consumption of 1885 respondents distributed ${ReplaceUnderscoreSpace(consumptionType)}`,
+            align: 'center',
+            style: {
+                fontSize: dashboard == true ? '12px' : '18px' ,
+                fontWeight: 'bold',
+                color: '#263238'
             },
         },
         dataLabels: {
@@ -45,18 +57,19 @@ export function BarChartGraph({ apiData, orientation, legend = true, toolbar = t
     };
 
     const series = [{
-        name: 'consumption',
+        name: 'respondents',
         data: Object.values(valueData)
     }];
 
     return (
+            <ReactApexChart
+                options={options}
+                series={series}
+                type="bar"
+                height={'100%'}
+                width={dashboard == true ? '350' : '100%'}
+            />
 
-        <ReactApexChart
-            options={options}
-            series={series}
-            type="bar"
-            height={'100%'}
-        />
     );
 };
 
