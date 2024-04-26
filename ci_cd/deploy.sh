@@ -15,7 +15,7 @@ telegram_chat_id="CHAT_ID"
 
 # If script is called through webhook, we notify the admin
 # with a telegram message
-if [ "$1" = "verbose" ] then
+if [ "$1" = "verbose" ]; then
     msg=$(jq -rn --arg x "New commit on main, initiating pipeline ..." '$x|@uri')
     tg_url="https://api.telegram.org/bot$telegram_bot_token/sendMessage?chat_id=$telegram_chat_id&text=$msg"
     resp=$(curl -s "$tg_url")
@@ -104,7 +104,7 @@ echo "> Done, check website at http://194.135.81.27/"
 
 # If script is called through webhook, we notify the admin
 # with a telegram message
-if [ "$1" = "verbose" ] then
+if [ "$1" = "verbose" ]; then
     msg=$(jq -rn --arg x "Last build of 'drug consumption project' was successful" '$x|@uri')
     tg_url="https://api.telegram.org/bot$telegram_bot_token/sendMessage?chat_id=$telegram_chat_id&text=$msg"
     resp=$(curl -s "$tg_url")
