@@ -1,6 +1,5 @@
 import SearchBar from "@/components/SearchBar.jsx";
 import {Card, CardContent} from "@/components/ui/card.jsx";
-import SortButton from "@/components/SortButton.jsx";
 import {BarChartBig, LineChart, PieChart} from "lucide-react";
 import {GraphDrawer} from "@/components/GraphDrawer.jsx";
 import Graph from "@/components/Graph.jsx";
@@ -9,6 +8,7 @@ import useStore from "@/store/store.js";
 import {FirstLetterUpperCase, ReplaceUnderscoreSpace} from "@/tool/tool.js"
 import React, {useEffect} from "react";
 const Dashboard = ({title}) => {
+    const t = useStore(state => state.translations);
 
     const { drugType, drugValues, setDrugType, consumptionType, precisionConsumption,
         chartType, getFunctionToCall,setApiData, apiCorrelationData } = useStore();
@@ -76,44 +76,18 @@ const Dashboard = ({title}) => {
 
             <div className={`flex flex-col gap-y-5 pt-10 md:p-10 text-white text-balance text-base md:text-xl`}>
                 <span>
-                    <p className={`text-2xl font-semibold`}>On this dashboard,you can see 3 types of charts:</p>
+                    <p className={`text-2xl font-semibold`}>{t.dashboard.chartTypesTitle}</p>
                     <ul className={`list-disc font-semibold pl-11 pt-4`}>
-                        <li>Comparison</li>
-                        <li>Correlation</li>
-                        <li>Repartition</li>
+                        {t.dashboard.chartTypesList.map((item, index) => {
+                            return <li key={index}>{item}</li>
+                        })}
                     </ul>
                 </span>
 
-                <p>
-                    As seen in the analysis, the comparison charts help us see how drug consumption is distributed among
-                    the different features for each drug. You can see how many people in the survey answered about their
-                    frequency of consumption, and you can filter the respondents by their age, country and more. The
-                    comparison charts can be displayed both horizontally and vertically.
-                </p>
+                <p>{t.dashboard.comparisonChartDescription}</p>
 
-                <p>The correlation heatmaps help us see how the drug consumption is correlated with the different
-                    features.
-                    As a reminder, features are personality traits or personal information like age, country, ethnicity
-                    ...
-                    The darker the color between the drug and the feature, the higher the correlation.</p>
-                <p>The repartition charts help us see how the dataset is balanced among the different features. It is
-                    very
-                    important because if a feature is not balanced, the results of the analysis may be biased. This
-                    information must be taken into account when analyzing the data because our dataset only has 1885
-                    respondents.</p>
-                <p>Contenu Footer:</p>
-                <p>This project was made with (COEUR) for educational purposes using this dataset. It is under the MIT
-                    license. The whole code is open source and available on GitHub. Any guidance, suggestions, or
-                    collaboration is warmly welcomed and greatly appreciated, feel free to get in touch.</p>
-                <p>Contenu home</p>
-                <p>Welcome to this small statistical analysis project. The goal is to investigate the main factors that
-                    influence drug consumption in individuals. Are certain ethnicities more likely to consume drugs? Do
-                    people with specific personality traits have a higher likelihood of drug consumption? We will
-                    attempt to
-                    answer these questions and more in this analysis.</p>
-                <p>Feel free to run the analysis as many time as necessary and then explore the charts by yourself to
-                    find
-                    some insights !</p>
+                <p>{t.dashboard.correlationHeatmapDescription}</p>
+                <p>{t.dashboard.repartitionChartDescription}</p>
             </div>
         </div>
     );

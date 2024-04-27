@@ -98,7 +98,7 @@ const CorrelationChart = () => {
         },
         dataLabels: {
             enabled: false
-        },
+        }
     };
 
     return (

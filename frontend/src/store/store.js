@@ -1,16 +1,19 @@
 import create from 'zustand';
 import translations from "@/assets/lang/translations.js";
-
-import {GET_REPARTITION_DATA, GET_CONSUMPTION_DATA, GET_CORRELATION_DATA, GET_CORRELATION_MEANING_DATA} from "@/api_/api_.js";
+import {
+    GET_REPARTITION_DATA,
+    GET_CONSUMPTION_DATA,
+    GET_CORRELATION_DATA,
+    GET_CORRELATION_MEANING_DATA
+} from "@/api_/api_.js";
 
 const useStore = create((set, get) => ({
-    language: localStorage.getItem('language') || 'en',
-    translations: translations[localStorage.getItem('language')],
+    language: 'en',
+    translations: translations['en'],
     setLanguage: (language) => {
-        localStorage.setItem('language', language);
         set({
             language: language,
-            translations: translations[language]
+            translations: translations[language],
         });
     },
 
@@ -35,6 +38,7 @@ const useStore = create((set, get) => ({
 
     precisionConsumption: '18-24',
     setPrecisionConsumption: (precisionConsumption) => set({precisionConsumption}),
+
 
     apiParam:{age_range: '18-24', drug: 'alcohol' },
     setApiParam: (apiParam) => set({ apiParam }),

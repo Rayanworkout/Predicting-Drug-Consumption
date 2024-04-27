@@ -306,7 +306,7 @@ export const SlideEnding = () => {
     return (
         <div className={styles.textMainStyle}>
             <p className={styles.mainTitle}>{t.dataVisualizationTitle}</p>
-            <img src={correlationImg} className={` md:max-w-3xl mx-auto`}/>
+            <img src={correlationImg} className={`  lg:max-w-3xl mx-auto`}/>
             <p className = {styles.secondTitle}>{t.analysisConclusion}</p>
             <p>{t.explorationEncouragement}</p>
         </div>

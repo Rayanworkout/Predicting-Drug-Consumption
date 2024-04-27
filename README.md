@@ -4,6 +4,8 @@ _Project currently under development_
 
 ### TLDR; this Django Ninja / React App is a simple interactive case study on the relationship between drug consumption and personality traits.
 
+App is available at http://194.135.81.27/
+
 ### Introduction
 
 The relationship between personality traits and drug consumption has long been a subject of interest in psychological and sociological studies. This project aims to explore this relationship by analyzing [a dataset of 1,885 respondents'](https://www.kaggle.com/datasets/mexwell/drug-consumption-classification/data) drug consumption habits and personality traits.
