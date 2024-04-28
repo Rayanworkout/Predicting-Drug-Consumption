@@ -5,7 +5,7 @@ import {age_range_param, gender_param, ethnicity_param, education_param, country
 } from "@/components/BarChart/consumption.js"
 import useStore from "@/store/store.js";
 
-export function ConsumptionGroupCheckbox({precision = 'Value '}) {
+export function ConsumptionGroupCheckbox() {
     const { drugType, consumptionType, setApiParam, precisionConsumption, setPrecisionConsumption} = useStore();
 
     const paramsMapping = {
@@ -72,7 +72,7 @@ export function ConsumptionGroupCheckbox({precision = 'Value '}) {
     return (
         <div className="mt-3">
             <RadioGroup defaultValue={radioValue} onValueChange={handleRadioValueChange}>
-                <p>{precision} :</p>
+                <p>Precision :</p>
                 <div className = {`flex flex-wrap mb-4`}>
                     {GroupRadioButtonComponent()}
                 </div>
