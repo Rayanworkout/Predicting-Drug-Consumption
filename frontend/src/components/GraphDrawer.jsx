@@ -52,10 +52,13 @@ export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
                     </div>
 
                     <DrawerFooter>
+                        {chartType}
                         <DrawerClose asChild>
-                            {drugValues.includes(drugType) ?
+                            { chartType === 'repartition' ?
                                 <Button className = {`bg-blue-500 hover:bg-blue-800`} onClick={() => getFunctionToCall()()}>OK</Button> :
-                                <Button disabled={true} className = {`bg-blue-500 hover:bg-blue-800`}>You must select a valid drug</Button>
+                                (drugValues.includes(drugType) ?
+                                    <Button className = {`bg-blue-500 hover:bg-blue-800`} onClick={() => getFunctionToCall()()}>OK</Button> :
+                                    <Button disabled={true} className = {`bg-blue-500 hover:bg-blue-800`}>You must select a valid drug</Button>)
                             }
                         </DrawerClose>
 
