@@ -52,7 +52,6 @@ export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
                     </div>
 
                     <DrawerFooter>
-                        {chartType}
                         <DrawerClose asChild>
                             { chartType === 'repartition' ?
                                 <Button className = {`bg-blue-500 hover:bg-blue-800`} onClick={() => getFunctionToCall()()}>OK</Button> :
