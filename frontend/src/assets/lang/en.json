@@ -125,8 +125,8 @@
     "chartTypesTitle": "On this dashboard, you can see 3 types of charts :",
     "chartTypesList": [
       "Comparison",
-      "Correlation",
-      "Repartition"
+      "Repartition",
+      "Correlation"
     ],
     "comparisonChartDescription": "As seen in the analysis, the comparison charts help us see how drug consumption is distributed among the different features for each drug. You can see how many people in the survey answered about their frequency of consumption, and you can filter the respondents by their age, country and more. The comparison charts can be displayed both horizontally and vertically.",
     "correlationHeatmapDescription": "The correlation heatmaps help us see how the drug consumption is correlated with the different features. As a reminder, features are personality traits or personal information like age, country, ethnicity ... The darker the color between the drug and the feature, the higher the correlation.",

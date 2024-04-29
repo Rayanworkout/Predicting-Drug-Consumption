@@ -56,12 +56,14 @@ const Dashboard = ({title}) => {
                         <SearchBar className={`mb-4`} handleDrugType={handleDrugType}/>
                         <Button
                             disabled={chartType == 'consumption' ? (drugValues.includes(drugType) ? false : true) : true}
-                            onClick={() => getFunctionToCall()()} variant={'outline'}>Search</Button>
+                            onClick={() => getFunctionToCall()()} variant={'outline'}
+                            className = {`z-10`}
+                        >Search</Button>
                     </div>
 
-                    <Card className={`w-full h-fit flex-1`}>
+                    <Card className={`min-w-full md:min-w-[90%] h-fit flex-1 z-10`}>
                         <CardContent
-                            className={`w-full h-auto min-h-[400px] bg-neutral-400 items-center justify-center p-0 m-0 rounded`}>
+                            className={`w-full h-auto items-center justify-center p-0 m-0 rounded`}>
                             <Graph/>
                         </CardContent>
                     </Card>
