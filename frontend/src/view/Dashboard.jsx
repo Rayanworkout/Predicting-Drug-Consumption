@@ -7,11 +7,11 @@ import {Button} from "@/components/ui/button.jsx";
 import useStore from "@/store/store.js";
 import {FirstLetterUpperCase, ReplaceUnderscoreSpace} from "@/tool/tool.js"
 import React, {useEffect} from "react";
-const Dashboard = ({title}) => {
+const Dashboard = () => {
     const t = useStore(state => state.translations);
 
     const { drugType, drugValues, setDrugType, consumptionType, precisionConsumption,
-        chartType, getFunctionToCall,setApiData, apiCorrelationData } = useStore();
+        chartType, getFunctionToCall,setApiData } = useStore();
 
     useEffect(() => {
         setApiData({

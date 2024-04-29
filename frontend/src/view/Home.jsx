@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Swiper from "@/components/Swiper";
 import TutorialSwiper from "@/components/TutorialSwiper.jsx";
 import {Separator} from "@/components/ui/separator.jsx";
@@ -16,9 +16,6 @@ function Home() {
             setDataArray(fetchData)
         }, 2000)
     }
-    useEffect(() => {
-        //Appel de l'API pour set dans dataArray pour l'affichage des graph dans les swiper
-    }, []);
     return (
         <>
             <div className={`w-full h-full px-3 pb-3 overflow-hidden`}>

@@ -4,9 +4,7 @@ import {CardContent} from "@/components/ui/card.jsx";
 import useStore from "@/store/store.js";
 export function SearchBar () {
     const { drugType, setDrugType, drugValues } = useStore();
-
     const [isFocused, setIsFocused] = useState(false);
-
     const handleFocus = () => {
         setIsFocused(true);
     };
