@@ -48,7 +48,7 @@ set -e
 
 # BACKEND
 
-cd ./backend/
+cd ../../backend/
 
 # Check if python venv exists, if not create it
 if [ ! -d './.venv' ]; then
