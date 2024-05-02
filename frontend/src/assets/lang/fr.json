@@ -1,5 +1,6 @@
 {
   "main": {
+    "git": "Aimez nous sur GitHub !",
     "title": "Drug Analytics",
     "homeContent": "Bienvenue dans ce projet d'analyse statistique. Le but est d'investiguer les principaux facteurs qui influencent la consommation de drogues chez les individus. Certaines ethnies sont-elles plus susceptibles de consommer des drogues ? Les personnes ayant des traits de personnalité spécifiques ont-elles une probabilité plus élevée de consommer des drogues ? Nous tenterons de répondre à ces questions et plus encore dans cette analyse.",
     "analysisInvitation": "N'hésitez pas à lancer l'analyse autant de fois que nécessaire, puis explorez les graphiques par vous-même pour trouver des informations pertinentes !",
