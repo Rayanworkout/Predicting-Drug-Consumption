@@ -53,9 +53,7 @@ function Home() {
             </span>
                 <div className={` w-full h-0 bg-white text-white`}></div>
                 <div className={` flex flex-col w-100 gap-y-8 text-white `}>
-                    <Swiper swiperTitle={'Comparaison Chart'}/>
-                    <Swiper swiperTitle={'Repartition Chart'}/>
-                    <Swiper swiperTitle={'Correlation Chart'}/>
+                    <Swiper swiperTitle={'Comparaison Chart'} typeOfChart={'consumption'} chartArrayToMap={true}/>
                 </div>
             </div>
         </>
