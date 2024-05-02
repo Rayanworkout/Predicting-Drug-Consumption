@@ -29,8 +29,9 @@ Tech Stack / Features:
  - React Frontend
  - Data Plotting using [Apex Charts](https://apexcharts.com/)
  - CI/CD with GitHub Actions and a self made deployment pipeline [(see `ci_cd` folder)](/ci_cd/README.md)
- - 92% test coverage
+ - 92% backend test coverage
  - Load tests with [Locust](https://locust.io/)
+ - Frontend Performance tests with [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 
 
 _Note: Any guidance, suggestions, or collaboration is warmly welcomed and greatly appreciated ♥️_
