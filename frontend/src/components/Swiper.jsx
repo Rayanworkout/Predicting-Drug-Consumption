@@ -5,6 +5,7 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel.jsx"
+import { Link } from "react-router-dom";
 import {Card, CardContent} from "@/components/ui/card.jsx";
 import BarChartGraph from "@/components/BarChart/BarChartGraph.jsx";
 import React from "react";
@@ -12,18 +13,8 @@ import {Button} from "@/components/ui/button.jsx";
 import RepartitionGraph from "@/components/RepartitionChart/RepartitionGraph.jsx";
 import CorrelationChart from "@/components/CorrelationChart/CorrelationChart.jsx";
 import {dataArray} from "@/tool/tool.js";
-const Swiper = ({swiperTitle, typeOfChart, chartArrayToMap}) => {
-    function getChartToRender(graphData){
-        switch (typeOfChart){
-            case 'repartition':
-                return <RepartitionGraph apiData={graphData}/>;
-            case 'correlation':
-                return <CorrelationChart/>
-            case 'consumption':
-                return <BarChartGraph apiData={graphData} orientation={true} dashboard={true}/>;
+const Swiper = ({swiperTitle}) => {
 
-        }
-    }
     const data = dataArray();
     return (
         <div className = {`flex justify-center`}>
@@ -33,18 +24,20 @@ const Swiper = ({swiperTitle, typeOfChart, chartArrayToMap}) => {
                         <p className={`text-2xl`}>{swiperTitle}</p>
                         <p className={`text-xl`}>Description Du Chart</p>
                     </span>
+                    <Link to="/statistics">
                     <Button variant="outline" className = {`text-black`}>Go to Dashboard</Button>
+                    </Link>
                 </div>
 
                 <CarouselContent className=" ">
                     {
-                        chartArrayToMap ?
+                        data ?
                             data.consumption.map((item, index) => (
                                 <CarouselItem key={index} className=" md:basis-1/2 lg:basis-1/3 ">
                                     <div className="p-1">
                                         <Card>
                                             <CardContent className="h-60 flex bg-neutral-50  rounded">
-                                                {getChartToRender(item)}
+                                                <BarChartGraph apiData={item} orientation={true} dashboard={true}/>
                                             </CardContent>
                                         </Card>
                                     </div>

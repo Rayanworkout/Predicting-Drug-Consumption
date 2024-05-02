@@ -17,6 +17,13 @@ module.exports = {
       },
     },
     extend: {
+      theme:{
+        container:{
+          screens:{
+            'xsm': '480px'
+          }
+        }
+      },
       keyframes: {
         "glowSpinL":{
           '0%': { transform: 'translateY(0) translateX(0)', opacity: '1' },
