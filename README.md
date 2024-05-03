@@ -96,7 +96,9 @@ npm install
 npm run dev
 ```
 
-Both backend and frontend should now be running.
+Both backend and frontend should be running.
+
+After everything is setup for the first time, you can just run the server with `python3 manage.py runserver` (`py manage.py runserver` on Windows) for the backend and `npm run dev` for the frontend.
 
 Now you can either:
 - Access the app at http://localhost:5173/
