@@ -35,27 +35,10 @@ function Home() {
                     <TutorialSwiper/>
                 </div>
                 <Separator className="mt-16"/>
-                <span className={`flex pb-3 lg:px-20`}>
-                <span className={` flex flex-col gap-y-2 mt-20 mb-10 `}>
-                    <h1 className={`
-                           text-4xl 
-                           md:text-5xl
-                           font-bold tracking-tight text-white antialiasing`}
-                    >Drugs Consumption Stats
-                    </h1>
-                    <h2 className={` 
-                           text-ml/relaxed
-                           md:text-xl/relaxed
-                           font-semibold tracking-tight text-gray-500 antialiasing`}>
-                        Many stats for you
-                    </h2>
-                </span>
-            </span>
+                <span className={`flex mt-5 mb-10 pb-3 lg:px-20`}></span>
                 <div className={` w-full h-0 bg-white text-white`}></div>
                 <div className={` flex flex-col w-100 gap-y-8 text-white `}>
                     <Swiper swiperTitle={'Comparaison Chart'}/>
-                    <Swiper swiperTitle={'Repartition Chart'}/>
-                    <Swiper swiperTitle={'Correlation Chart'}/>
                 </div>
             </div>
         </>

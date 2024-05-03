@@ -1,4 +1,3 @@
-import React from 'react';
 import BarChartGraph from "@/components/BarChart/BarChartGraph.jsx";
 import useStore from "@/store/store.js";
 import RepartitionGraph from "@/components/RepartitionChart/RepartitionGraph.jsx";

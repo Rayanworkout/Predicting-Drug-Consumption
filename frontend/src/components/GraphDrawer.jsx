@@ -3,7 +3,6 @@ import {
     Drawer,
     DrawerClose,
     DrawerContent,
-    DrawerDescription,
     DrawerFooter,
     DrawerHeader,
     DrawerTitle,
@@ -38,12 +37,9 @@ export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
                 <div className="mx-auto w-full max-w-sm">
                     <DrawerHeader>
                         <DrawerTitle>{FirstLetterUpperCase(chartType)}
-                            {
-                                 chartType == 'consumption' ? ` of ${FirstLetterUpperCase(drugType)}` : ''
-                            }
+                            {chartType == 'consumption' ?
+                                ` of ${FirstLetterUpperCase(drugType)}` : ''}
                         </DrawerTitle>
-
-                        <DrawerDescription>Add some precision to your chart </DrawerDescription>
                     </DrawerHeader>
                     <div className={`p-4 pb-0`}>
                         <div className={`mt-3 h-fit min-h-[100px]`}>

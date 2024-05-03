@@ -28,7 +28,7 @@ export function BarChartGraph({ apiData, orientation, dashboard = false }) {
             },
         },
         title: {
-            text: `Drug consumption of 1885 respondents distributed ${ReplaceUnderscoreSpace(consumptionType)}`,
+            text: `Drug consumption of ${Object.values(valueData).reduce((acc, curr) => acc + Number(curr), 0)} respondents distributed ${ReplaceUnderscoreSpace(consumptionType)}`,
             align: 'center',
             style: {
                 fontSize: dashboard == true ? '12px' : '18px' ,
