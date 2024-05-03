@@ -28,7 +28,7 @@ const CorrelationChart = () => {
             type: 'heatmap',
         },
         title: {
-            text: `Correlation between drug consumption and personality`,
+            text: `Correlation between`,
             align: 'center',
             style: {
                 fontSize: '18px',

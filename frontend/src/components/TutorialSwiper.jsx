@@ -8,11 +8,7 @@ import {useEffect, useState, useRef} from "react";
 import {SlideIntroduction, SlideHowToReadChart,ExplanationConsumption, SlideSummary, SlideCorrelationIntroduction, SlideCorrelationExplanation, SlideEnding} from "@/components/TutorialPage/SlidesIntroduction.jsx"
 const TutorialSwiper = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const myContainer = useRef(null);
 
-    const scrollToTop = () => {
-        myContainer.current.scrollTop = 0;
-    };
     const slides = [
         <SlideIntroduction/>,
         <SlideHowToReadChart/>,
@@ -26,28 +22,16 @@ const TutorialSwiper = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goToNext = () => {
-        scrollToTop
         setCurrentIndex((prevIndex) =>
             prevIndex === slides.length - 1 ? 0 : prevIndex + 1
         );
     };
 
     const goToPrev = () => {
-        scrollToTop
         setCurrentIndex((prevIndex) =>
             prevIndex === 0 ? slides.length - 1 : prevIndex - 1
         );
     };
-    const hasShown = sessionStorage.getItem('alertShown');
-
-    useEffect(() => {
-        setCurrentIndex(0)
-        if (!hasShown) {
-            setIsOpen(true);
-            sessionStorage.setItem('alertShown', 'true');
-        }
-    }, [hasShown]);
-
     return (
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
             <AlertDialogTrigger asChild>

@@ -4,7 +4,7 @@ import useStore from "@/store/store.js";
 const Footer = () => {
     const {translations} = useStore();
     return (
-        <div className={`h-fit p-7`}>
+        <div className={`min-h-fit p-7`}>
             <p className={`text-white text-center`}>
                 {translations.main.footerContent}
             </p>

@@ -11,7 +11,7 @@ const NavBar = () => {
     const t = useStore(state => state.translations);
 
     return (
-        <div className={`flex w-full h-full text-white font-bold gap-3 pt-10 py-3 px-6 md:px-10 bg-transparent backdrop-blur justify-between align-baseline  z-50`}>
+        <div className={`flex w-full min-h-fit text-white font-bold gap-3 pt-10 py-3 px-6 md:px-10 bg-transparent backdrop-blur justify-between align-baseline  z-50`}>
         <span className={`flex gap-x-1 md:gap-x-3 items-center text-sm font-bold`}>
         <Link
             to="/"

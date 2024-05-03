@@ -2,9 +2,16 @@
   "main": {
     "git": "Star us on GitHub !",
     "title": "Drug Analytics",
-    "homeContent": "Welcome to this small statistical analysis project. The goal is to investigate the main factors that influence drug consumption in individuals. Are certain ethnicities more likely to consume drugs? Do people with specific personality traits have a higher likelihood of drug consumption? We will attempt to answer these questions and more in this analysis.",
+    "homeContent": {
+      "contentTitle": "Welcome to this small statistical analysis project. The goal is to investigate the main factors that influence drug consumption in individuals. ",
+      "contentQuestion": [
+        "Are certain ethnicities more likely to consume drugs ?",
+        "Do people with specific personality traits have a higher likelihood of drug consumption ?"
+      ],
+      "contentEnding": "We will attempt to answer these questions and more in this analysis."
+    },
     "analysisInvitation": "Feel free to run the analysis as many time as necessary and then explore the charts by yourself to find some insights !",
-    "footerContent": "This project was made with <3 for educational purposes using this dataset. It is under the MIT license. The whole code is open source and available on GitHub. Any guidance, suggestions, or collaboration is warmly welcomed and greatly appreciated, feel free to get in touch."
+    "footerContent": "This project was made with ❤\uFE0F for educational purposes using this dataset. It is under the MIT license. The whole code is open source and available on GitHub. Any guidance, suggestions, or collaboration is warmly welcomed and greatly appreciated, feel free to get in touch."
   },
   "analysis": {
     "slideIntroduction": {
