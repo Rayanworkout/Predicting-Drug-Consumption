@@ -25,7 +25,7 @@ echo "> Pulling changes ..."
 
 # We reset first because we want to discard any local changes
 # otherwise the pull will fail
-sudo git reset --hard
+sudo git reset --hard # This can also be handled by changing file permissions, which is the issue causing the pull to fail
 
 # Using a variable to capture the error message
 output=$(sudo git pull origin main 2>&1)

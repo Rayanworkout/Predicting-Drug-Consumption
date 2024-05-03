@@ -37,7 +37,7 @@ Tech Stack / Features:
 _Note: Any guidance, suggestions, or collaboration is warmly welcomed and greatly appreciated ♥️_
 
 
-### How to run locally
+## How to run locally ?
 
 _You need to have Python >3.10 installed on your machine_
 
@@ -85,6 +85,7 @@ py manage.py fill_database
 py manage.py runserver
 ```
 
+#### Both Linux and Windows users
 In another terminal:
 
 ```bash
@@ -98,7 +99,6 @@ npm run dev
 Both backend and frontend should now be running.
 
 Now you can either:
-
 - Access the app at http://localhost:5173/
 - Access the API documentation at http://127.0.0.1:8000/api/docs
-- Run the backend tests by stopping the server and running inside the backend folder `python3 manage.py test` (or `py manage.py` test on Windows)
+- Run the backend tests by stopping the server and running `python3 manage.py test` (or `py manage.py test` on Windows)
