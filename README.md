@@ -35,3 +35,70 @@ Tech Stack / Features:
 
 
 _Note: Any guidance, suggestions, or collaboration is warmly welcomed and greatly appreciated ♥️_
+
+
+### How to run locally
+
+_You need to have Python >3.10 installed on your machine_
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/Rayanworkout/Predicting-Drug-Consumption.git
+cd Predicting-Drug-Consumption
+```
+
+
+#### Linux users
+
+Run [`local_run.sh`](/local_run.sh) script to start the backend and frontend servers. The script will create a virtual environment, install the necessary packages, and start the servers.
+    
+```bash
+chmod +x local_run.sh
+./local_run.sh
+```
+
+Or you can do it manually by running these commands one after each other:
+
+```bash
+cd ./backend/
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python3 manage.py migrate
+python3 manage.py fill_database
+mv .env.example .env
+
+python manage.py runserver
+```
+
+#### Windows users
+
+First rename `backend/.env.example` to `.env`
+
+```bash
+py -m venv .venv
+.venv/Scripts/activate
+pip install -r requirements.txt
+py manage.py migrate
+py manage.py fill_database
+py manage.py runserver
+```
+
+In another terminal:
+
+```bash
+# Frontend
+
+cd ./frontend/
+npm install
+npm run dev
+```
+
+Both backend and frontend should now be running.
+
+Now you can either:
+
+- Access the app at http://localhost:5173/
+- Access the API documentation at http://127.0.0.1:8000/api/docs
+- Run the backend tests by stopping the server and running inside the backend folder `python3 manage.py test` (or `py manage.py` test on Windows)
