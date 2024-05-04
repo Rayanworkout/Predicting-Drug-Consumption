@@ -21,6 +21,28 @@ const useStore = create((set, get) => ({
     setChartType: (chartType) => set({ chartType }),
 
     drugValues : ["alcohol", "amphet", "amyl", "benzos", "caff", "cannabis", "choc", "coke", "crack", "ecstasy", "heroin", "ketamine", "legalh", "lsd", "meth", "mushrooms", "nicotine", "semer", "vsa"],
+    drugValuesPrettier : [
+        {drug: 'Alcohol', value: 'alcohol'},
+        {drug: 'Amphetamine', value: 'amphet'},
+        {drug: 'Amyl', value: 'amyl'},
+        {drug: 'Benzos', value: 'benzos'},
+        {drug: 'Cafféine', value: 'caff'},
+        {drug: 'Cannabis', value: 'cannabis'},
+        {drug: 'Chocolate', value: 'choc'},
+        {drug: 'Cockaine', value: 'coke'},
+        {drug: 'Crack', value: 'crack'},
+        {drug: 'Ecstasy', value: 'ecstasy'},
+        {drug: 'Heroin', value: 'heroin'},
+        {drug: 'Ketamin', value: 'ketamine'},
+        {drug: 'Leghal', value: 'legalh'},
+        {drug: 'LSD', value: 'lsd'},
+        {drug: 'Methamphetamine', value: 'meth'},
+        {drug: 'Mushrooms', value: 'mushrooms'},
+        {drug: 'Nicotine', value: 'nicotine'},
+        {drug: 'Semer', value: 'semer'},
+        {drug: 'VSA', value: 'vsa'},
+    ],
+
     drugType: 'cannabis',
     setDrugType: (drugType) => {
         const currentApiParam = get().apiParam;

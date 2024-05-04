@@ -3,10 +3,9 @@ import {useState} from "react";
 import {CardContent} from "@/components/ui/card.jsx";
 import useStore from "@/store/store.js";
 export function SearchBar () {
-    const { drugType, setDrugType, drugValues, chartType } = useStore();
+    const { drugType, setDrugType, drugValues, drugValuesPrettier, chartType } = useStore();
 
     const [isFocused, setIsFocused] = useState(false);
-
     const handleFocus = () => {
         setIsFocused(true);
     };
@@ -17,6 +16,7 @@ export function SearchBar () {
         setDrugType(value);
         setIsFocused(false);
     };
+    const filteredDATA = drugValuesPrettier.filter(item => item.drug.toLowerCase().includes(drugType.toLowerCase()));
 
     const filteredData = drugValues.filter(item => item.toLowerCase().includes(drugType.toLowerCase()));
 
@@ -35,11 +35,11 @@ export function SearchBar () {
             {isFocused && (
                 <CardContent
                     className = {`absolute mt-1 bg-white w-full max-h-56 rounded overflow-y-auto`}>
-                    {filteredData.length > 0 ? (
-                        filteredData.map((item, index) => (
-                            <p key={index} onClick={() => handleSelect(item)}
+                    {filteredDATA.length > 0 ? (
+                        filteredDATA.map((item, index) => (
+                            <p key={index} onClick={() => handleSelect(item.value)}
                                className = {`px-2 pt-2 ease-out duration-300 hover:bg-neutral-200 cursor-pointer`}>
-                                {item}
+                                {item.drug}
                             </p>
                         ))
                     ) : (
