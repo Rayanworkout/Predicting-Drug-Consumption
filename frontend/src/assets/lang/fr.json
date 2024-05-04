@@ -1,9 +1,9 @@
 {
   "main": {
-    "git": "Aimez nous sur GitHub !",
-    "title": "Drug Analytics",
+    "git": "Give us a star on GitHub !",
+    "title": "Analyse de la propension à consommer des drogues",
     "homeContent": {
-      "contentTitle": "Bienvenue dans ce projet d'analyse statistique. Le but est d'investiguer les principaux facteurs qui influencent la consommation de drogues chez les individus.",
+      "contentTitle": "Bienvenue dans ce projet d'analyse statistique. Le but est d'observer les principaux facteurs qui influencent la consommation de drogues chez les individus.",
       "contentQuestion": [
         "Certaines ethnies sont-elles plus susceptibles de consommer des drogues ?",
         "Les personnes ayant des traits de personnalité spécifiques ont-elles une probabilité plus élevée de consommer des drogues ?"
@@ -11,12 +11,12 @@
       "contentEnding": "Nous tenterons de répondre à ces questions et plus encore dans cette analyse."
     },
     "analysisInvitation": "N'hésitez pas à lancer l'analyse autant de fois que nécessaire, puis explorez les graphiques par vous-même pour trouver des informations pertinentes !",
-    "footerContent": "Ce projet a été réalisé avec ❤\uFE0F à des fins éducatives en utilisant ce jeu de données. Il est sous licence MIT. Tout le code est open source et disponible sur GitHub. Toute orientation, suggestion ou collaboration est chaleureusement accueillie et grandement appréciée, n'hésitez pas à nous contacter."
+    "footerContent": "Ce projet a été réalisé avec ❤\uFE0F à des fins éducatives. Tout le code est open source et disponible sur GitHub sous licence MIT. Toute orientation, suggestion ou collaboration est chaleureusement accueillie et grandement appréciée, n'hésitez pas à nous contacter."
   },
   "analysis": {
     "slideIntroduction": {
       "mainTitle": "Observation des principaux facteurs qui influencent la consommation de drogues chez les individus : Une étude de cas.",
-      "databaseIntroduction": "Nous disposons d'une base de données de 1885 personnes ayant participé à une enquête scientifique. Pour chacun d'eux, 12 attributs ainsi que leur score sont connus. Ces attributs, que nous appellerons <b>features</b>, sont basés sur le test de personnalité NEO-FFI-R. Ce test mesure les 5 traits de personnalité suivants:",
+      "databaseIntroduction": "Nous disposons d'une base de données de 1885 personnes ayant participé à une enquête scientifique. Pour chacun d'eux, 12 attributs ainsi que leur score sont connus. Ces attributs, que nous appellerons features, sont basés sur le test de personnalité NEO-FFI-R. Ce test mesure les 5 traits de personnalité suivants:",
       "personalityTraits": [
         "Névrosisme",
         "Extraversion",

@@ -35,7 +35,7 @@ const TutorialSwiper = () => {
     return (
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
             <AlertDialogTrigger asChild>
-                <Button variant="default_blue" className = {``} onClick={() => setIsOpen(true)}>Start Tutorial</Button>
+                <Button variant="default_blue" className = {``} onClick={() => setIsOpen(true)}>Start Guided Analysis</Button>
             </AlertDialogTrigger>
             <AlertDialogContent className = {`w-[90vw] h-[90vh] bg-transparent backdrop-blur rounded-2xl`}>
 
