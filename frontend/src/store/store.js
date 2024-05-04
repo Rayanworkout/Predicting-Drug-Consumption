@@ -8,8 +8,8 @@ import {
 } from "@/api_/api_.js";
 
 const useStore = create((set, get) => ({
-    language: 'en',
-    translations: translations['en'],
+    language: 'fr',
+    translations: translations['fr'],
     setLanguage: (language) => {
         set({
             language: language,
@@ -20,8 +20,7 @@ const useStore = create((set, get) => ({
     chartType: 'consumption',
     setChartType: (chartType) => set({ chartType }),
 
-    drugValues : ["alcohol", "amphet", "amyl", "benzos", "caff", "cannabis", "choc", "coke", "crack", "ecstasy", "heroin", "ketamine", "legalh", "lsd", "meth", "mushrooms", "nicotine", "semer", "vsa"],
-    drugValuesPrettier : [
+    drugData : [
         {drug: 'Alcohol', value: 'alcohol'},
         {drug: 'Amphetamine', value: 'amphet'},
         {drug: 'Amyl', value: 'amyl'},
@@ -51,6 +50,10 @@ const useStore = create((set, get) => ({
             apiParam: { ...currentApiParam, drug: drugType }
         });
     },
+
+    drugTypePrettier: 'Cannabis',
+    setDrugTypePrettier: (drugTypePrettier) => set({drugTypePrettier}),
+
 
     consumptionType: 'by_age',
     setConsumptionType: (consumptionType) => set({consumptionType}),

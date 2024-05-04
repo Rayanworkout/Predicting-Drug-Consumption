@@ -58,7 +58,7 @@ const TutorialSwiper = () => {
                         }
                     </div>
                     <span className = {`flex justify-end items-center min-h-[5vh]`}>
-                        <Button variant="default_blue" onClick={() => {setIsOpen(false), scrollToTop}}>Close Analysis</Button>
+                        <Button variant="default_blue" onClick={() => {setIsOpen(false)}}>Close Analysis</Button>
                     </span>
                 </div>
 

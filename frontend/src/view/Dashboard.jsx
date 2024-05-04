@@ -7,10 +7,11 @@ import {Button} from "@/components/ui/button.jsx";
 import useStore from "@/store/store.js";
 import {FirstLetterUpperCase, ReplaceUnderscoreSpace} from "@/tool/tool.js"
 import React, {useEffect} from "react";
+import BubbleGlow from "@/components/BubbleGlow.jsx";
 const Dashboard = () => {
     const t = useStore(state => state.translations);
 
-    const { drugType, drugValues, setDrugType, consumptionType, precisionConsumption,
+    const { drugType, drugData, setDrugType, drugTypePrettier, consumptionType, precisionConsumption,
         chartType, getFunctionToCall,setApiData } = useStore();
 
     useEffect(() => {
@@ -35,13 +36,12 @@ const Dashboard = () => {
 
     return (
         <div className={`w-100 h-full flex flex-col pt-10 px-6 pb-3 bg-transparent z-1`}>
-            <span className={`animate-glowSpinL absolute z-[0] w-[200px] h-[100px] bg-blue-400 left-0 mt-20 ml-20 rounded-full blur-3xl`}></span>
-            <span className={`animate-glowSpinR absolute z-[0] w-[200px] h-[100px] bg-[#bec1ff] left-0 ml-32 md:ml-52 rounded-full blur-3xl`}></span>
+            <BubbleGlow/>
 
             <span className={` flex flex-col gap-0 pb-3 lg:px-7 z-10`}>
                 <span className={` mb-10 `}>
                     <h1 className={`text-5xl md:text-6xl font-bold pb-3 tracking-tight text-white antialiasing`}>
-                        {chartType != 'consumption' ? FirstLetterUpperCase(chartType) + ' ' + ReplaceUnderscoreSpace(consumptionType) : 'Drug : ' + FirstLetterUpperCase(drugType)}
+                        {chartType != 'consumption' ? FirstLetterUpperCase(chartType) + ' ' + ReplaceUnderscoreSpace(consumptionType) : 'Drug : ' + drugTypePrettier}
                     </h1>
                     <p className={` text-2xl  md:text-3xl font-bold tracking-tight text-white antialiasing`}>
                         {chartType == 'consumption' ? FirstLetterUpperCase(chartType) + ' ' + ReplaceUnderscoreSpace(consumptionType) + " : " + ReplaceUnderscoreSpace(precisionConsumption) : ""}
@@ -55,7 +55,7 @@ const Dashboard = () => {
                     <div className={`w-full flex justify-center gap-x-4`}>
                         <SearchBar className={`mb-4`} handleDrugType={handleDrugType}/>
                         <Button
-                            disabled={chartType == 'consumption' ? (drugValues.includes(drugType) ? false : true) : true}
+                            disabled={chartType == 'consumption' ? (drugData.some(item => (item.value == drugType)) ? false : true) : true}
                             onClick={() => getFunctionToCall()()} variant={'outline'}
                             className = {`z-10`}
                         >Search</Button>
