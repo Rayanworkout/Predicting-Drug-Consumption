@@ -14,7 +14,7 @@ const CorrelationChartDetail = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                     <RadioGroupItem value="feature_to_drug_mean" id="r2"/>
-                    <Label htmlFor="r2">Drug meaning</Label>
+                    <Label htmlFor="r2">Mean Correlation between feature and consumption</Label>
                 </div>
             </div>
         </RadioGroup>

@@ -1,6 +1,6 @@
 {
   "main": {
-    "git": "Give us a star on GitHub !",
+    "git": "Github",
     "title": "Analyse de la propension à consommer des drogues",
     "homeContent": {
       "contentTitle": "Bienvenue dans ce projet d'analyse statistique. Le but est d'observer les principaux facteurs qui influencent la consommation de drogues chez les individus.",
@@ -137,7 +137,7 @@
       "Corrélation"
     ],
     "comparisonChartDescription": "Comme vu dans l'analyse, les graphiques de comparaison nous permettent d'observer comment la consommation de drogues est distribuée parmi les différentes caractéristiques. Vous pouvez voir combien de sondés ont répondu à propos de leur fréquence de consommation, et vous pouvez filtrer les répondants par leur âge, leur pays et plus encore. Les graphiques de comparaison peuvent être affichés horizontalement et verticalement.",
-    "correlationHeatmapDescription": "Les heatmaps de corrélation nous aident à voir comment la consommation de drogue est corrélée à chaque caractéristique. Pour rappel, les caractéristiques sont des traits de personnalité ou des informations personnelles comme l'âge, le pays, l'ethnie... Plus la couleur entre la drogue et la caractéristique est sombre, plus la corrélation est élevée.",
+    "correlationHeatmapDescription": "Les heatmaps de corrélation nous aident à voir comment la consommation générale de drogue est corrélée à chaque caractéristique. Pour rappel, les caractéristiques sont des traits de personnalité ou des informations personnelles comme l'âge, le pays, l'ethnie... Plus la couleur entre la drogue et la caractéristique est sombre, plus la corrélation est élevée.",
     "repartitionChartDescription": "Les graphiques de répartition nous aident à apprécier comment le jeu de données est équilibré parmi les différentes caractéristiques. C'est un élément important, car si l'une des caractéristiques n'est pas équilibrée, les résultats de l'analyse peuvent être biaisés. Cette information doit être prise en compte lors de l'analyse des données car notre jeu de données ne compte que 1885 répondants."
   }
 }
