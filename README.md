@@ -39,7 +39,7 @@ _Note: Any guidance, suggestions, or collaboration is warmly welcomed and greatl
 
 ## How to run locally ?
 
-_You need to have Python >3.10 installed on your machine_
+_You need to have Python >3.10 and NodeJS installed on your machine_
 
 1. Clone the repository
 
