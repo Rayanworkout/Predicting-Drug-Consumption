@@ -6,7 +6,7 @@ import {
 import { Button } from "@/components/ui/button.jsx"
 import {useEffect, useState, useRef} from "react";
 import {SlideIntroduction, SlideHowToReadChart,ExplanationConsumption, SlideSummary, SlideCorrelationIntroduction, SlideCorrelationExplanation, SlideEnding} from "@/components/TutorialPage/SlidesIntroduction.jsx"
-const TutorialSwiper = () => {
+const TutorialSwiper = ({titleButton}) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const slides = [
@@ -35,7 +35,7 @@ const TutorialSwiper = () => {
     return (
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
             <AlertDialogTrigger asChild>
-                <Button variant="default_blue" className = {``} onClick={() => setIsOpen(true)}>Start Guided Analysis</Button>
+                <Button variant="default_blue" className = {``} onClick={() => setIsOpen(true)}>{titleButton}</Button>
             </AlertDialogTrigger>
             <AlertDialogContent className = {`w-[90vw] h-[90vh] bg-transparent backdrop-blur rounded-2xl`}>
 

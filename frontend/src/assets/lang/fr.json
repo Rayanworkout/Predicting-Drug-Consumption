@@ -1,7 +1,8 @@
 {
   "main": {
-    "git": "Github",
-    "title": "Analyse de la propension à consommer des drogues",
+    "analysisTitle": "Commencer l'analyse guidé",
+    "git": "Star us on GitHub !",
+    "title": "Predicting Drug Consumption",
     "homeContent": {
       "contentTitle": "Bienvenue dans ce projet d'analyse statistique. Le but est d'observer les principaux facteurs qui influencent la consommation de drogues chez les individus.",
       "contentQuestion": [
@@ -130,6 +131,9 @@
     }
   },
   "dashboard": {
+    "comparison": "Comparaison",
+    "repartition": "Répartition",
+    "correlation": "Corrélation",
     "chartTypesTitle": "Sur ce dashboard, vous pouvez voir 3 types de graphiques :",
     "chartTypesList": [
       "Comparaison",

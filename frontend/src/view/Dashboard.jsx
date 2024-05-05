@@ -69,9 +69,9 @@ const Dashboard = () => {
                     </Card>
 
                     <div className={`h-fit w-fit bg-transparent flex flex-wrap gap-3 justify-center`}>
-                        <GraphDrawer icon={<BarChartBig/>} typeOfChart={"consumption"} triggerTitle={'Comparison'}/>
-                        <GraphDrawer icon={<LineChart/>} typeOfChart={"repartition"} triggerTitle={'Repartition'}/>
-                        <GraphDrawer icon={<PieChart/>} typeOfChart={"correlation"} triggerTitle={'Correlation'}/>
+                        <GraphDrawer icon={<BarChartBig/>} typeOfChart={"consumption"} triggerTitle={t.dashboard.comparison}/>
+                        <GraphDrawer icon={<LineChart/>} typeOfChart={"repartition"} triggerTitle={t.dashboard.repartition}/>
+                        <GraphDrawer icon={<PieChart/>} typeOfChart={"correlation"} triggerTitle={t.dashboard.correlation}/>
                     </div>
                 </div>
             </div>

@@ -51,8 +51,6 @@ export function BarChartGraph({ apiData, orientation, dashboard = false }) {
                 borderRadius: 4,
                 horizontal: orientation,
             },
-
-
         }
     };
 
