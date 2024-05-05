@@ -6,35 +6,31 @@ function Home() {
     const t = useStore(state => state.translations);
     return (
         <>
-            <div className={`w-full flex flex-col flex-grow items-center justify-center align-middle px-3 overflow-hidden`}>
-                <div>
-                    <div className={`pt-20 h-full flex flex-col items-center overflow-hidden`}>
-                        <BubbleGlow/>
-                        <span className={`pb-10 px-10 flex flex-col md:flex-row items-center`}>
-                        <span className={`text-white flex flex-col gap-y-2`}>
-                            <p className={`text-6xl font-bold text-white`}>
+            <div className={`w-full flex flex-col flex-grow justify-center px-3 gap-y-10 overflow-hidden`}>
+                <div className = {`grid md:grid-cols-[55%_45%]`}>
+                    <div className={`pl-10 flex flex-col`}>
+                        <span className={`pb-3`}>
+                            <BubbleGlow/>
+                            <p className={`text-4xl md:text-6xl font-bold text-white pb-2`}>
                                 {t.main?.title}
                             </p>
                             <p className={`text-gray-500`}>
                                 text à mettre text à mettre text à mettre text à mettre text à mettre text
                             </p>
                         </span>
-
-                        <span className={`flex flex-col gap-y-1 font-medium text-white pt-9 md:p-6`}>
+                        <span className={`flex flex-col gap-y-1 text-[16px} text-white`}>
                             <p>{t.main?.homeContent.contentTitle}</p>
                             <ul className={`pl-4 list-disc`}>
-                                {t.main?.homeContent.contentQuestion.map((item, index) => {
-                                        return <li key={index}>{item}</li>
-                                    }
-                                )}
+                                {t.main?.homeContent.contentQuestion.map((item, index) => {return <li key={index}>{item}</li>})}
                             </ul>
                             <p>{t.main?.homeContent.contentEnding}</p>
                         </span>
-                    </span>
-                        <span className={`bg-blue-400`}></span>
                     </div>
+                    <div className = {``}></div>
                 </div>
-                <TutorialSwiper titleButton={t.main?.analysisTitle}/>
+                <span className = {`text-center`}>
+                    <TutorialSwiper titleButton={t.main?.analysisTitle}/>
+                </span>
             </div>
         </>
     )

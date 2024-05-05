@@ -16,7 +16,7 @@ export function Graph () {
                     case 'drug_and_personality' :
                         return <CorrelationChart/>
                     case 'feature_to_drug_mean' :
-                        return <BarChartGraph apiData={apiCorrelationData} orientation={true}/>
+                        return <BarChartGraph apiData={apiCorrelationData} orientation={true} isTitled={false}/>
                 };
         }
     }
