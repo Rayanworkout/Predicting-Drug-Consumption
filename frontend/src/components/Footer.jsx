@@ -5,7 +5,7 @@ const Footer = () => {
     const {translations} = useStore();
     return (
         <div className={`min-h-fit pb-3`}>
-            <p className={`text-white text-center text-xs`}>
+            <p className={`text-white text-center text-xs md:text-sm`}>
                 {translations.main.footerContent}
             </p>
         </div>
