@@ -1,8 +1,8 @@
 {
   "main": {
-    "analysisTitle": "Commencer l'analyse guidée",
+    "analysisTitle": "Analyse guidée",
     "git": "Star us on GitHub !",
-    "title": "Predicting Drug Consumption",
+    "title": "Drogue et personnalité",
     "homeContent": {
       "contentTitle": "Bienvenue dans ce projet d'analyse statistique. Le but est d'observer les principaux facteurs qui influencent la consommation de drogues chez les individus.",
       "contentQuestion": [

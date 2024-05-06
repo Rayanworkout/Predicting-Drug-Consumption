@@ -24,9 +24,9 @@ function Home() {
                             <p className={`text-4xl md:text-6xl font-bold text-white pb-2`}>
                                 {t.main?.title}
                             </p>
-                            <p className={`text-gray-500`}>
+                            {/* <p className={`text-gray-500`}>
                                 text à mettre text à mettre text à mettre text à mettre text à mettre text
-                            </p>
+                            </p> */}
                         </span>
                         <span className={`flex flex-col gap-y-1 text-[16px} text-white`}>
                             <p>{t.main?.homeContent.contentTitle}</p>
