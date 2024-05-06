@@ -2,7 +2,7 @@
   "main": {
     "analysisTitle": "Start Guided Analysis",
     "git": "Star us on GitHub !",
-    "title": "Predicting Drug Consumption",
+    "title": "Predicting Drug Consumption of individuals",
     "homeContent": {
       "contentTitle": "Welcome to this small statistical analysis project. The goal is to investigate the main factors that influence drug consumption in individuals. ",
       "contentQuestion": [
