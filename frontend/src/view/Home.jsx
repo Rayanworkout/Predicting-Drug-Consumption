@@ -43,7 +43,7 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                <span className={`text-center z-10`}>
+                <span className={`text-center z-10 pt-3 md:pt-0cd `}>
                     <TutorialSwiper titleButton={t.main?.analysisTitle}/>
                 </span>
                     </div>
