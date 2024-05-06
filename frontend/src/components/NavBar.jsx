@@ -7,22 +7,15 @@ import { Star, Github  } from 'lucide-react';
 import {useEffect, useState} from "react";
 
 const NavBar = () => {
-    let { language, setLanguage } = useStore();
+    let { language, setLanguage, screenSize, setScreenSize } = useStore();
     const newLanguage = language === "en" ? "fr" : "en";
     const t = useStore(state => state.translations);
-    const [screenSize, setScreen] = useState(0);
     useEffect(() => {
         const updateScreenSize = () => {
-            setScreen(Math.round(window.innerWidth  * window.devicePixelRatio));
+            setScreenSize(Math.round(window.innerWidth  * window.devicePixelRatio));
         };
-
-        // Appeler initialement la fonction
         updateScreenSize();
-
-        // Ajoutez un `resize` event listener pour mettre à jour lorsque la fenêtre est redimensionnée
         window.addEventListener('resize', updateScreenSize);
-
-        // Nettoyer l'event listener lorsque le composant est démonté
         return () => window.removeEventListener('resize', updateScreenSize);
     }, []);
     return (

@@ -38,11 +38,17 @@ module.exports = {
           '50%': { transform: 'translateY(0em) translateX(0.5em)' },
           '75%': { transform: 'translateY(0.5em) translateX(0em)' },
           '100%': { transform: 'translateY(0) translateX(0)', opacity: '1' },
+        },
+        "pill":{
+          '0%': { transform: 'translateY(0) translateX(0)', opacity: '1' },
+          '50%': { transform: 'translateY(0.5em) translateX(0em)' },
+          '100%': { transform: 'translateY(0em) translateX(0)', opacity: '1' },
         }
       },
       animation: {
         "glowSpinL":"glowSpinL 4s ease-in-out infinite",
-        "glowSpinR":"glowSpinR 4s ease-in-out infinite"
+        "glowSpinR":"glowSpinR 4s ease-in-out infinite",
+        "pill":"pill 2s ease-in-out infinite",
       },
     },
   },

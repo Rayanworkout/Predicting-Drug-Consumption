@@ -17,6 +17,8 @@ const useStore = create((set, get) => ({
         });
     },
 
+    screenSize:0,
+    setScreenSize:(screenSize) => set({screenSize}),
     chartType: 'consumption',
     setChartType: (chartType) => set({ chartType }),
 
