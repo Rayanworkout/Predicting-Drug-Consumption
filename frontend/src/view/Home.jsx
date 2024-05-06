@@ -2,11 +2,12 @@ import React from "react";
 import TutorialSwiper from "@/components/TutorialSwiper.jsx";
 import useStore from "@/store/store.js";
 import BubbleGlow from "@/components/BubbleGlow.jsx";
+import pill from "@/assets/img/pill.png"
 function Home() {
     const t = useStore(state => state.translations);
     return (
         <>
-            <div className={`w-full flex flex-col flex-grow justify-center px-3 gap-y-10 overflow-hidden`}>
+            <div className={`w-full flex flex-col flex-grow justify-center px-3 overflow-hidden`}>
                 <div className = {`grid md:grid-cols-[55%_45%]`}>
                     <div className={`pl-10 flex flex-col`}>
                         <span className={`pb-3`}>
@@ -26,7 +27,9 @@ function Home() {
                             <p>{t.main?.homeContent.contentEnding}</p>
                         </span>
                     </div>
-                    <div className = {``}></div>
+                    <div className = {`flex justify-center align-middle`}>
+                        <img src={pill}  className = {`h-[400px] animate-spin duration-1000 ease-in-out`}  alt="pill"/>
+                    </div>
                 </div>
                 <span className = {`text-center`}>
                     <TutorialSwiper titleButton={t.main?.analysisTitle}/>
