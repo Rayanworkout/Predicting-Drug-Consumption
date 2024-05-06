@@ -57,19 +57,19 @@
       ],
       "drugUseFrequency": "Pour chaque drogue, ils devaient sélectionner l'une des réponses:",
       "frequencyOptions": [
-        "jamais utilisée",
-        "utilisée il y a plus d'une décennie",
-        "utilisée au cours de la dernière décennie",
-        "année",
-        "mois",
-        "semaine",
-        "jour"
+        "- jamais utilisée",
+        "- utilisée il y a plus d'une décennie",
+        "- utilisée au cours de la dernière décennie",
+        "- année",
+        "- mois",
+        "- semaine",
+        "- jour"
       ],
       "analysisRemindersTitle": "Éléments à garder à l'esprit tout au long de cette analyse:",
       "analysisReminders": [
-        "La base de données contient SEULEMENT 1885 participants. Il s'agit d'un échantillon très petit. Par conséquent, les résultats de cette analyse ne sont <b>pas</b> généralisables à toute la population.",
-        "Some features are not well balanced. For example most of the respondents are from the UK. This can lead to biased results.",
-        "Correlation does not imply causation. We can only say that two variables are correlated, not that one causes the other."
+        "La base de données contient SEULEMENT 1885 participants. Il s'agit d'un échantillon très petit. Par conséquent, les résultats de cette analyse ne sont pas généralisables à toute la population.",
+        "Certaines features ne sont pas bien équilibrés. Par exemple, la plupart des personnes sondées sont du Royaume-Uni. Cela peut conduire à des résultats biaisés.",
+        "Corrélation ne signifie pas causalité. Nous pouvons observer que deux variables sont corrélées sans pour autant conclure que l'une cause l'autre."
       ]
     },
     "slideReadChart": {

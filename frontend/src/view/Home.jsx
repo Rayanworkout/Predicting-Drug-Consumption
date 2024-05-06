@@ -18,14 +18,11 @@ function Home() {
         <>
             <div className={`w-full flex flex-col flex-grow justify-center px-3 overflow-hidden`}>
                 <div className={`grid md:grid-cols-[55%_45%]`}>
-                    <div className={`pl-10 flex flex-col`}>
+                    <div className={`pl-10 flex flex-col z-10`}>
                         <span className={`pb-3`}>
                             <BubbleGlow/>
                             <p className={`text-4xl md:text-6xl font-bold text-white pb-2`}>
                                 {t.main?.title}
-                            </p>
-                            <p className={`text-gray-500`}>
-                                text à mettre text à mettre text à mettre text à mettre text à mettre text
                             </p>
                         </span>
                         <span className={`flex flex-col gap-y-1 text-[16px} text-white`}>
@@ -38,14 +35,15 @@ function Home() {
                             <p>{t.main?.homeContent.contentEnding}</p>
                         </span>
                     </div>
-                    <div className={`flex justify-center items-center`}>
+                    <div className={screenSize > 850 ?`flex justify-center items-center rotate-3`
+                        :` absolute bottom-40 left-28 opacity-50 rotate-12 z-0 `
+                    }>
                         <div id="main_pill">
-                            <img data-depth="1.62" src={screenSize > 850 ? pill : ""} className={`h-[380px] w-auto`} alt="pill"/>
-
+                            <img data-depth="1.62" src={pill} className={`z-0 h-[220px] md:h-[380px] w-auto `} alt="pill"/>
                         </div>
                     </div>
                 </div>
-                        <span className={`text-center`}>
+                <span className={`text-center z-10`}>
                     <TutorialSwiper titleButton={t.main?.analysisTitle}/>
                 </span>
                     </div>
