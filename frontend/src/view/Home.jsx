@@ -28,7 +28,7 @@ function Home() {
                         </span>
                     </div>
                     <div className = {`flex justify-center align-middle`}>
-                        <img src={pill}  className = {`h-[400px] animate-spin duration-1000 ease-in-out`}  alt="pill"/>
+                        <img src={pill}  className = {`h-[400px] animate-glowSpinL `}  alt="pill"/>
                     </div>
                 </div>
                 <span className = {`text-center`}>
