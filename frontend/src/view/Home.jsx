@@ -39,7 +39,7 @@ function Home() {
                         :` absolute bottom-40 left-28 opacity-50 rotate-12 z-0 `
                     }>
                         <div id="main_pill">
-                            <img data-depth="1.62" src={pill} className={`z-0 h-[220px] md:h-[380px] w-auto `} alt="pill"/>
+                            <img data-depth="1.62" src={pill} className={`z-0 h-[220px] md:h-[350px] w-auto `} alt="pill"/>
                         </div>
                     </div>
                 </div>
