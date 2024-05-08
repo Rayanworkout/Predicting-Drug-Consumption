@@ -1,5 +1,6 @@
 {
   "main": {
+    "langHover": "Vous pouvez changer de langue",
     "analysisTitle": "Start Guided Analysis",
     "git": "Star us on GitHub !",
     "title": "Predicting Drug Consumption of individuals",
