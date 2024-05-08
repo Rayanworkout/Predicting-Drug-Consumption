@@ -3,8 +3,8 @@ import ReactApexChart from "react-apexcharts";
 import useStore from "@/store/store.js";
 import {ReplaceUnderscoreSpace} from "@/tool/tool.js";
 
-export function BarChartGraph({ apiData, orientation, dashboard = false, isTitled = true }) {
-    const { consumptionType} = useStore();
+export function BarChartGraph({ apiData, orientation, dashboard = false }) {
+    const { consumptionType, precisionConsumption, screenSize} = useStore();
 
     const [valueData, setValueData] = useState({});
 
@@ -28,12 +28,11 @@ export function BarChartGraph({ apiData, orientation, dashboard = false, isTitle
             },
         },
         title: {
-            text: isTitled ? (`Drug consumption of ${Object.values(valueData).reduce((acc, curr) => acc + Number(curr), 0)} 
-            respondents distributed ${ReplaceUnderscoreSpace(consumptionType)}`) : "" ,
+            text: `Drug consumption of ${Object.values(valueData).reduce((acc, curr) => acc + Number(curr), 0)} 
+            respondents distributed ${ReplaceUnderscoreSpace(consumptionType)} ${precisionConsumption ? precisionConsumption : ''}` ,
             align: 'center',
             style: {
-                fontSize: dashboard == true ? '12px' : '18px' ,
-                fontWeight: 'bold',
+                fontSize: screenSize < 880 ? '10px' : '18px' ,
                 color: '#263238'
             },
         },

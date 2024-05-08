@@ -2,16 +2,19 @@ import ReactApexChart from "react-apexcharts";
 import {useEffect, useState} from "react";
 import useStore from "@/store/store.js";
 import correlationImage from "@/assets/img/correlation.png"
+import {ReplaceUnderscoreSpace} from "@/tool/tool.js";
 const CorrelationChart = () => {
 
     const {apiCorrelationData} = useStore();
     const [series, setSeries] = useState([{ name: '', data: [] }]);
     const [screenSize, setScreenSize] = useState(window.innerWidth);
 
+    //Décomposition de la requête de l'api (Objet d'objet), on parcourt l'objet et attribuons les keys/values dans @series
     useEffect(() => {
+        console.log(apiCorrelationData)
             const newSeries = Object.entries(apiCorrelationData).map(([key, values]) => {
                 return {
-                    name: key,
+                    name: ReplaceUnderscoreSpace(key),
                     data: Object.entries(values).map(([drug, value]) => ({
                         x: drug,
                         y: Number(value).toFixed(4)

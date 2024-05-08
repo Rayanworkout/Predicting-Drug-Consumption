@@ -110,11 +110,6 @@ const useStore = create((set, get) => ({
                                 .catch(error => console.error('Failed to fetch data:', error));
                         };
                 }
-
-            case 'other':
-                return () => console.log("'other' type case");
-            default:
-                return () => console.log("Default case");
         }
     }
 }));

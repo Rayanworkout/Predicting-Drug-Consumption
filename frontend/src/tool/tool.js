@@ -3,5 +3,5 @@ export const FirstLetterUpperCase = (string) => {
 }
 
 export function ReplaceUnderscoreSpace(str) {
-    return str ? str.replace(/_/g, ' ') : '';
+    return str ? str.replace(/[_]/g, ' ') : '';
 }
