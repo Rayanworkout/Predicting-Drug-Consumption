@@ -37,23 +37,23 @@ function Home() {
                             <p>{t.main?.homeContent.contentEnding}</p>
                         </span>
                     </div>
-                    <div className={screenSize > 850 ?`flex justify-center items-center opacity-70`
-                        :` absolute opacity-50 rotate-12 z-0 `
+                    <div className={screenSize > 850 ?`flex justify-center items-center opacity-90`
+                        :`absolute bottom-80 opacity-50  z-0`
                     }>
-                        <div id="main_pill" className={screenSize > 850 ?`w-[100%] h-[100%] `: `relative`}>
+                        <div id="main_pill" className={screenSize > 850 ?`w-[100%] h-[100%] `: `relative w-[95vw]`}>
                             <img data-depth="0.72" src={pill}
-                                 className={`z-0 mt-[10%] ml-[70%] h-auto md:h-[150px] md: w-auto `}
+                                 className={`z-0 mt-[10%] ml-[70%] h-[100px] md:h-[150px] md: w-auto `}
                                  alt="pill"/>
                             <img data-depth="0.52" src={mushroom}
-                                 className={`z-0 mt-[10%] ml-[10%] h-auto md:h-[150px] md: w-auto `}
+                                 className={`z-0 mt-[10%] ml-[10%] h-[100px] md:h-[150px] md: w-auto `}
                                  alt="pill"/>
                             <img data-depth="0.92" src={cigarette}
-                                 className={`z-0 mt-[10%] ml-[40%] h-auto md:h-[200px] md: w-auto `}
+                                 className={`z-0 mt-[10%] ml-[40%] h-[100px] md:h-[200px] md: w-auto `}
                                  alt="pill"/>
                         </div>
                     </div>
                 </div>
-                <span className={`text-center z-10 pt-5`}>
+                <span className={`text-center z-10 pt-5 md:pt-10`}>
                     <TutorialSwiper titleButton={t.main?.analysisTitle}/>
                 </span>
                     </div>
