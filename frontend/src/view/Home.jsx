@@ -2,6 +2,8 @@ import TutorialSwiper from "@/components/TutorialSwiper.jsx";
 import useStore from "@/store/store.js";
 import BubbleGlow from "@/components/BubbleGlow.jsx";
 import pill from "@/assets/img/pill.png"
+import mushroom from "@/assets/img/mushroom.png"
+import cigarette from "@/assets/img/cigarette.png"
 import Parallax from "parallax-js";
 import {useEffect, useState} from "react";
 function Home() {
@@ -17,7 +19,7 @@ function Home() {
     return (
         <>
             <div className={`w-full flex flex-col flex-grow justify-center px-3 overflow-hidden`}>
-                <div className={`grid md:grid-cols-[55%_45%]`}>
+                <div className={`grid md:grid-cols-[50%_50%]`}>
                     <div className={`pl-10 flex flex-col z-10`}>
                         <span className={`pb-3`}>
                             <BubbleGlow/>
@@ -35,15 +37,23 @@ function Home() {
                             <p>{t.main?.homeContent.contentEnding}</p>
                         </span>
                     </div>
-                    <div className={screenSize > 850 ?`flex justify-center items-center rotate-3`
-                        :` absolute bottom-40 left-28 opacity-50 rotate-12 z-0 `
+                    <div className={screenSize > 850 ?`flex justify-center items-center opacity-70`
+                        :` absolute opacity-50 rotate-12 z-0 `
                     }>
-                        <div id="main_pill">
-                            <img data-depth="1.62" src={pill} className={`z-0 h-[220px] md:h-[350px] w-auto `} alt="pill"/>
+                        <div id="main_pill" className={screenSize > 850 ?`w-[100%] h-[100%] `: `relative`}>
+                            <img data-depth="0.72" src={pill}
+                                 className={`z-0 mt-[10%] ml-[70%] h-auto md:h-[150px] md: w-auto `}
+                                 alt="pill"/>
+                            <img data-depth="0.52" src={mushroom}
+                                 className={`z-0 mt-[10%] ml-[10%] h-auto md:h-[150px] md: w-auto `}
+                                 alt="pill"/>
+                            <img data-depth="0.92" src={cigarette}
+                                 className={`z-0 mt-[10%] ml-[40%] h-auto md:h-[200px] md: w-auto `}
+                                 alt="pill"/>
                         </div>
                     </div>
                 </div>
-                <span className={`text-center z-10 pt-3 md:pt-0cd `}>
+                <span className={`text-center z-10 pt-5`}>
                     <TutorialSwiper titleButton={t.main?.analysisTitle}/>
                 </span>
                     </div>
