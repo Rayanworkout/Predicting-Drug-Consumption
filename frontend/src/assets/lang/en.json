@@ -112,7 +112,11 @@
       "standOutFeature": "One of the feature seems to stand out: the SS, or Sensation Seeking score. It is the most correlated feature with the consumption of Cannabis, Legal highs, Ecstasy, Mushrooms, LSD, Nicotine, Amphetamines, and Coke.",
       "keyFeatureInsight": "We may have found a key feature that influences the drug consumption of an individual.",
       "featureCorrelationClarity": "However, it is not clear yet, because this output separates the correlation of each feature and each drug, and we don't really care about a particular drug, right ?",
-      "featureCorrelationDetermination": "How can we determine which feature has the highest correlation with drug consumption using this output ?"
+      "featureCorrelationDetermination": "How can we determine which feature has the highest correlation with drug consumption using this output ?",
+      "check": "See result",
+      "select": "Select response",
+      "rightAnswer": "Good answer",
+      "badAnswer": "Bad answer"
     },
     "slideExplanationAnalysis": {
       "correlationComputationMethod": "One way to achieve that would be to compute for each feature the mean of the correlation with all drugs.",

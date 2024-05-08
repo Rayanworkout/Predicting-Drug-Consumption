@@ -1,4 +1,4 @@
-import create from 'zustand';
+import {create} from 'zustand';
 import translations from "@/assets/lang/translations.js";
 import {
     GET_REPARTITION_DATA,

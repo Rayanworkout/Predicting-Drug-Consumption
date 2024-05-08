@@ -112,7 +112,11 @@
       "standOutFeature": "L'une des caractéristiques semble se démarquer : le score de SS, ou Sensation Seeking. Il est la caractéristique la plus corrélée avec la consommation de Cannabis, Legal highs, Ecstasy, Mushrooms, LSD, Nicotine, Amphetamines et Coke.",
       "keyFeatureInsight": "Nous avons peut-être trouvé une caractéristique clé qui influence la consommation de drogues d'un individu.",
       "featureCorrelationClarity": "Cependant, ce n'est pas encore clair, car ce résultat sépare la corrélation de chaque caractéristique et de chaque drogue, et nous ne nous intéressons pas vraiment à une drogue particulière.",
-      "featureCorrelationDetermination": "Avec ce résultat, comment pourrions-nous identifier la caractérisque la plus corrélée à la consommation de drogues en général ?"
+      "featureCorrelationDetermination": "Avec ce résultat, comment pourrions-nous identifier la caractérisque la plus corrélée à la consommation de drogues en général ?",
+      "check": "Voir le résultat",
+      "select": "Sélectionnez une réponse",
+      "rightAnswer": "Bonne réponse",
+      "badAnswer": "Mauvaise réponse"
     },
     "slideExplanationAnalysis": {
       "correlationComputationMethod": "Un moyen d'y parvenir serait de calculer pour chaque caractéristique la moyenne de la corrélation avec toutes les drogues.",

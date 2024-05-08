@@ -248,11 +248,11 @@ export const SlideCorrelationIntroduction = () => {
                     </div>
                 </RadioGroup>
                 <div className="w-full flex justify-end mb-5 pr-5">
-                    <Button onClick={() => setAnswer(selectedValue)} className="bg-blue-500" >Check answer</Button>
+                    <Button onClick={() => setAnswer(selectedValue)} className="bg-blue-500" >{t.check}</Button>
                 </div>
             </div>
             <div className="bg-slate-50 p-6 h-auto rounded-md text-black">
-                {answer !== '' ? (answer === 'good_answer' ? <p>Bonne Reponse</p> : <p>Mauvaise réponse</p>) : <p>Select une réponse</p> }
+                {answer !== '' ? (answer === 'good_answer' ? <p>{t.rightAnswer}</p> : <p>{t.badAnswer}</p>) : <p>{t.select}</p> }
             </div>
             </div>
             
