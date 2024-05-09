@@ -19,7 +19,7 @@ function Home() {
     return (
         <>
             <div className={`w-full flex flex-col flex-grow justify-center px-3 overflow-hidden`}>
-                <div className={`grid md:grid-cols-[50%_50%]`}>
+                <div className={`grid lg:grid-cols-[50%_50%]`}>
                     <div className={`pl-10 flex flex-col z-10`}>
                         <span className={`pb-3`}>
                             <BubbleGlow/>
@@ -37,10 +37,10 @@ function Home() {
                             <p>{t.main?.homeContent.contentEnding}</p>
                         </span>
                     </div>
-                    <div className={screenSize > 850 ?`flex justify-center items-center opacity-90`
+                    <div className={screenSize > 1200 ?`flex justify-center items-center opacity-90`
                         :`absolute bottom-80 opacity-50  z-0`
                     }>
-                        <div id="main_pill" className={screenSize > 850 ?`w-[100%] h-[100%] `: `relative w-[95vw]`}>
+                        <div id="main_pill" className={screenSize > 1200 ?`w-[100%] h-[100%] `: `relative w-[95vw]`}>
                             <img data-depth="0.72" src={pill}
                                  className={`z-0 mt-[10%] ml-[70%] h-[100px] md:h-[150px] md: w-auto `}
                                  alt="pill"/>

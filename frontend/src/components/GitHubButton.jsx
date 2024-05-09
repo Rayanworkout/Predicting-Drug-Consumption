@@ -10,7 +10,7 @@ export function GitHubButton (){
         <a target={"_blank"} rel="noopener noreferrer"
            href={"https://github.com/Rayanworkout/Predicting-Drug-Consumption"}
            className="group rounded bg-[#333] px-2 py-1 transition duration-150 ease-in-out hover:bg-[#444] cursor-pointer">
-            {screenSize > 850 ?
+            {screenSize > 1200 ?
                 <span className={`flex items-center gap-x-1 text-sm font-medium`}>
                           <Star
                               className={`group-hover:fill-amber-300  transition ease-in-out duration-100000 h-[20px]`}/> <p>{t.main.git} </p>

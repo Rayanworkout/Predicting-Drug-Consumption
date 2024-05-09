@@ -1,6 +1,6 @@
 {
   "main": {
-    "langHover": "Switch language",
+    "langHover": "English",
     "analysisTitle": "Analyse guidée",
     "git": "Star us on GitHub !",
     "title": "Predicting Drug Consumption of individuals",
@@ -61,10 +61,7 @@
         "- jamais utilisée",
         "- utilisée il y a plus d'une décennie",
         "- utilisée au cours de la dernière décennie",
-        "- année",
-        "- mois",
-        "- semaine",
-        "- jour"
+        "- année / mois / semaine / jour"
       ],
       "analysisRemindersTitle": "Éléments à garder à l'esprit tout au long de cette analyse:",
       "analysisReminders": [
