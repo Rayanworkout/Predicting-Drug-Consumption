@@ -1,6 +1,6 @@
 {
   "main": {
-    "langHover": "You can change language",
+    "langHover": "Switch language",
     "analysisTitle": "Analyse guidée",
     "git": "Star us on GitHub !",
     "title": "Predicting Drug Consumption of individuals",
@@ -18,7 +18,7 @@
   "analysis": {
     "slideIntroduction": {
       "mainTitle": "Observation des principaux facteurs qui influencent la consommation de drogues chez les individus : Une étude de cas.",
-      "databaseIntroduction": "Nous disposons d'une base de données de 1885 personnes ayant participé à une enquête scientifique. Pour chacun d'eux, 12 attributs ainsi que leur score sont connus. Ces attributs, que nous appellerons features, sont basés sur le test de personnalité NEO-FFI-R. Ce test mesure les 5 traits de personnalité suivants:",
+      "databaseIntroduction": "Nous disposons d'une base de données de 1885 personnes ayant participé à une enquête scientifique. Pour chacun d'eux, 12 attributs ainsi que leur score sont connus. Ces attributs, que nous appellerons 𝗳𝗲𝗮𝘁𝘂𝗿𝗲𝘀, sont basés sur le test de personnalité 𝙉𝙀𝙊-𝙁𝙁𝙄-𝙍. Ce test mesure les 5 traits de personnalité suivants:",
       "personalityTraits": [
         "Névrosisme",
         "Extraversion",
@@ -68,7 +68,7 @@
       ],
       "analysisRemindersTitle": "Éléments à garder à l'esprit tout au long de cette analyse:",
       "analysisReminders": [
-        "La base de données contient SEULEMENT 1885 participants. Il s'agit d'un échantillon très petit. Par conséquent, les résultats de cette analyse ne sont pas généralisables à toute la population.",
+        "La base de données contient 𝗦𝗘𝗨𝗟𝗘𝗠𝗘𝗡𝗧 1885 participants. Il s'agit d'un échantillon très petit. Par conséquent, les résultats de cette analyse ne sont pas généralisables à toute la population.",
         "Certaines features ne sont pas bien équilibrés. Par exemple, la plupart des personnes sondées sont du Royaume-Uni. Cela peut conduire à des résultats biaisés.",
         "Corrélation ne signifie pas causalité. Nous pouvons observer que deux variables sont corrélées sans pour autant conclure que l'une cause l'autre."
       ]
@@ -96,7 +96,7 @@
       "personalityDrugConsumptionTitle": "Traits de personalité et consommation de drogue",
       "correlationIntro": "Nous avons vu lors de l'étape précédente que la corrélation entre la consommation de drogues et les caractéristiques non liées à la personnalité n'est peut-être pas aussi forte que nous le pensions. Analysons maintenant cette corrélation avec les traits de personnalité. Pour cela, nous utiliserons une matrice de corrélation.",
       "matrixExplanation": "Cette matrice montre le score de corrélation de chaque trait de personnalité avec chaque drogue. Plus le score est élevé, plus le trait de personnalité est corrélé à la consommation de cette drogue.",
-      "exampleCorrelation": "Par exemple, la corrélation entre les participants ayant un score d'ouverture élevé et la consommation de LSD est de 0,37, ce qui est assez élevé. Plus la corrélation est élevée, plus la couleur est foncée.",
+      "exampleCorrelation": "Par exemple, la corrélation entre les participants ayant un score d'ouverture élevé et la consommation de LSD est de 𝟬,𝟯𝟳, ce qui est assez élevé. Plus la corrélation est élevée, plus la couleur est foncée.",
       "traitDrugUseCorrelation": "Cette matrice aide à comprendre quel trait de personnalité est corrélé ou non à l'utilisation d'une drogue spécifique.",
       "proceedingInstructions": "Lorsque vous avez terminé d'explorer les différentes corrélations, vous pouvez passer à l'étape suivante."
     },
@@ -108,12 +108,12 @@
       ],
       "correlationFocus": "Utilisons nos données pour isoler la corrélation la plus forte entre chaque caractéristique et chaque drogue.",
       "highestCorrelationObservationTitle": "Voyons les corrélations les plus élevées entre les drogues disponibles et chacune des caractéristiques",
-      "correlationComputationDescription": "Ce morceau de code calcule les 20 corrélations les plus élevées entre chaque drogue et les caractéristiques connues. Par exemple, la première ligne montre que la corrélation entre le score de Recherche de Sensation et la consommation de Cannabis est de 0,45. Cela signifie que plus le score de Recherche de Sensation est élevé, plus la personne est susceptible de consommer du Cannabis.",
+      "correlationComputationDescription": "Ce morceau de code calcule les 20 corrélations les plus élevées entre chaque drogue et les caractéristiques connues. Par exemple, la première ligne montre que la corrélation entre le score de Recherche de Sensation et la consommation de Cannabis est de 𝟬,𝟰𝟱. Cela signifie que plus le score de Recherche de Sensation est élevé, plus la personne est susceptible de consommer du Cannabis.",
       "notableCorrelationFindings": "Nous pouvons constater que les 20 corrélations les plus élevées concernent non pas l'âge, le pays ou l'ethnie, mais uniquement des caractéristiques propres à la personne et son caractère / comportement.",
       "standOutFeature": "L'une des caractéristiques semble se démarquer : le score de SS, ou Sensation Seeking. Il est la caractéristique la plus corrélée avec la consommation de Cannabis, Legal highs, Ecstasy, Mushrooms, LSD, Nicotine, Amphetamines et Coke.",
       "keyFeatureInsight": "Nous avons peut-être trouvé une caractéristique clé qui influence la consommation de drogues d'un individu.",
       "featureCorrelationClarity": "Cependant, ce n'est pas encore clair, car ce résultat sépare la corrélation de chaque caractéristique et de chaque drogue, et nous ne nous intéressons pas vraiment à une drogue particulière.",
-      "featureCorrelationDetermination": "Avec ce résultat, comment pourrions-nous identifier la caractérisque la plus corrélée à la consommation de drogues en général ?",
+      "featureCorrelationDetermination": "𝘈𝘷𝘦𝘤 𝘤𝘦 𝘳𝘦́𝘴𝘶𝘭𝘵𝘢𝘵, 𝘤𝘰𝘮𝘮𝘦𝘯𝘵 𝘱𝘰𝘶𝘳𝘳𝘪𝘰𝘯𝘴-𝘯𝘰𝘶𝘴 𝘪𝘥𝘦𝘯𝘵𝘪𝘧𝘪𝘦𝘳 𝘭𝘢 𝘤𝘢𝘳𝘢𝘤𝘵𝘦́𝘳𝘪𝘴𝘲𝘶𝘦 𝘭𝘢 𝘱𝘭𝘶𝘴 𝘤𝘰𝘳𝘳𝘦́𝘭𝘦́𝘦 𝘢̀ 𝘭𝘢 𝘤𝘰𝘯𝘴𝘰𝘮𝘮𝘢𝘵𝘪𝘰𝘯 𝘥𝘦 𝘥𝘳𝘰𝘨𝘶𝘦𝘴 𝘦𝘯 𝘨𝘦́𝘯𝘦́𝘳𝘢𝘭 ?",
       "check": "Voir le résultat",
       "select": "Sélectionnez une réponse",
       "rightAnswer": "Bonne réponse",
