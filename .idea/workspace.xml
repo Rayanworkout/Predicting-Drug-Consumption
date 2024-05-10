@@ -8,8 +8,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/assets/lang/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/lang/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/assets/lang/fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/lang/fr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/GitHubButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/GitHubButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/view/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/Home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/SearchBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SearchBar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/view/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/Dashboard.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +189,8 @@
       <workItem from="1715094107413" duration="13001000" />
       <workItem from="1715197553989" duration="4930000" />
       <workItem from="1715254413878" duration="1697000" />
-      <workItem from="1715289543294" duration="3941000" />
+      <workItem from="1715289543294" duration="4283000" />
+      <workItem from="1715341719208" duration="1190000" />
     </task>
     <servers />
   </component>

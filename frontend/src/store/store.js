@@ -44,7 +44,7 @@ const useStore = create((set, get) => ({
         {drug: 'VSA', value: 'vsa'},
     ],
 
-    drugType: 'cannabis',
+    drugType: 'alcohol',
     setDrugType: (drugType) => {
         const currentApiParam = get().apiParam;
         set({
@@ -53,7 +53,7 @@ const useStore = create((set, get) => ({
         });
     },
 
-    drugTypePrettier: 'Cannabis',
+        drugTypePrettier: 'Alcohol',
     setDrugTypePrettier: (drugTypePrettier) => set({drugTypePrettier}),
 
 

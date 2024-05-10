@@ -16,12 +16,6 @@ const Dashboard = () => {
 
     useEffect(() => {
         setApiData({
-            age_range: "18-24",
-            gender: null,
-            ethnicity: null,
-            education: null,
-            country: null,
-            drug: "alcohol",
             data: {
                 "used in last week": 271,
                 "used in last day": 149,
@@ -52,12 +46,12 @@ const Dashboard = () => {
             <div className={`flex flex-col md:flex-row lg:px-7`}>
                 <div className={`w-full h-fit flex flex-col gap-4 items-center`}
                      alt="container de search bar + graph + btn de graph">
-                    <div className={`w-full flex justify-center gap-x-4`}>
+                    <div className={`w-full flex justify-center items-end gap-x-4`}>
                         <SearchBar className={`mb-4`} handleDrugType={handleDrugType}/>
                         <Button
                             disabled={chartType == 'consumption' ? (drugData.some(item => (item.value == drugType)) ? false : true) : true}
                             onClick={() => getFunctionToCall()()} variant={'outline'}
-                            className = {`z-10`}
+                            className={`z-10`}
                         >Search</Button>
                     </div>
 
@@ -85,9 +79,7 @@ const Dashboard = () => {
                         })}
                     </ul>
                 </span>
-
                 <p>{t.dashboard.comparisonChartDescription}</p>
-
                 <p>{t.dashboard.correlationHeatmapDescription}</p>
                 <p>{t.dashboard.repartitionChartDescription}</p>
             </div>

@@ -136,6 +136,7 @@
     "comparison": "Comparaison",
     "repartition": "Répartition",
     "correlation": "Corrélation",
+    "drugExplanationSearch": "Ici vous pouvez sélectionner une drogue",
     "chartTypesTitle": "Sur ce dashboard, vous pouvez voir 3 types de graphiques :",
     "chartTypesList": [
       "Comparaison",
