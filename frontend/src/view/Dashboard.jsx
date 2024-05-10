@@ -45,10 +45,10 @@ const Dashboard = () => {
                 </span>
             </div>
             <div className={`absolute right-16 opacity-50 rotate-3`}>
-                <img src={mushroom} className={`h-[100px] md:h-[300px] animate-jump`}/>
+                <img src={mushroom} className={`h-[130px] md:h-[300px] animate-jump`}/>
             </div>
             <div className={`absolute md:right-[40%] md:top-0 opacity-50 rotate-3 z-0`}>
-                <img src={cigarette} className={`h-[100px] md:h-[300px] animate-jump`}/>
+                <img src={cigarette} className={`h-[130px] md:h-[300px] animate-jump`}/>
             </div>
 
             <div className={`flex flex-col md:flex-row lg:px-7`}>
