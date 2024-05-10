@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32d1ca9a-a249-4d76-9768-955fe0872a4c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Search/SearchButton.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/assets/lang/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/lang/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/assets/lang/fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/assets/lang/fr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/SearchBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/SearchBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/SearchBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Search/SearchBar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/view/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/Dashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/view/Home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/view/Home.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +53,7 @@
       <recent name="C:\Projects\Predicting-Drug-Consumption\frontend\src\assets\img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\Predicting-Drug-Consumption\frontend\src\components\Search" />
       <recent name="C:\Projects\Predicting-Drug-Consumption\frontend\src\assets\img" />
     </key>
   </component>
@@ -190,7 +190,8 @@
       <workItem from="1715197553989" duration="4930000" />
       <workItem from="1715254413878" duration="1697000" />
       <workItem from="1715289543294" duration="4283000" />
-      <workItem from="1715341719208" duration="1190000" />
+      <workItem from="1715341719208" duration="1802000" />
+      <workItem from="1715349935686" duration="2393000" />
     </task>
     <servers />
   </component>

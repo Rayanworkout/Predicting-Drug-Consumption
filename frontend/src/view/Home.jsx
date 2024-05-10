@@ -5,7 +5,7 @@ import pill from "@/assets/img/pill.png"
 import mushroom from "@/assets/img/mushroom.png"
 import cigarette from "@/assets/img/cigarette.png"
 import Parallax from "parallax-js";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 function Home() {
     const t = useStore(state => state.translations);
     const {screenSize} = useStore();
