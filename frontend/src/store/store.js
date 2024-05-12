@@ -71,62 +71,43 @@ const useStore = create((set, get) => ({
     },
 
     // Fonction pour effectuer l'appel API en fonction des sélections
-    fetchData: () => {
-        const { chartType, consumptionType, selectedValues, setApiData, setApiRepartitionData, setApiCorrelationData } = get();
-        let apiParam = ''; // Chaîne de requête pour les paramètres API
-    
-        // Construire les paramètres API en fonction des sélections
+    getFunctionToCall: () => {
+        const { chartType, apiParam, consumptionType, precisionConsumption, setApiData, setApiRepartitionData, setApiCorrelationData } = get();
         switch (chartType) {
             case 'consumption':
-                apiParam = Object.entries(selectedValues).map(([key, value]) => `${key}=${value}`).join('&');
-                GET_CONSUMPTION_DATA(apiParam, consumptionType)
-                    .then(data => setApiData(data))
-                    .catch(error => console.error('Failed to fetch data:', error));
-                break;
+                return () => {
+                    GET_CONSUMPTION_DATA(new URLSearchParams(apiParam), consumptionType)
+                        .then(data => setApiData(data))
+                        .catch(error => console.error('Failed to fetch data:', error));
+                };
             case 'repartition':
-                const consumptionRepartition = consumptionType.substring(3);
-                GET_REPARTITION_DATA(consumptionRepartition)
-                    .then(data => setApiRepartitionData(data))
-                    .catch(error => console.error('Failed to fetch data:', error));
-                break;
+                return () => {
+                    const consumptionRepartition = consumptionType.substring(3);
+                    GET_REPARTITION_DATA(consumptionRepartition)
+                        .then(data => setApiRepartitionData(data))
+                        .catch(error => console.error('Failed to fetch data:', error));
+                };
             case 'correlation':
                 switch (consumptionType) {
                     case 'drug_and_personality':
-                        GET_CORRELATION_DATA()
-                            .then(data => setApiCorrelationData(data))
-                            .catch(error => console.error('Failed to fetch data:', error));
-                        break;
+                        return () => {
+                            GET_CORRELATION_DATA()
+                                .then(data => setApiCorrelationData(data))
+                                .catch(error => console.error('Failed to fetch data:', error));
+                        };
                     case 'feature_to_drug_mean':
-                        GET_CORRELATION_MEANING_DATA()
-                            .then(data => setApiCorrelationData(data))
-                            .catch(error => console.error('Failed to fetch data:', error));
-                        break;
-                    default:
-                        console.error("Unknown consumptionType:", consumptionType);
+                        return () => {
+                            GET_CORRELATION_MEANING_DATA()
+                                .then(data => setApiCorrelationData(data))
+                                .catch(error => console.error('Failed to fetch data:', error));
+                        };
                 }
-                break;
-            default:
-                console.error("Unknown chartType:", chartType);
-        }
-    },    
-    
-    getFunctionToCall: () => {
-        const { chartType } = get();
-        switch (chartType) {
-            case 'consumption':
-            case 'repartition':
-            case 'correlation':
-                return () => {
-                    // Appeler fetchData pour récupérer les nouvelles données en fonction des sélections
-                    get().fetchData();
-                };
             case 'other':
                 return () => console.log("'other' type case");
             default:
-                console.error("Unknown chartType:", chartType);
                 return () => console.log("Default case");
         }
-    }    
+    }
 }));
 
 export default useStore;

@@ -45,38 +45,39 @@ export function ConsumptionGroupCheckbox({ selectedConsumptionTypes }) {
         }));
     };
     // Update API parameters
-useEffect(() => {
-    const updatedParams = {};
-
-    selectedConsumptionTypes.forEach(type => {
-        const consumptionParam = paramsMapping[type];
-        switch (type) {
-            case 'by_age':
-                if (radioValues[type]) {
-                    updatedParams.age_range = radioValues[type];
+    useEffect(() => {
+        const updatedParams = {};
+    
+        selectedConsumptionTypes.forEach(type => {
+            const radioValueForType = radioValues[type];
+            if (radioValueForType) {
+                switch (type) {
+                    case 'by_age':
+                        updatedParams.age_range = radioValueForType;
+                        break;
+                    case 'by_gender':
+                        updatedParams.gender = radioValueForType;
+                        break;
+                    case 'by_ethnicity':
+                        updatedParams.ethnicity = radioValueForType;
+                        break;
+                    case 'by_education':
+                        updatedParams.education = radioValueForType;
+                        break;
+                    case 'by_country':
+                        updatedParams.country = radioValueForType;
+                        break;
+                    default:
+                        break;
                 }
-                break;
-            case 'by_gender':
-                updatedParams.gender = radioValues[type];
-                break;
-            case 'by_ethnicity':
-                updatedParams.ethnicity = radioValues[type];
-                break;
-            case 'by_education':
-                updatedParams.education = radioValues[type];
-                break;
-            case 'by_country':
-                updatedParams.country = radioValues[type];
-                break;
-            default:
-                break;
-        }
-    });
-
-    // Set the API parameters and precision consumption
-    setApiParam(updatedParams);
-    setPrecisionConsumption(radioValues);
-}, [radioValues, selectedConsumptionTypes, drugType]);
+            }
+        });
+        updatedParams.drug = drugType;
+    
+        // Set the API parameters and precision consumption
+        setApiParam(updatedParams);
+        setPrecisionConsumption(radioValues);
+    }, [radioValues, selectedConsumptionTypes, drugType]);
 
     const GroupRadioButtonComponent = (type) => (
         <>
