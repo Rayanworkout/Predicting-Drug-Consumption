@@ -1,12 +1,11 @@
-import {Label} from "@/components/ui/label.jsx";
-import {useEffect, useState} from "react";
-import {RadioGroup, RadioGroupItem} from "@/components/ui/radio-group.jsx";
-import {age_range_param, gender_param, ethnicity_param, education_param, country_param
-} from "@/components/BarChart/consumption.js"
+import { Label } from "@/components/ui/label.jsx";
+import { useEffect, useState } from "react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group.jsx";
+import { age_range_param, gender_param, ethnicity_param, education_param, country_param } from "@/components/BarChart/consumption.js";
 import useStore from "@/store/store.js";
 
-export function ConsumptionGroupCheckbox() {
-    const { drugType, consumptionType, setApiParam, precisionConsumption, setPrecisionConsumption} = useStore();
+export function ConsumptionGroupCheckbox({ selectedConsumptionTypes }) {
+    const { drugType, setApiParam, precisionConsumption, setPrecisionConsumption } = useStore();
 
     const paramsMapping = {
         by_age: age_range_param,
@@ -15,6 +14,7 @@ export function ConsumptionGroupCheckbox() {
         by_education: education_param,
         by_country: country_param
     };
+
     const consumptionValues = {
         by_age: ["18-24", "25-34", "35-44", "45-54", "55-64", "65"],
         by_gender: ["male", "female"],
@@ -23,47 +23,67 @@ export function ConsumptionGroupCheckbox() {
         by_country: ["australia", "canada", "new_zealand", "other", "republic_of_ireland", "uk", "usa"],
     };
 
-    const getComponentToRender= (consumption, values) => {
-        return values[`${consumption}`] || [];
-    }
+    const getConsumptionValues = (type) => {
+        return consumptionValues[type] || [];
+    };
 
-    const [radioValue, setRadioValue] = useState(() => {return getComponentToRender(consumptionType, consumptionValues)[0] || '';});
-    const handleRadioValueChange = (newValue) => {setRadioValue(newValue);}
+    const [radioValues, setRadioValues] = useState({});
 
-    //Object for API
     useEffect(() => {
-        const updatedParam = { ...paramsMapping[consumptionType], drug:drugType}
-        setPrecisionConsumption(radioValue)
-        switch (consumptionType){
+        // Initialize radio values for each selected consumption type
+        const initialRadioValues = {};
+        selectedConsumptionTypes.forEach(type => {
+            initialRadioValues[type] = getConsumptionValues(type)[0] || '';
+        });
+        setRadioValues(initialRadioValues);
+    }, [selectedConsumptionTypes]);
+
+    const handleRadioValueChange = (type, newValue) => {
+        setRadioValues(prevState => ({
+            ...prevState,
+            [type]: newValue
+        }));
+    };
+    // Update API parameters
+useEffect(() => {
+    const updatedParams = {};
+
+    selectedConsumptionTypes.forEach(type => {
+        const consumptionParam = paramsMapping[type];
+        switch (type) {
             case 'by_age':
-                updatedParam.age_range = radioValue;
+                if (radioValues[type]) {
+                    updatedParams.age_range = radioValues[type];
+                }
                 break;
             case 'by_gender':
-                updatedParam.gender = radioValue;
+                updatedParams.gender = radioValues[type];
                 break;
             case 'by_ethnicity':
-                updatedParam.ethnicity = radioValue;
+                updatedParams.ethnicity = radioValues[type];
                 break;
             case 'by_education':
-                updatedParam.education = radioValue;
+                updatedParams.education = radioValues[type];
                 break;
             case 'by_country':
-                updatedParam.country = radioValue;
+                updatedParams.country = radioValues[type];
+                break;
+            default:
                 break;
         }
-        setApiParam(updatedParam)
-    }, [radioValue, consumptionType, drugType]);
-    useEffect(() => {
-        setRadioValue(getComponentToRender(consumptionType, consumptionValues)[0]);
-    },[consumptionType])
+    });
 
+    // Set the API parameters and precision consumption
+    setApiParam(updatedParams);
+    setPrecisionConsumption(radioValues);
+}, [radioValues, selectedConsumptionTypes, drugType]);
 
-    const GroupRadioButtonComponent = () => (
+    const GroupRadioButtonComponent = (type) => (
         <>
-            {getComponentToRender(consumptionType, consumptionValues).map((item, index) => (
+            {getConsumptionValues(type).map((item, index) => (
                 <div key={index} className={`box-content flex basis-1/7 space-y-2 items-center`}>
-                    <RadioGroupItem className = {`mr-2`} value={item} id={`r${index}`}/>
-                    <Label className = {`pb-2 mr-2`} htmlFor={`r${index}`}>{item}</Label>
+                    <RadioGroupItem className={`mr-2`} value={item} id={`${type}-r${index}`} />
+                    <Label className={`pb-2 mr-2`} htmlFor={`${type}-r${index}`}>{item}</Label>
                 </div>
             ))}
         </>
@@ -71,12 +91,16 @@ export function ConsumptionGroupCheckbox() {
 
     return (
         <div className="mt-3">
-            <RadioGroup defaultValue={radioValue} onValueChange={handleRadioValueChange}>
-                <p>Precision :</p>
-                <div className = {`flex flex-wrap mb-4`}>
-                    {GroupRadioButtonComponent()}
+            {selectedConsumptionTypes.map((type, index) => (
+                <div key={index}>
+                    <RadioGroup defaultValue={radioValues[type]} onValueChange={(newValue) => handleRadioValueChange(type, newValue)}>
+                        <p>{type} Precision :</p>
+                        <div className={`flex flex-wrap mb-4`}>
+                            {GroupRadioButtonComponent(type)}
+                        </div>
+                    </RadioGroup>
                 </div>
-            </RadioGroup>
+            ))}
         </div>
     );
 }

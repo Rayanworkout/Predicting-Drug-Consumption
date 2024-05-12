@@ -3,7 +3,11 @@ export const FirstLetterUpperCase = (string) => {
 }
 
 export function ReplaceUnderscoreSpace(str) {
-    return str ? str.replace(/_/g, ' ') : '';
+    if (typeof str === 'string') {
+        return str.replace(/_/g, ' ');
+    } else {
+        return '';
+    }
 }
 
 export const dataArray = () => ({

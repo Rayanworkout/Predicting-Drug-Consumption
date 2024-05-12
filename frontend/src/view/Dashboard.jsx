@@ -41,10 +41,9 @@ const Dashboard = () => {
             <span className={` flex flex-col gap-0 pb-3 lg:px-7 z-10`}>
                 <span className={` mb-10 `}>
                     <h1 className={`text-5xl md:text-6xl font-bold pb-3 tracking-tight text-white antialiasing`}>
-                        {chartType != 'consumption' ? FirstLetterUpperCase(chartType) + ' ' + (typeof consumptionType === 'string' ? ReplaceUnderscoreSpace(consumptionType) : consumptionType) : 'Drug : ' + FirstLetterUpperCase(drugType)}
-                    </h1>
+                        {chartType != 'consumption' ? FirstLetterUpperCase(chartType) + ' ' + ReplaceUnderscoreSpace(consumptionType) : 'Drug : ' + FirstLetterUpperCase(drugType)}                    </h1>
                     <p className={` text-2xl  md:text-3xl font-bold tracking-tight text-white antialiasing`}>
-                        {chartType == 'consumption' ? FirstLetterUpperCase(chartType) + ' ' + (typeof consumptionType === 'string' ? ReplaceUnderscoreSpace(consumptionType) : consumptionType) + " : " + (typeof precisionConsumption === 'string' ? ReplaceUnderscoreSpace(precisionConsumption) : precisionConsumption) : ""}
+                        {chartType == 'consumption' ? FirstLetterUpperCase(chartType) + ' ' + ReplaceUnderscoreSpace(consumptionType) + " : " + ReplaceUnderscoreSpace(precisionConsumption) : ""}
                     </p>
                 </span>
             </span>
