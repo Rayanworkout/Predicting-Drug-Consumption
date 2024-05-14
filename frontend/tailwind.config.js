@@ -38,11 +38,17 @@ module.exports = {
           '50%': { transform: 'translateY(0em) translateX(0.5em)' },
           '75%': { transform: 'translateY(0.5em) translateX(0em)' },
           '100%': { transform: 'translateY(0) translateX(0)', opacity: '1' },
+        },
+        "jump":{
+          '0%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(0.5em)' },
+          '100%': { transform: 'translateY(0em)'},
         }
       },
       animation: {
         "glowSpinL":"glowSpinL 4s ease-in-out infinite",
-        "glowSpinR":"glowSpinR 4s ease-in-out infinite"
+        "glowSpinR":"glowSpinR 4s ease-in-out infinite",
+        "jump":"jump 4s ease-in-out infinite",
       },
     },
   },

@@ -15,7 +15,7 @@ import RepartitionChartDetail from "@/components/RepartitionChart/RepartitionCha
 import CorrelationChartDetail from "@/components/CorrelationChart/CorrelationChartDetail.jsx";
 import {FirstLetterUpperCase} from "@/tool/tool.js";
 export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
-    const { drugType, drugValues, chartType, setChartType, getFunctionToCall} = useStore();
+    const { drugType, drugData, chartType, setChartType, getFunctionToCall} = useStore();
     function getComponentToRender(){
         switch (chartType){
             case 'consumption':
@@ -51,7 +51,7 @@ export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
                         <DrawerClose asChild>
                             { chartType === 'repartition' ?
                                 <Button className = {`bg-blue-500 hover:bg-blue-800`} onClick={() => getFunctionToCall()()}>OK</Button> :
-                                (drugValues.includes(drugType) ?
+                                (drugData.some(item => (item.value == drugType)) ?
                                     <Button className = {`bg-blue-500 hover:bg-blue-800`} onClick={() => getFunctionToCall()()}>OK</Button> :
                                     <Button disabled={true} className = {`bg-blue-500 hover:bg-blue-800`}>You must select a valid drug</Button>)
                             }
