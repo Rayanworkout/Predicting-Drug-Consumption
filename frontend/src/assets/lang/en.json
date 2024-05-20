@@ -1,15 +1,24 @@
 {
   "main": {
+    "langHover": "Français",
+    "analysisTitle": "Start Guided Analysis",
     "git": "Star us on GitHub !",
-    "title": "Drug Analytics",
-    "homeContent": "Welcome to this small statistical analysis project. The goal is to investigate the main factors that influence drug consumption in individuals. Are certain ethnicities more likely to consume drugs? Do people with specific personality traits have a higher likelihood of drug consumption? We will attempt to answer these questions and more in this analysis.",
+    "title": "Predicting Drug Consumption of individuals",
+    "homeContent": {
+      "contentTitle": "Welcome to this small statistical analysis project. The goal is to investigate the main factors that influence drug consumption in individuals. ",
+      "contentQuestion": [
+        "Are certain ethnicities more likely to consume drugs ?",
+        "Do people with specific personality traits have a higher likelihood of drug consumption ?"
+      ],
+      "contentEnding": "We will attempt to answer these questions and more in this analysis."
+    },
     "analysisInvitation": "Feel free to run the analysis as many time as necessary and then explore the charts by yourself to find some insights !",
-    "footerContent": "This project was made with <3 for educational purposes using this dataset. It is under the MIT license. The whole code is open source and available on GitHub. Any guidance, suggestions, or collaboration is warmly welcomed and greatly appreciated, feel free to get in touch."
+    "footerContent": "This project was made with ❤\uFE0F for educational purposes. The whole code is open source and available on GitHub under the MIT license. Any guidance, suggestions, or collaboration is warmly welcomed and greatly appreciated, feel free to get in touch."
   },
   "analysis": {
     "slideIntroduction": {
       "mainTitle": "Investigating the main factors that influence drug consumption in individuals: A case study.",
-      "databaseIntroduction": "We have a database of 1885 respondents. For each, 12 attributes and their score is known. These attributes, which we'll call features, are based on the NEO-FFI-R personality test. This test measures the following 5 personality traits:",
+      "databaseIntroduction": "We have a database of 1885 respondents. For each, 12 attributes and their score is known. These attributes, which we'll call 𝗳𝗲𝗮𝘁𝘂𝗿𝗲𝘀, are based on the 𝙉𝙀𝙊-𝙁𝙁𝙄-𝙍 personality test. This test measures the following 5 personality traits:",
       "personalityTraits": [
         "Neuroticism",
         "Extraversion",
@@ -51,14 +60,11 @@
         "- never used the drug",
         "- used it over a decade ago",
         "- in the last decade",
-        "- year",
-        "- month",
-        "- week",
-        "- day"
+        "- year / month / week / day"
       ],
       "analysisRemindersTitle": "Things to keep in mind during this analysis:",
       "analysisReminders": [
-        "The database contains ONLY 1885 respondents. This is a very small sample size compared to the world population. Therefore, the results of this analysis are not generalizable to the entire population. We only give some observations and suppositions about the data and the results. We do not make any definitive statements.",
+        "The database contains 𝗢𝗡𝗟𝗬 1885 respondents. This is a very small sample size compared to the world population. Therefore, the results of this analysis are 𝗻𝗼𝘁 generalizable to the entire population. We only give some observations and suppositions about the data and the results. We do not make any definitive statements.",
         "Some features are not well balanced. For example most of the respondents are from the UK. This can lead to biased results.",
         "Correlation does not imply causation. We can only say that two variables are correlated, not that one causes the other."
       ]
@@ -86,7 +92,7 @@
       "personalityDrugConsumptionTitle": "Personality and drug consumption",
       "correlationIntro": "We saw in the previous step that the correlation between drug consumption and non-personality related features may not be as strong as we thought. Let's now analyze the correlation between drug consumption and personality traits. For that, we'll use a correlation matrix.",
       "matrixExplanation": "This matrix shows the correlation score of each personality trait with each drug. The higher the score, the more the personality trait is correlated with the drug consumption.",
-      "exampleCorrelation": "For example, the correlation between the respondents who have a high openness score and the consumption of LSD is 0.37, which is quite high. The higher the correlation, the darker the color.",
+      "exampleCorrelation": "For example, the correlation between the respondents who have a high openness score and the consumption of LSD is 𝟬.𝟯𝟳, which is quite high. The higher the correlation, the darker the color.",
       "traitDrugUseCorrelation": "This helps understand which personality trait is correlated or not to the use of a specific drug.",
       "proceedingInstructions": "When you're done observing correlations, you can carry on to the next step."
     },
@@ -99,16 +105,20 @@
       ],
       "correlationFocus": "Let's use our data to isolate the strongest correlation between each features and each drug.",
       "highestCorrelationObservationTitle": "We start by observing the highest correlations between each drug and the features",
-      "correlationComputationDescription": "This code snippet computes the 20 highest correlations between each drug and the known features. For example, the first line of the output shows that the correlation between the Sensation Seeking score and the Cannabis consumption is 0.45. This means that the higher the Sensation Seeking score, the more the person is likely to consume Cannabis.",
+      "correlationComputationDescription": "This code snippet computes the 20 highest correlations between each drug and the known features. For example, the first line of the output shows that the correlation between the Sensation Seeking score and the Cannabis consumption is 𝟬.𝟰𝟱. This means that the higher the Sensation Seeking score, the more the person is likely to consume Cannabis.",
       "notableCorrelationFindings": "We can witness that the 20 highest correlations are not about age, country or ethnicity, but only about characteristics of the person.",
       "standOutFeature": "One of the feature seems to stand out: the SS, or Sensation Seeking score. It is the most correlated feature with the consumption of Cannabis, Legal highs, Ecstasy, Mushrooms, LSD, Nicotine, Amphetamines, and Coke.",
       "keyFeatureInsight": "We may have found a key feature that influences the drug consumption of an individual.",
       "featureCorrelationClarity": "However, it is not clear yet, because this output separates the correlation of each feature and each drug, and we don't really care about a particular drug, right ?",
-      "featureCorrelationDetermination": "How can we determine which feature has the highest correlation with drug consumption using this output ?"
+      "featureCorrelationDetermination": "How can we determine which feature has the highest correlation with drug consumption using this output ?",
+      "check": "See result",
+      "select": "Select response",
+      "rightAnswer": "Good answer",
+      "badAnswer": "Bad answer"
     },
     "slideExplanationAnalysis": {
       "correlationComputationMethod": "One way to achieve that would be to compute for each feature the mean of the correlation with all drugs.",
-      "meanCorrelationHighlight": "The mean correlation between the Sensation Seeking score and the drug consumption is 0.25. This is the highest mean correlation.",
+      "meanCorrelationHighlight": "The mean correlation between the Sensation Seeking score and the drug consumption is 𝟬.𝟮𝟱. This is the highest mean correlation.",
       "outputExplanation": {
         "intro": "How to read this output ?",
         "detail": "For each feature, we can see the mean correlation for all drugs. The higher the mean, the more the feature is correlated with drug consumption.",
@@ -123,6 +133,10 @@
     }
   },
   "dashboard": {
+    "comparison": "Comparison",
+    "repartition": "Repartition",
+    "correlation": "Correlation",
+    "drugExplanationSearch": "Select the drug to study",
     "chartTypesTitle": "On this dashboard, you can see 3 types of charts :",
     "chartTypesList": [
       "Comparison",

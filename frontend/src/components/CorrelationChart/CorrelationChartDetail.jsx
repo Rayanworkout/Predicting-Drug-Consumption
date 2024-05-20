@@ -7,7 +7,6 @@ const CorrelationChartDetail = () => {
 
     return (
         <RadioGroup defaultValue={consumptionType} onValueChange={setConsumptionType}>
-            <p>Correlation :</p>
             <div className={`flex flex-wrap gap-2`}>
                 <div className="flex items-center space-x-2">
                     <RadioGroupItem value="drug_and_personality" id="r1"/>
@@ -15,7 +14,7 @@ const CorrelationChartDetail = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                     <RadioGroupItem value="feature_to_drug_mean" id="r2"/>
-                    <Label htmlFor="r2">Drug meaning</Label>
+                    <Label htmlFor="r2">Mean Correlation between feature and consumption</Label>
                 </div>
             </div>
         </RadioGroup>

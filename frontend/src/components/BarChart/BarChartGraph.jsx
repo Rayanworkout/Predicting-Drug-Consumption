@@ -4,7 +4,7 @@ import useStore from "@/store/store.js";
 import {ReplaceUnderscoreSpace} from "@/tool/tool.js";
 
 export function BarChartGraph({ apiData, orientation, dashboard = false }) {
-    const { consumptionType} = useStore();
+    const { consumptionType, precisionConsumption, screenSize} = useStore();
 
     const [valueData, setValueData] = useState({});
 
@@ -28,11 +28,11 @@ export function BarChartGraph({ apiData, orientation, dashboard = false }) {
             },
         },
         title: {
-            text: `Drug consumption of ${Object.values(valueData).reduce((acc, curr) => acc + Number(curr), 0)} respondents distributed ${ReplaceUnderscoreSpace(consumptionType)}`,
+            text: `Drug consumption of ${Object.values(valueData).reduce((acc, curr) => acc + Number(curr), 0)} 
+            respondents distributed ${ReplaceUnderscoreSpace(consumptionType)} ${precisionConsumption ? precisionConsumption : ''}` ,
             align: 'center',
             style: {
-                fontSize: dashboard == true ? '12px' : '18px' ,
-                fontWeight: 'bold',
+                fontSize: screenSize < 880 ? '10px' : '18px' ,
                 color: '#263238'
             },
         },
@@ -51,8 +51,6 @@ export function BarChartGraph({ apiData, orientation, dashboard = false }) {
                 borderRadius: 4,
                 horizontal: orientation,
             },
-
-
         }
     };
 
