@@ -1,19 +1,20 @@
 import { Label } from "@/components/ui/label.jsx";
 import { CheckboxGroup, Checkbox } from "@/components/ui/checkbox-group.jsx";
 import useStore from "@/store/store.js";
-import { useState } from "react";
 
 export function BarChartConsumptionType({ setSelectedConsumptionTypes }) {
-    const { consumptionType } = useStore();
+    const { setSelectedCategories } = useStore();
 
     const handleCheckboxChange = (selectedCategories) => {
         // Update the selected consumption types state
         setSelectedConsumptionTypes(selectedCategories);
+        setSelectedCategories(selectedCategories);
+        // setSelectedValues(selectedValues);
     };
 
     return (
         <CheckboxGroup defaultValue={[]} onValueChange={handleCheckboxChange}>
-            <p>{consumptionType == 'consumption' ? 'Consumption ' : 'Repartition '} by :</p>
+            <p>Consumption by:</p>
             <div className={`flex flex-wrap gap-2`}>
                 <div className="flex items-center space-x-2">
                     <Checkbox value="by_age" id="r1" />

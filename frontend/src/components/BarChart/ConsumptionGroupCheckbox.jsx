@@ -5,7 +5,7 @@ import { age_range_param, gender_param, ethnicity_param, education_param, countr
 import useStore from "@/store/store.js";
 
 export function ConsumptionGroupCheckbox({ selectedConsumptionTypes }) {
-    const { drugType, setApiParam, precisionConsumption, setPrecisionConsumption } = useStore();
+    const { drugType, setApiParam, precisionConsumption, setPrecisionConsumption, setSelectedValues } = useStore();
 
     const paramsMapping = {
         by_age: age_range_param,
@@ -16,7 +16,7 @@ export function ConsumptionGroupCheckbox({ selectedConsumptionTypes }) {
     };
 
     const consumptionValues = {
-        by_age: ["18-24", "25-34", "35-44", "45-54", "55-64", "65"],
+        by_age: ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"],
         by_gender: ["male", "female"],
         by_ethnicity: ["asian", "black", "mixed-black_asian", "mixed-white_asian", "mixed-white_black", "other", "white"],
         by_education: ["before_16", "16", "17", "18", "no_certificate", "certificate", "university_degree", "masters_degree", "doctorate_degree"],
@@ -43,6 +43,7 @@ export function ConsumptionGroupCheckbox({ selectedConsumptionTypes }) {
             ...prevState,
             [type]: newValue
         }));
+        setSelectedValues(type, newValue); // Update selected values in the store
     };
     // Update API parameters
     useEffect(() => {
@@ -77,7 +78,7 @@ export function ConsumptionGroupCheckbox({ selectedConsumptionTypes }) {
         // Set the API parameters and precision consumption
         setApiParam(updatedParams);
         setPrecisionConsumption(radioValues);
-    }, [radioValues, selectedConsumptionTypes, drugType]);
+    }, [radioValues, selectedConsumptionTypes, drugType, setApiParam, setPrecisionConsumption]);
 
     const GroupRadioButtonComponent = (type) => (
         <>

@@ -17,8 +17,8 @@ const useStore = create((set, get) => ({
         });
     },
 
-    screenSize:0,
-    setScreenSize:(screenSize) => set({screenSize}),
+    screenSize: 0,
+    setScreenSize: (screenSize) => set({ screenSize }),
     chartType: 'consumption',
     setChartType: (chartType) => set({ chartType }),
 
@@ -53,31 +53,29 @@ const useStore = create((set, get) => ({
         });
     },
 
-        drugTypePrettier: 'Alcohol',
-    setDrugTypePrettier: (drugTypePrettier) => set({drugTypePrettier}),
-
+    drugTypePrettier: 'Alcohol',
+    setDrugTypePrettier: (drugTypePrettier) => set({ drugTypePrettier }),
 
     consumptionType: 'by_age',
-    setConsumptionType: (consumptionType) => set({consumptionType}),
+    setConsumptionType: (consumptionType) => set({ consumptionType }),
 
     consumptionOrientationChart: false,
-    setConsumptionOrientationChart : (consumptionOrientationChart) => set({consumptionOrientationChart}),
+    setConsumptionOrientationChart: (consumptionOrientationChart) => set({ consumptionOrientationChart }),
 
     precisionConsumption: '18-24',
-    setPrecisionConsumption: (precisionConsumption) => set({precisionConsumption}),
+    setPrecisionConsumption: (precisionConsumption) => set({ precisionConsumption }),
 
-
-    apiParam:{age_range: '18-24', drug: 'alcohol' },
+    apiParam: { age_range: '18-24', drug: 'alcohol' },
     setApiParam: (apiParam) => set({ apiParam }),
 
-    apiData: {data:{}},
-    setApiData: (apiData) => set({apiData}),
+    apiData: { data: {} },
+    setApiData: (apiData) => set({ apiData }),
 
-    apiRepartitionData: {data:[]},
-    setApiRepartitionData: (apiRepartitionData) => set({apiRepartitionData}),
+    apiRepartitionData: { data: [] },
+    setApiRepartitionData: (apiRepartitionData) => set({ apiRepartitionData }),
 
     apiCorrelationData: {},
-    setApiCorrelationData: (apiCorrelationData) => set({apiCorrelationData}),
+    setApiCorrelationData: (apiCorrelationData) => set({ apiCorrelationData }),
 
     selectedCategories: [], // Catégories sélectionnées
     selectedValues: {}, // Valeurs sélectionnées pour chaque catégorie
@@ -99,23 +97,26 @@ const useStore = create((set, get) => ({
 
     // Fonction pour effectuer l'appel API en fonction des sélections
     getFunctionToCall: () => {
-        const { chartType, apiParam, consumptionType, precisionConsumption, setApiData, setApiRepartitionData, setApiCorrelationData } = get();
+        const { chartType, apiParam, selectedCategories, selectedValues, setApiData, setApiRepartitionData, setApiCorrelationData } = get();
         switch (chartType) {
             case 'consumption':
                 return () => {
-                    GET_CONSUMPTION_DATA(new URLSearchParams(apiParam), consumptionType)
+                    const queryString = new URLSearchParams(apiParam).toString();
+                    const consumptionType = selectedCategories[0];
+                    GET_CONSUMPTION_DATA(queryString, consumptionType)
                         .then(data => setApiData(data))
                         .catch(error => console.error('Failed to fetch data:', error));
                 };
             case 'repartition':
                 return () => {
-                    const consumptionRepartition = consumptionType.substring(3);
-                    GET_REPARTITION_DATA(consumptionRepartition)
+                    const consumptionRepartition = selectedCategories.join('_');
+                    const queryString = new URLSearchParams(apiParam).toString();
+                    GET_REPARTITION_DATA(consumptionRepartition, queryString)
                         .then(data => setApiRepartitionData(data))
                         .catch(error => console.error('Failed to fetch data:', error));
                 };
             case 'correlation':
-                switch (consumptionType) {
+                switch (selectedCategories.join('_')) {
                     case 'drug_and_personality':
                         return () => {
                             GET_CORRELATION_DATA()
