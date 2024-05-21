@@ -41,7 +41,7 @@ def consumption_by_age(
 
     """
 
-    age_range = "65" if params.age_range == "65" else params.age_range
+    age_range = "65+" if params.age_range == "65" else params.age_range
     age_choices = [choice[0] for choice in AGE_CHOICES]
 
     if age_range not in age_choices:
