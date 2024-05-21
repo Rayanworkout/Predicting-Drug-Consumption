@@ -34,7 +34,15 @@ echo "> Done"
 
 python3 manage.py fill_database
 
-mv .env.example .env
+if ! [ -f ".env" ]; then
+    if [ -f ".env.example" ]; then
+        mv .env.example .env
+        echo ".env.example has been renamed to .env."
+    else
+        echo ".env.example does not exist. Cannot proceed."
+        exit 1
+    fi
+fi
 
 echo "> Running backend ..."
 
