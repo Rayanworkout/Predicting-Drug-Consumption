@@ -9,9 +9,9 @@ const API_URL = "http://127.0.0.1:8000/"
  * @returns {Promise<any>}
  * @constructor
  */
-export function GET_CONSUMPTION_DATA(objectParam, urlParam){
+export function GET_CONSUMPTION_DATA(queryString, urlParam){
     const baseurl = '/api/consumption/' + urlParam;
-    const fullUrl = `${baseurl}?${objectParam.toString()}`
+    const fullUrl = `${baseurl}?${queryString}`;
 
     const data = fetch(fullUrl)
         .then(r => {
