@@ -1,10 +1,6 @@
 # Personality Traits and Drug Consumption: A Data Analysis
 
-_Project currently under development_
-
 ### TLDR; this Django Ninja / React App is a simple interactive case study on the relationship between drug consumption and personality traits.
-
-App is available at http://194.135.81.27/
 
 ### Introduction
 
@@ -32,9 +28,6 @@ Tech Stack / Features:
  - 92% backend test coverage
  - Load tests with [Locust](https://locust.io/)
  - Frontend Performance tests with [Lighthouse](https://developers.google.com/web/tools/lighthouse)
-
-
-_Note: Any guidance, suggestions, or collaboration is warmly welcomed and greatly appreciated ♥️_
 
 
 ## How to run locally ?
