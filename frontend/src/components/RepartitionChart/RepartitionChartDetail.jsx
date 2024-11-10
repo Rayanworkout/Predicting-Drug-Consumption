@@ -1,9 +1,9 @@
-import BarChartConsumptionType from "@/components/BarChart/BarChartConsumptionType.jsx";
+import BarChartComparison from "@/components/BarChart/BarChartRepartition.jsx";
 
 const RepartitionChartDetail = () => {
     return (
         <div>
-            <BarChartConsumptionType/>
+            <BarChartComparison/>
         </div>
     );
 };
