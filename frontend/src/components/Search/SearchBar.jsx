@@ -21,7 +21,6 @@ export function SearchBar () {
 
     return (
         <div className={`w-full md:w-[42%] relative z-20`}>
-            <p className={`text-gray-400 pb-1`}>{t.dashboard.drugExplanationSearch}</p>
             <Input
                 type="text"
                 placeholder="Search drug name : alcohol, tabac... "
@@ -30,17 +29,17 @@ export function SearchBar () {
                 onFocus={handleFocus}
                 onChange={(event) => setDrugType(event.target.value)}
                 onBlur={handleBlur}
-                className={`ring-offset-blue-500 `}
+                className=""
             />
             {isFocused && (
                 <CardContent
-                    className={`absolute mt-1 bg-white w-full max-h-56 rounded overflow-y-auto`}>
+                    className={`absolute mt-1 bg-pdc-surface/90 backdrop-blur-xl border border-pdc-border w-full max-h-56 rounded-xl overflow-y-auto z-50 p-2 shadow-2xl custom-scrollbar`}>
                     {filteredDATA.length > 0 ? (
                         filteredDATA.map((item, index) => (
                             <p key={index} onClick={() => {
                                 handleSelect(item.value), setDrugTypePrettier(item.drug)
                             }}
-                               className={`px-2 pt-2 ease-out duration-300 hover:bg-neutral-200 cursor-pointer`}>
+                               className={`px-3 py-2 rounded-lg ease-out duration-300 hover:bg-white/5 hover:text-pdc-accent cursor-pointer text-sm`}>
                                 {item.drug}
                             </p>
                         ))

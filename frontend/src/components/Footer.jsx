@@ -2,13 +2,13 @@ import React from 'react';
 import useStore from "@/store/store.js";
 
 const Footer = () => {
-    const {translations} = useStore();
+    const { translations } = useStore();
     return (
-        <div className={`min-h-fit pb-4 flex justify-center`}>
-            <p className={`text-white text-center text-xs md:text-sm max-w-[80%] md:max-w-[90%]`}>
+        <footer className={`mt-auto border-t border-pdc-border bg-pdc-bg/50 backdrop-blur-sm py-8 flex justify-center`}>
+            <p className={`text-pdc-muted text-center text-xs font-mono max-w-[80%] md:max-w-[90%] leading-relaxed`}>
                 {translations.main.footerContent}
             </p>
-        </div>
+        </footer>
     );
 };
 

@@ -17,12 +17,27 @@ module.exports = {
       },
     },
     extend: {
-      theme:{
-        container:{
-          screens:{
-            'xsm': '480px'
-          }
-        }
+      colors: {
+        pdc: {
+          bg: '#09090b',
+          surface: '#18181b',
+          border: 'rgba(255,255,255,0.08)',
+          text: '#fafafa',
+          overlay: 'rgba(0,0,0,0.5)',
+          muted: '#71717a',
+          accent: '#a78bfa',
+          'accent-glow': 'rgba(167,139,250,0.15)',
+          success: '#34d399',
+          danger: '#f87171',
+        },
+      },
+      fontFamily: {
+        display: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      transitionTimingFunction: {
+        smooth: 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
       keyframes: {
         "glowSpinL":{
@@ -43,7 +58,7 @@ module.exports = {
           '0%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(0.5em)' },
           '100%': { transform: 'translateY(0em)'},
-        }
+        },
       },
       animation: {
         "glowSpinL":"glowSpinL 4s ease-in-out infinite",

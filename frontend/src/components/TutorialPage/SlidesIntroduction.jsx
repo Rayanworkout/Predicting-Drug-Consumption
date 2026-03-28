@@ -1,4 +1,3 @@
-import {styles} from "@/assets/style.js"
 import ShowCodeAlert from "@/components/TutorialPage/ShowCodeAlert.jsx";
 import {Button} from "@/components/ui/button.jsx";
 import {useEffect, useState} from "react";
@@ -13,20 +12,22 @@ import {CircleAlert} from "lucide-react";
 import {GET_CONSUMPTION_DATA} from "@/api_/api_"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group.jsx";
 import { Label } from "@/components/ui/label.jsx";
-import {ReplaceUnderscoreSpace} from "@/tool/tool.js";
+import {FirstLetterUpperCase, ReplaceUnderscoreSpace, cn} from "@/lib/utils";
 import codeCorrelation from "@/assets/img/codeCorrelation.png"
 import codePython from "@/assets/img/codePython.png"
+import { useShallow } from 'zustand/react/shallow';
+
 export const SlideIntroduction = () => {
-    const {translations} = useStore();
+    const translations = useStore(state => state.translations);
     const t = translations.analysis.slideIntroduction;
     return (
-        <div className={styles.textMainStyle}>
-            <p className={styles.mainTitle}>{t.mainTitle}</p>
+        <div className="flex flex-col gap-y-6 text-pdc-text text-sm md:text-base leading-relaxed">
+            <h2 className="font-display font-extra-bold text-2xl md:text-3xl text-white tracking-tight border-b border-pdc-border pb-4">{t.mainTitle}</h2>
 
             <p>{t.databaseIntroduction}</p>
 
-            <div className = {`flex px-7 gap-x-10`}>
-                <ul className={styles.listDisc}>
+            <div className = "flex px-7 gap-x-10">
+                <ul className="list-disc pl-5 space-y-2 text-pdc-text/80">
                     {t.personalityTraits.map((item, index) => {
                         return <li key={index}>{item}</li>
                     })}
@@ -37,7 +38,10 @@ export const SlideIntroduction = () => {
             <p>{t.traitScores}</p>
             <p>{t.additionalAttributes}</p>
 
-            <p className={"flex gap-x-2 text-black bg-slate-50 w-fit rounded-sm px-3 py-0.5"}><CircleAlert className={"text-red-500"}/>{t.ethnicityNote}</p>
+            <p className="flex gap-x-2 text-pdc-bg bg-pdc-text font-medium w-auto rounded-lg px-4 py-2 text-sm shadow-xl">
+                <CircleAlert className="text-pdc-danger h-5 w-5" />
+                {t.ethnicityNote}
+            </p>
             <p>{t.drugUseInquiry}</p>
 
             <div className="box-content flex flex-wrap w-full gap-x-5">
@@ -66,8 +70,8 @@ export const SlideIntroduction = () => {
                 </ul>
             </div>
 
-            <p className={styles.secondTitle}>{t.analysisRemindersTitle}</p>
-            <ul className={styles.listDisc}>
+            <h3 className="text-xl font-bold text-pdc-accent mt-6">{t.analysisRemindersTitle}</h3>
+            <ul className="list-disc pl-5 space-y-2 text-pdc-text/80">
                 {t.analysisReminders.map((item, index) => {
                     return <li key={index}>{item}</li>
                 })}
@@ -76,8 +80,14 @@ export const SlideIntroduction = () => {
     );
 };
 export const SlideHowToReadChart = () => {
-    const {apiRepartitionData, getFunctionToCall, setChartType, setConsumptionType, consumptionType} = useStore();
-    const {translations} = useStore();
+    const {apiRepartitionData, getFunctionToCall, setChartType, setConsumptionType, consumptionType} = useStore(useShallow(state => ({
+        apiRepartitionData: state.apiRepartitionData,
+        getFunctionToCall: state.getFunctionToCall,
+        setChartType: state.setChartType,
+        setConsumptionType: state.setConsumptionType,
+        consumptionType: state.consumptionType
+    })));
+    const translations = useStore(state => state.translations);
     const t = translations.analysis.slideReadChart;
     useEffect(() => {
         setChartType('repartition');
@@ -85,37 +95,44 @@ export const SlideHowToReadChart = () => {
         getFunctionToCall()()
     }, []);
     return (
-        <div className={styles.textMainStyle}>
-            <p className={styles.mainTitle}>{t.analysisStartingPointTitle}</p>
+        <div className="flex flex-col gap-y-6 text-pdc-text text-sm md:text-base leading-relaxed">
+            <h2 className="font-display font-extra-bold text-2xl md:text-3xl text-white tracking-tight border-b border-pdc-border pb-4">{t.analysisStartingPointTitle}</h2>
             <p>{t.populationObservation}</p>
             <p>{t.balanceImportance}</p>
-            <div className = {`flex flex-col px-5 w-full items-center`}>
-                <p className = {styles.secondTitle}>{t.datasetRepartitionTitle} {ReplaceUnderscoreSpace(consumptionType)}</p>
+            <div className = "flex flex-col px-5 w-full items-center gap-4">
+                <h3 className="text-lg font-mono text-pdc-accent uppercase tracking-widest">{t.datasetRepartitionTitle} {ReplaceUnderscoreSpace(consumptionType)}</h3>
                 <div className={`w-full box-content mb-2 text-black h-[30vh] bg-neutral-50 rounded-md`}>
                     <RepartitionGraph apiData={apiRepartitionData}/>
                 </div>
                 <div
-                    className={`flex flex-col w-fit p-2 rounded-md text-black bg-neutral-50 items-center space-y-3`}>
+                    className={`flex flex-col w-fit p-4 rounded-xl border border-pdc-border bg-pdc-bg/60 backdrop-blur-md items-center space-y-3`}>
                     <BarChartConsumptionType/>
                     <Button variant="default_blue" onClick={() => getFunctionToCall()()}>Submit</Button>
                 </div>
             </div>
 
             <p>{t.repartitionAnalysisNote}</p>
-            <p className={styles.secondTitle}>{t.initialAnalysisInterestTitle}</p>
+            <h3 className="text-xl font-bold text-pdc-accent mt-6">{t.initialAnalysisInterestTitle}</h3>
             <p>{t.analysisPurpose}</p>
-            <ul className={styles.listDisc}>
+            <ul className="list-disc pl-5 space-y-2 text-pdc-text/80">
                 {t.analysisQuestions.map((item, index) => {
                     return <li key={index}>{item}</li>
                 })}
             </ul>
-            <p>{t.preconceivedNotions}</p>
+            <p className="italic text-pdc-muted">{t.preconceivedNotions}</p>
         </div>
     );
 };
 export const ExplanationConsumption = () => {
-    const {apiData, setApiData,setDrugType,precisionConsumption,setPrecisionConsumption, setConsumptionType} = useStore();
-    const {translations} = useStore();
+    const {apiData, setApiData,setDrugType,precisionConsumption,setPrecisionConsumption, setConsumptionType} = useStore(useShallow(state => ({
+        apiData: state.apiData,
+        setApiData: state.setApiData,
+        setDrugType: state.setDrugType,
+        precisionConsumption: state.precisionConsumption,
+        setPrecisionConsumption: state.setPrecisionConsumption,
+        setConsumptionType: state.setConsumptionType
+    })));
+    const translations = useStore(state => state.translations);
     const t = translations.analysis.slideExplanationConsumption;
     useEffect(() => {
         setDrugType('meth')
@@ -125,16 +142,16 @@ export const ExplanationConsumption = () => {
 
     }, []);
     return (
-        <div className={styles.textMainStyle}>
-            <p className={styles.mainTitle}>
+        <div className="flex flex-col gap-y-6 text-pdc-text text-sm md:text-base leading-relaxed">
+            <h2 className="font-display font-extra-bold text-2xl md:text-3xl text-white tracking-tight border-b border-pdc-border pb-4">
                 {t.correlationTitle}
-            </p>
+            </h2>
             <div className = {`flex flex-col px-5 w-full h-auto items-center`}>
                 <div className={`w-full box-content mb-2 text-black h-[60vh] md:h-[50vh] bg-neutral-50 rounded-md`}>
                     <BarChartGraph apiData={apiData.data} orientation={false}/>
                 </div>
                 <div
-                    className={`flex flex-col w-fit p-2 rounded-md text-black bg-neutral-50 items-center space-y-3`}>
+                    className={`flex flex-col w-fit p-4 rounded-xl border border-pdc-border bg-pdc-bg/60 backdrop-blur-md items-center space-y-3`}>
                     <ConsumptionGroupCheckbox precision={'Education level '}/>
                     <Button variant="default_blue" onClick={() => {GET_CONSUMPTION_DATA(new URLSearchParams({education:precisionConsumption, drug: 'meth'}), 'by_education').then(data => setApiData(data))}}>Submit</Button>
                 </div>
@@ -146,8 +163,12 @@ export const ExplanationConsumption = () => {
     );
 }
 export const SlideSummary = () => {
-    const {getFunctionToCall, setChartType,setConsumptionType} = useStore();
-    const {translations} = useStore();
+    const {getFunctionToCall, setChartType,setConsumptionType} = useStore(useShallow(state => ({
+        getFunctionToCall: state.getFunctionToCall,
+        setChartType: state.setChartType,
+        setConsumptionType: state.setConsumptionType
+    })));
+    const translations = useStore(state => state.translations);
     const t = translations.analysis.slideExplanationCorrelation;
     useEffect(() => {
         setChartType('correlation')
@@ -155,8 +176,8 @@ export const SlideSummary = () => {
         getFunctionToCall()()
     }, []);
     return (
-        <div className={styles.textMainStyle}>
-            <p className = {styles.mainTitle}>{t.personalityDrugConsumptionTitle}</p>
+        <div className="flex flex-col gap-y-6 text-pdc-text text-sm md:text-base leading-relaxed">
+            <h2 className="font-display font-extra-bold text-2xl md:text-3xl text-white tracking-tight border-b border-pdc-border pb-4">{t.personalityDrugConsumptionTitle}</h2>
             <p>{t.correlationIntro}</p>
             <div className={`flex flex-col px-5 w-full items-center`}>
                 <div className={`w-full box-content mb-2 text-black bg-neutral-50 rounded-md`}>
@@ -175,14 +196,14 @@ export const SlideSummary = () => {
 export const SlideCorrelationIntroduction = () => {
     const [answer, setAnswer] = useState('')
     const [selectedValue, setSelectedValue] = useState('');
-    const {translations} = useStore();
+    const translations = useStore(state => state.translations);
     const t = translations.analysis.slideAnalysisGoal;
     return (
-        <div className={styles.textMainStyle}>
-            <p className={styles.secondTitle}>{t.analysisGoalTitle}</p>
+        <div className="flex flex-col gap-y-6 text-pdc-text text-sm md:text-base leading-relaxed">
+            <h3 className="text-xl font-bold text-pdc-accent">{t.analysisGoalTitle}</h3>
             <p>{t.predictiveQuestionsIntro}</p>
 
-            <ul className={styles.listDisc}>
+            <ul className="list-disc pl-5 space-y-2 text-pdc-text/80">
                 {t.predictiveQuestions.map((item, index) => {
                     return <li key={index}>{item}</li>
                 })}
@@ -190,7 +211,7 @@ export const SlideCorrelationIntroduction = () => {
 
             <p>{t.correlationFocus}</p>
 
-            <p className={styles.secondTitle}>{t.highestCorrelationObservationTitle}</p>
+            <h3 className="text-xl font-bold text-pdc-accent mt-6">{t.highestCorrelationObservationTitle}</h3>
             <div className="flex gap-x-5">
                 <ul className="list-disc pl-5">
                     <li>('Cannabis', 'SS', 0.456)</li>
@@ -230,7 +251,7 @@ export const SlideCorrelationIntroduction = () => {
 
             <p className={'text-base md:text-xl underline underline-offset-2'}>{t.featureCorrelationDetermination}</p>
             <div className="flex gap-x-4">
-            <div className="rounded-md w-fit bg-slate-50 text-black">
+            <div className="rounded-xl w-fit bg-pdc-bg/60 border border-pdc-border backdrop-blur-md">
                 <RadioGroup onValueChange={setSelectedValue}>
                     <div className={`flex flex-col gap-2 p-6`}>
                         <div className="flex items-center space-x-2">
@@ -248,11 +269,11 @@ export const SlideCorrelationIntroduction = () => {
                     </div>
                 </RadioGroup>
                 <div className="w-full flex justify-end mb-5 pr-5">
-                    <Button onClick={() => setAnswer(selectedValue)} className="bg-blue-500" >{t.check}</Button>
+                    <Button onClick={() => setAnswer(selectedValue)} variant="accent" >{t.check}</Button>
                 </div>
             </div>
-            <div className="bg-slate-50 p-6 h-auto rounded-md text-black">
-                {answer !== '' ? (answer === 'good_answer' ? <p>{t.rightAnswer}</p> : <p>{t.badAnswer}</p>) : <p>{t.select}</p> }
+            <div className="bg-pdc-surface border border-pdc-border p-6 h-auto rounded-xl text-pdc-text flex-1">
+                {answer !== '' ? (answer === 'good_answer' ? <p className="text-pdc-success font-semibold">{t.rightAnswer}</p> : <p className="text-pdc-danger">{t.badAnswer}</p>) : <p className="text-pdc-muted italic">{t.select}</p> }
             </div>
             </div>
             
@@ -261,10 +282,10 @@ export const SlideCorrelationIntroduction = () => {
 };
 export const SlideCorrelationExplanation = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const {translations} = useStore();
+    const translations = useStore(state => state.translations);
     const t = translations.analysis.slideExplanationAnalysis;
     return (
-        <div className={styles.textMainStyle}>
+        <div className="flex flex-col gap-y-6 text-pdc-text text-sm md:text-base leading-relaxed">
             <p>{t.correlationComputationMethod}</p>
             <div className="flex gap-x-5">
                 <ul className="">
@@ -287,13 +308,13 @@ export const SlideCorrelationExplanation = () => {
             <ShowCodeAlert imageSource={codePython} textButtonTrigger={'Show me the code!'}/>
 
             <p>{t.meanCorrelationHighlight}</p>
-            <Button onClick={() => setIsOpen(!isOpen)} variant="outline" className = {`text-black w-fit`}>?</Button>
+            <Button onClick={() => setIsOpen(!isOpen)} className = "btn-pdc w-10 h-10 p-0 text-base">?</Button>
             {
                 isOpen == false ? '' :
-                    <div className={`bg-neutral-50 mx-[10%] p-4 w-fit rounded-md text-black`}>
-                    <p>{t.outputExplanation.intro}</p>
-                    <p>{t.outputExplanation.detail}</p>
-                    <p>{t.outputExplanation.repeatHighlight}</p>
+                    <div className="bg-pdc-surface/60 border border-pdc-border backdrop-blur-md mx-4 p-6 w-fit rounded-2xl text-pdc-text shadow-2xl">
+                    <p className="font-semibold text-pdc-accent mb-2">{t.outputExplanation.intro}</p>
+                    <p className="text-pdc-text/80">{t.outputExplanation.detail}</p>
+                    <p className="mt-4 italic text-pdc-muted border-t border-pdc-border/30 pt-4">{t.outputExplanation.repeatHighlight}</p>
                 </div>
             }
             <p>{t.featureComparison}</p>
@@ -301,14 +322,16 @@ export const SlideCorrelationExplanation = () => {
     );
 };
 export const SlideEnding = () => {
-    const {translations} = useStore();
+    const translations = useStore(state => state.translations);
     const t = translations.analysis.slideConclusion;
     return (
-        <div className={styles.textMainStyle}>
-            <p className={styles.mainTitle}>{t.dataVisualizationTitle}</p>
-            <img src={correlationImg} className={`  lg:max-w-3xl mx-auto`}/>
-            <p className = {styles.secondTitle}>{t.analysisConclusion}</p>
-            <p>{t.explorationEncouragement}</p>
+        <div className="flex flex-col gap-y-6 text-pdc-text text-sm md:text-base leading-relaxed">
+            <h2 className="font-display font-extra-bold text-2xl md:text-3xl text-white tracking-tight border-b border-pdc-border pb-4">{t.dataVisualizationTitle}</h2>
+            <div className="bg-white/5 p-4 rounded-3xl border border-pdc-border backdrop-blur-sm">
+                <img src={correlationImg} className="w-full max-w-3xl mx-auto rounded-xl shadow-2xl"/>
+            </div>
+            <h3 className="text-xl font-bold text-pdc-accent mt-6">{t.analysisConclusion}</h3>
+            <p className="text-lg font-medium">{t.explorationEncouragement}</p>
         </div>
     );
 };

@@ -9,12 +9,12 @@ const ShowCodeAlert = ({imageSource, textButtonTrigger}) => {
         <div>
             <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
                 <AlertDialogTrigger asChild>
-                    <Button variant="outline" className = {`text-black w-fit`}>{textButtonTrigger}</Button>
+                    <Button className = "btn-pdc w-fit">{textButtonTrigger}</Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent className = {`bg-transparent backdrop-blur max-w-2xl rounded-2xl`}>
                     <div className={`flex flex-col gap-y-5`}>
                             <img src={imageSource} className = {`w-full bg-neutral-50`} />
-                        <Button variant="outline" onClick={() => setIsOpen(false)}>Close</Button>
+                        <Button className="btn-pdc" onClick={() => setIsOpen(false)}>Close</Button>
                     </div>
                 </AlertDialogContent>
             </AlertDialog>

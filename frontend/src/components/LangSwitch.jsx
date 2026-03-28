@@ -1,41 +1,38 @@
-import FR from "@/assets/img/drapeau_fr.png";
-import EN from "@/assets/img/drapeau_en.png";
 import useStore from "@/store/store.js";
-import {
-    HoverCard,
-    HoverCardContent,
-    HoverCardTrigger,
-} from "@/components/ui/hover-card"
 
 export function LangSwitch() {
-    const t = useStore(state => state.translations);
-    const {language, setLanguage} = useStore();
-    const newLanguage = language === "en" ? "fr" : "en";
+    const { language, setLanguage } = useStore();
 
-    const lang =
-        <p className={`flex items-center gap-x-1 cursor-pointer py-1 px-3 rounded hover:bg-neutral-50 hover:text-black ease-in-out duration-300`}
-        onClick={() => setLanguage(newLanguage)}>
-        {
-            newLanguage == "fr" ?
-                <img src={FR} className={`h-[20px] rounded-md`}/> :
-                <img src={EN} className={`h-[20px] rounded-md`}/>
-        }
-        {newLanguage.toUpperCase()}
-    </p>
+    const toggleLang = () => {
+        setLanguage(language === "en" ? "fr" : "en");
+    };
 
     return (
-        <>
-            <HoverCard>
-                <HoverCardTrigger asChild>
-                    {lang}
-                </HoverCardTrigger>
-                <HoverCardContent className={`w-fit`}>
-                    <p className={`text-sm`}>
-                        {t.main.langHover}
-                    </p>
-                </HoverCardContent>
-            </HoverCard>
+        <button
+            onClick={toggleLang}
+            className="btn-pdc gap-2 px-4 py-1.5 font-mono text-xs"
+        >
+            <span
+                className={`transition-opacity duration-300 ${
+                    language === "en"
+                        ? "text-pdc-text opacity-100"
+                        : "text-pdc-muted opacity-40"
+                }`}
+            >
+                EN
+            </span>
 
-        </>
-    )
+            <span className="text-pdc-muted">/</span>
+
+            <span
+                className={`transition-opacity duration-300 ${
+                    language === "fr"
+                        ? "text-pdc-text opacity-100"
+                        : "text-pdc-muted opacity-40"
+                }`}
+            >
+                FR
+            </span>
+        </button>
+    );
 }

@@ -5,20 +5,20 @@
     "git": "Star us on GitHub !",
     "title": "Predicting Drug Consumption of individuals",
     "homeContent": {
-      "contentTitle": "Welcome to this small statistical analysis project. The goal is to investigate the main factors that influence drug consumption in individuals. ",
+      "contentTitle": "Welcome to this small statistical analysis project. The goal is to investigate the main factors that influence drug consumption in individuals.",
       "contentQuestion": [
         "Are certain ethnicities more likely to consume drugs ?",
         "Do people with specific personality traits have a higher likelihood of drug consumption ?"
       ],
       "contentEnding": "We will attempt to answer these questions and more in this analysis."
     },
-    "analysisInvitation": "Feel free to run the analysis as many time as necessary and then explore the charts by yourself to find some insights !",
+    "analysisInvitation": "Feel free to run the analysis as many times as necessary and then explore the charts by yourself to find some insights !",
     "footerContent": "This project was made with ❤\uFE0F for educational purposes. The whole code is open source and available on GitHub under the MIT license. Any guidance, suggestions, or collaboration is warmly welcomed and greatly appreciated, feel free to get in touch."
   },
   "analysis": {
     "slideIntroduction": {
       "mainTitle": "Investigating the main factors that influence drug consumption in individuals: A case study.",
-      "databaseIntroduction": "We have a database of 1885 respondents. For each, 12 attributes and their score is known. These attributes, which we'll call 𝗳𝗲𝗮𝘁𝘂𝗿𝗲𝘀, are based on the 𝙉𝙀𝙊-𝙁𝙁𝙄-𝙍 personality test. This test measures the following 5 personality traits:",
+      "databaseIntroduction": "We have a database of 1885 respondents. For each, 12 attributes and their scores are known. These attributes, which we'll call 𝗳𝗲𝗮𝘁𝘂𝗿𝗲𝘀, are based on the 𝙉𝙀𝙊-𝙁𝙁𝙄-𝙍 personality test. This test measures the following 5 personality traits:",
       "personalityTraits": [
         "Neuroticism",
         "Extraversion",
@@ -28,7 +28,7 @@
       ],
       "additionalScores": "We also have access to the Impulsiveness and the Sensation Seeking scores of each respondent.",
       "traitScores": "Each personality trait has a decimal value as a score. The higher the score, the more the respondent has the corresponding personality trait. For example, a score of 0.8 for the Neuroticism trait means that the respondent is very neurotic.",
-      "additionalAttributes": "Additionally to these 7 personality attributes, we also have access to level of education, age, gender, country of residence and ethnicity of each respondent.",
+      "additionalAttributes": "In addition to these 7 personality attributes, we also have access to level of education, age, gender, country of residence and ethnicity of each respondent.",
       "ethnicityNote": "Note that in certain countries, ethnicity statistics are illegal.",
       "drugUseInquiry": "In addition, participants were questioned about their use of 18 legal and illegal drugs:",
       "drugList1": [
@@ -53,7 +53,7 @@
         "- methadone",
         "- nicotine",
         "- volatile substance abuse",
-        "- Semeron (fictious drug to identify over-claimers)"
+        "- Semeron (fictitious drug to identify over-claimers)"
       ],
       "drugUseFrequency": "For each drug they had to select one of the answers:",
       "frequencyOptions": [
@@ -103,11 +103,11 @@
         "Does the age of an individual influence his drug consumption ?",
         "Does the impulsive behavior of an individual influence his drug consumption ?"
       ],
-      "correlationFocus": "Let's use our data to isolate the strongest correlation between each features and each drug.",
+      "correlationFocus": "Let's use our data to isolate the strongest correlation between each feature and each drug.",
       "highestCorrelationObservationTitle": "We start by observing the highest correlations between each drug and the features",
       "correlationComputationDescription": "This code snippet computes the 20 highest correlations between each drug and the known features. For example, the first line of the output shows that the correlation between the Sensation Seeking score and the Cannabis consumption is 𝟬.𝟰𝟱. This means that the higher the Sensation Seeking score, the more the person is likely to consume Cannabis.",
       "notableCorrelationFindings": "We can witness that the 20 highest correlations are not about age, country or ethnicity, but only about characteristics of the person.",
-      "standOutFeature": "One of the feature seems to stand out: the SS, or Sensation Seeking score. It is the most correlated feature with the consumption of Cannabis, Legal highs, Ecstasy, Mushrooms, LSD, Nicotine, Amphetamines, and Coke.",
+      "standOutFeature": "One of the features seems to stand out: the SS, or Sensation Seeking score. It is the most correlated feature with the consumption of Cannabis, Legal highs, Ecstasy, Mushrooms, LSD, Nicotine, Amphetamines, and Coke.",
       "keyFeatureInsight": "We may have found a key feature that influences the drug consumption of an individual.",
       "featureCorrelationClarity": "However, it is not clear yet, because this output separates the correlation of each feature and each drug, and we don't really care about a particular drug, right ?",
       "featureCorrelationDetermination": "How can we determine which feature has the highest correlation with drug consumption using this output ?",

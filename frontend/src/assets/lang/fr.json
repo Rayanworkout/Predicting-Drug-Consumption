@@ -66,7 +66,7 @@
       "analysisRemindersTitle": "Éléments à garder à l'esprit tout au long de cette analyse:",
       "analysisReminders": [
         "La base de données contient 𝗦𝗘𝗨𝗟𝗘𝗠𝗘𝗡𝗧 1885 participants. Il s'agit d'un échantillon très petit. Par conséquent, les résultats de cette analyse ne sont pas généralisables à toute la population.",
-        "Certaines features ne sont pas bien équilibrés. Par exemple, la plupart des personnes sondées sont du Royaume-Uni. Cela peut conduire à des résultats biaisés.",
+        "Certaines features ne sont pas bien équilibrées. Par exemple, la plupart des personnes sondées sont du Royaume-Uni. Cela peut conduire à des résultats biaisés.",
         "Corrélation ne signifie pas causalité. Nous pouvons observer que deux variables sont corrélées sans pour autant conclure que l'une cause l'autre."
       ]
     },
@@ -101,7 +101,7 @@
       "analysisGoalTitle": "Comme l'on peut s'y attendre, l'objectif de toute cette analyse est de prédire quelles caractéristiques propres à une personne la rendent plus susceptible de consommer des drogues avec une haute fréquence. Cela peut par exemple être utile pour les programmes de prévention anti drogues.",
       "predictiveQuestionsIntro": "Cette analyse aiderait à répondre à des questions telles que :",
       "predictiveQuestions": [
-        "L'âge ou le comportement impulsif d'un individu influencent-t-il sa consommation de drogues ?"
+        "L'âge ou le comportement impulsif d'un individu influencent-ils sa consommation de drogues ?"
       ],
       "correlationFocus": "Utilisons nos données pour isoler la corrélation la plus forte entre chaque caractéristique et chaque drogue.",
       "highestCorrelationObservationTitle": "Voyons les corrélations les plus élevées entre les drogues disponibles et chacune des caractéristiques",
@@ -110,7 +110,7 @@
       "standOutFeature": "L'une des caractéristiques semble se démarquer : le score de SS, ou Sensation Seeking. Il est la caractéristique la plus corrélée avec la consommation de Cannabis, Legal highs, Ecstasy, Mushrooms, LSD, Nicotine, Amphetamines et Coke.",
       "keyFeatureInsight": "Nous avons peut-être trouvé une caractéristique clé qui influence la consommation de drogues d'un individu.",
       "featureCorrelationClarity": "Cependant, ce n'est pas encore clair, car ce résultat sépare la corrélation de chaque caractéristique et de chaque drogue, et nous ne nous intéressons pas vraiment à une drogue particulière.",
-      "featureCorrelationDetermination": "𝘈𝘷𝘦𝘤 𝘤𝘦 𝘳𝘦́𝘴𝘶𝘭𝘵𝘢𝘵, 𝘤𝘰𝘮𝘮𝘦𝘯𝘵 𝘱𝘰𝘶𝘳𝘳𝘪𝘰𝘯𝘴-𝘯𝘰𝘶𝘴 𝘪𝘥𝘦𝘯𝘵𝘪𝘧𝘪𝘦𝘳 𝘭𝘢 𝘤𝘢𝘳𝘢𝘤𝘵𝘦́𝘳𝘪𝘴𝘲𝘶𝘦 𝘭𝘢 𝘱𝘭𝘶𝘴 𝘤𝘰𝘳𝘳𝘦́𝘭𝘦́𝘦 𝘢̀ 𝘭𝘢 𝘤𝘰𝘯𝘴𝘰𝘮𝘮𝘢𝘵𝘪𝘰𝘯 𝘥𝘦 𝘥𝘳𝘰𝘨𝘶𝘦𝘴 𝘦𝘯 𝘨𝘦́𝘯𝘦́𝘳𝘢𝘭 ?",
+      "featureCorrelationDetermination": "𝘈𝘷𝘦𝘤 𝘤𝘦 𝘳𝘦́𝘴𝘶𝘭𝘵𝘢𝘵, 𝘤𝘰𝘮𝘮𝘦𝘯𝘵 𝘱𝘰𝘶𝘳𝘳𝘪𝘰𝘯𝘴-𝘯𝘰𝘶𝘴 𝘪𝘥𝘦𝘯𝘵𝘪𝘧𝘪𝘦𝘳 𝘭𝘢 𝘤𝘢𝘳𝘢𝘤𝘵𝘦́𝘳𝘪𝘴𝘵𝘪𝘲𝘶𝘦 𝘭𝘢 𝘱𝘭𝘶𝘴 𝘤𝘰𝘳𝘳𝘦́𝘭𝘦́𝘦 𝘢̀ 𝘭𝘢 𝘤𝘰𝘯𝘴𝘰𝘮𝘮𝘢𝘵𝘪𝘰𝘯 𝘥𝘦 𝘥𝘳𝘰𝘨𝘶𝘦𝘴 𝘦𝘯 𝘨𝘦́𝘯𝘦́𝘳𝘢𝘭 ?",
       "check": "Voir le résultat",
       "select": "Sélectionnez une réponse",
       "rightAnswer": "Bonne réponse",
@@ -118,11 +118,11 @@
     },
     "slideExplanationAnalysis": {
       "correlationComputationMethod": "Un moyen d'y parvenir serait de calculer pour chaque caractéristique la moyenne de la corrélation avec toutes les drogues.",
-      "meanCorrelationHighlight": "Un moyen d'y parvenir serait de calculer pour chaque caractéristique la moyenne de la corrélation avec toutes les drogues.",
+      "meanCorrelationHighlight": "La corrélation moyenne entre le score de Recherche de Sensation et la consommation de drogues est de 𝟬,𝟮𝟱. C'est la corrélation moyenne la plus élevée.",
       "outputExplanation": {
         "intro": "Comment lire ce résultat ?",
         "detail": "Plus le score est élevé, plus la caractéristique est corrélée à une consommation fréquente de drogues. Par exemple, le score de Sensation Seeking est de 0,25, ce qui signifie que cette caractéristique est la plus corrélée à la consommation de drogues.",
-        "repeatHighlight": "Un moyen d'y parvenir serait de calculer pour chaque caractéristique la moyenne de la corrélation avec toutes les drogues."
+        "repeatHighlight": "La corrélation moyenne entre le score de Recherche de Sensation et la consommation de drogues est de 𝟬,𝟮𝟱. C'est la corrélation moyenne la plus élevée."
       },
       "featureComparison": "Une fois de plus, le score relatif à la recherche de sensation arrive en première position. Cela pourrait signifier que les personnes ayant un score élevé de recherche de sensation sont plus susceptibles de consommer des drogues. Le score d'Impulsivité arrive en deuxième position, suivi du score d'ouverture à l'expérience. Comme nous pouvons le voir, les features telles que l'âge ou le pays de résidence sont très peu corrélées à la consommation de drogues."
     },

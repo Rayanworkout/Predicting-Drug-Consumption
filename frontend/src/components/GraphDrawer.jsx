@@ -13,7 +13,7 @@ import React from "react";
 import useStore from "@/store/store.js";
 import RepartitionChartDetail from "@/components/RepartitionChart/RepartitionChartDetail.jsx";
 import CorrelationChartDetail from "@/components/CorrelationChart/CorrelationChartDetail.jsx";
-import {FirstLetterUpperCase} from "@/tool/tool.js";
+import {FirstLetterUpperCase, ReplaceUnderscoreSpace} from "@/lib/utils.js";
 export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
     const { drugType, drugData, chartType, setChartType, getFunctionToCall} = useStore();
     function getComponentToRender(){
@@ -30,7 +30,7 @@ export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
     return (
         <Drawer>
             <DrawerTrigger asChild onClick={() => setChartType(typeOfChart)}>
-                <Button variant="outline">{icon} {triggerTitle}</Button>
+                <Button className="btn-pdc">{icon} {triggerTitle}</Button>
             </DrawerTrigger>
             <DrawerContent>
 
@@ -50,15 +50,15 @@ export function GraphDrawer({icon, typeOfChart, triggerTitle}) {
                     <DrawerFooter>
                         <DrawerClose asChild>
                             { chartType === 'repartition' ?
-                                <Button className = {`bg-blue-500 hover:bg-blue-800`} onClick={() => getFunctionToCall()()}>OK</Button> :
+                                <Button className ="btn-pdc" onClick={() => getFunctionToCall()()}>OK</Button> :
                                 (drugData.some(item => (item.value == drugType)) ?
-                                    <Button className = {`bg-blue-500 hover:bg-blue-800`} onClick={() => getFunctionToCall()()}>OK</Button> :
-                                    <Button disabled={true} className = {`bg-blue-500 hover:bg-blue-800`}>You must select a valid drug</Button>)
+                                    <Button className ="btn-pdc" onClick={() => getFunctionToCall()()}>OK</Button> :
+                                    <Button disabled={true} className ="btn-pdc">You must select a valid drug</Button>)
                             }
                         </DrawerClose>
 
                         <DrawerClose asChild>
-                            <Button className = {`bg-neutral-500 hover:bg-neutral-600`}>Cancel</Button>
+                            <Button className ="btn-pdc">Cancel</Button>
                         </DrawerClose>
                     </DrawerFooter>
                 </div>

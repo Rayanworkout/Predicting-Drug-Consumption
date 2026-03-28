@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import ReactApexChart from "react-apexcharts";
 import useStore from "@/store/store.js";
-import {ReplaceUnderscoreSpace} from "@/tool/tool.js";
+import {ReplaceUnderscoreSpace} from "@/lib/utils.js";
 
 export function BarChartGraph({ apiData, orientation, dashboard = false }) {
     const { consumptionType, precisionConsumption, screenSize} = useStore();
@@ -40,6 +40,14 @@ export function BarChartGraph({ apiData, orientation, dashboard = false }) {
             enabled: true,
             style: {
                 colors: ['#262626']
+            },
+        },
+        tooltip:{
+            theme:'light',
+            style: {
+                fontSize: '12px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                colors: ['#263238']
             },
         },
         xaxis: {

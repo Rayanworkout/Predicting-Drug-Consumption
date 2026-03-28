@@ -24,7 +24,7 @@ const RepartitionGraph = ({apiData}) => {
             style: {
                 fontSize: '12px',
                 fontFamily: 'Helvetica, Arial, sans-serif',
-                colors: ['#FFF']
+                colors: ['#263238']
             },
         },
         dataLabels: {

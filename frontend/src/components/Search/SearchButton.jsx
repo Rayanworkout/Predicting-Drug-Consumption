@@ -11,8 +11,8 @@ export function SearchButton() {
       <>
           <Button
               disabled={chartType == 'consumption' ? !isItemInDrugList : true}
-              onClick={() => getFunctionToCall()()} variant={'outline'}
-              className={`z-10`}>
+              onClick={() => getFunctionToCall()()}
+              className={`btn-pdc z-10 px-6 h-12`}>
               Search
           </Button>
       </>

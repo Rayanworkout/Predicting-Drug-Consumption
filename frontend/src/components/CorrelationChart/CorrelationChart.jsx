@@ -2,7 +2,7 @@ import ReactApexChart from "react-apexcharts";
 import {useEffect, useState} from "react";
 import useStore from "@/store/store.js";
 import correlationImage from "@/assets/img/correlation.png"
-import {ReplaceUnderscoreSpace} from "@/tool/tool.js";
+import {FirstLetterUpperCase, ReplaceUnderscoreSpace} from "@/lib/utils.js";
 const CorrelationChart = () => {
 
     const {apiCorrelationData} = useStore();
@@ -100,7 +100,15 @@ const CorrelationChart = () => {
         },
         dataLabels: {
             enabled: false
-        }
+        },
+        tooltip:{
+            theme:'light',
+            style: {
+                fontSize: '12px',
+                fontFamily: 'Helvetica, Arial, sans-serif',
+                colors: ['#263238']
+            },
+        },
     };
 
     return (
